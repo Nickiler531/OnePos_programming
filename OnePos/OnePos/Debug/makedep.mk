@@ -2,9 +2,13 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+src\ASF\common\services\spi\xmega_spi\spi_master.c
+
 src\ASF\common\services\usb\class\cdc\device\udi_cdc.c
 
 src\ASF\common\services\usb\udc\udc.c
+
+src\ASF\xmega\drivers\spi\spi.c
 
 src\ASF\xmega\drivers\twi\twim.c
 
@@ -31,6 +35,12 @@ src\ASF\xmega\drivers\nvm\nvm_asm.s
 src\ASF\xmega\drivers\cpu\ccp.s
 
 src\driver\onepos.c
+
+src\driver\queue.c
+
+src\driver\time.c
+
+src\driver\usb_serial.c
 
 src\ASF\common\boards\user_board\init.c
 

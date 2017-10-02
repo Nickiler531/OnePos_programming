@@ -69,9 +69,9 @@
 // (USB_CONFIG_ATTR_REMOTE_WAKEUP|USB_CONFIG_ATTR_BUS_POWERED)
 
 //! USB Device string definitions (Optional)
-// #define  USB_DEVICE_MANUFACTURE_NAME      "Manufacture name"
-// #define  USB_DEVICE_PRODUCT_NAME          "Product name"
-// #define  USB_DEVICE_SERIAL_NAME           "12...EF"
+ #define  USB_DEVICE_MANUFACTURE_NAME      "Agrum"
+ #define  USB_DEVICE_PRODUCT_NAME          "OnePos"
+ #define  USB_DEVICE_SERIAL_NAME           "12EF"
 
 
 /**

@@ -80,6 +80,13 @@
 // From module: Part identification macros
 #include <parts.h>
 
+// From module: SPI - Serial Peripheral Interface
+#include <spi.h>
+
+// From module: SPI - XMEGA implementation
+#include <spi_master.h>
+#include <spi_master.h>
+
 // From module: Sleep Controller driver
 #include <sleep.h>
 

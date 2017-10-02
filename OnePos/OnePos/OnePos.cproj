@@ -33,8 +33,10 @@
     <option id="common.services.delay" value="Add" config="" content-id="Atmel.ASF" />
     <option id="common.services.ioport" value="Add" config="" content-id="Atmel.ASF" />
     <option id="common.services.basic.serial" value="Add" config="" content-id="Atmel.ASF" />
+    <option id="common.services.basic.spi_master" value="Add" config="standard_spi" content-id="Atmel.ASF" />
     <option id="common.services.usb.class.device" value="Add" config="cdc" content-id="Atmel.ASF" />
     <option id="xmega.drivers.twi" value="Add" config="both" content-id="Atmel.ASF" />
+    <option id="xmega.drivers.ioport" value="Add" config="" content-id="Atmel.ASF" />
   </options>
   <configurations>
     <configuration key="config.xmega.drivers.usb.device.sleepmgr" value="with_sleepmgr" default="with_sleepmgr" content-id="Atmel.ASF" />
@@ -115,6 +117,12 @@
     <file path="src/ASF/xmega/drivers/usart/usart.h" framework="" version="3.21.0" source="xmega\drivers\usart\usart.h" changed="False" content-id="Atmel.ASF" />
     <file path="src/ASF/xmega/drivers/usb/usb_device.c" framework="" version="3.21.0" source="xmega\drivers\usb\usb_device.c" changed="False" content-id="Atmel.ASF" />
     <file path="src/ASF/xmega/drivers/usb/usb_device.h" framework="" version="3.21.0" source="xmega\drivers\usb\usb_device.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/xmega/drivers/spi/spi.c" framework="" version="3.21.0" source="xmega\drivers\spi\spi.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/xmega/drivers/spi/spi.h" framework="" version="3.21.0" source="xmega\drivers\spi\spi.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/common/services/spi/xmega_spi/spi_master.c" framework="" version="3.21.0" source="common\services\spi\xmega_spi\spi_master.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/common/services/spi/spi_master.h" framework="" version="3.21.0" source="common\services\spi\spi_master.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/common/services/spi/xmega_spi/spi_master.h" framework="" version="3.21.0" source="common\services\spi\xmega_spi\spi_master.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/Config/conf_spi_master.h" framework="" version="3.21.0" source="common\services\spi\xmega_spi\module_config\conf_spi_master.h" changed="False" content-id="Atmel.ASF" />
   </files>
   <documentation help="http://asf.atmel.com/docs/3.21.0/common.applications.user_application.user_board.xmegaau/html/index.html" />
   <offline-documentation help="" />
@@ -138,6 +146,7 @@
     <ListValues>
       <Value>NDEBUG</Value>
       <Value>BOARD=USER_BOARD</Value>
+      <Value>IOPORT_XMEGA_COMPAT</Value>
     </ListValues>
   </avrgcc.compiler.symbols.DefSymbols>
   <avrgcc.compiler.directories.IncludePaths>
@@ -167,6 +176,9 @@
       <Value>../src/ASF/xmega/drivers/twi</Value>
       <Value>../src/ASF/xmega/drivers/usart</Value>
       <Value>../src/ASF/xmega/drivers/usb</Value>
+      <Value>../src/ASF/xmega/drivers/spi</Value>
+      <Value>../src/ASF/common/services/spi/xmega_spi</Value>
+      <Value>../src/ASF/common/services/spi</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
@@ -209,6 +221,9 @@
       <Value>../src/ASF/xmega/drivers/twi</Value>
       <Value>../src/ASF/xmega/drivers/usart</Value>
       <Value>../src/ASF/xmega/drivers/usb</Value>
+      <Value>../src/ASF/xmega/drivers/spi</Value>
+      <Value>../src/ASF/common/services/spi/xmega_spi</Value>
+      <Value>../src/ASF/common/services/spi</Value>
     </ListValues>
   </avrgcc.assembler.general.IncludePaths>
 </AvrGcc>
@@ -226,6 +241,7 @@
     <ListValues>
       <Value>DEBUG</Value>
       <Value>BOARD=USER_BOARD</Value>
+      <Value>IOPORT_XMEGA_COMPAT</Value>
     </ListValues>
   </avrgcc.compiler.symbols.DefSymbols>
   <avrgcc.compiler.directories.IncludePaths>
@@ -255,6 +271,9 @@
       <Value>../src/ASF/xmega/drivers/twi</Value>
       <Value>../src/ASF/xmega/drivers/usart</Value>
       <Value>../src/ASF/xmega/drivers/usb</Value>
+      <Value>../src/ASF/xmega/drivers/spi</Value>
+      <Value>../src/ASF/common/services/spi/xmega_spi</Value>
+      <Value>../src/ASF/common/services/spi</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
@@ -298,6 +317,9 @@
       <Value>../src/ASF/xmega/drivers/twi</Value>
       <Value>../src/ASF/xmega/drivers/usart</Value>
       <Value>../src/ASF/xmega/drivers/usb</Value>
+      <Value>../src/ASF/xmega/drivers/spi</Value>
+      <Value>../src/ASF/common/services/spi/xmega_spi</Value>
+      <Value>../src/ASF/common/services/spi</Value>
     </ListValues>
   </avrgcc.assembler.general.IncludePaths>
   <avrgcc.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcc.assembler.debugging.DebugLevel>
@@ -321,6 +343,8 @@
     <Folder Include="src\ASF\common\services\serial\xmega_usart\" />
     <Folder Include="src\ASF\common\services\sleepmgr\" />
     <Folder Include="src\ASF\common\services\sleepmgr\xmega\" />
+    <Folder Include="src\ASF\common\services\spi\" />
+    <Folder Include="src\ASF\common\services\spi\xmega_spi\" />
     <Folder Include="src\ASF\common\services\usb\" />
     <Folder Include="src\ASF\common\services\usb\class\" />
     <Folder Include="src\ASF\common\services\usb\class\cdc\" />
@@ -335,6 +359,7 @@
     <Folder Include="src\ASF\xmega\drivers\nvm\" />
     <Folder Include="src\ASF\xmega\drivers\pmic\" />
     <Folder Include="src\ASF\xmega\drivers\sleep\" />
+    <Folder Include="src\ASF\xmega\drivers\spi\" />
     <Folder Include="src\ASF\xmega\drivers\twi\" />
     <Folder Include="src\ASF\xmega\drivers\usart\" />
     <Folder Include="src\ASF\xmega\drivers\usb\" />
@@ -344,14 +369,30 @@
     <Folder Include="src\ASF\xmega\utils\preprocessor\" />
     <Folder Include="src\config\" />
     <Folder Include="src\driver" />
+    <Folder Include="src\include\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="src\ASF\common\services\spi\spi_master.h">
+      <SubType>compile</SubType>
+    </None>
+    <Compile Include="src\ASF\common\services\spi\xmega_spi\spi_master.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <None Include="src\ASF\common\services\spi\xmega_spi\spi_master.h">
+      <SubType>compile</SubType>
+    </None>
     <Compile Include="src\ASF\common\services\usb\class\cdc\device\udi_cdc.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\ASF\common\services\usb\udc\udc.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="src\ASF\xmega\drivers\spi\spi.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <None Include="src\ASF\xmega\drivers\spi\spi.h">
+      <SubType>compile</SubType>
+    </None>
     <Compile Include="src\ASF\xmega\drivers\twi\twim.c">
       <SubType>compile</SubType>
     </Compile>
@@ -514,7 +555,31 @@
     <None Include="src\ASF\xmega\drivers\cpu\xmega_reset_cause.h">
       <SubType>compile</SubType>
     </None>
+    <None Include="src\config\conf_spi_master.h">
+      <SubType>compile</SubType>
+    </None>
     <Compile Include="src\driver\onepos.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\driver\queue.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\driver\time.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\driver\usb_serial.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\include\queue.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\include\time.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\include\time_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\include\usb_serial.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\onepos.h">

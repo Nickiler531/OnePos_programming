@@ -16,7 +16,7 @@ void init_onepos(void)
 	// 	rtc_init();
 	#endif
 	#ifdef ENABLE_USB
-		//usb_init();
+		usb_init();
 	#endif
 	
 	/************************************************************************/
@@ -30,13 +30,17 @@ void init_onepos(void)
 	ioport_set_pin_dir(LED4,IOPORT_DIR_OUTPUT);
 	
 	ioport_set_pin_dir(RS485_TX_EN,IOPORT_DIR_OUTPUT);
-	ioport_set_pin_dir(RS485_TX,IOPORT_DIR_OUTPUT);
-	ioport_set_pin_dir(RS485_RX,IOPORT_DIR_INPUT);
+	ioport_set_pin_dir(RS485_TX,IOPORT_DIR_INPUT);
+	ioport_set_pin_dir(RS485_RX,IOPORT_DIR_OUTPUT);
+	
+	ioport_set_pin_dir(BLE_TX,IOPORT_DIR_INPUT);
+	ioport_set_pin_dir(BLE_RX,IOPORT_DIR_OUTPUT);
 	
 	ioport_set_pin_dir(UWB_CS,IOPORT_DIR_OUTPUT);
 	ioport_set_pin_dir(UWB_MOSI,IOPORT_DIR_OUTPUT);
 	ioport_set_pin_dir(UWB_CLK,IOPORT_DIR_OUTPUT);
 	ioport_set_pin_dir(UWB_MISO,IOPORT_DIR_INPUT);
+	ioport_set_pin_mode(UWB_MISO,IOPORT_MODE_PULLDOWN);
 	
 }
 
