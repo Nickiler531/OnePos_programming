@@ -17,7 +17,9 @@
 
 #include <asf.h>
 #include "include/usb_serial.h"
+#include "include/DW1000.h"
 #include "stdio.h"
+#include "string.h"
 
 //Header 1
 #define PR0 IOPORT_CREATE_PIN(PORTR, 0)
