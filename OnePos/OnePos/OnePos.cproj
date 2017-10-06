@@ -558,6 +558,21 @@
     <None Include="src\config\conf_spi_master.h">
       <SubType>compile</SubType>
     </None>
+    <Compile Include="src\driver\deca_device.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\driver\deca_mutex.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\driver\deca_params_init.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\driver\deca_sleep.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\driver\deca_spi.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\driver\onepos.c">
       <SubType>compile</SubType>
     </Compile>
@@ -568,6 +583,24 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\driver\usb_serial.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\include\deca_device_api.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\include\deca_param_types.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\include\deca_regs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\include\deca_spi.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\include\deca_types.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\include\deca_version.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\include\DW1000.h">

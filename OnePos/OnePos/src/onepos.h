@@ -17,7 +17,9 @@
 
 #include <asf.h>
 #include "include/usb_serial.h"
-#include "include/DW1000.h"
+#include "include/deca_device_api.h"
+#include "include/deca_regs.h"
+#include "include/deca_spi.h"
 #include "stdio.h"
 #include "string.h"
 

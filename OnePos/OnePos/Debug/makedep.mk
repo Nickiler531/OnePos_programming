@@ -34,6 +34,16 @@ src\ASF\xmega\drivers\nvm\nvm_asm.s
 
 src\ASF\xmega\drivers\cpu\ccp.s
 
+src\driver\deca_device.c
+
+src\driver\deca_mutex.c
+
+src\driver\deca_params_init.c
+
+src\driver\deca_sleep.c
+
+src\driver\deca_spi.c
+
 src\driver\onepos.c
 
 src\driver\queue.c
