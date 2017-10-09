@@ -34,7 +34,7 @@ int openspi(void)
 
 void fast_spi(void)
 {
-	spi_master_setup_device(&SPIC, &spi_device_conf, SPI_MODE_0, 8000000, 0);
+	spi_master_setup_device(&SPIC, &spi_device_conf, SPI_MODE_0, 15000000, 0);
 }
 
 /*! ------------------------------------------------------------------------------------------------------------------
