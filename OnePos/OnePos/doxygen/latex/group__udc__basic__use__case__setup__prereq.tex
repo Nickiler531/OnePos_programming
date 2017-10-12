@@ -1,0 +1,57 @@
+\hypertarget{group__udc__basic__use__case__setup__prereq}{\section{U\-S\-B Device Controller (U\-D\-C) -\/ Prerequisites}
+\label{group__udc__basic__use__case__setup__prereq}\index{U\-S\-B Device Controller (\-U\-D\-C) -\/ Prerequisites@{U\-S\-B Device Controller (\-U\-D\-C) -\/ Prerequisites}}
+}
+Common prerequisites for all U\-S\-B devices.
+
+This module is based on U\-S\-B device stack full interrupt driven, and supporting \hyperlink{group__sleepmgr__group}{Sleep manager} sleepmgr. For A\-V\-R and S\-A\-M3/4 devices the \hyperlink{group__clk__group}{Clock Management} clock services is supported. For S\-A\-M\-D devices the asfdoc\-\_\-sam0\-\_\-system\-\_\-clock\-\_\-group clock driver is supported.
+
+The following procedure must be executed to setup the project correctly\-:
+\begin{DoxyItemize}
+\item Specify the clock configuration\-:
+\begin{DoxyItemize}
+\item X\-M\-E\-G\-A U\-S\-B devices need 48\-M\-Hz clock input.\par
+ X\-M\-E\-G\-A U\-S\-B devices need C\-P\-U frequency higher than 12\-M\-Hz.\par
+ You can use either an internal R\-C48\-M\-Hz auto calibrated by Start of Frames or an external O\-S\-C.
+\item U\-C3 and S\-A\-M3/4 devices without U\-S\-B high speed support need 48\-M\-Hz clock input.\par
+ You must use a P\-L\-L and an external O\-S\-C.
+\item U\-C3 and S\-A\-M3/4 devices with U\-S\-B high speed support need 12\-M\-Hz clock input.\par
+ You must use an external O\-S\-C.
+\item U\-C3 devices with U\-S\-B\-C hardware need C\-P\-U frequency higher than 25\-M\-Hz.
+\item S\-A\-M\-D devices without U\-S\-B high speed support need 48\-M\-Hz clock input.\par
+ You should use D\-F\-L\-L with U\-S\-B\-C\-R\-M.
+\end{DoxyItemize}
+\item In \hyperlink{conf__board_8h}{conf\-\_\-board.\-h}, the define C\-O\-N\-F\-\_\-\-B\-O\-A\-R\-D\-\_\-\-U\-S\-B\-\_\-\-P\-O\-R\-T must be added to enable U\-S\-B lines. (Not mandatory for all boards)
+\item Enable interrupts
+\item Initialize the clock service
+\end{DoxyItemize}
+
+The usage of \hyperlink{group__sleepmgr__group}{Sleep manager} sleepmgr service is optional, but recommended to reduce power consumption\-:
+\begin{DoxyItemize}
+\item Initialize the sleep manager service
+\item Activate sleep mode when the application is in I\-D\-L\-E state
+\end{DoxyItemize}
+
+\hyperlink{udc_conf_clock}{conf\-\_\-clock.\-h examples with U\-S\-B support}.
+
+for A\-V\-R and S\-A\-M3/4 devices, add to the initialization code\-: 
+\begin{DoxyCode}
+        \hyperlink{group__sysclk__group_ga242399e48a97739c88b4d0c00f6101de}{sysclk\_init}();
+        irq\_initialize\_vectors();
+        \hyperlink{group__interrupt__group_gae4922a4bd8ba4150211fbc7f2302403c}{cpu\_irq\_enable}();
+        \hyperlink{group__group__common__boards_ga916f2adc2080b4fe88034086d107a8dc}{board\_init}();
+        sleepmgr\_init(); \textcolor{comment}{// Optional}
+\end{DoxyCode}
+
+
+For S\-A\-M\-D devices, add to the initialization code\-: 
+\begin{DoxyCode}
+        system\_init();
+        irq\_initialize\_vectors();
+        \hyperlink{group__interrupt__group_gae4922a4bd8ba4150211fbc7f2302403c}{cpu\_irq\_enable}();
+        sleepmgr\_init(); \textcolor{comment}{// Optional}
+\end{DoxyCode}
+ Add to the main I\-D\-L\-E loop\-: 
+\begin{DoxyCode}
+        sleepmgr\_enter\_sleep(); \textcolor{comment}{// Optional}
+\end{DoxyCode}
+ 

@@ -1,0 +1,102 @@
+\hypertarget{group__pmic__group}{\section{Programmable Multilevel Interrupt Controller}
+\label{group__pmic__group}\index{Programmable Multilevel Interrupt Controller@{Programmable Multilevel Interrupt Controller}}
+}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{group__pmic__group_ga786c118f55440742904207a0e1d269f9}{pmic\-\_\-level} \{ \hyperlink{group__pmic__group_gga786c118f55440742904207a0e1d269f9abe0a5276abcc96b4a31418bd3c2bc38d}{P\-M\-I\-C\-\_\-\-L\-V\-L\-\_\-\-L\-O\-W} =  P\-M\-I\-C\-\_\-\-L\-O\-L\-V\-L\-E\-N\-\_\-bm, 
+\hyperlink{group__pmic__group_gga786c118f55440742904207a0e1d269f9a0b5735f19e2f64ad7a5e6c449e205df6}{P\-M\-I\-C\-\_\-\-L\-V\-L\-\_\-\-M\-E\-D\-I\-U\-M} =  P\-M\-I\-C\-\_\-\-M\-E\-D\-L\-V\-L\-E\-N\-\_\-bm, 
+\hyperlink{group__pmic__group_gga786c118f55440742904207a0e1d269f9a86fe53d3ec057585ae994f92ac6fd3b4}{P\-M\-I\-C\-\_\-\-L\-V\-L\-\_\-\-H\-I\-G\-H} =  P\-M\-I\-C\-\_\-\-H\-I\-L\-V\-L\-E\-N\-\_\-bm, 
+\hyperlink{group__pmic__group_gga786c118f55440742904207a0e1d269f9a45d75acaa1e3d8b74998cc4ac38739ba}{P\-M\-I\-C\-\_\-\-L\-V\-L\-\_\-\-N\-M\-I} =  P\-M\-I\-C\-\_\-\-N\-M\-I\-E\-X\-\_\-bp
+ \}
+\begin{DoxyCompactList}\small\item\em Interrupt level bitmasks. \end{DoxyCompactList}\item 
+enum \hyperlink{group__pmic__group_gad564a55fdd5f3ed127228305e2205c38}{pmic\-\_\-vector} \{ \hyperlink{group__pmic__group_ggad564a55fdd5f3ed127228305e2205c38ac2633c604c83302fdd43b6ddde774516}{P\-M\-I\-C\-\_\-\-V\-E\-C\-\_\-\-A\-P\-P\-L\-I\-C\-A\-T\-I\-O\-N}, 
+\hyperlink{group__pmic__group_ggad564a55fdd5f3ed127228305e2205c38a6b3b7bacd133cfe587cfd6d57669d8c0}{P\-M\-I\-C\-\_\-\-V\-E\-C\-\_\-\-B\-O\-O\-T}, 
+\hyperlink{group__pmic__group_ggad564a55fdd5f3ed127228305e2205c38abc806a0b912309c8e7f31e22d41c6215}{P\-M\-I\-C\-\_\-\-N\-R\-\_\-\-O\-F\-\_\-\-V\-E\-C\-T\-O\-R\-S}
+ \}
+\begin{DoxyCompactList}\small\item\em Interrupt vector locations. \end{DoxyCompactList}\item 
+enum \hyperlink{group__pmic__group_ga68099717e4fa4e95f12943d3e3e55d79}{pmic\-\_\-schedule} \{ \hyperlink{group__pmic__group_gga68099717e4fa4e95f12943d3e3e55d79a8a553d9366e1553ea610ab6582698b23}{P\-M\-I\-C\-\_\-\-S\-C\-H\-\_\-\-F\-I\-X\-E\-D\-\_\-\-P\-R\-I\-O\-R\-I\-T\-Y}, 
+\hyperlink{group__pmic__group_gga68099717e4fa4e95f12943d3e3e55d79a29065590de0ddf49e19afb6de1646c79}{P\-M\-I\-C\-\_\-\-S\-C\-H\-\_\-\-R\-O\-U\-N\-D\-\_\-\-R\-O\-B\-I\-N}, 
+\hyperlink{group__pmic__group_gga68099717e4fa4e95f12943d3e3e55d79a3359fcef75642d8a546102a0bd7065cd}{P\-M\-I\-C\-\_\-\-N\-R\-\_\-\-O\-F\-\_\-\-S\-C\-H\-E\-D\-U\-L\-E\-S}
+ \}
+\begin{DoxyCompactList}\small\item\em Interrupt scheduling schemes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support}
+
+See \hyperlink{xmega_pmic_quickstart}{Quick start guide for P\-M\-I\-C driver}.
+
+This is a low-\/level driver implementation for the A\-V\-R X\-M\-E\-G\-A Programmable Multilevel Interrupt Controller.
+
+\begin{DoxyNote}{Note}
+If these functions are used in interrupt service routines (I\-S\-Rs), any non-\/\-I\-S\-R code or I\-S\-R code for lower level interrupts must ensure that the operations are atomic, i.\-e., by disabling interrupts during the function calls. 
+\end{DoxyNote}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{group__pmic__group_ga786c118f55440742904207a0e1d269f9}{\index{Programmable Multilevel Interrupt Controller@{Programmable Multilevel Interrupt Controller}!pmic\-\_\-level@{pmic\-\_\-level}}
+\index{pmic\-\_\-level@{pmic\-\_\-level}!Programmable Multilevel Interrupt Controller@{Programmable Multilevel Interrupt Controller}}
+\subsubsection[{pmic\-\_\-level}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf pmic\-\_\-level}}}\label{group__pmic__group_ga786c118f55440742904207a0e1d269f9}
+
+
+Interrupt level bitmasks. 
+
+\begin{DoxyNote}{Note}
+These may be O\-R'ed, e.\-g., if multiple levels are to be enabled or disabled. 
+\end{DoxyNote}
+\begin{Desc}
+\item[Enumerator\-: ]\par
+\begin{description}
+\index{P\-M\-I\-C\-\_\-\-L\-V\-L\-\_\-\-L\-O\-W@{P\-M\-I\-C\-\_\-\-L\-V\-L\-\_\-\-L\-O\-W}!Programmable Multilevel Interrupt Controller@{Programmable Multilevel Interrupt Controller}}\index{Programmable Multilevel Interrupt Controller@{Programmable Multilevel Interrupt Controller}!P\-M\-I\-C\-\_\-\-L\-V\-L\-\_\-\-L\-O\-W@{P\-M\-I\-C\-\_\-\-L\-V\-L\-\_\-\-L\-O\-W}}\item[{\em 
+\hypertarget{group__pmic__group_gga786c118f55440742904207a0e1d269f9abe0a5276abcc96b4a31418bd3c2bc38d}{P\-M\-I\-C\-\_\-\-L\-V\-L\-\_\-\-L\-O\-W}\label{group__pmic__group_gga786c118f55440742904207a0e1d269f9abe0a5276abcc96b4a31418bd3c2bc38d}
+}]Low-\/level interrupts. \index{P\-M\-I\-C\-\_\-\-L\-V\-L\-\_\-\-M\-E\-D\-I\-U\-M@{P\-M\-I\-C\-\_\-\-L\-V\-L\-\_\-\-M\-E\-D\-I\-U\-M}!Programmable Multilevel Interrupt Controller@{Programmable Multilevel Interrupt Controller}}\index{Programmable Multilevel Interrupt Controller@{Programmable Multilevel Interrupt Controller}!P\-M\-I\-C\-\_\-\-L\-V\-L\-\_\-\-M\-E\-D\-I\-U\-M@{P\-M\-I\-C\-\_\-\-L\-V\-L\-\_\-\-M\-E\-D\-I\-U\-M}}\item[{\em 
+\hypertarget{group__pmic__group_gga786c118f55440742904207a0e1d269f9a0b5735f19e2f64ad7a5e6c449e205df6}{P\-M\-I\-C\-\_\-\-L\-V\-L\-\_\-\-M\-E\-D\-I\-U\-M}\label{group__pmic__group_gga786c118f55440742904207a0e1d269f9a0b5735f19e2f64ad7a5e6c449e205df6}
+}]Medium-\/level interrupts. \index{P\-M\-I\-C\-\_\-\-L\-V\-L\-\_\-\-H\-I\-G\-H@{P\-M\-I\-C\-\_\-\-L\-V\-L\-\_\-\-H\-I\-G\-H}!Programmable Multilevel Interrupt Controller@{Programmable Multilevel Interrupt Controller}}\index{Programmable Multilevel Interrupt Controller@{Programmable Multilevel Interrupt Controller}!P\-M\-I\-C\-\_\-\-L\-V\-L\-\_\-\-H\-I\-G\-H@{P\-M\-I\-C\-\_\-\-L\-V\-L\-\_\-\-H\-I\-G\-H}}\item[{\em 
+\hypertarget{group__pmic__group_gga786c118f55440742904207a0e1d269f9a86fe53d3ec057585ae994f92ac6fd3b4}{P\-M\-I\-C\-\_\-\-L\-V\-L\-\_\-\-H\-I\-G\-H}\label{group__pmic__group_gga786c118f55440742904207a0e1d269f9a86fe53d3ec057585ae994f92ac6fd3b4}
+}]High-\/level interrupts. \index{P\-M\-I\-C\-\_\-\-L\-V\-L\-\_\-\-N\-M\-I@{P\-M\-I\-C\-\_\-\-L\-V\-L\-\_\-\-N\-M\-I}!Programmable Multilevel Interrupt Controller@{Programmable Multilevel Interrupt Controller}}\index{Programmable Multilevel Interrupt Controller@{Programmable Multilevel Interrupt Controller}!P\-M\-I\-C\-\_\-\-L\-V\-L\-\_\-\-N\-M\-I@{P\-M\-I\-C\-\_\-\-L\-V\-L\-\_\-\-N\-M\-I}}\item[{\em 
+\hypertarget{group__pmic__group_gga786c118f55440742904207a0e1d269f9a45d75acaa1e3d8b74998cc4ac38739ba}{P\-M\-I\-C\-\_\-\-L\-V\-L\-\_\-\-N\-M\-I}\label{group__pmic__group_gga786c118f55440742904207a0e1d269f9a45d75acaa1e3d8b74998cc4ac38739ba}
+}]Non-\/maskable interrupts. \begin{DoxyNote}{Note}
+These cannot be enabled nor disabled. 
+\end{DoxyNote}
+\end{description}
+\end{Desc}
+
+\hypertarget{group__pmic__group_ga68099717e4fa4e95f12943d3e3e55d79}{\index{Programmable Multilevel Interrupt Controller@{Programmable Multilevel Interrupt Controller}!pmic\-\_\-schedule@{pmic\-\_\-schedule}}
+\index{pmic\-\_\-schedule@{pmic\-\_\-schedule}!Programmable Multilevel Interrupt Controller@{Programmable Multilevel Interrupt Controller}}
+\subsubsection[{pmic\-\_\-schedule}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf pmic\-\_\-schedule}}}\label{group__pmic__group_ga68099717e4fa4e95f12943d3e3e55d79}
+
+
+Interrupt scheduling schemes. 
+
+\begin{Desc}
+\item[Enumerator\-: ]\par
+\begin{description}
+\index{P\-M\-I\-C\-\_\-\-S\-C\-H\-\_\-\-F\-I\-X\-E\-D\-\_\-\-P\-R\-I\-O\-R\-I\-T\-Y@{P\-M\-I\-C\-\_\-\-S\-C\-H\-\_\-\-F\-I\-X\-E\-D\-\_\-\-P\-R\-I\-O\-R\-I\-T\-Y}!Programmable Multilevel Interrupt Controller@{Programmable Multilevel Interrupt Controller}}\index{Programmable Multilevel Interrupt Controller@{Programmable Multilevel Interrupt Controller}!P\-M\-I\-C\-\_\-\-S\-C\-H\-\_\-\-F\-I\-X\-E\-D\-\_\-\-P\-R\-I\-O\-R\-I\-T\-Y@{P\-M\-I\-C\-\_\-\-S\-C\-H\-\_\-\-F\-I\-X\-E\-D\-\_\-\-P\-R\-I\-O\-R\-I\-T\-Y}}\item[{\em 
+\hypertarget{group__pmic__group_gga68099717e4fa4e95f12943d3e3e55d79a8a553d9366e1553ea610ab6582698b23}{P\-M\-I\-C\-\_\-\-S\-C\-H\-\_\-\-F\-I\-X\-E\-D\-\_\-\-P\-R\-I\-O\-R\-I\-T\-Y}\label{group__pmic__group_gga68099717e4fa4e95f12943d3e3e55d79a8a553d9366e1553ea610ab6582698b23}
+}]Default, fixed priority scheduling. \index{P\-M\-I\-C\-\_\-\-S\-C\-H\-\_\-\-R\-O\-U\-N\-D\-\_\-\-R\-O\-B\-I\-N@{P\-M\-I\-C\-\_\-\-S\-C\-H\-\_\-\-R\-O\-U\-N\-D\-\_\-\-R\-O\-B\-I\-N}!Programmable Multilevel Interrupt Controller@{Programmable Multilevel Interrupt Controller}}\index{Programmable Multilevel Interrupt Controller@{Programmable Multilevel Interrupt Controller}!P\-M\-I\-C\-\_\-\-S\-C\-H\-\_\-\-R\-O\-U\-N\-D\-\_\-\-R\-O\-B\-I\-N@{P\-M\-I\-C\-\_\-\-S\-C\-H\-\_\-\-R\-O\-U\-N\-D\-\_\-\-R\-O\-B\-I\-N}}\item[{\em 
+\hypertarget{group__pmic__group_gga68099717e4fa4e95f12943d3e3e55d79a29065590de0ddf49e19afb6de1646c79}{P\-M\-I\-C\-\_\-\-S\-C\-H\-\_\-\-R\-O\-U\-N\-D\-\_\-\-R\-O\-B\-I\-N}\label{group__pmic__group_gga68099717e4fa4e95f12943d3e3e55d79a29065590de0ddf49e19afb6de1646c79}
+}]Round-\/robin scheduling. \index{P\-M\-I\-C\-\_\-\-N\-R\-\_\-\-O\-F\-\_\-\-S\-C\-H\-E\-D\-U\-L\-E\-S@{P\-M\-I\-C\-\_\-\-N\-R\-\_\-\-O\-F\-\_\-\-S\-C\-H\-E\-D\-U\-L\-E\-S}!Programmable Multilevel Interrupt Controller@{Programmable Multilevel Interrupt Controller}}\index{Programmable Multilevel Interrupt Controller@{Programmable Multilevel Interrupt Controller}!P\-M\-I\-C\-\_\-\-N\-R\-\_\-\-O\-F\-\_\-\-S\-C\-H\-E\-D\-U\-L\-E\-S@{P\-M\-I\-C\-\_\-\-N\-R\-\_\-\-O\-F\-\_\-\-S\-C\-H\-E\-D\-U\-L\-E\-S}}\item[{\em 
+\hypertarget{group__pmic__group_gga68099717e4fa4e95f12943d3e3e55d79a3359fcef75642d8a546102a0bd7065cd}{P\-M\-I\-C\-\_\-\-N\-R\-\_\-\-O\-F\-\_\-\-S\-C\-H\-E\-D\-U\-L\-E\-S}\label{group__pmic__group_gga68099717e4fa4e95f12943d3e3e55d79a3359fcef75642d8a546102a0bd7065cd}
+}]Number of interrupt scheduling schemes. \end{description}
+\end{Desc}
+
+\hypertarget{group__pmic__group_gad564a55fdd5f3ed127228305e2205c38}{\index{Programmable Multilevel Interrupt Controller@{Programmable Multilevel Interrupt Controller}!pmic\-\_\-vector@{pmic\-\_\-vector}}
+\index{pmic\-\_\-vector@{pmic\-\_\-vector}!Programmable Multilevel Interrupt Controller@{Programmable Multilevel Interrupt Controller}}
+\subsubsection[{pmic\-\_\-vector}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf pmic\-\_\-vector}}}\label{group__pmic__group_gad564a55fdd5f3ed127228305e2205c38}
+
+
+Interrupt vector locations. 
+
+\begin{Desc}
+\item[Enumerator\-: ]\par
+\begin{description}
+\index{P\-M\-I\-C\-\_\-\-V\-E\-C\-\_\-\-A\-P\-P\-L\-I\-C\-A\-T\-I\-O\-N@{P\-M\-I\-C\-\_\-\-V\-E\-C\-\_\-\-A\-P\-P\-L\-I\-C\-A\-T\-I\-O\-N}!Programmable Multilevel Interrupt Controller@{Programmable Multilevel Interrupt Controller}}\index{Programmable Multilevel Interrupt Controller@{Programmable Multilevel Interrupt Controller}!P\-M\-I\-C\-\_\-\-V\-E\-C\-\_\-\-A\-P\-P\-L\-I\-C\-A\-T\-I\-O\-N@{P\-M\-I\-C\-\_\-\-V\-E\-C\-\_\-\-A\-P\-P\-L\-I\-C\-A\-T\-I\-O\-N}}\item[{\em 
+\hypertarget{group__pmic__group_ggad564a55fdd5f3ed127228305e2205c38ac2633c604c83302fdd43b6ddde774516}{P\-M\-I\-C\-\_\-\-V\-E\-C\-\_\-\-A\-P\-P\-L\-I\-C\-A\-T\-I\-O\-N}\label{group__pmic__group_ggad564a55fdd5f3ed127228305e2205c38ac2633c604c83302fdd43b6ddde774516}
+}]Application section. \index{P\-M\-I\-C\-\_\-\-V\-E\-C\-\_\-\-B\-O\-O\-T@{P\-M\-I\-C\-\_\-\-V\-E\-C\-\_\-\-B\-O\-O\-T}!Programmable Multilevel Interrupt Controller@{Programmable Multilevel Interrupt Controller}}\index{Programmable Multilevel Interrupt Controller@{Programmable Multilevel Interrupt Controller}!P\-M\-I\-C\-\_\-\-V\-E\-C\-\_\-\-B\-O\-O\-T@{P\-M\-I\-C\-\_\-\-V\-E\-C\-\_\-\-B\-O\-O\-T}}\item[{\em 
+\hypertarget{group__pmic__group_ggad564a55fdd5f3ed127228305e2205c38a6b3b7bacd133cfe587cfd6d57669d8c0}{P\-M\-I\-C\-\_\-\-V\-E\-C\-\_\-\-B\-O\-O\-T}\label{group__pmic__group_ggad564a55fdd5f3ed127228305e2205c38a6b3b7bacd133cfe587cfd6d57669d8c0}
+}]Boot section. \index{P\-M\-I\-C\-\_\-\-N\-R\-\_\-\-O\-F\-\_\-\-V\-E\-C\-T\-O\-R\-S@{P\-M\-I\-C\-\_\-\-N\-R\-\_\-\-O\-F\-\_\-\-V\-E\-C\-T\-O\-R\-S}!Programmable Multilevel Interrupt Controller@{Programmable Multilevel Interrupt Controller}}\index{Programmable Multilevel Interrupt Controller@{Programmable Multilevel Interrupt Controller}!P\-M\-I\-C\-\_\-\-N\-R\-\_\-\-O\-F\-\_\-\-V\-E\-C\-T\-O\-R\-S@{P\-M\-I\-C\-\_\-\-N\-R\-\_\-\-O\-F\-\_\-\-V\-E\-C\-T\-O\-R\-S}}\item[{\em 
+\hypertarget{group__pmic__group_ggad564a55fdd5f3ed127228305e2205c38abc806a0b912309c8e7f31e22d41c6215}{P\-M\-I\-C\-\_\-\-N\-R\-\_\-\-O\-F\-\_\-\-V\-E\-C\-T\-O\-R\-S}\label{group__pmic__group_ggad564a55fdd5f3ed127228305e2205c38abc806a0b912309c8e7f31e22d41c6215}
+}]Number of interrupt vector locations. \end{description}
+\end{Desc}
+

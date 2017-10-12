@@ -1,0 +1,88 @@
+\hypertarget{xmega_2ioport_8h}{\section{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/ioport/xmega/ioport.h File Reference}
+\label{xmega_2ioport_8h}\index{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/ioport/xmega/ioport.\-h@{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/ioport/xmega/ioport.\-h}}
+}
+
+
+X\-M\-E\-G\-A architecture specific I\-O\-P\-O\-R\-T service implementation header file.  
+
+
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group__ioport__group_gabc09edad7c3187dec63ce47e6f1b3c51}{I\-O\-P\-O\-R\-T\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-P\-I\-N}(port, pin)~((I\-O\-P\-O\-R\-T\-\_\- \#\# port) $\ast$ 8 + (pin))
+\begin{DoxyCompactList}\small\item\em Create I\-O\-P\-O\-R\-T pin number. \end{DoxyCompactList}\item 
+\hypertarget{xmega_2ioport_8h_a31507c021a644c87533ae7808bc015c7}{\#define {\bfseries I\-O\-P\-O\-R\-T\-\_\-\-B\-A\-S\-E\-\_\-\-A\-D\-D\-R\-E\-S\-S}~0x600}\label{xmega_2ioport_8h_a31507c021a644c87533ae7808bc015c7}
+
+\item 
+\hypertarget{xmega_2ioport_8h_a113461bb371f8766008120ab11c8febf}{\#define {\bfseries I\-O\-P\-O\-R\-T\-\_\-\-P\-O\-R\-T\-\_\-\-O\-F\-F\-S\-E\-T}~0x20}\label{xmega_2ioport_8h_a113461bb371f8766008120ab11c8febf}
+
+\end{DoxyCompactItemize}
+\begin{Indent}{\bf I\-O\-P\-O\-R\-T port numbers}\par
+{\em }\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{xmega_2ioport_8h_a9e2a1f412fe7abec04138408a7c25a78}{I\-O\-P\-O\-R\-T\-\_\-\-P\-O\-R\-T\-A}~0
+\item 
+\hypertarget{xmega_2ioport_8h_a965cf28a0d7ad2280688d2d68f2cd43f}{\#define {\bfseries I\-O\-P\-O\-R\-T\-\_\-\-P\-O\-R\-T\-B}~1}\label{xmega_2ioport_8h_a965cf28a0d7ad2280688d2d68f2cd43f}
+
+\item 
+\hypertarget{xmega_2ioport_8h_a6e8c8b48c080830caa939aec59024fc2}{\#define {\bfseries I\-O\-P\-O\-R\-T\-\_\-\-P\-O\-R\-T\-C}~2}\label{xmega_2ioport_8h_a6e8c8b48c080830caa939aec59024fc2}
+
+\item 
+\hypertarget{xmega_2ioport_8h_a21e330146b84cafa12c4de19e993b8fb}{\#define {\bfseries I\-O\-P\-O\-R\-T\-\_\-\-P\-O\-R\-T\-D}~3}\label{xmega_2ioport_8h_a21e330146b84cafa12c4de19e993b8fb}
+
+\item 
+\hypertarget{xmega_2ioport_8h_ac5a10844ad540e0294314bab1483da84}{\#define {\bfseries I\-O\-P\-O\-R\-T\-\_\-\-P\-O\-R\-T\-E}~4}\label{xmega_2ioport_8h_ac5a10844ad540e0294314bab1483da84}
+
+\item 
+\hypertarget{xmega_2ioport_8h_abb0e3e5f2c08eca3f1102a4b9bf440d1}{\#define {\bfseries I\-O\-P\-O\-R\-T\-\_\-\-P\-O\-R\-T\-R}~15}\label{xmega_2ioport_8h_abb0e3e5f2c08eca3f1102a4b9bf440d1}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf I\-O\-P\-O\-R\-T Mode bit definitions}\par
+{\em }\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group__ioport__group_ga09bc83ba115ba2da8d9763625421001b}{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-T\-O\-T\-E\-M}~(0x00 $<$$<$ 3)
+\item 
+\#define \hyperlink{group__ioport__group_ga877f42c6b744dd9576da832b4772f0ea}{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-B\-U\-S\-K\-E\-E\-P\-E\-R}~(0x01 $<$$<$ 3)
+\item 
+\#define \hyperlink{group__ioport__group_ga790f18d21491a223709cec76bc0ecc4d}{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-P\-U\-L\-L\-D\-O\-W\-N}~(0x02 $<$$<$ 3)
+\item 
+\#define \hyperlink{group__ioport__group_ga4c5d85e77f012b73dce89cfb84ef851f}{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-P\-U\-L\-L\-U\-P}~(0x03 $<$$<$ 3)
+\item 
+\#define \hyperlink{group__ioport__group_gafe254c1a125d7a020b768af3ff5ceaf8}{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-O\-R}~(0x04 $<$$<$ 3)
+\item 
+\#define \hyperlink{group__ioport__group_gae0b77dcd28d7e2ec0f0a1967e462ced5}{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-A\-N\-D}~(0x05 $<$$<$ 3)
+\item 
+\#define \hyperlink{group__ioport__group_gae5079825b911f58645f7445c9dd7095d}{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-O\-R\-P\-U\-L\-L}~(0x06 $<$$<$ 3)
+\item 
+\#define \hyperlink{group__ioport__group_gad3d3d6ac518bb75052c40e4b1bc53d35}{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-A\-N\-D\-P\-U\-L\-L}~(0x07 $<$$<$ 3)
+\item 
+\#define \hyperlink{group__ioport__group_gaf3ae92747feac2e40c19bba09b169ac7}{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-I\-N\-V\-E\-R\-T\-\_\-\-P\-I\-N}~(0x01 $<$$<$ 6)
+\item 
+\#define \hyperlink{group__ioport__group_ga80394b4c617e7c772d7b5eb16a34952a}{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-S\-L\-E\-W\-\_\-\-R\-A\-T\-E\-\_\-\-L\-I\-M\-I\-T}~(0x01 $<$$<$ 7)
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{xmega_2ioport_8h_a28eef695813ab65fe7d689d73e6f78fa}{typedef uint8\-\_\-t {\bfseries ioport\-\_\-mode\-\_\-t}}\label{xmega_2ioport_8h_a28eef695813ab65fe7d689d73e6f78fa}
+
+\item 
+\hypertarget{xmega_2ioport_8h_ad2b7e1aa92fe918ca935202ab067d531}{typedef uint8\-\_\-t {\bfseries ioport\-\_\-pin\-\_\-t}}\label{xmega_2ioport_8h_ad2b7e1aa92fe918ca935202ab067d531}
+
+\item 
+\hypertarget{xmega_2ioport_8h_ab538aed5dfcd9cfb7450bf7f7db0d863}{typedef uint8\-\_\-t {\bfseries ioport\-\_\-port\-\_\-t}}\label{xmega_2ioport_8h_ab538aed5dfcd9cfb7450bf7f7db0d863}
+
+\item 
+\hypertarget{xmega_2ioport_8h_ab1fc898e789101b5a122a35a8ad53e9d}{typedef uint8\-\_\-t {\bfseries ioport\-\_\-port\-\_\-mask\-\_\-t}}\label{xmega_2ioport_8h_ab1fc898e789101b5a122a35a8ad53e9d}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+X\-M\-E\-G\-A architecture specific I\-O\-P\-O\-R\-T service implementation header file. Copyright (c) 2012-\/2014 Atmel Corporation. All rights reserved.
+
+\subsection{Macro Definition Documentation}
+\hypertarget{xmega_2ioport_8h_a9e2a1f412fe7abec04138408a7c25a78}{\index{xmega/ioport.\-h@{xmega/ioport.\-h}!I\-O\-P\-O\-R\-T\-\_\-\-P\-O\-R\-T\-A@{I\-O\-P\-O\-R\-T\-\_\-\-P\-O\-R\-T\-A}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-P\-O\-R\-T\-A@{I\-O\-P\-O\-R\-T\-\_\-\-P\-O\-R\-T\-A}!xmega/ioport.h@{xmega/ioport.\-h}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-P\-O\-R\-T\-A}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-P\-O\-R\-T\-A~0}}\label{xmega_2ioport_8h_a9e2a1f412fe7abec04138408a7c25a78}

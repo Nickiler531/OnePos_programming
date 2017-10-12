@@ -1,0 +1,233 @@
+This is the quick start guide for the \hyperlink{group__usart__group}{U\-S\-A\-R\-T module}, with step-\/by-\/step instructions on how to configure and use the driver in a selection of use cases.
+
+The use cases contain several code fragments. The code fragments in the steps for setup can be copied into a custom initialization function, while the steps for usage can be copied into, e.\-g., the main application function.\hypertarget{xmega_usart_quickstart_usart_basic_use_case}{}\section{Basic use case -\/ transmit a character}\label{xmega_usart_quickstart_usart_basic_use_case}
+\hypertarget{xmega_usart_quickstart_usart_use_cases}{}\section{U\-S\-A\-R\-T use cases}\label{xmega_usart_quickstart_usart_use_cases}
+
+\begin{DoxyItemize}
+\item \hyperlink{xmega_usart_quickstart_usart_basic_use_case}{Basic use case -\/ transmit a character}
+\item \hyperlink{usart_use_case_1}{U\-S\-A\-R\-T receive character and echo back}
+\end{DoxyItemize}\hypertarget{xmega_usart_quickstart_usart_basic_use_case}{}\section{Basic use case -\/ transmit a character}\label{xmega_usart_quickstart_usart_basic_use_case}
+In this use case, the U\-S\-A\-R\-T module is configured for\-:
+\begin{DoxyItemize}
+\item Using U\-S\-A\-R\-T\-D0
+\item Baudrate\-: 9600
+\item Character length\-: 8 bit
+\item Parity mode\-: Disabled
+\item Stop bit\-: None
+\item R\-S232 mode
+\end{DoxyItemize}\hypertarget{xmega_usart_quickstart_usart_basic_use_case_setup}{}\section{Setup steps}\label{xmega_usart_quickstart_usart_basic_use_case_setup}
+\hypertarget{xmega_usart_quickstart_usart_basic_use_case_setup_prereq}{}\subsection{Prerequisites}\label{xmega_usart_quickstart_usart_basic_use_case_setup_prereq}
+
+\begin{DoxyEnumerate}
+\item \hyperlink{group__sysclk__group}{System Clock Management} 
+\end{DoxyEnumerate}\hypertarget{xmega_usart_quickstart_usart_basic_use_case_setup_code}{}\subsection{Example code}\label{xmega_usart_quickstart_usart_basic_use_case_setup_code}
+The following configuration must be added to the project (typically to a conf\-\_\-usart.\-h file, but it can also be added to your main application file.) 
+\begin{DoxyCode}
+\textcolor{preprocessor}{        #define USART\_SERIAL                     &USARTD0}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define USART\_SERIAL\_BAUDRATE            9600}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define USART\_SERIAL\_CHAR\_LENGTH         USART\_CHSIZE\_8BIT\_gc}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define USART\_SERIAL\_PARITY              USART\_PMODE\_DISABLED\_gc}
+\textcolor{preprocessor}{        #define USART\_SERIAL\_STOP\_BIT            false}
+\end{DoxyCode}
+
+
+Add to application initialization\-: 
+\begin{DoxyCode}
+         \hyperlink{group__sysclk__group_ga242399e48a97739c88b4d0c00f6101de}{sysclk\_init}();
+         \textcolor{keyword}{static} \hyperlink{structusart__rs232__options}{usart\_rs232\_options\_t} USART\_SERIAL\_OPTIONS
+       = \{
+            .\hyperlink{structusart__rs232__options_a2c48c35d680d4805d357677d7d352fd0}{baudrate} = USART\_SERIAL\_BAUDRATE,
+            .charlength = USART\_SERIAL\_CHAR\_LENGTH,
+            .paritytype = USART\_SERIAL\_PARITY,
+            .stopbits = USART\_SERIAL\_STOP\_BIT
+         \};
+        \hyperlink{group__sysclk__group_gac31edbbb1296f1eb737401b7b2b4e352}{sysclk\_enable\_module}(\hyperlink{group__sysclk__group_gga8e29b46d7670875f4c509efd7a8d5f1aa953a41943eb2d157ee9edcfcd431ce46}{SYSCLK\_PORT\_D}, 
+      PR\_USART0\_bm);
+        \hyperlink{group__usart__group_ga507caac3c2c003461cd6ded584af984d}{usart\_init\_rs232}(USART\_SERIAL, &USART\_SERIAL\_OPTIONS);
+\end{DoxyCode}
+\hypertarget{xmega_usart_quickstart_usart_basic_use_case_setup_flow}{}\subsection{Workflow}\label{xmega_usart_quickstart_usart_basic_use_case_setup_flow}
+
+\begin{DoxyEnumerate}
+\item Initialize system clock\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ \hyperlink{group__sysclk__group_ga242399e48a97739c88b4d0c00f6101de}{sysclk\_init}(); 
+\end{DoxyCode}
+
+\item \begin{DoxyNote}{Note}
+Not always required, but since the \hyperlink{group__usart__group}{U\-S\-A\-R\-T module (U\-S\-A\-R\-T)} driver is dependent on \hyperlink{group__sysclk__group}{System Clock Management} it is good practise to initialize this module.
+\end{DoxyNote}
+
+\end{DoxyItemize}
+\item Create U\-S\-A\-R\-T options struct\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+        \textcolor{keyword}{static} \hyperlink{structusart__rs232__options}{usart\_rs232\_options\_t} USART\_SERIAL\_OPTIONS 
+      = \{
+           .\hyperlink{structusart__rs232__options_a2c48c35d680d4805d357677d7d352fd0}{baudrate} = USART\_SERIAL\_BAUDRATE,
+           .charlength = USART\_SERIAL\_CHAR\_LENGTH,
+           .paritytype = USART\_SERIAL\_PARITY,
+           .stopbits = USART\_SERIAL\_STOP\_BIT
+        \};
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Enable the clock for the U\-S\-A\-R\-T module\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ \hyperlink{group__sysclk__group_gac31edbbb1296f1eb737401b7b2b4e352}{sysclk\_enable\_module}(\hyperlink{group__sysclk__group_gga8e29b46d7670875f4c509efd7a8d5f1aa953a41943eb2d157ee9edcfcd431ce46}{SYSCLK\_PORT\_D}, 
+      PR\_USART0\_bm); 
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Initialize in R\-S232 mode\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ \hyperlink{group__usart__group_ga507caac3c2c003461cd6ded584af984d}{usart\_init\_rs232}(USART\_SERIAL, &USART\_SERIAL\_OPTIONS);
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\end{DoxyEnumerate}\hypertarget{xmega_usart_quickstart_usart_basic_use_case_usage}{}\section{Usage steps}\label{xmega_usart_quickstart_usart_basic_use_case_usage}
+\hypertarget{xmega_usart_quickstart_usart_basic_use_case_usage_code}{}\subsection{Example code}\label{xmega_usart_quickstart_usart_basic_use_case_usage_code}
+Add to application C-\/file\-: 
+\begin{DoxyCode}
+        \hyperlink{group__usart__group_gaf3c57d5ee2bacfbc36338e64ca8107a6}{usart\_putchar}(USART\_SERIAL, \textcolor{charliteral}{'a'});
+\end{DoxyCode}
+\hypertarget{xmega_usart_quickstart_usart_basic_use_case_usage_flow}{}\subsection{Workflow}\label{xmega_usart_quickstart_usart_basic_use_case_usage_flow}
+
+\begin{DoxyEnumerate}
+\item Send an 'a' character via U\-S\-A\-R\-T
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ \hyperlink{group__usart__group_gaf3c57d5ee2bacfbc36338e64ca8107a6}{usart\_putchar}(USART\_SERIAL, \textcolor{charliteral}{'a'}); 
+\end{DoxyCode}
+ 
+\end{DoxyItemize}
+\end{DoxyEnumerate}\hypertarget{usart_use_case_1}{}\section{U\-S\-A\-R\-T receive character and echo back}\label{usart_use_case_1}
+In this use case, the U\-S\-A\-R\-T module is configured for\-:
+\begin{DoxyItemize}
+\item Using U\-S\-A\-R\-T\-D0
+\item Baudrate\-: 9600
+\item Character length\-: 8 bit
+\item Parity mode\-: Disabled
+\item Stop bit\-: None
+\item R\-S232 mode
+\end{DoxyItemize}
+
+The use case waits for a received character on the configured U\-S\-A\-R\-T and echoes the character back to the same U\-S\-A\-R\-T.\hypertarget{usart_use_case_1_usart_use_case_1_setup}{}\subsection{Setup steps}\label{usart_use_case_1_usart_use_case_1_setup}
+\hypertarget{usart_use_case_1_usart_use_case_1_setup_prereq}{}\subsubsection{Prerequisites}\label{usart_use_case_1_usart_use_case_1_setup_prereq}
+
+\begin{DoxyEnumerate}
+\item \hyperlink{group__sysclk__group}{System Clock Management}
+\end{DoxyEnumerate}\hypertarget{usart_use_case_1_usart_use_case_1_setup_code}{}\subsubsection{Example code}\label{usart_use_case_1_usart_use_case_1_setup_code}
+
+\begin{DoxyEnumerate}
+\item The following configuration must be added to the project (typically to a conf\-\_\-usart.\-h file, but it can also be added to your main application file.)\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{        #define USART\_SERIAL                     &USARTD0}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define USART\_SERIAL\_BAUDRATE            9600}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define USART\_SERIAL\_CHAR\_LENGTH         USART\_CHSIZE\_8BIT\_gc}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define USART\_SERIAL\_PARITY              USART\_PMODE\_DISABLED\_gc}
+\textcolor{preprocessor}{        #define USART\_SERIAL\_STOP\_BIT            false}
+\end{DoxyCode}
+
+\end{DoxyEnumerate}
+
+A variable for the received byte must be added\-: 
+\begin{DoxyCode}
+ uint8\_t received\_byte; 
+\end{DoxyCode}
+
+
+Add to application initialization\-: 
+\begin{DoxyCode}
+         \hyperlink{group__sysclk__group_ga242399e48a97739c88b4d0c00f6101de}{sysclk\_init}();
+         \textcolor{keyword}{static} \hyperlink{structusart__rs232__options}{usart\_rs232\_options\_t} USART\_SERIAL\_OPTIONS
+       = \{
+            .\hyperlink{structusart__rs232__options_a2c48c35d680d4805d357677d7d352fd0}{baudrate} = USART\_SERIAL\_BAUDRATE,
+            .charlength = USART\_SERIAL\_CHAR\_LENGTH,
+            .paritytype = USART\_SERIAL\_PARITY,
+            .stopbits = USART\_SERIAL\_STOP\_BIT
+         \};
+        \hyperlink{group__sysclk__group_gac31edbbb1296f1eb737401b7b2b4e352}{sysclk\_enable\_module}(\hyperlink{group__sysclk__group_gga8e29b46d7670875f4c509efd7a8d5f1aa953a41943eb2d157ee9edcfcd431ce46}{SYSCLK\_PORT\_D}, 
+      PR\_USART0\_bm);
+        \hyperlink{group__usart__group_ga507caac3c2c003461cd6ded584af984d}{usart\_init\_rs232}(USART\_SERIAL, &USART\_SERIAL\_OPTIONS);
+\end{DoxyCode}
+\hypertarget{usart_use_case_1_usart_use_case_1_setup_flow}{}\subsubsection{Workflow}\label{usart_use_case_1_usart_use_case_1_setup_flow}
+
+\begin{DoxyEnumerate}
+\item Initialize system clock\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ \hyperlink{group__sysclk__group_ga242399e48a97739c88b4d0c00f6101de}{sysclk\_init}(); 
+\end{DoxyCode}
+
+\item \begin{DoxyNote}{Note}
+Not always required, but since the \hyperlink{group__usart__group}{U\-S\-A\-R\-T module (U\-S\-A\-R\-T)} driver is dependent on \hyperlink{group__sysclk__group}{System Clock Management} it is good practise to initialize this module.
+\end{DoxyNote}
+
+\end{DoxyItemize}
+\item Create U\-S\-A\-R\-T options struct\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+        \textcolor{keyword}{static} \hyperlink{structusart__rs232__options}{usart\_rs232\_options\_t} USART\_SERIAL\_OPTIONS 
+      = \{
+           .\hyperlink{structusart__rs232__options_a2c48c35d680d4805d357677d7d352fd0}{baudrate} = USART\_SERIAL\_BAUDRATE,
+           .charlength = USART\_SERIAL\_CHAR\_LENGTH,
+           .paritytype = USART\_SERIAL\_PARITY,
+           .stopbits = USART\_SERIAL\_STOP\_BIT
+        \};
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Enable the clock for the U\-S\-A\-R\-T module\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ \hyperlink{group__sysclk__group_gac31edbbb1296f1eb737401b7b2b4e352}{sysclk\_enable\_module}(\hyperlink{group__sysclk__group_gga8e29b46d7670875f4c509efd7a8d5f1aa953a41943eb2d157ee9edcfcd431ce46}{SYSCLK\_PORT\_D}, 
+      PR\_USART0\_bm); 
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Initialize in R\-S232 mode\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ \hyperlink{group__usart__group_ga507caac3c2c003461cd6ded584af984d}{usart\_init\_rs232}(USART\_SERIAL, &USART\_SERIAL\_OPTIONS);
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\end{DoxyEnumerate}\hypertarget{usart_use_case_1_usart_use_case_1_usage}{}\subsection{Usage steps}\label{usart_use_case_1_usart_use_case_1_usage}
+\hypertarget{usart_use_case_1_usart_use_case_1_usage_code}{}\subsubsection{Example code}\label{usart_use_case_1_usart_use_case_1_usage_code}
+Add to, e.\-g., main loop in application C-\/file\-: 
+\begin{DoxyCode}
+        received\_byte = \hyperlink{group__usart__group_ga194074a7bb28e694e22b604a5df7508f}{usart\_getchar}(USART\_SERIAL);
+        \hyperlink{group__usart__group_gaf3c57d5ee2bacfbc36338e64ca8107a6}{usart\_putchar}(USART\_SERIAL, received\_byte);
+\end{DoxyCode}
+\hypertarget{usart_use_case_1_usart_use_case_1_usage_flow}{}\subsubsection{Workflow}\label{usart_use_case_1_usart_use_case_1_usage_flow}
+
+\begin{DoxyEnumerate}
+\item Wait for reception of a character\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ received\_byte = \hyperlink{group__usart__group_ga194074a7bb28e694e22b604a5df7508f}{usart\_getchar}(USART\_SERIAL); 
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Echo the character back\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ \hyperlink{group__usart__group_gaf3c57d5ee2bacfbc36338e64ca8107a6}{usart\_putchar}(USART\_SERIAL, received\_byte); 
+\end{DoxyCode}
+ 
+\end{DoxyItemize}
+\end{DoxyEnumerate}

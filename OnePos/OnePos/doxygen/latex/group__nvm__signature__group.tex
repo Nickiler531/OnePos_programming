@@ -1,0 +1,60 @@
+\hypertarget{group__nvm__signature__group}{\section{N\-V\-M driver signature handling}
+\label{group__nvm__signature__group}\index{N\-V\-M driver signature handling@{N\-V\-M driver signature handling}}
+}
+
+
+Handling of signature rows.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structnvm__device__id}{nvm\-\_\-device\-\_\-id}
+\begin{DoxyCompactList}\small\item\em Structure containing the device I\-D. \end{DoxyCompactList}\item 
+struct \hyperlink{structnvm__device__serial}{nvm\-\_\-device\-\_\-serial}
+\begin{DoxyCompactList}\small\item\em Structure containing the device serial. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{group__nvm__signature__group_ga38a7855d9e84c9cc7974552583854c81}{nvm\-\_\-read\-\_\-device\-\_\-serial} (struct \hyperlink{structnvm__device__serial}{nvm\-\_\-device\-\_\-serial} $\ast$storage)
+\begin{DoxyCompactList}\small\item\em Read the device serial. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Handling of signature rows. Functions for handling signature rows. The following is supported\-:
+\begin{DoxyItemize}
+\item Reading values from production and user signature row
+\item Reading device id
+\item Reading device revision
+\item Reading device serial
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+Some of these functions are modifying the N\-V\-M.\-C\-M\-D register. If the application are using program space access in interrupts (\-\_\-\-\_\-flash pointers in I\-A\-R E\-W or pgm\-\_\-read\-\_\-byte in G\-C\-C) interrupts needs to be disabled when running E\-E\-P\-R\-O\-M access functions. If not, the program space reads will be corrupted. See documentation for each individual function. 
+
+Do not use the functions of this module in an interrupt service routine (I\-S\-R), since the functions can take several milliseconds to complete and hence block the interrupt for several milliseconds. In addition the functions of this module are modifying the page buffer which will corrupt any ongoing E\-E\-P\-R\-O\-M handing used outside an I\-S\-R.
+\end{DoxyNote}
+Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support} 
+
+\subsection{Function Documentation}
+\hypertarget{group__nvm__signature__group_ga38a7855d9e84c9cc7974552583854c81}{\index{N\-V\-M driver signature handling@{N\-V\-M driver signature handling}!nvm\-\_\-read\-\_\-device\-\_\-serial@{nvm\-\_\-read\-\_\-device\-\_\-serial}}
+\index{nvm\-\_\-read\-\_\-device\-\_\-serial@{nvm\-\_\-read\-\_\-device\-\_\-serial}!NVM driver signature handling@{N\-V\-M driver signature handling}}
+\subsubsection[{nvm\-\_\-read\-\_\-device\-\_\-serial}]{\setlength{\rightskip}{0pt plus 5cm}void nvm\-\_\-read\-\_\-device\-\_\-serial (
+\begin{DoxyParamCaption}
+\item[{struct {\bf nvm\-\_\-device\-\_\-serial} $\ast$}]{storage}
+\end{DoxyParamCaption}
+)}}\label{group__nvm__signature__group_ga38a7855d9e84c9cc7974552583854c81}
+
+
+Read the device serial. 
+
+This function returns the device serial stored in the device.
+
+\begin{DoxyNote}{Note}
+This function is modifying the N\-V\-M.\-C\-M\-D register. If the application are using program space access in interrupts (\-\_\-\-\_\-flash pointers in I\-A\-R E\-W or pgm\-\_\-read\-\_\-byte in G\-C\-C) interrupts needs to be disabled when running E\-E\-P\-R\-O\-M access functions. If not the program space reads will be corrupted.
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Return values}
+{\em storage} & Pointer to the structure where to store the device serial \\
+\hline
+\end{DoxyRetVals}

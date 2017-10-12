@@ -1,0 +1,77 @@
+\hypertarget{group__group__xmega__utils__tpaste}{\section{Token Paste}
+\label{group__group__xmega__utils__tpaste}\index{Token Paste@{Token Paste}}
+}
+\subsection*{Token Paste}
+\label{_amgrp95fd98b9acf33b4f1f1cfa86699bc1f2}%
+ Paste N preprocessing tokens together, these tokens being allowed to be \#defined.
+
+May be used only within macros with the tokens passed as arguments if the tokens are \#defined.
+
+For example, writing T\-P\-A\-S\-T\-E2(\-U, W\-I\-D\-T\-H) within a macro \#defined by U\-T\-Y\-P\-E(\-W\-I\-D\-T\-H) and invoked as U\-T\-Y\-P\-E(\-U\-L\-\_\-\-W\-I\-D\-T\-H) with U\-L\-\_\-\-W\-I\-D\-T\-H \#defined as 32 is equivalent to writing U32. \begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__group__xmega__utils__tpaste_ga55fb148844f5ba993a992b609728e82e}{\#define {\bfseries T\-P\-A\-S\-T\-E2}(a, b)~a\#\#b}\label{group__group__xmega__utils__tpaste_ga55fb148844f5ba993a992b609728e82e}
+
+\item 
+\hypertarget{group__group__xmega__utils__tpaste_ga3774e5e321825e6ab4a27fef2a0deb14}{\#define {\bfseries T\-P\-A\-S\-T\-E3}(a, b, c)~a\#\#b\#\#c}\label{group__group__xmega__utils__tpaste_ga3774e5e321825e6ab4a27fef2a0deb14}
+
+\item 
+\hypertarget{group__group__xmega__utils__tpaste_ga7df52ac8ee04480944ef404ef9418b38}{\#define {\bfseries T\-P\-A\-S\-T\-E4}(a, b, c, d)~a\#\#b\#\#c\#\#d}\label{group__group__xmega__utils__tpaste_ga7df52ac8ee04480944ef404ef9418b38}
+
+\item 
+\hypertarget{group__group__xmega__utils__tpaste_gac9624b958617cbb3281de7ec41f53230}{\#define {\bfseries T\-P\-A\-S\-T\-E5}(a, b, c, d, e)~a\#\#b\#\#c\#\#d\#\#e}\label{group__group__xmega__utils__tpaste_gac9624b958617cbb3281de7ec41f53230}
+
+\item 
+\hypertarget{group__group__xmega__utils__tpaste_ga2c4dbcf9049d7553366bbf9b9bc4e801}{\#define {\bfseries T\-P\-A\-S\-T\-E6}(a, b, c, d, e, f)~a\#\#b\#\#c\#\#d\#\#e\#\#f}\label{group__group__xmega__utils__tpaste_ga2c4dbcf9049d7553366bbf9b9bc4e801}
+
+\item 
+\hypertarget{group__group__xmega__utils__tpaste_gad36c0d6224338a4f8738aa25659afc14}{\#define {\bfseries T\-P\-A\-S\-T\-E7}(a, b, c, d, e, f, g)~a\#\#b\#\#c\#\#d\#\#e\#\#f\#\#g}\label{group__group__xmega__utils__tpaste_gad36c0d6224338a4f8738aa25659afc14}
+
+\item 
+\hypertarget{group__group__xmega__utils__tpaste_gaf7aff743d5c0d66a81a13268b1a7e222}{\#define {\bfseries T\-P\-A\-S\-T\-E8}(a, b, c, d, e, f, g, h)~a\#\#b\#\#c\#\#d\#\#e\#\#f\#\#g\#\#h}\label{group__group__xmega__utils__tpaste_gaf7aff743d5c0d66a81a13268b1a7e222}
+
+\item 
+\hypertarget{group__group__xmega__utils__tpaste_ga5440e5a665d859bec7c3527312d0889d}{\#define {\bfseries T\-P\-A\-S\-T\-E9}(a, b, c, d, e, f, g, h, i)~a\#\#b\#\#c\#\#d\#\#e\#\#f\#\#g\#\#h\#\#i}\label{group__group__xmega__utils__tpaste_ga5440e5a665d859bec7c3527312d0889d}
+
+\item 
+\hypertarget{group__group__xmega__utils__tpaste_ga0235b2e4ccf7a5b1d022a729a17a78a2}{\#define {\bfseries T\-P\-A\-S\-T\-E10}(a, b, c, d, e, f, g, h, i, j)~a\#\#b\#\#c\#\#d\#\#e\#\#f\#\#g\#\#h\#\#i\#\#j}\label{group__group__xmega__utils__tpaste_ga0235b2e4ccf7a5b1d022a729a17a78a2}
+
+\end{DoxyCompactItemize}
+\subsection*{Absolute Token Paste}
+\label{_amgrp61c59096cd4b7958303a985954baa7ca}%
+ Paste N preprocessing tokens together, these tokens being allowed to be \#defined.
+
+No restriction of use if the tokens are \#defined.
+
+For example, writing A\-T\-P\-A\-S\-T\-E2(\-U, U\-L\-\_\-\-W\-I\-D\-T\-H) anywhere with U\-L\-\_\-\-W\-I\-D\-T\-H \#defined as 32 is equivalent to writing U32. \begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__group__xmega__utils__tpaste_gafd3b4e313492a0862292dc3072d8e347}{\#define {\bfseries A\-T\-P\-A\-S\-T\-E2}(a, b)~T\-P\-A\-S\-T\-E2( a, b)}\label{group__group__xmega__utils__tpaste_gafd3b4e313492a0862292dc3072d8e347}
+
+\item 
+\hypertarget{group__group__xmega__utils__tpaste_ga80b7594516326045fbcaec54d7759c20}{\#define {\bfseries A\-T\-P\-A\-S\-T\-E3}(a, b, c)~T\-P\-A\-S\-T\-E3( a, b, c)}\label{group__group__xmega__utils__tpaste_ga80b7594516326045fbcaec54d7759c20}
+
+\item 
+\hypertarget{group__group__xmega__utils__tpaste_gad9dcc51074148a4ff01810033a41e282}{\#define {\bfseries A\-T\-P\-A\-S\-T\-E4}(a, b, c, d)~T\-P\-A\-S\-T\-E4( a, b, c, d)}\label{group__group__xmega__utils__tpaste_gad9dcc51074148a4ff01810033a41e282}
+
+\item 
+\hypertarget{group__group__xmega__utils__tpaste_ga4e4994267872724c11e31f1274c1a84c}{\#define {\bfseries A\-T\-P\-A\-S\-T\-E5}(a, b, c, d, e)~T\-P\-A\-S\-T\-E5( a, b, c, d, e)}\label{group__group__xmega__utils__tpaste_ga4e4994267872724c11e31f1274c1a84c}
+
+\item 
+\hypertarget{group__group__xmega__utils__tpaste_ga5bbd1842581ea1fa81616d3222bda308}{\#define {\bfseries A\-T\-P\-A\-S\-T\-E6}(a, b, c, d, e, f)~T\-P\-A\-S\-T\-E6( a, b, c, d, e, f)}\label{group__group__xmega__utils__tpaste_ga5bbd1842581ea1fa81616d3222bda308}
+
+\item 
+\hypertarget{group__group__xmega__utils__tpaste_gabecc8ad964051f6f877f14dd13919b18}{\#define {\bfseries A\-T\-P\-A\-S\-T\-E7}(a, b, c, d, e, f, g)~T\-P\-A\-S\-T\-E7( a, b, c, d, e, f, g)}\label{group__group__xmega__utils__tpaste_gabecc8ad964051f6f877f14dd13919b18}
+
+\item 
+\hypertarget{group__group__xmega__utils__tpaste_ga303651436fcc8283bd17c13578476c8e}{\#define {\bfseries A\-T\-P\-A\-S\-T\-E8}(a, b, c, d, e, f, g, h)~T\-P\-A\-S\-T\-E8( a, b, c, d, e, f, g, h)}\label{group__group__xmega__utils__tpaste_ga303651436fcc8283bd17c13578476c8e}
+
+\item 
+\hypertarget{group__group__xmega__utils__tpaste_ga5305e79258b2256febfac6ebec8838c2}{\#define {\bfseries A\-T\-P\-A\-S\-T\-E9}(a, b, c, d, e, f, g, h, i)~T\-P\-A\-S\-T\-E9( a, b, c, d, e, f, g, h, i)}\label{group__group__xmega__utils__tpaste_ga5305e79258b2256febfac6ebec8838c2}
+
+\item 
+\hypertarget{group__group__xmega__utils__tpaste_ga3b9c4ca2ffbcec13ec3083ab95664ac9}{\#define {\bfseries A\-T\-P\-A\-S\-T\-E10}(a, b, c, d, e, f, g, h, i, j)~T\-P\-A\-S\-T\-E10(a, b, c, d, e, f, g, h, i, j)}\label{group__group__xmega__utils__tpaste_ga3b9c4ca2ffbcec13ec3083ab95664ac9}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support} 

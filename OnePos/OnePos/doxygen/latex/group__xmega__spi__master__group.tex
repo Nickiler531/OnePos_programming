@@ -1,0 +1,282 @@
+\hypertarget{group__xmega__spi__master__group}{\section{X\-M\-E\-G\-A S\-P\-I master service.}
+\label{group__xmega__spi__master__group}\index{X\-M\-E\-G\-A S\-P\-I master service.@{X\-M\-E\-G\-A S\-P\-I master service.}}
+}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structspi__device}{spi\-\_\-device}
+\begin{DoxyCompactList}\small\item\em Polled S\-P\-I device definition. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__xmega__spi__master__group_ga49e8927a636f45641d6231ac63b9e598}{\#define \hyperlink{group__xmega__spi__master__group_ga49e8927a636f45641d6231ac63b9e598}{S\-P\-I\-\_\-\-C\-P\-H\-A}~(1 $<$$<$ 0)}\label{group__xmega__spi__master__group_ga49e8927a636f45641d6231ac63b9e598}
+
+\begin{DoxyCompactList}\small\item\em Clock phase. \end{DoxyCompactList}\item 
+\hypertarget{group__xmega__spi__master__group_gad8e335b1f808bd7408d2aef2377adcb1}{\#define \hyperlink{group__xmega__spi__master__group_gad8e335b1f808bd7408d2aef2377adcb1}{S\-P\-I\-\_\-\-C\-P\-O\-L}~(1 $<$$<$ 1)}\label{group__xmega__spi__master__group_gad8e335b1f808bd7408d2aef2377adcb1}
+
+\begin{DoxyCompactList}\small\item\em Clock polarity. \end{DoxyCompactList}\item 
+\hypertarget{group__xmega__spi__master__group_ga1ec07ad94d5f6276c1c0b41d0550fe52}{\#define \hyperlink{group__xmega__spi__master__group_ga1ec07ad94d5f6276c1c0b41d0550fe52}{S\-P\-I\-\_\-\-M\-O\-D\-E\-\_\-0}~0}\label{group__xmega__spi__master__group_ga1ec07ad94d5f6276c1c0b41d0550fe52}
+
+\begin{DoxyCompactList}\small\item\em S\-P\-I mode 0. \end{DoxyCompactList}\item 
+\hypertarget{group__xmega__spi__master__group_gaf2af9f45539491c9753960535dc20fde}{\#define \hyperlink{group__xmega__spi__master__group_gaf2af9f45539491c9753960535dc20fde}{S\-P\-I\-\_\-\-M\-O\-D\-E\-\_\-1}~(\hyperlink{group__xmega__spi__master__group_ga49e8927a636f45641d6231ac63b9e598}{S\-P\-I\-\_\-\-C\-P\-H\-A})}\label{group__xmega__spi__master__group_gaf2af9f45539491c9753960535dc20fde}
+
+\begin{DoxyCompactList}\small\item\em S\-P\-I mode 1. \end{DoxyCompactList}\item 
+\hypertarget{group__xmega__spi__master__group_ga8fa3edd8616f8803490c93f09243a612}{\#define \hyperlink{group__xmega__spi__master__group_ga8fa3edd8616f8803490c93f09243a612}{S\-P\-I\-\_\-\-M\-O\-D\-E\-\_\-2}~(\hyperlink{group__xmega__spi__master__group_gad8e335b1f808bd7408d2aef2377adcb1}{S\-P\-I\-\_\-\-C\-P\-O\-L})}\label{group__xmega__spi__master__group_ga8fa3edd8616f8803490c93f09243a612}
+
+\begin{DoxyCompactList}\small\item\em S\-P\-I mode 2. \end{DoxyCompactList}\item 
+\hypertarget{group__xmega__spi__master__group_ga6a091da9f9011457fe28ab25f64c858d}{\#define \hyperlink{group__xmega__spi__master__group_ga6a091da9f9011457fe28ab25f64c858d}{S\-P\-I\-\_\-\-M\-O\-D\-E\-\_\-3}~(\hyperlink{group__xmega__spi__master__group_gad8e335b1f808bd7408d2aef2377adcb1}{S\-P\-I\-\_\-\-C\-P\-O\-L} $|$ \hyperlink{group__xmega__spi__master__group_ga49e8927a636f45641d6231ac63b9e598}{S\-P\-I\-\_\-\-C\-P\-H\-A})}\label{group__xmega__spi__master__group_ga6a091da9f9011457fe28ab25f64c858d}
+
+\begin{DoxyCompactList}\small\item\em S\-P\-I mode 3. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__xmega__spi__master__group_ga781db101a4c4490735eb12d3cb92fde7}{typedef uint8\-\_\-t {\bfseries spi\-\_\-flags\-\_\-t}}\label{group__xmega__spi__master__group_ga781db101a4c4490735eb12d3cb92fde7}
+
+\item 
+\hypertarget{group__xmega__spi__master__group_ga4a28574ec2d052b3fcffd1d7c423a52a}{typedef uint32\-\_\-t {\bfseries board\-\_\-spi\-\_\-select\-\_\-id\-\_\-t}}\label{group__xmega__spi__master__group_ga4a28574ec2d052b3fcffd1d7c423a52a}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{group__xmega__spi__master__group_ga3238676989038a9dec0ebcd3aa625a42}{spi\-\_\-master\-\_\-init} (S\-P\-I\-\_\-t $\ast$spi)
+\begin{DoxyCompactList}\small\item\em Initializes the S\-P\-I in master mode. \end{DoxyCompactList}\item 
+void \hyperlink{group__xmega__spi__master__group_ga81164f6dd2297a64337f3a052171e0f8}{spi\-\_\-master\-\_\-setup\-\_\-device} (S\-P\-I\-\_\-t $\ast$spi, struct \hyperlink{structspi__device}{spi\-\_\-device} $\ast$device, spi\-\_\-flags\-\_\-t flags, unsigned long baud\-\_\-rate, board\-\_\-spi\-\_\-select\-\_\-id\-\_\-t sel\-\_\-id)
+\begin{DoxyCompactList}\small\item\em Setup a S\-P\-I device. \end{DoxyCompactList}\item 
+void \hyperlink{group__xmega__spi__master__group_ga82974e81370360e53b1276113de8a462}{spi\-\_\-enable} (S\-P\-I\-\_\-t $\ast$spi)
+\begin{DoxyCompactList}\small\item\em Enables the S\-P\-I. \end{DoxyCompactList}\item 
+void \hyperlink{group__xmega__spi__master__group_gaea58710ce1a779f0eb234f24094b0120}{spi\-\_\-disable} (S\-P\-I\-\_\-t $\ast$spi)
+\begin{DoxyCompactList}\small\item\em Disables the S\-P\-I. \end{DoxyCompactList}\item 
+\hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{group__xmega__spi__master__group_ga7d25f0b8b0b0eef0e71123d90d5f58c2}{spi\-\_\-is\-\_\-enabled} (S\-P\-I\-\_\-t $\ast$spi)
+\begin{DoxyCompactList}\small\item\em Tests if the S\-P\-I is enabled. \end{DoxyCompactList}\item 
+void \hyperlink{group__xmega__spi__master__group_gac8751c855b90ea2774b5007f519e487e}{spi\-\_\-select\-\_\-device} (S\-P\-I\-\_\-t $\ast$spi, struct \hyperlink{structspi__device}{spi\-\_\-device} $\ast$device)
+\begin{DoxyCompactList}\small\item\em Select given device on the S\-P\-I bus. \end{DoxyCompactList}\item 
+void \hyperlink{group__xmega__spi__master__group_gad528d94d606bda0fa6503f77a6a7bb78}{spi\-\_\-deselect\-\_\-device} (S\-P\-I\-\_\-t $\ast$spi, struct \hyperlink{structspi__device}{spi\-\_\-device} $\ast$device)
+\begin{DoxyCompactList}\small\item\em Deselect given device on the S\-P\-I bus. \end{DoxyCompactList}\item 
+status\-\_\-code\-\_\-t \hyperlink{group__xmega__spi__master__group_ga60595beff80eae31c8dad32a8720865a}{spi\-\_\-write\-\_\-packet} (S\-P\-I\-\_\-t $\ast$spi, const uint8\-\_\-t $\ast$data, size\-\_\-t len)
+\begin{DoxyCompactList}\small\item\em Send a sequence of bytes to a S\-P\-I device. \end{DoxyCompactList}\item 
+status\-\_\-code\-\_\-t \hyperlink{group__xmega__spi__master__group_ga504ee6688009acff607e0304cc59278d}{spi\-\_\-read\-\_\-packet} (S\-P\-I\-\_\-t $\ast$spi, uint8\-\_\-t $\ast$data, size\-\_\-t len)
+\begin{DoxyCompactList}\small\item\em Receive a sequence of bytes from a S\-P\-I device. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Spi Master Management Configuration}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__xmega__spi__master__group_ga64f5ff62d19aab1a97cc5e72e062be49}{\#define \hyperlink{group__xmega__spi__master__group_ga64f5ff62d19aab1a97cc5e72e062be49}{C\-O\-N\-F\-I\-G\-\_\-\-S\-P\-I\-\_\-\-M\-A\-S\-T\-E\-R\-\_\-\-D\-U\-M\-M\-Y}~0x\-F\-F}\label{group__xmega__spi__master__group_ga64f5ff62d19aab1a97cc5e72e062be49}
+
+\begin{DoxyCompactList}\small\item\em Default Config Spi Master Dummy Field. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support}
+
+This is the A\-P\-I for S\-P\-I master service on X\-M\-E\-G\-A.\hypertarget{group__xmega__spi__master__group_xmega_spi_master_qucikstart_section}{}\subsection{Quick Start Guide}\label{group__xmega__spi__master__group_xmega_spi_master_qucikstart_section}
+See \hyperlink{common_spi_master_quickstart}{Quick Start Guide for the S\-P\-I Master Driver} 
+
+\subsection{Function Documentation}
+\hypertarget{group__xmega__spi__master__group_gad528d94d606bda0fa6503f77a6a7bb78}{\index{X\-M\-E\-G\-A S\-P\-I master service.@{X\-M\-E\-G\-A S\-P\-I master service.}!spi\-\_\-deselect\-\_\-device@{spi\-\_\-deselect\-\_\-device}}
+\index{spi\-\_\-deselect\-\_\-device@{spi\-\_\-deselect\-\_\-device}!XMEGA SPI master service.@{X\-M\-E\-G\-A S\-P\-I master service.}}
+\subsubsection[{spi\-\_\-deselect\-\_\-device}]{\setlength{\rightskip}{0pt plus 5cm}void spi\-\_\-deselect\-\_\-device (
+\begin{DoxyParamCaption}
+\item[{S\-P\-I\-\_\-t $\ast$}]{spi, }
+\item[{struct {\bf spi\-\_\-device} $\ast$}]{device}
+\end{DoxyParamCaption}
+)}}\label{group__xmega__spi__master__group_gad528d94d606bda0fa6503f77a6a7bb78}
+
+
+Deselect given device on the S\-P\-I bus. 
+
+Calls board chip deselect.
+
+
+\begin{DoxyParams}{Parameters}
+{\em spi} & Base address of the S\-P\-I instance. \\
+\hline
+{\em device} & S\-P\-I device\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+S\-P\-I device must be selected with \hyperlink{group__xmega__spi__master__group_gac8751c855b90ea2774b5007f519e487e}{spi\-\_\-select\-\_\-device()} first 
+\end{DoxyPrecond}
+\hypertarget{group__xmega__spi__master__group_gaea58710ce1a779f0eb234f24094b0120}{\index{X\-M\-E\-G\-A S\-P\-I master service.@{X\-M\-E\-G\-A S\-P\-I master service.}!spi\-\_\-disable@{spi\-\_\-disable}}
+\index{spi\-\_\-disable@{spi\-\_\-disable}!XMEGA SPI master service.@{X\-M\-E\-G\-A S\-P\-I master service.}}
+\subsubsection[{spi\-\_\-disable}]{\setlength{\rightskip}{0pt plus 5cm}void spi\-\_\-disable (
+\begin{DoxyParamCaption}
+\item[{S\-P\-I\-\_\-t $\ast$}]{spi}
+\end{DoxyParamCaption}
+)}}\label{group__xmega__spi__master__group_gaea58710ce1a779f0eb234f24094b0120}
+
+
+Disables the S\-P\-I. 
+
+Ensures that nothing is transferred while setting up buffers.
+
+
+\begin{DoxyParams}{Parameters}
+{\em spi} & Base address of the S\-P\-I instance.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+This may cause data loss if used on a slave S\-P\-I. 
+\end{DoxyWarning}
+\hypertarget{group__xmega__spi__master__group_ga82974e81370360e53b1276113de8a462}{\index{X\-M\-E\-G\-A S\-P\-I master service.@{X\-M\-E\-G\-A S\-P\-I master service.}!spi\-\_\-enable@{spi\-\_\-enable}}
+\index{spi\-\_\-enable@{spi\-\_\-enable}!XMEGA SPI master service.@{X\-M\-E\-G\-A S\-P\-I master service.}}
+\subsubsection[{spi\-\_\-enable}]{\setlength{\rightskip}{0pt plus 5cm}void spi\-\_\-enable (
+\begin{DoxyParamCaption}
+\item[{S\-P\-I\-\_\-t $\ast$}]{spi}
+\end{DoxyParamCaption}
+)}}\label{group__xmega__spi__master__group_ga82974e81370360e53b1276113de8a462}
+
+
+Enables the S\-P\-I. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em spi} & Base address of the S\-P\-I instance. \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__xmega__spi__master__group_ga7d25f0b8b0b0eef0e71123d90d5f58c2}{\index{X\-M\-E\-G\-A S\-P\-I master service.@{X\-M\-E\-G\-A S\-P\-I master service.}!spi\-\_\-is\-\_\-enabled@{spi\-\_\-is\-\_\-enabled}}
+\index{spi\-\_\-is\-\_\-enabled@{spi\-\_\-is\-\_\-enabled}!XMEGA SPI master service.@{X\-M\-E\-G\-A S\-P\-I master service.}}
+\subsubsection[{spi\-\_\-is\-\_\-enabled}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bool} spi\-\_\-is\-\_\-enabled (
+\begin{DoxyParamCaption}
+\item[{S\-P\-I\-\_\-t $\ast$}]{spi}
+\end{DoxyParamCaption}
+)}}\label{group__xmega__spi__master__group_ga7d25f0b8b0b0eef0e71123d90d5f58c2}
+
+
+Tests if the S\-P\-I is enabled. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em spi} & Base address of the S\-P\-I instance.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily 1} if the S\-P\-I is enabled, otherwise {\ttfamily 0}. 
+\end{DoxyReturn}
+\hypertarget{group__xmega__spi__master__group_ga3238676989038a9dec0ebcd3aa625a42}{\index{X\-M\-E\-G\-A S\-P\-I master service.@{X\-M\-E\-G\-A S\-P\-I master service.}!spi\-\_\-master\-\_\-init@{spi\-\_\-master\-\_\-init}}
+\index{spi\-\_\-master\-\_\-init@{spi\-\_\-master\-\_\-init}!XMEGA SPI master service.@{X\-M\-E\-G\-A S\-P\-I master service.}}
+\subsubsection[{spi\-\_\-master\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void spi\-\_\-master\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{S\-P\-I\-\_\-t $\ast$}]{spi}
+\end{DoxyParamCaption}
+)}}\label{group__xmega__spi__master__group_ga3238676989038a9dec0ebcd3aa625a42}
+
+
+Initializes the S\-P\-I in master mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em spi} & Base address of the S\-P\-I instance.\\
+\hline
+\end{DoxyParams}
+Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support}
+
+
+\begin{DoxyParams}{Parameters}
+{\em spi} & Base address of the S\-P\-I instance. \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__xmega__spi__master__group_ga81164f6dd2297a64337f3a052171e0f8}{\index{X\-M\-E\-G\-A S\-P\-I master service.@{X\-M\-E\-G\-A S\-P\-I master service.}!spi\-\_\-master\-\_\-setup\-\_\-device@{spi\-\_\-master\-\_\-setup\-\_\-device}}
+\index{spi\-\_\-master\-\_\-setup\-\_\-device@{spi\-\_\-master\-\_\-setup\-\_\-device}!XMEGA SPI master service.@{X\-M\-E\-G\-A S\-P\-I master service.}}
+\subsubsection[{spi\-\_\-master\-\_\-setup\-\_\-device}]{\setlength{\rightskip}{0pt plus 5cm}void spi\-\_\-master\-\_\-setup\-\_\-device (
+\begin{DoxyParamCaption}
+\item[{S\-P\-I\-\_\-t $\ast$}]{spi, }
+\item[{struct {\bf spi\-\_\-device} $\ast$}]{device, }
+\item[{spi\-\_\-flags\-\_\-t}]{flags, }
+\item[{unsigned long}]{baud\-\_\-rate, }
+\item[{board\-\_\-spi\-\_\-select\-\_\-id\-\_\-t}]{sel\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{group__xmega__spi__master__group_ga81164f6dd2297a64337f3a052171e0f8}
+
+
+Setup a S\-P\-I device. 
+
+The returned device descriptor structure must be passed to the driver whenever that device should be used as current slave device.
+
+
+\begin{DoxyParams}{Parameters}
+{\em spi} & Base address of the S\-P\-I instance. \\
+\hline
+{\em device} & Pointer to S\-P\-I device struct that should be initialized. \\
+\hline
+{\em flags} & S\-P\-I configuration flags. Common flags for all implementations are the S\-P\-I modes S\-P\-I\-\_\-\-M\-O\-D\-E\-\_\-0 ... S\-P\-I\-\_\-\-M\-O\-D\-E\-\_\-3. \\
+\hline
+{\em baud\-\_\-rate} & Baud rate for communication with slave device in Hz. \\
+\hline
+{\em sel\-\_\-id} & Board specific select id \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__xmega__spi__master__group_ga504ee6688009acff607e0304cc59278d}{\index{X\-M\-E\-G\-A S\-P\-I master service.@{X\-M\-E\-G\-A S\-P\-I master service.}!spi\-\_\-read\-\_\-packet@{spi\-\_\-read\-\_\-packet}}
+\index{spi\-\_\-read\-\_\-packet@{spi\-\_\-read\-\_\-packet}!XMEGA SPI master service.@{X\-M\-E\-G\-A S\-P\-I master service.}}
+\subsubsection[{spi\-\_\-read\-\_\-packet}]{\setlength{\rightskip}{0pt plus 5cm}status\-\_\-code\-\_\-t spi\-\_\-read\-\_\-packet (
+\begin{DoxyParamCaption}
+\item[{S\-P\-I\-\_\-t $\ast$}]{spi, }
+\item[{uint8\-\_\-t $\ast$}]{data, }
+\item[{size\-\_\-t}]{len}
+\end{DoxyParamCaption}
+)}}\label{group__xmega__spi__master__group_ga504ee6688009acff607e0304cc59278d}
+
+
+Receive a sequence of bytes from a S\-P\-I device. 
+
+All bytes sent out on S\-P\-I bus are sent as value 0.
+
+
+\begin{DoxyParams}{Parameters}
+{\em spi} & Base address of the S\-P\-I instance. \\
+\hline
+{\em data} & data buffer to read \\
+\hline
+{\em len} & Length of data\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+S\-P\-I device must be selected with \hyperlink{group__xmega__spi__master__group_gac8751c855b90ea2774b5007f519e487e}{spi\-\_\-select\-\_\-device()} first 
+\end{DoxyPrecond}
+\hypertarget{group__xmega__spi__master__group_gac8751c855b90ea2774b5007f519e487e}{\index{X\-M\-E\-G\-A S\-P\-I master service.@{X\-M\-E\-G\-A S\-P\-I master service.}!spi\-\_\-select\-\_\-device@{spi\-\_\-select\-\_\-device}}
+\index{spi\-\_\-select\-\_\-device@{spi\-\_\-select\-\_\-device}!XMEGA SPI master service.@{X\-M\-E\-G\-A S\-P\-I master service.}}
+\subsubsection[{spi\-\_\-select\-\_\-device}]{\setlength{\rightskip}{0pt plus 5cm}void spi\-\_\-select\-\_\-device (
+\begin{DoxyParamCaption}
+\item[{S\-P\-I\-\_\-t $\ast$}]{spi, }
+\item[{struct {\bf spi\-\_\-device} $\ast$}]{device}
+\end{DoxyParamCaption}
+)}}\label{group__xmega__spi__master__group_gac8751c855b90ea2774b5007f519e487e}
+
+
+Select given device on the S\-P\-I bus. 
+
+Set device specific setting and calls board chip select.
+
+
+\begin{DoxyParams}{Parameters}
+{\em spi} & Base address of the S\-P\-I instance. \\
+\hline
+{\em device} & S\-P\-I device \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__xmega__spi__master__group_ga60595beff80eae31c8dad32a8720865a}{\index{X\-M\-E\-G\-A S\-P\-I master service.@{X\-M\-E\-G\-A S\-P\-I master service.}!spi\-\_\-write\-\_\-packet@{spi\-\_\-write\-\_\-packet}}
+\index{spi\-\_\-write\-\_\-packet@{spi\-\_\-write\-\_\-packet}!XMEGA SPI master service.@{X\-M\-E\-G\-A S\-P\-I master service.}}
+\subsubsection[{spi\-\_\-write\-\_\-packet}]{\setlength{\rightskip}{0pt plus 5cm}status\-\_\-code\-\_\-t spi\-\_\-write\-\_\-packet (
+\begin{DoxyParamCaption}
+\item[{S\-P\-I\-\_\-t $\ast$}]{spi, }
+\item[{const uint8\-\_\-t $\ast$}]{data, }
+\item[{size\-\_\-t}]{len}
+\end{DoxyParamCaption}
+)}}\label{group__xmega__spi__master__group_ga60595beff80eae31c8dad32a8720865a}
+
+
+Send a sequence of bytes to a S\-P\-I device. 
+
+Received bytes on the S\-P\-I bus are discarded.
+
+
+\begin{DoxyParams}{Parameters}
+{\em spi} & Base address of the S\-P\-I instance. \\
+\hline
+{\em data} & data buffer to write \\
+\hline
+{\em len} & Length of data\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+S\-P\-I device must be selected with \hyperlink{group__xmega__spi__master__group_gac8751c855b90ea2774b5007f519e487e}{spi\-\_\-select\-\_\-device()} first 
+\end{DoxyPrecond}

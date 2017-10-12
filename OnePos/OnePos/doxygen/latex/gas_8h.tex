@@ -1,0 +1,119 @@
+\hypertarget{gas_8h}{\section{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/xmega/utils/assembler/gas.h File Reference}
+\label{gas_8h}\index{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/xmega/utils/assembler/gas.\-h@{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/xmega/utils/assembler/gas.\-h}}
+}
+
+
+Assembler abstraction layer\-: G\-N\-U Assembler specifics.  
+
+
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{gas_8h_a21400c6e118a20b3b7881ae06fcc6391}{\#define {\bfseries P\-U\-B\-L\-I\-C\-\_\-\-F\-U\-N\-C\-T\-I\-O\-N\-\_\-\-S\-E\-G\-M\-E\-N\-T}(name, segment)~gas\-\_\-begin\-\_\-func\-\_\-segm name 1 segment}\label{gas_8h_a21400c6e118a20b3b7881ae06fcc6391}
+
+\end{DoxyCompactItemize}
+\begin{Indent}{\bf Control Statements}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__assembler__group_ga17f8b386ac2ef0f331bdaa4f5e21b71b}{\#define \hyperlink{group__assembler__group_ga17f8b386ac2ef0f331bdaa4f5e21b71b}{R\-E\-P\-E\-A\-T}(count)~.rept   count}\label{group__assembler__group_ga17f8b386ac2ef0f331bdaa4f5e21b71b}
+
+\begin{DoxyCompactList}\small\item\em Repeat the following statements {\itshape count} times. \end{DoxyCompactList}\item 
+\hypertarget{group__assembler__group_gaa53644ea7a4fec702079e066770eed6d}{\#define \hyperlink{group__assembler__group_gaa53644ea7a4fec702079e066770eed6d}{E\-N\-D\-\_\-\-R\-E\-P\-E\-A\-T}()~.endr}\label{group__assembler__group_gaa53644ea7a4fec702079e066770eed6d}
+
+\begin{DoxyCompactList}\small\item\em Mark the end of the statements to be repeated. \end{DoxyCompactList}\item 
+\hypertarget{group__assembler__group_ga3a8bd27aec4611e3c0d1168f092272a5}{\#define \hyperlink{group__assembler__group_ga3a8bd27aec4611e3c0d1168f092272a5}{S\-E\-T\-\_\-\-L\-O\-C}(offset)~.org    offset}\label{group__assembler__group_ga3a8bd27aec4611e3c0d1168f092272a5}
+
+\begin{DoxyCompactList}\small\item\em Set the location counter to {\itshape offset}. \end{DoxyCompactList}\item 
+\hypertarget{group__assembler__group_ga7795075d7ca3529a86ce8e60fc6f0adb}{\#define \hyperlink{group__assembler__group_ga7795075d7ca3529a86ce8e60fc6f0adb}{E\-N\-D\-\_\-\-F\-I\-L\-E}()}\label{group__assembler__group_ga7795075d7ca3529a86ce8e60fc6f0adb}
+
+\begin{DoxyCompactList}\small\item\em Mark the end of the file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Data Objects}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__assembler__group_ga3ab35e172e72f27c4210f5009fb35202}{\#define \hyperlink{group__assembler__group_ga3ab35e172e72f27c4210f5009fb35202}{F\-I\-L\-L\-\_\-\-B\-Y\-T\-E\-S}(count)~.fill   count}\label{group__assembler__group_ga3ab35e172e72f27c4210f5009fb35202}
+
+\begin{DoxyCompactList}\small\item\em Allocate space for {\itshape count} bytes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Symbol Definition}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__assembler__group_ga8e298c540513429b516bba4896bc2e6d}{\#define \hyperlink{group__assembler__group_ga8e298c540513429b516bba4896bc2e6d}{L}(name)~.L\#\#name}\label{group__assembler__group_ga8e298c540513429b516bba4896bc2e6d}
+
+\begin{DoxyCompactList}\small\item\em Turn {\itshape name} into a local symbol, if possible. \end{DoxyCompactList}\item 
+\hypertarget{group__assembler__group_ga4ec6c5fa246498ad62aa1fae32e0cc63}{\#define \hyperlink{group__assembler__group_ga4ec6c5fa246498ad62aa1fae32e0cc63}{E\-X\-T\-E\-R\-N\-\_\-\-S\-Y\-M\-B\-O\-L}(name)}\label{group__assembler__group_ga4ec6c5fa246498ad62aa1fae32e0cc63}
+
+\begin{DoxyCompactList}\small\item\em Declare {\itshape name} as an external symbol referenced by this file. \end{DoxyCompactList}\item 
+\hypertarget{group__assembler__group_ga4f62d0e155df806b451e332fd5a8e641}{\#define \hyperlink{group__assembler__group_ga4f62d0e155df806b451e332fd5a8e641}{F\-U\-N\-C\-T\-I\-O\-N}(name)~gas\-\_\-begin\-\_\-func name 0}\label{group__assembler__group_ga4f62d0e155df806b451e332fd5a8e641}
+
+\begin{DoxyCompactList}\small\item\em Define a file-\/local function called {\itshape name}. \end{DoxyCompactList}\item 
+\hypertarget{group__assembler__group_gae2b2aca7cb222177274d51289b51228f}{\#define \hyperlink{group__assembler__group_gae2b2aca7cb222177274d51289b51228f}{P\-U\-B\-L\-I\-C\-\_\-\-F\-U\-N\-C\-T\-I\-O\-N}(name)~gas\-\_\-begin\-\_\-func name 1}\label{group__assembler__group_gae2b2aca7cb222177274d51289b51228f}
+
+\begin{DoxyCompactList}\small\item\em Define a globally visible function called {\itshape name}. \end{DoxyCompactList}\item 
+\#define \hyperlink{group__assembler__group_ga81ab44c8186c742be6d8b16b9cb09b8b}{W\-E\-A\-K\-\_\-\-F\-U\-N\-C\-T\-I\-O\-N}(name)~gas\-\_\-weak\-\_\-function name
+\begin{DoxyCompactList}\small\item\em Define a weak function called {\itshape name}. \end{DoxyCompactList}\item 
+\#define \hyperlink{group__assembler__group_ga43ce83c479dda75a6edadaa377ed817d}{W\-E\-A\-K\-\_\-\-F\-U\-N\-C\-T\-I\-O\-N\-\_\-\-A\-L\-I\-A\-S}(name, strong\-\_\-name)~gas\-\_\-weak\-\_\-function\-\_\-alias name strong\-\_\-name
+\begin{DoxyCompactList}\small\item\em Define {\itshape name} as a weak alias for the function {\itshape strong\-\_\-name}. \end{DoxyCompactList}\item 
+\hypertarget{group__assembler__group_ga7a448fd290779d129685888f80cd76ff}{\#define \hyperlink{group__assembler__group_ga7a448fd290779d129685888f80cd76ff}{E\-N\-D\-\_\-\-F\-U\-N\-C}(name)~.size   name, . -\/ name}\label{group__assembler__group_ga7a448fd290779d129685888f80cd76ff}
+
+\begin{DoxyCompactList}\small\item\em Mark the end of the function called {\itshape name}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Section Definition}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__assembler__group_ga8e8471b5cb4a0e8bc8cefb35cc8ebb3d}{\#define \hyperlink{group__assembler__group_ga8e8471b5cb4a0e8bc8cefb35cc8ebb3d}{T\-E\-X\-T\-\_\-\-S\-E\-C\-T\-I\-O\-N}(name)~.section name, \char`\"{}ax\char`\"{}, @progbits}\label{group__assembler__group_ga8e8471b5cb4a0e8bc8cefb35cc8ebb3d}
+
+\begin{DoxyCompactList}\small\item\em Start a new section containing executable code. \end{DoxyCompactList}\item 
+\hypertarget{group__assembler__group_gadd34e4da24622d99c3b28211c28cac68}{\#define \hyperlink{group__assembler__group_gadd34e4da24622d99c3b28211c28cac68}{R\-O\-D\-A\-T\-A\-\_\-\-S\-E\-C\-T\-I\-O\-N}(name)~.section name, \char`\"{}a\char`\"{}, @progbits}\label{group__assembler__group_gadd34e4da24622d99c3b28211c28cac68}
+
+\begin{DoxyCompactList}\small\item\em Start a new section containing read-\/only data. \end{DoxyCompactList}\item 
+\hypertarget{group__assembler__group_ga2d1becf75eb73256b236ed19b28f76bf}{\#define \hyperlink{group__assembler__group_ga2d1becf75eb73256b236ed19b28f76bf}{D\-A\-T\-A\-\_\-\-S\-E\-C\-T\-I\-O\-N}(name)~.section name, \char`\"{}aw\char`\"{}, @progbits}\label{group__assembler__group_ga2d1becf75eb73256b236ed19b28f76bf}
+
+\begin{DoxyCompactList}\small\item\em Start a new section containing writeable initialized data. \end{DoxyCompactList}\item 
+\hypertarget{group__assembler__group_ga9c174ffe0958450a515a04007564fc19}{\#define \hyperlink{group__assembler__group_ga9c174ffe0958450a515a04007564fc19}{B\-S\-S\-\_\-\-S\-E\-C\-T\-I\-O\-N}(name)~.section name, \char`\"{}aw\char`\"{}, @nobits}\label{group__assembler__group_ga9c174ffe0958450a515a04007564fc19}
+
+\begin{DoxyCompactList}\small\item\em Start a new section containing writeable zero-\/initialized data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+macro \hyperlink{gas_8h_adb47a30becc9e0b6421042ea82a11913}{ld\-\_\-addr}
+\item 
+\hypertarget{gas_8h_aa4b46a1282f30708817129b9079baeb2}{macro {\bfseries reg}}\label{gas_8h_aa4b46a1282f30708817129b9079baeb2}
+
+\item 
+\hypertarget{gas_8h_a8cc72c7acb2e8c5a34a460a505fece93}{macro sym lda w sym endm macro \\*
+gas\-\_\-begin\-\_\-func {\bfseries name}}\label{gas_8h_a8cc72c7acb2e8c5a34a460a505fece93}
+
+\item 
+\hypertarget{gas_8h_a1e7848fc01d8fbdad15ce85530e56971}{macro sym lda w sym endm macro \\*
+gas\-\_\-begin\-\_\-func is\-\_\-public if \\*
+is\-\_\-public global name endif \\*
+section text {\bfseries ax}}\label{gas_8h_a1e7848fc01d8fbdad15ce85530e56971}
+
+\item 
+\hypertarget{gas_8h_ae5faefe09af5e5c1c4e1f3ddc75ca08f}{macro sym lda w sym endm macro \\*
+gas\-\_\-begin\-\_\-func is\-\_\-public if \\*
+is\-\_\-public global name endif \\*
+section text progbits type \\*
+function {\bfseries is\-\_\-public}}\label{gas_8h_ae5faefe09af5e5c1c4e1f3ddc75ca08f}
+
+\item 
+\hypertarget{gas_8h_ad8d19961c6c5914f33ba3fe8d31bf6e2}{macro sym lda w sym endm macro \\*
+gas\-\_\-begin\-\_\-func is\-\_\-public if \\*
+is\-\_\-public global name endif \\*
+section text progbits type \\*
+function segment if is\-\_\-public \\*
+global name endif section {\bfseries segment}}\label{gas_8h_ad8d19961c6c5914f33ba3fe8d31bf6e2}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Assembler abstraction layer\-: G\-N\-U Assembler specifics. Copyright (c) 2014 Atmel Corporation. All rights reserved.
+
+\subsection{Variable Documentation}
+\hypertarget{gas_8h_adb47a30becc9e0b6421042ea82a11913}{\index{gas.\-h@{gas.\-h}!ld\-\_\-addr@{ld\-\_\-addr}}
+\index{ld\-\_\-addr@{ld\-\_\-addr}!gas.h@{gas.\-h}}
+\subsubsection[{ld\-\_\-addr}]{\setlength{\rightskip}{0pt plus 5cm}macro ld\-\_\-addr}}\label{gas_8h_adb47a30becc9e0b6421042ea82a11913}
+Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support} 

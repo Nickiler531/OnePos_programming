@@ -1,0 +1,51 @@
+\hypertarget{usart_8c}{\section{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/xmega/drivers/usart/usart.c File Reference}
+\label{usart_8c}\index{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/xmega/drivers/usart/usart.\-c@{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/xmega/drivers/usart/usart.\-c}}
+}
+
+
+U\-S\-A\-R\-T driver for A\-V\-R X\-M\-E\-G\-A.  
+
+
+{\ttfamily \#include $<$stdint.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}compiler.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}usart.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}sysclk.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}ioport.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}status\-\_\-codes.\-h\char`\"{}}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{usart_8c_ab77513f63f0fb06ece3dfc1dbd115eed}{U\-S\-A\-R\-T\-\_\-\-U\-C\-P\-H\-A\-\_\-bm}~0x02
+\item 
+\hypertarget{usart_8c_a2cadc7e465ee4dab6820f444dd9bfa4a}{\#define {\bfseries U\-S\-A\-R\-T\-\_\-\-D\-O\-R\-D\-\_\-bm}~0x04}\label{usart_8c_a2cadc7e465ee4dab6820f444dd9bfa4a}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{group__usart__group_ga507caac3c2c003461cd6ded584af984d}{usart\-\_\-init\-\_\-rs232} (U\-S\-A\-R\-T\-\_\-t $\ast$usart, const \hyperlink{group__usart__group_ga7ef7b0c900cfe5c657ed5dd41170091d}{usart\-\_\-rs232\-\_\-options\-\_\-t} $\ast$opt)
+\begin{DoxyCompactList}\small\item\em Initialize U\-S\-A\-R\-T in R\-S232 mode. \end{DoxyCompactList}\item 
+void \hyperlink{group__usart__group_gaa71a564aca681701dc6b28150eda0ea1}{usart\-\_\-init\-\_\-spi} (U\-S\-A\-R\-T\-\_\-t $\ast$usart, const \hyperlink{group__usart__group_gaf687857c26a3ebf13a9e63767efe9e9c}{usart\-\_\-spi\-\_\-options\-\_\-t} $\ast$opt)
+\begin{DoxyCompactList}\small\item\em Initialize U\-S\-A\-R\-T in S\-P\-I master mode. \end{DoxyCompactList}\item 
+enum \hyperlink{group__group__xmega__utils__status__codes_ga751c892e5a46b8e7d282085a5a5bf151}{status\-\_\-code} \hyperlink{group__usart__group_gaf3c57d5ee2bacfbc36338e64ca8107a6}{usart\-\_\-putchar} (U\-S\-A\-R\-T\-\_\-t $\ast$usart, uint8\-\_\-t c)
+\begin{DoxyCompactList}\small\item\em Send a data with the U\-S\-A\-R\-T module. \end{DoxyCompactList}\item 
+uint8\-\_\-t \hyperlink{group__usart__group_ga194074a7bb28e694e22b604a5df7508f}{usart\-\_\-getchar} (U\-S\-A\-R\-T\-\_\-t $\ast$usart)
+\begin{DoxyCompactList}\small\item\em Receive a data with the U\-S\-A\-R\-T module. \end{DoxyCompactList}\item 
+void \hyperlink{group__usart__group_gad76d1ebafabf97ace1b4fabf3b95bad5}{usart\-\_\-set\-\_\-bsel\-\_\-bscale\-\_\-value} (U\-S\-A\-R\-T\-\_\-t $\ast$usart, uint16\-\_\-t bsel, uint8\-\_\-t bscale)
+\begin{DoxyCompactList}\small\item\em Set the baudrate by setting the B\-S\-E\-L and B\-S\-C\-A\-L\-E values in the U\-S\-A\-R\-T. \end{DoxyCompactList}\item 
+void \hyperlink{group__usart__group_ga6c66b2efc3ec852e5226fa1105669e98}{usart\-\_\-set\-\_\-baudrate\-\_\-precalculated} (U\-S\-A\-R\-T\-\_\-t $\ast$usart, uint32\-\_\-t baud, uint32\-\_\-t cpu\-\_\-hz)
+\begin{DoxyCompactList}\small\item\em Set the baudrate using precalculated B\-A\-U\-D\-C\-T\-R\-L values from P\-R\-O\-G\-M\-E\-M. \end{DoxyCompactList}\item 
+\hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{group__usart__group_ga621fa6540397b3b81a9a5176c17e782a}{usart\-\_\-set\-\_\-baudrate} (U\-S\-A\-R\-T\-\_\-t $\ast$usart, uint32\-\_\-t baud, uint32\-\_\-t cpu\-\_\-hz)
+\begin{DoxyCompactList}\small\item\em Set the baudrate value in the U\-S\-A\-R\-T module. \end{DoxyCompactList}\item 
+void \hyperlink{group__usart__group_gae0deed785e24da0fa21c9bf4748f9edf}{usart\-\_\-spi\-\_\-set\-\_\-baudrate} (U\-S\-A\-R\-T\-\_\-t $\ast$usart, uint32\-\_\-t baud, uint32\-\_\-t cpu\-\_\-hz)
+\begin{DoxyCompactList}\small\item\em Set the baudrate value in the U\-S\-A\-R\-T\-\_\-\-S\-P\-I module. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+U\-S\-A\-R\-T driver for A\-V\-R X\-M\-E\-G\-A. Copyright (c) 2009-\/2014 Atmel Corporation. All rights reserved.
+
+\subsection{Macro Definition Documentation}
+\hypertarget{usart_8c_ab77513f63f0fb06ece3dfc1dbd115eed}{\index{usart.\-c@{usart.\-c}!U\-S\-A\-R\-T\-\_\-\-U\-C\-P\-H\-A\-\_\-bm@{U\-S\-A\-R\-T\-\_\-\-U\-C\-P\-H\-A\-\_\-bm}}
+\index{U\-S\-A\-R\-T\-\_\-\-U\-C\-P\-H\-A\-\_\-bm@{U\-S\-A\-R\-T\-\_\-\-U\-C\-P\-H\-A\-\_\-bm}!usart.c@{usart.\-c}}
+\subsubsection[{U\-S\-A\-R\-T\-\_\-\-U\-C\-P\-H\-A\-\_\-bm}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\-S\-A\-R\-T\-\_\-\-U\-C\-P\-H\-A\-\_\-bm~0x02}}\label{usart_8c_ab77513f63f0fb06ece3dfc1dbd115eed}
+Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support} 

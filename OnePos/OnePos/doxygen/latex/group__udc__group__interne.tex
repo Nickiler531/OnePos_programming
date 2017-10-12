@@ -1,0 +1,113 @@
+\hypertarget{group__udc__group__interne}{\section{Implementation of U\-D\-C}
+\label{group__udc__group__interne}\index{Implementation of U\-D\-C@{Implementation of U\-D\-C}}
+}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structudc__string__desc__t}{udc\-\_\-string\-\_\-desc\-\_\-t}
+\begin{DoxyCompactList}\small\item\em U\-S\-B device string descriptor Structure used to transfer A\-S\-C\-I\-I strings to U\-S\-B String descriptor structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structusb__iface__desc__t}{usb\-\_\-iface\-\_\-desc\-\_\-t} \hyperlink{group__udc__desc__group_gae086959cec07a2e71ab069e25a51764f}{U\-D\-C\-\_\-\-D\-E\-S\-C\-\_\-\-S\-T\-O\-R\-A\-G\-E} $\ast$ \hyperlink{group__udc__group__interne_gadb2a0f5ad1e834d4d7e7777f901d64d2}{udc\-\_\-get\-\_\-interface\-\_\-desc} (void)
+\begin{DoxyCompactList}\small\item\em Returns a pointer on the current interface descriptor. \end{DoxyCompactList}\item 
+\hypertarget{group__udc__group__interne_gadf4e193509cd03ab6333d62629ea51e7}{void \hyperlink{group__udc__group__interne_gadf4e193509cd03ab6333d62629ea51e7}{udc\-\_\-start} (void)}\label{group__udc__group__interne_gadf4e193509cd03ab6333d62629ea51e7}
+
+\begin{DoxyCompactList}\small\item\em Start the U\-S\-B Device stack. \end{DoxyCompactList}\item 
+\hypertarget{group__udc__group__interne_gae2264dd91b24db9d4bb23fb1a2014972}{void \hyperlink{group__udc__group__interne_gae2264dd91b24db9d4bb23fb1a2014972}{udc\-\_\-stop} (void)}\label{group__udc__group__interne_gae2264dd91b24db9d4bb23fb1a2014972}
+
+\begin{DoxyCompactList}\small\item\em Stop the U\-S\-B Device stack. \end{DoxyCompactList}\item 
+void \hyperlink{group__udc__group__interne_ga11a32ff7928ba06d3b59e95e0a2b7a92}{udc\-\_\-reset} (void)
+\begin{DoxyCompactList}\small\item\em Reset the current configuration of the U\-S\-B device, This routines can be called by U\-D\-D when a R\-E\-S\-E\-T on the U\-S\-B line occurs. \end{DoxyCompactList}\item 
+void \hyperlink{group__udc__group__interne_ga4afae313045f44b5eb4c60957ab8ef4e}{udc\-\_\-sof\-\_\-notify} (void)
+\begin{DoxyCompactList}\small\item\em To signal that a S\-O\-F is occurred. \end{DoxyCompactList}\item 
+\hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{group__udc__group__interne_ga58c2916d7984e0e5b2143cadf4af6080}{udc\-\_\-process\-\_\-setup} (void)
+\begin{DoxyCompactList}\small\item\em Main routine to manage the U\-S\-B S\-E\-T\-U\-P request. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Internal structure to store the U\-S\-B device main strings}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__udc__group__interne_gac2dafd8d9efe73f2709291818829a79b}{\#define \hyperlink{group__udc__group__interne_gac2dafd8d9efe73f2709291818829a79b}{U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-M\-A\-N\-U\-F\-A\-C\-T\-U\-R\-E\-\_\-\-N\-A\-M\-E\-\_\-\-S\-I\-Z\-E}~0}\label{group__udc__group__interne_gac2dafd8d9efe73f2709291818829a79b}
+
+\begin{DoxyCompactList}\small\item\em U\-S\-B device manufacture name storage String is allocated only if U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-M\-A\-N\-U\-F\-A\-C\-T\-U\-R\-E\-\_\-\-N\-A\-M\-E is declared by usb application configuration. \end{DoxyCompactList}\item 
+\hypertarget{group__udc__group__interne_ga76a9e0f1f322165feaf0a8f2f583ea8f}{\#define \hyperlink{group__udc__group__interne_ga76a9e0f1f322165feaf0a8f2f583ea8f}{U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-P\-R\-O\-D\-U\-C\-T\-\_\-\-N\-A\-M\-E\-\_\-\-S\-I\-Z\-E}~0}\label{group__udc__group__interne_ga76a9e0f1f322165feaf0a8f2f583ea8f}
+
+\begin{DoxyCompactList}\small\item\em U\-S\-B device product name storage String is allocated only if U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-P\-R\-O\-D\-U\-C\-T\-\_\-\-N\-A\-M\-E is declared by usb application configuration. \end{DoxyCompactList}\item 
+\#define \hyperlink{group__udc__group__interne_gacf4c1ef7c6001ee2b919e81143543899}{U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-S\-E\-R\-I\-A\-L\-\_\-\-N\-A\-M\-E\-\_\-\-S\-I\-Z\-E}~0
+\begin{DoxyCompactList}\small\item\em Get U\-S\-B device serial number. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support}
+
+Internal implementation 
+
+\subsection{Macro Definition Documentation}
+\hypertarget{group__udc__group__interne_gacf4c1ef7c6001ee2b919e81143543899}{\index{Implementation of U\-D\-C@{Implementation of U\-D\-C}!U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-S\-E\-R\-I\-A\-L\-\_\-\-N\-A\-M\-E\-\_\-\-S\-I\-Z\-E@{U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-S\-E\-R\-I\-A\-L\-\_\-\-N\-A\-M\-E\-\_\-\-S\-I\-Z\-E}}
+\index{U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-S\-E\-R\-I\-A\-L\-\_\-\-N\-A\-M\-E\-\_\-\-S\-I\-Z\-E@{U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-S\-E\-R\-I\-A\-L\-\_\-\-N\-A\-M\-E\-\_\-\-S\-I\-Z\-E}!Implementation of UDC@{Implementation of U\-D\-C}}
+\subsubsection[{U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-S\-E\-R\-I\-A\-L\-\_\-\-N\-A\-M\-E\-\_\-\-S\-I\-Z\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-S\-E\-R\-I\-A\-L\-\_\-\-N\-A\-M\-E\-\_\-\-S\-I\-Z\-E~0}}\label{group__udc__group__interne_gacf4c1ef7c6001ee2b919e81143543899}
+
+
+Get U\-S\-B device serial number. 
+
+Use the define U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-S\-E\-R\-I\-A\-L\-\_\-\-N\-A\-M\-E to set static serial number.
+
+For dynamic serial number set the define U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-G\-E\-T\-\_\-\-S\-E\-R\-I\-A\-L\-\_\-\-N\-A\-M\-E\-\_\-\-P\-O\-I\-N\-T\-E\-R to a suitable pointer. This will also require the serial number length define U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-G\-E\-T\-\_\-\-S\-E\-R\-I\-A\-L\-\_\-\-N\-A\-M\-E\-\_\-\-L\-E\-N\-G\-T\-H. 
+
+\subsection{Function Documentation}
+\hypertarget{group__udc__group__interne_gadb2a0f5ad1e834d4d7e7777f901d64d2}{\index{Implementation of U\-D\-C@{Implementation of U\-D\-C}!udc\-\_\-get\-\_\-interface\-\_\-desc@{udc\-\_\-get\-\_\-interface\-\_\-desc}}
+\index{udc\-\_\-get\-\_\-interface\-\_\-desc@{udc\-\_\-get\-\_\-interface\-\_\-desc}!Implementation of UDC@{Implementation of U\-D\-C}}
+\subsubsection[{udc\-\_\-get\-\_\-interface\-\_\-desc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf usb\-\_\-iface\-\_\-desc\-\_\-t} {\bf U\-D\-C\-\_\-\-D\-E\-S\-C\-\_\-\-S\-T\-O\-R\-A\-G\-E}$\ast$ udc\-\_\-get\-\_\-interface\-\_\-desc (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{group__udc__group__interne_gadb2a0f5ad1e834d4d7e7777f901d64d2}
+
+
+Returns a pointer on the current interface descriptor. 
+
+\begin{DoxyReturn}{Returns}
+pointer on the current interface descriptor. 
+\end{DoxyReturn}
+\hypertarget{group__udc__group__interne_ga58c2916d7984e0e5b2143cadf4af6080}{\index{Implementation of U\-D\-C@{Implementation of U\-D\-C}!udc\-\_\-process\-\_\-setup@{udc\-\_\-process\-\_\-setup}}
+\index{udc\-\_\-process\-\_\-setup@{udc\-\_\-process\-\_\-setup}!Implementation of UDC@{Implementation of U\-D\-C}}
+\subsubsection[{udc\-\_\-process\-\_\-setup}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bool} udc\-\_\-process\-\_\-setup (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{group__udc__group__interne_ga58c2916d7984e0e5b2143cadf4af6080}
+
+
+Main routine to manage the U\-S\-B S\-E\-T\-U\-P request. 
+
+Decodes and manages a setup request.
+
+This function parses a U\-S\-B S\-E\-T\-U\-P request and submits an appropriate response back to the host or, in the case of S\-E\-T\-U\-P O\-U\-T requests with data, sets up a buffer for receiving the data payload.
+
+The main standard requests defined by the U\-S\-B 2.\-0 standard are handled internally. The interface requests are sent to U\-D\-I, and the specific request sent to a specific application callback.
+
+\begin{DoxyReturn}{Returns}
+true if the request is supported, else the request is stalled by U\-D\-D 
+\end{DoxyReturn}
+\hypertarget{group__udc__group__interne_ga11a32ff7928ba06d3b59e95e0a2b7a92}{\index{Implementation of U\-D\-C@{Implementation of U\-D\-C}!udc\-\_\-reset@{udc\-\_\-reset}}
+\index{udc\-\_\-reset@{udc\-\_\-reset}!Implementation of UDC@{Implementation of U\-D\-C}}
+\subsubsection[{udc\-\_\-reset}]{\setlength{\rightskip}{0pt plus 5cm}void udc\-\_\-reset (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{group__udc__group__interne_ga11a32ff7928ba06d3b59e95e0a2b7a92}
+
+
+Reset the current configuration of the U\-S\-B device, This routines can be called by U\-D\-D when a R\-E\-S\-E\-T on the U\-S\-B line occurs. 
+
+Reset the U\-D\-C. \hypertarget{group__udc__group__interne_ga4afae313045f44b5eb4c60957ab8ef4e}{\index{Implementation of U\-D\-C@{Implementation of U\-D\-C}!udc\-\_\-sof\-\_\-notify@{udc\-\_\-sof\-\_\-notify}}
+\index{udc\-\_\-sof\-\_\-notify@{udc\-\_\-sof\-\_\-notify}!Implementation of UDC@{Implementation of U\-D\-C}}
+\subsubsection[{udc\-\_\-sof\-\_\-notify}]{\setlength{\rightskip}{0pt plus 5cm}void udc\-\_\-sof\-\_\-notify (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{group__udc__group__interne_ga4afae313045f44b5eb4c60957ab8ef4e}
+
+
+To signal that a S\-O\-F is occurred. 
+
+The U\-D\-C must send the signal to all U\-D\-Is enabled 

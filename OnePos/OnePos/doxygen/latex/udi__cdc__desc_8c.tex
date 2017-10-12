@@ -1,0 +1,68 @@
+\hypertarget{udi__cdc__desc_8c}{\section{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/usb/class/cdc/device/udi\-\_\-cdc\-\_\-desc.c File Reference}
+\label{udi__cdc__desc_8c}\index{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/usb/class/cdc/device/udi\-\_\-cdc\-\_\-desc.\-c@{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/usb/class/cdc/device/udi\-\_\-cdc\-\_\-desc.\-c}}
+}
+
+
+Default descriptors for a U\-S\-B Device with a single interface C\-D\-C.  
+
+
+{\ttfamily \#include \char`\"{}conf\-\_\-usb.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}udd.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}udc\-\_\-desc.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}udi\-\_\-cdc.\-h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structudc__desc__t}{udc\-\_\-desc\-\_\-t}
+\begin{DoxyCompactList}\small\item\em Structure for U\-S\-B Device Configuration Descriptor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_gad079423a5116ebac5e26628447e0d0c1}{\#define \hyperlink{group__udi__cdc__group__single__desc_gad079423a5116ebac5e26628447e0d0c1}{U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-N\-B\-\_\-\-I\-N\-T\-E\-R\-F\-A\-C\-E}~(2$\ast$\hyperlink{conf__usb_8h_aecfe45ce8d46d80442a7d66111ac7c4e}{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-N\-B})}\label{group__udi__cdc__group__single__desc_gad079423a5116ebac5e26628447e0d0c1}
+
+\begin{DoxyCompactList}\small\item\em Two interfaces for a C\-D\-C device. \end{DoxyCompactList}\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga6bc3df68ee1deeb69cebfdfef7f8b685}{\#define {\bfseries U\-S\-B\-\_\-\-V\-E\-R\-S\-I\-O\-N}~\hyperlink{group__usb__protocol__group_ga9bccec980a4f41a481b389b4f0c9c690}{U\-S\-B\-\_\-\-V2\-\_\-0}}\label{group__udi__cdc__group__single__desc_ga6bc3df68ee1deeb69cebfdfef7f8b685}
+
+\item 
+\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-A\-P\-I}(index, \hyperlink{group__group__xmega__utils_ga417dba7f63dde98dbebd6336d8af9d91}{unused})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga9b0e293c7d3236bf90c42d808c2bc1ab}{C\-O\-M\-P\-I\-L\-E\-R\-\_\-\-W\-O\-R\-D\-\_\-\-A\-L\-I\-G\-N\-E\-D \\*
+\hyperlink{group__udc__desc__group_gae086959cec07a2e71ab069e25a51764f}{U\-D\-C\-\_\-\-D\-E\-S\-C\-\_\-\-S\-T\-O\-R\-A\-G\-E} \\*
+\hyperlink{structusb__dev__desc__t}{usb\-\_\-dev\-\_\-desc\-\_\-t} \hyperlink{group__udi__cdc__group__single__desc_ga9b0e293c7d3236bf90c42d808c2bc1ab}{udc\-\_\-device\-\_\-desc}}\label{group__udi__cdc__group__single__desc_ga9b0e293c7d3236bf90c42d808c2bc1ab}
+
+\begin{DoxyCompactList}\small\item\em U\-S\-B Device Descriptor. \end{DoxyCompactList}\item 
+C\-O\-M\-P\-I\-L\-E\-R\-\_\-\-W\-O\-R\-D\-\_\-\-A\-L\-I\-G\-N\-E\-D \\*
+\hyperlink{group__udc__desc__group_gae086959cec07a2e71ab069e25a51764f}{U\-D\-C\-\_\-\-D\-E\-S\-C\-\_\-\-S\-T\-O\-R\-A\-G\-E} \hyperlink{structudc__desc__t}{udc\-\_\-desc\-\_\-t} \hyperlink{group__udi__cdc__group__single__desc_ga694cd2202d59a342c2ed2e50f427a932}{udc\-\_\-desc\-\_\-fs}
+\begin{DoxyCompactList}\small\item\em U\-S\-B Device Configuration Descriptor filled for full and high speed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{Indent}{\bf U\-D\-C structures which content all U\-S\-B Device definitions}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group__udc__desc__group_gae086959cec07a2e71ab069e25a51764f}{U\-D\-C\-\_\-\-D\-E\-S\-C\-\_\-\-S\-T\-O\-R\-A\-G\-E} \hyperlink{structudi__api__t}{udi\-\_\-api\-\_\-t} $\ast$ \hyperlink{group__udi__cdc__group__single__desc_ga5356b021bc068e4b564577e38b44ba0e}{udi\-\_\-apis} \mbox{[}\hyperlink{group__udi__cdc__group__single__desc_gad079423a5116ebac5e26628447e0d0c1}{U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-N\-B\-\_\-\-I\-N\-T\-E\-R\-F\-A\-C\-E}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Associate an U\-D\-I for each U\-S\-B interface. \end{DoxyCompactList}\item 
+\hyperlink{group__udc__desc__group_gae086959cec07a2e71ab069e25a51764f}{U\-D\-C\-\_\-\-D\-E\-S\-C\-\_\-\-S\-T\-O\-R\-A\-G\-E} \hyperlink{structudc__config__speed__t}{udc\-\_\-config\-\_\-speed\-\_\-t} \hyperlink{group__udi__cdc__group__single__desc_ga5db6d631eea81d0c57ac6fde3a4963a1}{udc\-\_\-config\-\_\-fs} \mbox{[}1\mbox{]}
+\begin{DoxyCompactList}\small\item\em Add U\-D\-I with U\-S\-B Descriptors F\-S \& H\-S. \end{DoxyCompactList}\item 
+\hyperlink{group__udc__desc__group_gae086959cec07a2e71ab069e25a51764f}{U\-D\-C\-\_\-\-D\-E\-S\-C\-\_\-\-S\-T\-O\-R\-A\-G\-E} \hyperlink{structudc__config__t}{udc\-\_\-config\-\_\-t} \hyperlink{group__udi__cdc__group__single__desc_ga40ae5a61fbfa7e289136b2f9fd190217}{udc\-\_\-config}
+\begin{DoxyCompactList}\small\item\em Add all information about U\-S\-B Device in global structure for U\-D\-C. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+Default descriptors for a U\-S\-B Device with a single interface C\-D\-C. Copyright (c) 2009-\/2014 Atmel Corporation. All rights reserved.
+
+\subsection{Macro Definition Documentation}
+\hypertarget{udi__cdc__desc_8c_a118c958f657f4db7a8ff6f4b83faca14}{\index{udi\-\_\-cdc\-\_\-desc.\-c@{udi\-\_\-cdc\-\_\-desc.\-c}!U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-A\-P\-I@{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-A\-P\-I}}
+\index{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-A\-P\-I@{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-A\-P\-I}!udi_cdc_desc.c@{udi\-\_\-cdc\-\_\-desc.\-c}}
+\subsubsection[{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-A\-P\-I}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-A\-P\-I(
+\begin{DoxyParamCaption}
+\item[{}]{index, }
+\item[{}]{{\bf unused}}
+\end{DoxyParamCaption}
+)}}\label{udi__cdc__desc_8c_a118c958f657f4db7a8ff6f4b83faca14}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+&\hyperlink{group__udi__cdc__group__udc_gad7b0a90350a1f1a7c62fab1a749bf687}{udi\_api\_cdc\_comm}, \(\backslash\)
+        &udi\_api\_cdc\_data,
+\end{DoxyCode}

@@ -1,0 +1,26 @@
+\hypertarget{delay_8h}{\section{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/delay/delay.h File Reference}
+\label{delay_8h}\index{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/delay/delay.\-h@{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/delay/delay.\-h}}
+}
+
+
+Common Delay Service.  
+
+
+{\ttfamily \#include $<$sysclk.\-h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group__group__common__services__delay_ga43bafb28b29491ec7f871319b5a3b2f8}{F\-\_\-\-C\-P\-U}~sysclk\-\_\-get\-\_\-cpu\-\_\-hz()
+\begin{DoxyCompactList}\small\item\em M\-C\-U Clock Frequency (Hertz) \end{DoxyCompactList}\item 
+\#define \hyperlink{group__group__common__services__delay_ga62d461b94db6352d8ed8442d62ea39fb}{delay\-\_\-init}(fcpu\-\_\-hz)
+\begin{DoxyCompactList}\small\item\em Initialize the delay driver. \end{DoxyCompactList}\item 
+\#define \hyperlink{group__group__common__services__delay_gafdccadc6c16847907b3252cdef83e8b0}{delay\-\_\-s}(delay)~\hyperlink{cycle__counter_8h_a2b733c4de847b6d4e6d5ba466f21da52}{cpu\-\_\-delay\-\_\-ms}(1000 $\ast$ delay, \hyperlink{group__group__common__services__delay_ga43bafb28b29491ec7f871319b5a3b2f8}{F\-\_\-\-C\-P\-U})
+\begin{DoxyCompactList}\small\item\em Delay in seconds. \end{DoxyCompactList}\item 
+\#define \hyperlink{group__group__common__services__delay_gad917a5d772ddbd99ad97a1c999ce40d4}{delay\-\_\-ms}(delay)~\hyperlink{cycle__counter_8h_a2b733c4de847b6d4e6d5ba466f21da52}{cpu\-\_\-delay\-\_\-ms}(delay, \hyperlink{group__group__common__services__delay_ga43bafb28b29491ec7f871319b5a3b2f8}{F\-\_\-\-C\-P\-U})
+\begin{DoxyCompactList}\small\item\em Delay in milliseconds. \end{DoxyCompactList}\item 
+\#define \hyperlink{group__group__common__services__delay_gaf9a0c0e0f880d818a4c2c3ea9fe8cba1}{delay\-\_\-us}(delay)~\hyperlink{cycle__counter_8h_a1f5289578e4f08b99cfca749dcaca964}{cpu\-\_\-delay\-\_\-us}(delay, \hyperlink{group__group__common__services__delay_ga43bafb28b29491ec7f871319b5a3b2f8}{F\-\_\-\-C\-P\-U})
+\begin{DoxyCompactList}\small\item\em Delay in microseconds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Common Delay Service. Copyright (c) 2014 Atmel Corporation. All rights reserved.

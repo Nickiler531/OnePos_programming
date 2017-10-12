@@ -1,0 +1,32 @@
+\hypertarget{twim_8h}{\section{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/xmega/drivers/twi/twim.h File Reference}
+\label{twim_8h}\index{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/xmega/drivers/twi/twim.\-h@{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/xmega/drivers/twi/twim.\-h}}
+}
+
+
+T\-W\-I driver for A\-V\-R.  
+
+
+{\ttfamily \#include $<$compiler.\-h$>$}\\*
+{\ttfamily \#include $<$status\-\_\-codes.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}conf\-\_\-twim.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}twi\-\_\-common.\-h\char`\"{}}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group__group__xmega__drivers__twi__twim_gae4fbb549f8f2ecf379b60922b20e911f}{T\-W\-I\-\_\-\-S\-U\-C\-C\-E\-S\-S}~(\hyperlink{group__group__xmega__utils__status__codes_gga751c892e5a46b8e7d282085a5a5bf151a7e4a42e3b6dd63708c64cf3db6f69566}{S\-T\-A\-T\-U\-S\-\_\-\-O\-K})
+\begin{DoxyCompactList}\small\item\em Error Codes for the Module. \end{DoxyCompactList}\item 
+\#define \hyperlink{group__group__xmega__drivers__twi__twim_gaf373fdbc2054cf1a070ba2a24ddaedf3}{T\-W\-I\-\_\-\-B\-A\-U\-D}(F\-\_\-\-S\-Y\-S, F\-\_\-\-T\-W\-I)~((F\-\_\-\-S\-Y\-S / (2 $\ast$ F\-\_\-\-T\-W\-I)) -\/ 5)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+status\-\_\-code\-\_\-t \hyperlink{group__group__xmega__drivers__twi__twim_ga8029a07f3322bf43c289f5acb442ef29}{twi\-\_\-master\-\_\-init} (T\-W\-I\-\_\-t $\ast$twi, const \hyperlink{structtwi__options__t}{twi\-\_\-options\-\_\-t} $\ast$opt)
+\begin{DoxyCompactList}\small\item\em Initialize the twi master module. \end{DoxyCompactList}\item 
+status\-\_\-code\-\_\-t \hyperlink{group__group__xmega__drivers__twi__twim_ga87be99eb2911dfaecceda6521c0818b2}{twi\-\_\-master\-\_\-transfer} (T\-W\-I\-\_\-t $\ast$twi, const \hyperlink{structtwi__package__t}{twi\-\_\-package\-\_\-t} $\ast$package, \hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} read)
+\begin{DoxyCompactList}\small\item\em Perform a T\-W\-I master write or read transfer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+T\-W\-I driver for A\-V\-R. This file defines a useful set of functions for the T\-W\-I interface on A\-V\-R devices.
+
+Copyright (c) 2010-\/2014 Atmel Corporation. All rights reserved.

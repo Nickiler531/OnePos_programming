@@ -1,0 +1,89 @@
+\hypertarget{usb__device_8c}{\section{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/xmega/drivers/usb/usb\-\_\-device.c File Reference}
+\label{usb__device_8c}\index{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/xmega/drivers/usb/usb\-\_\-device.\-c@{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/xmega/drivers/usb/usb\-\_\-device.\-c}}
+}
+
+
+U\-S\-B Device driver Compliance with common driver U\-D\-D.  
+
+
+{\ttfamily \#include \char`\"{}conf\-\_\-usb.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}sysclk.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}udd.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}usb\-\_\-device.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}sleepmgr.\-h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structudd__sram__data}{udd\-\_\-sram\-\_\-data}
+\begin{DoxyCompactList}\small\item\em U\-S\-B S\-R\-A\-M data about fifo, endpoint descriptor table and frame number. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{usb__device_8c_a5326d0dfa348635327c3562b130be6b3}{U\-D\-D\-\_\-\-U\-S\-B\-\_\-\-I\-N\-T\-\_\-\-L\-E\-V\-E\-L}~U\-S\-B\-\_\-\-I\-N\-T\-L\-V\-L\-\_\-\-L\-O\-\_\-gc
+\item 
+\hypertarget{usb__device_8c_a0b9e59198695b3975ad77fbab4d59402}{\#define {\bfseries U\-D\-D\-\_\-\-E\-P\-\_\-t}~U\-S\-B\-\_\-\-E\-P\-\_\-t volatile}\label{usb__device_8c_a0b9e59198695b3975ad77fbab4d59402}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga9792d1899ae058e3984d6a622fe2ad42}{void \hyperlink{group__udd__xmega__usb__group_ga9792d1899ae058e3984d6a622fe2ad42}{udd\-\_\-enable} (void)}\label{group__udd__xmega__usb__group_ga9792d1899ae058e3984d6a622fe2ad42}
+
+\begin{DoxyCompactList}\small\item\em Enables the U\-S\-B Device mode. \end{DoxyCompactList}\item 
+\hypertarget{group__udd__xmega__usb__group_gab283432057b934e9d73ac9282d9b0f11}{void \hyperlink{group__udd__xmega__usb__group_gab283432057b934e9d73ac9282d9b0f11}{udd\-\_\-disable} (void)}\label{group__udd__xmega__usb__group_gab283432057b934e9d73ac9282d9b0f11}
+
+\begin{DoxyCompactList}\small\item\em Disables the U\-S\-B Device mode. \end{DoxyCompactList}\item 
+\hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{group__udd__xmega__usb__group_gaa4cac8c35ae056e26cf4ab5b426bbe09}{udd\-\_\-include\-\_\-vbus\-\_\-monitoring} (void)
+\begin{DoxyCompactList}\small\item\em Authorizes the V\-B\-U\-S event. \end{DoxyCompactList}\item 
+void \hyperlink{group__udd__xmega__usb__group_ga7a7c0d9236c922c2af33c6702565a99f}{udd\-\_\-attach} (void)
+\begin{DoxyCompactList}\small\item\em Attach device to the bus when possible. \end{DoxyCompactList}\item 
+void \hyperlink{group__udd__xmega__usb__group_ga03e59eaa264f1dbe5a52559311d0520e}{udd\-\_\-detach} (void)
+\begin{DoxyCompactList}\small\item\em Detaches the device from the bus. \end{DoxyCompactList}\item 
+\hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{group__udd__xmega__usb__group_ga85f403ddb78776b1ba014dafd3ffec2c}{udd\-\_\-is\-\_\-high\-\_\-speed} (void)
+\begin{DoxyCompactList}\small\item\em Test whether the U\-S\-B Device Controller is running at high speed or not. \end{DoxyCompactList}\item 
+void \hyperlink{group__udd__xmega__usb__group_ga05da762e0faf9d478e532de40afa71f6}{udd\-\_\-set\-\_\-address} (uint8\-\_\-t address)
+\begin{DoxyCompactList}\small\item\em Changes the U\-S\-B address of device. \end{DoxyCompactList}\item 
+uint8\-\_\-t \hyperlink{group__udd__xmega__usb__group_gaebd36638d482f6df00a8aff006ef2246}{udd\-\_\-getaddress} (void)
+\begin{DoxyCompactList}\small\item\em Returns the U\-S\-B address of device. \end{DoxyCompactList}\item 
+uint16\-\_\-t \hyperlink{group__udd__xmega__usb__group_ga96dc248cc05e07ffe2cf21e4d7465320}{udd\-\_\-get\-\_\-frame\-\_\-number} (void)
+\begin{DoxyCompactList}\small\item\em Returns the current start of frame number. \end{DoxyCompactList}\item 
+uint16\-\_\-t \hyperlink{group__udd__xmega__usb__group_ga63047eec59b8e8798ca1d3366472d82b}{udd\-\_\-get\-\_\-micro\-\_\-frame\-\_\-number} (void)
+\begin{DoxyCompactList}\small\item\em Returns the current micro start of frame number. \end{DoxyCompactList}\item 
+\hypertarget{group__udd__xmega__usb__group_gac447212e04789282dabee65a23fe2a08}{void \hyperlink{group__udd__xmega__usb__group_gac447212e04789282dabee65a23fe2a08}{udd\-\_\-send\-\_\-remotewakeup} (void)}\label{group__udd__xmega__usb__group_gac447212e04789282dabee65a23fe2a08}
+
+\begin{DoxyCompactList}\small\item\em The U\-S\-B driver sends a resume signal called Upstream Resume. \end{DoxyCompactList}\item 
+void \hyperlink{group__udd__xmega__usb__group_ga017ef5ea7626be258c24d345218976f9}{udd\-\_\-set\-\_\-setup\-\_\-payload} (uint8\-\_\-t $\ast$payload, uint16\-\_\-t payload\-\_\-size)
+\begin{DoxyCompactList}\small\item\em Load setup payload. \end{DoxyCompactList}\item 
+\hypertarget{group__udd__xmega__usb__group_gaa6bf260d50629e273f98ad8ad2a80f9c}{{\bfseries I\-S\-R} (U\-S\-B\-\_\-\-B\-U\-S\-E\-V\-E\-N\-T\-\_\-vect)}\label{group__udd__xmega__usb__group_gaa6bf260d50629e273f98ad8ad2a80f9c}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gaee3be329a6b2d2c6c882c63dbf32b83c}{{\bfseries I\-S\-R} (U\-S\-B\-\_\-\-T\-R\-N\-C\-O\-M\-P\-L\-\_\-vect)}\label{group__udd__xmega__usb__group_gaee3be329a6b2d2c6c882c63dbf32b83c}
+
+\end{DoxyCompactItemize}
+\subsection*{Power management routine.}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__udd__xmega__usb__group_gaf5ca2932775dabb853197df18706c469}{\#define \hyperlink{group__udd__xmega__usb__group_gaf5ca2932775dabb853197df18706c469}{U\-S\-B\-C\-\_\-\-S\-L\-E\-E\-P\-\_\-\-M\-O\-D\-E\-\_\-\-U\-S\-B\-\_\-\-S\-U\-S\-P\-E\-N\-D}~\hyperlink{group__sleepmgr__group_ggaa990bc3ea16fcad09009cdc70dbc38c6a1807014e0e226d5b21cfc12d5061c8d0}{S\-L\-E\-E\-P\-M\-G\-R\-\_\-\-P\-D\-O\-W\-N}}\label{group__udd__xmega__usb__group_gaf5ca2932775dabb853197df18706c469}
+
+\begin{DoxyCompactList}\small\item\em Definition of sleep levels. \end{DoxyCompactList}\item 
+\hypertarget{group__udd__xmega__usb__group_ga90aeabbf00db4be8f0a1feef5cf0bbb3}{\#define {\bfseries U\-S\-B\-C\-\_\-\-S\-L\-E\-E\-P\-\_\-\-M\-O\-D\-E\-\_\-\-U\-S\-B\-\_\-\-I\-D\-L\-E}~\hyperlink{group__sleepmgr__group_ggaa990bc3ea16fcad09009cdc70dbc38c6ae4f3742b3532d5ebabef6f26fabf4487}{S\-L\-E\-E\-P\-M\-G\-R\-\_\-\-I\-D\-L\-E}}\label{group__udd__xmega__usb__group_ga90aeabbf00db4be8f0a1feef5cf0bbb3}
+
+\end{DoxyCompactItemize}
+\subsection*{Control endpoint low level management routine.}
+\label{_amgrpc60f904f933dd5c177261b92bc2abc62}%
+ This function performs control endpoint management. It handle the S\-E\-T\-U\-P/\-D\-A\-T\-A/\-H\-A\-N\-D\-S\-H\-A\-K\-E phases of a control transaction. \begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__udd__xmega__usb__group_gabc925782d47feeb37f6f943579038b84}{{\bfseries udd\-\_\-ctrl\-\_\-ep\-\_\-state\-\_\-t}}\label{group__udd__xmega__usb__group_gabc925782d47feeb37f6f943579038b84}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+U\-S\-B Device driver Compliance with common driver U\-D\-D. Copyright (c) 2011 -\/ 2014 Atmel Corporation. All rights reserved.
+
+\subsection{Macro Definition Documentation}
+\hypertarget{usb__device_8c_a5326d0dfa348635327c3562b130be6b3}{\index{usb\-\_\-device.\-c@{usb\-\_\-device.\-c}!U\-D\-D\-\_\-\-U\-S\-B\-\_\-\-I\-N\-T\-\_\-\-L\-E\-V\-E\-L@{U\-D\-D\-\_\-\-U\-S\-B\-\_\-\-I\-N\-T\-\_\-\-L\-E\-V\-E\-L}}
+\index{U\-D\-D\-\_\-\-U\-S\-B\-\_\-\-I\-N\-T\-\_\-\-L\-E\-V\-E\-L@{U\-D\-D\-\_\-\-U\-S\-B\-\_\-\-I\-N\-T\-\_\-\-L\-E\-V\-E\-L}!usb_device.c@{usb\-\_\-device.\-c}}
+\subsubsection[{U\-D\-D\-\_\-\-U\-S\-B\-\_\-\-I\-N\-T\-\_\-\-L\-E\-V\-E\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\-D\-D\-\_\-\-U\-S\-B\-\_\-\-I\-N\-T\-\_\-\-L\-E\-V\-E\-L~U\-S\-B\-\_\-\-I\-N\-T\-L\-V\-L\-\_\-\-L\-O\-\_\-gc}}\label{usb__device_8c_a5326d0dfa348635327c3562b130be6b3}
+Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support} 

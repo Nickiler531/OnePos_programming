@@ -1,0 +1,39 @@
+\hypertarget{group__nvm__group}{\section{N\-V\-M service}
+\label{group__nvm__group}\index{N\-V\-M service@{N\-V\-M service}}
+}
+
+
+Low-\/level driver implementation for the A\-V\-R X\-M\-E\-G\-A Non Volatile Memory Controller (N\-V\-M).  
+
+
+\subsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group__nvm__generic__group}{N\-V\-M driver generic module handling}
+\begin{DoxyCompactList}\small\item\em Support functions for the N\-V\-M driver. \end{DoxyCompactList}\item 
+\hyperlink{group__nvm__signature__group}{N\-V\-M driver signature handling}
+\begin{DoxyCompactList}\small\item\em Handling of signature rows. \end{DoxyCompactList}\item 
+\hyperlink{group__nvm__eeprom__group}{N\-V\-M driver E\-E\-P\-R\-O\-M handling}
+\begin{DoxyCompactList}\small\item\em Functions for handling internal E\-E\-P\-R\-O\-M memory. \end{DoxyCompactList}\item 
+\hyperlink{group__nvm__flash__group}{N\-V\-M driver flash handling}
+\begin{DoxyCompactList}\small\item\em Functions for handling internal flash memory. \end{DoxyCompactList}\item 
+\hyperlink{group__nvm__fuse__lock__group}{N\-V\-M driver fuse and lock bits handling}
+\begin{DoxyCompactList}\small\item\em Functions for reading fuses and writing lock bits. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Low-\/level driver implementation for the A\-V\-R X\-M\-E\-G\-A Non Volatile Memory Controller (N\-V\-M). See \hyperlink{common_nvm_quickstart}{Quick Start quide for common N\-V\-M driver}.
+
+This is the common A\-P\-I for non volatile memories. Additional features are available in the documentation of the specific modules.
+
+Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support}
+
+See \hyperlink{xmega_nvm_quickstart}{Quick Start Guide for the X\-M\-E\-G\-A N\-V\-M Driver}
+
+The X\-M\-E\-G\-A N\-V\-M controller interfaces the internal non-\/volatile memories in the X\-M\-E\-G\-A devices. Program memory, E\-E\-P\-R\-O\-M and signature row is can be interfaced by the module. See the documentation of each sub-\/module for more information.
+
+\begin{DoxyNote}{Note}
+If using G\-C\-C and the flash sub-\/module, remember to configure the boot section in the make file. More information in the sub-\/module documentation.
+\end{DoxyNote}
+\hypertarget{group__nvm__group_xmega_nvm_quickstart_section}{}\subsection{Quick Start Guide}\label{group__nvm__group_xmega_nvm_quickstart_section}
+See \hyperlink{xmega_nvm_quickstart}{Quick Start Guide for the X\-M\-E\-G\-A N\-V\-M Driver} 

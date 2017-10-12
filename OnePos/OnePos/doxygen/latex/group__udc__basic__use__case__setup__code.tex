@@ -1,0 +1,24 @@
+\hypertarget{group__udc__basic__use__case__setup__code}{\section{U\-S\-B Device Controller (U\-D\-C) -\/ Example code}
+\label{group__udc__basic__use__case__setup__code}\index{U\-S\-B Device Controller (\-U\-D\-C) -\/ Example code@{U\-S\-B Device Controller (\-U\-D\-C) -\/ Example code}}
+}
+Common example code for all U\-S\-B devices.
+
+Content of \hyperlink{conf__usb_8h}{conf\-\_\-usb.\-h}\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{        #define USB\_DEVICE\_VENDOR\_ID 0x03EB}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define USB\_DEVICE\_PRODUCT\_ID 0xXXXX}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define USB\_DEVICE\_MAJOR\_VERSION 1}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define USB\_DEVICE\_MINOR\_VERSION 0}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define USB\_DEVICE\_POWER 100}
+\textcolor{preprocessor}{        #define USB\_DEVICE\_ATTR USB\_CONFIG\_ATTR\_BUS\_POWERED}
+\end{DoxyCode}
+
+
+Add to application C-\/file\-: 
+\begin{DoxyCode}
+        \textcolor{keywordtype}{void} usb\_init(\textcolor{keywordtype}{void})
+        \{
+          \hyperlink{group__udc__group__interne_gadf4e193509cd03ab6333d62629ea51e7}{udc\_start}();
+        \}
+\end{DoxyCode}
+ 

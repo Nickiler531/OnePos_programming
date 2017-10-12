@@ -35,8 +35,9 @@
           <option id="common.services.basic.serial" value="Add" config="" content-id="Atmel.ASF" />
           <option id="common.services.basic.spi_master" value="Add" config="standard_spi" content-id="Atmel.ASF" />
           <option id="common.services.usb.class.device" value="Add" config="cdc" content-id="Atmel.ASF" />
-          <option id="xmega.drivers.twi" value="Add" config="both" content-id="Atmel.ASF" />
           <option id="xmega.drivers.ioport" value="Add" config="" content-id="Atmel.ASF" />
+          <option id="xmega.drivers.twi" value="Add" config="both" content-id="Atmel.ASF" />
+          <option id="common.drivers.nvm" value="Add" config="no_extmem" content-id="Atmel.ASF" />
         </options>
         <configurations>
           <configuration key="config.xmega.drivers.usb.device.sleepmgr" value="with_sleepmgr" default="with_sleepmgr" content-id="Atmel.ASF" />
@@ -123,6 +124,9 @@
           <file path="src/ASF/common/services/spi/spi_master.h" framework="" version="3.21.0" source="common\services\spi\spi_master.h" changed="False" content-id="Atmel.ASF" />
           <file path="src/ASF/common/services/spi/xmega_spi/spi_master.h" framework="" version="3.21.0" source="common\services\spi\xmega_spi\spi_master.h" changed="False" content-id="Atmel.ASF" />
           <file path="src/Config/conf_spi_master.h" framework="" version="3.21.0" source="common\services\spi\xmega_spi\module_config\conf_spi_master.h" changed="False" content-id="Atmel.ASF" />
+          <file path="src/ASF/common/drivers/nvm/xmega/xmega_nvm.c" framework="" version="3.21.0" source="common\drivers\nvm\xmega\xmega_nvm.c" changed="False" content-id="Atmel.ASF" />
+          <file path="src/ASF/common/drivers/nvm/common_nvm.h" framework="" version="3.21.0" source="common\drivers\nvm\common_nvm.h" changed="False" content-id="Atmel.ASF" />
+          <file path="src/Config/conf_nvm.h" framework="" version="3.21.0" source="common\drivers\nvm\xmega\module_config\conf_nvm.h" changed="False" content-id="Atmel.ASF" />
         </files>
         <documentation help="http://asf.atmel.com/docs/3.21.0/common.applications.user_application.user_board.xmegaau/html/index.html" />
         <offline-documentation help="" />
@@ -179,6 +183,7 @@
             <Value>../src/ASF/xmega/drivers/spi</Value>
             <Value>../src/ASF/common/services/spi/xmega_spi</Value>
             <Value>../src/ASF/common/services/spi</Value>
+            <Value>../src/ASF/common/drivers/nvm</Value>
           </ListValues>
         </avrgcc.compiler.directories.IncludePaths>
         <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
@@ -224,6 +229,7 @@
             <Value>../src/ASF/xmega/drivers/spi</Value>
             <Value>../src/ASF/common/services/spi/xmega_spi</Value>
             <Value>../src/ASF/common/services/spi</Value>
+            <Value>../src/ASF/common/drivers/nvm</Value>
           </ListValues>
         </avrgcc.assembler.general.IncludePaths>
       </AvrGcc>
@@ -274,6 +280,7 @@
             <Value>../src/ASF/xmega/drivers/spi</Value>
             <Value>../src/ASF/common/services/spi/xmega_spi</Value>
             <Value>../src/ASF/common/services/spi</Value>
+            <Value>../src/ASF/common/drivers/nvm</Value>
           </ListValues>
         </avrgcc.compiler.directories.IncludePaths>
         <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
@@ -320,6 +327,7 @@
             <Value>../src/ASF/xmega/drivers/spi</Value>
             <Value>../src/ASF/common/services/spi/xmega_spi</Value>
             <Value>../src/ASF/common/services/spi</Value>
+            <Value>../src/ASF/common/drivers/nvm</Value>
           </ListValues>
         </avrgcc.assembler.general.IncludePaths>
         <avrgcc.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcc.assembler.debugging.DebugLevel>
@@ -332,6 +340,9 @@
     <Folder Include="src\ASF\common\" />
     <Folder Include="src\ASF\common\boards\" />
     <Folder Include="src\ASF\common\boards\user_board\" />
+    <Folder Include="src\ASF\common\drivers\" />
+    <Folder Include="src\ASF\common\drivers\nvm\" />
+    <Folder Include="src\ASF\common\drivers\nvm\xmega\" />
     <Folder Include="src\ASF\common\services\" />
     <Folder Include="src\ASF\common\services\clock\" />
     <Folder Include="src\ASF\common\services\clock\xmega\" />
@@ -375,6 +386,12 @@
     <None Include="src\ASF\common\services\spi\spi_master.h">
       <SubType>compile</SubType>
     </None>
+    <None Include="src\ASF\common\drivers\nvm\common_nvm.h">
+      <SubType>compile</SubType>
+    </None>
+    <Compile Include="src\ASF\common\drivers\nvm\xmega\xmega_nvm.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\ASF\common\services\spi\xmega_spi\spi_master.c">
       <SubType>compile</SubType>
     </Compile>
@@ -558,10 +575,19 @@
     <None Include="src\config\conf_spi_master.h">
       <SubType>compile</SubType>
     </None>
+    <None Include="src\config\conf_nvm.h">
+      <SubType>compile</SubType>
+    </None>
+    <Compile Include="src\driver\ble.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\driver\deca_device.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\driver\deca_mutex.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\driver\deca_onepos.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\driver\deca_params_init.c">
@@ -576,6 +602,9 @@
     <Compile Include="src\driver\onepos.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="src\driver\onepos_config.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\driver\queue.c">
       <SubType>compile</SubType>
     </Compile>
@@ -585,7 +614,13 @@
     <Compile Include="src\driver\usb_serial.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="src\include\ble.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\include\deca_device_api.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\include\deca_onepos.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\include\deca_param_types.h">
@@ -603,7 +638,7 @@
     <Compile Include="src\include\deca_version.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\include\DW1000.h">
+    <Compile Include="src\include\onepos_config.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\include\queue.h">

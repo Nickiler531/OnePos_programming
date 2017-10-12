@@ -1,0 +1,99 @@
+Content of X\-M\-E\-G\-A \hyperlink{conf__clock_8h}{conf\-\_\-clock.\-h}\-: 
+\begin{DoxyCode}
+        \textcolor{comment}{// Configuration based on internal RC:}
+        \textcolor{comment}{// USB clock need of 48Mhz}
+\textcolor{preprocessor}{        #define CONFIG\_USBCLK\_SOURCE        USBCLK\_SRC\_RCOSC}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define CONFIG\_OSC\_RC32\_CAL         48000000UL}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define CONFIG\_OSC\_AUTOCAL\_RC32MHZ\_REF\_OSC  OSC\_ID\_USBSOF}
+\textcolor{preprocessor}{}        \textcolor{comment}{// CPU clock need of clock > 12MHz to run with USB (Here 24MHz)}
+\textcolor{preprocessor}{        #define CONFIG\_SYSCLK\_SOURCE     SYSCLK\_SRC\_RC32MHZ}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define CONFIG\_SYSCLK\_PSADIV     SYSCLK\_PSADIV\_2}
+\textcolor{preprocessor}{        #define CONFIG\_SYSCLK\_PSBCDIV    SYSCLK\_PSBCDIV\_1\_1}
+\end{DoxyCode}
+
+
+Content of \hyperlink{conf__clock_8h}{conf\-\_\-clock.\-h} for A\-T32\-U\-C3\-A0, A\-T32\-U\-C3\-A1, A\-T32\-U\-C3\-B devices (U\-S\-B\-B)\-: 
+\begin{DoxyCode}
+        \textcolor{comment}{// Configuration based on 12MHz external OSC:}
+\textcolor{preprocessor}{        #define CONFIG\_PLL1\_SOURCE          PLL\_SRC\_OSC0}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define CONFIG\_PLL1\_MUL             8}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define CONFIG\_PLL1\_DIV             2}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define CONFIG\_USBCLK\_SOURCE        USBCLK\_SRC\_PLL1}
+\textcolor{preprocessor}{        #define CONFIG\_USBCLK\_DIV           1 // Fusb = Fsys/(2 ^ USB\_div)}
+\end{DoxyCode}
+
+
+Content of \hyperlink{conf__clock_8h}{conf\-\_\-clock.\-h} for A\-T32\-U\-C3\-A3, A\-T32\-U\-C3\-A4 devices (U\-S\-B\-B with high speed support)\-: 
+\begin{DoxyCode}
+        \textcolor{comment}{// Configuration based on 12MHz external OSC:}
+\textcolor{preprocessor}{        #define CONFIG\_USBCLK\_SOURCE        USBCLK\_SRC\_OSC0}
+\textcolor{preprocessor}{        #define CONFIG\_USBCLK\_DIV           1 // Fusb = Fsys/(2 ^ USB\_div)}
+\end{DoxyCode}
+
+
+Content of \hyperlink{conf__clock_8h}{conf\-\_\-clock.\-h} for A\-T32\-U\-C3\-C, A\-T\-U\-C\-X\-X\-D, A\-T\-U\-C\-X\-X\-L3\-U, A\-T\-U\-C\-X\-X\-L4\-U devices (U\-S\-B\-C)\-: 
+\begin{DoxyCode}
+        \textcolor{comment}{// Configuration based on 12MHz external OSC:}
+\textcolor{preprocessor}{        #define CONFIG\_PLL1\_SOURCE          PLL\_SRC\_OSC0}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define CONFIG\_PLL1\_MUL             8}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define CONFIG\_PLL1\_DIV             2}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define CONFIG\_USBCLK\_SOURCE        USBCLK\_SRC\_PLL1}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define CONFIG\_USBCLK\_DIV           1 // Fusb = Fsys/(2 ^ USB\_div)}
+\textcolor{preprocessor}{}        \textcolor{comment}{// CPU clock need of clock > 25MHz to run with USBC}
+\textcolor{preprocessor}{        #define CONFIG\_SYSCLK\_SOURCE        SYSCLK\_SRC\_PLL1}
+\end{DoxyCode}
+
+
+Content of \hyperlink{conf__clock_8h}{conf\-\_\-clock.\-h} for S\-A\-M3\-S, S\-A\-M3\-S\-D, S\-A\-M4\-S devices (U\-P\-D\-: U\-S\-B Peripheral Device)\-: 
+\begin{DoxyCode}
+        \textcolor{comment}{// PLL1 (B) Options   (Fpll = (Fclk * PLL\_mul) / PLL\_div)}
+\textcolor{preprocessor}{        #define CONFIG\_PLL1\_SOURCE          PLL\_SRC\_MAINCK\_XTAL}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define CONFIG\_PLL1\_MUL             16}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define CONFIG\_PLL1\_DIV             2}
+\textcolor{preprocessor}{}        \textcolor{comment}{// USB Clock Source Options   (Fusb = FpllX / USB\_div)}
+\textcolor{preprocessor}{        #define CONFIG\_USBCLK\_SOURCE        USBCLK\_SRC\_PLL1}
+\textcolor{preprocessor}{        #define CONFIG\_USBCLK\_DIV           2}
+\end{DoxyCode}
+
+
+Content of \hyperlink{conf__clock_8h}{conf\-\_\-clock.\-h} for S\-A\-M3\-U device (U\-P\-D\-H\-S\-: U\-S\-B Peripheral Device High Speed)\-: 
+\begin{DoxyCode}
+        \textcolor{comment}{// USB Clock Source fixed at UPLL.}
+\end{DoxyCode}
+
+
+Content of \hyperlink{conf__clock_8h}{conf\-\_\-clock.\-h} for S\-A\-M3\-X, S\-A\-M3\-A devices (U\-O\-T\-G\-H\-S\-: U\-S\-B O\-T\-G High Speed)\-: 
+\begin{DoxyCode}
+        \textcolor{comment}{// USB Clock Source fixed at UPLL.}
+\textcolor{preprocessor}{        #define CONFIG\_USBCLK\_SOURCE        USBCLK\_SRC\_UPLL}
+\textcolor{preprocessor}{        #define CONFIG\_USBCLK\_DIV           1}
+\end{DoxyCode}
+
+
+Content of conf\-\_\-clocks.\-h for S\-A\-M\-D devices (U\-S\-B)\-: 
+\begin{DoxyCode}
+        \textcolor{comment}{// System clock bus configuration}
+\textcolor{preprocessor}{        #  define CONF\_CLOCK\_FLASH\_WAIT\_STATES            2}
+\textcolor{preprocessor}{}
+        \textcolor{comment}{// USB Clock Source fixed at DFLL.}
+        \textcolor{comment}{// SYSTEM\_CLOCK\_SOURCE\_DFLL configuration - Digital Frequency Locked
+       Loop}
+\textcolor{preprocessor}{        #  define CONF\_CLOCK\_DFLL\_ENABLE                  true}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #  define CONF\_CLOCK\_DFLL\_LOOP\_MODE              
+       SYSTEM\_CLOCK\_DFLL\_LOOP\_MODE\_USB\_RECOVERY}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #  define CONF\_CLOCK\_DFLL\_ON\_DEMAND               true}
+\textcolor{preprocessor}{}
+        \textcolor{comment}{// Set this to true to configure the GCLK when running clocks\_init. }
+        \textcolor{comment}{// If set to false, none of the GCLK generators will be configured in
+       clocks\_init().}
+\textcolor{preprocessor}{        #  define CONF\_CLOCK\_CONFIGURE\_GCLK               true}
+\textcolor{preprocessor}{}
+        \textcolor{comment}{// Configure GCLK generator 0 (Main Clock)}
+\textcolor{preprocessor}{        #  define CONF\_CLOCK\_GCLK\_0\_ENABLE                true}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #  define CONF\_CLOCK\_GCLK\_0\_RUN\_IN\_STANDBY        true}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #  define CONF\_CLOCK\_GCLK\_0\_CLOCK\_SOURCE         
+       SYSTEM\_CLOCK\_SOURCE\_DFLL}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #  define CONF\_CLOCK\_GCLK\_0\_PRESCALER             1}
+\textcolor{preprocessor}{        #  define CONF\_CLOCK\_GCLK\_0\_OUTPUT\_ENABLE         false}
+\end{DoxyCode}
+ 

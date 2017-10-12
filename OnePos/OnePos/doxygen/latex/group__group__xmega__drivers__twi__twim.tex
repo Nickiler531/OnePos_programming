@@ -1,0 +1,104 @@
+\hypertarget{group__group__xmega__drivers__twi__twim}{\section{T\-W\-I Master}
+\label{group__group__xmega__drivers__twi__twim}\index{T\-W\-I Master@{T\-W\-I Master}}
+}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group__group__xmega__drivers__twi__twim_gae4fbb549f8f2ecf379b60922b20e911f}{T\-W\-I\-\_\-\-S\-U\-C\-C\-E\-S\-S}~(\hyperlink{group__group__xmega__utils__status__codes_gga751c892e5a46b8e7d282085a5a5bf151a7e4a42e3b6dd63708c64cf3db6f69566}{S\-T\-A\-T\-U\-S\-\_\-\-O\-K})
+\begin{DoxyCompactList}\small\item\em Error Codes for the Module. \end{DoxyCompactList}\item 
+\#define \hyperlink{group__group__xmega__drivers__twi__twim_gaf373fdbc2054cf1a070ba2a24ddaedf3}{T\-W\-I\-\_\-\-B\-A\-U\-D}(F\-\_\-\-S\-Y\-S, F\-\_\-\-T\-W\-I)~((F\-\_\-\-S\-Y\-S / (2 $\ast$ F\-\_\-\-T\-W\-I)) -\/ 5)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+status\-\_\-code\-\_\-t \hyperlink{group__group__xmega__drivers__twi__twim_ga8029a07f3322bf43c289f5acb442ef29}{twi\-\_\-master\-\_\-init} (T\-W\-I\-\_\-t $\ast$twi, const \hyperlink{structtwi__options__t}{twi\-\_\-options\-\_\-t} $\ast$opt)
+\begin{DoxyCompactList}\small\item\em Initialize the twi master module. \end{DoxyCompactList}\item 
+status\-\_\-code\-\_\-t \hyperlink{group__group__xmega__drivers__twi__twim_ga87be99eb2911dfaecceda6521c0818b2}{twi\-\_\-master\-\_\-transfer} (T\-W\-I\-\_\-t $\ast$twi, const \hyperlink{structtwi__package__t}{twi\-\_\-package\-\_\-t} $\ast$package, \hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} read)
+\begin{DoxyCompactList}\small\item\em Perform a T\-W\-I master write or read transfer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support} 
+
+\subsection{Macro Definition Documentation}
+\hypertarget{group__group__xmega__drivers__twi__twim_gaf373fdbc2054cf1a070ba2a24ddaedf3}{\index{T\-W\-I Master@{T\-W\-I Master}!T\-W\-I\-\_\-\-B\-A\-U\-D@{T\-W\-I\-\_\-\-B\-A\-U\-D}}
+\index{T\-W\-I\-\_\-\-B\-A\-U\-D@{T\-W\-I\-\_\-\-B\-A\-U\-D}!TWI Master@{T\-W\-I Master}}
+\subsubsection[{T\-W\-I\-\_\-\-B\-A\-U\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-W\-I\-\_\-\-B\-A\-U\-D(
+\begin{DoxyParamCaption}
+\item[{}]{F\-\_\-\-S\-Y\-S, }
+\item[{}]{F\-\_\-\-T\-W\-I}
+\end{DoxyParamCaption}
+)~((F\-\_\-\-S\-Y\-S / (2 $\ast$ F\-\_\-\-T\-W\-I)) -\/ 5)}}\label{group__group__xmega__drivers__twi__twim_gaf373fdbc2054cf1a070ba2a24ddaedf3}
+Baud register setting calculation. Formula described in datasheet. \hypertarget{group__group__xmega__drivers__twi__twim_gae4fbb549f8f2ecf379b60922b20e911f}{\index{T\-W\-I Master@{T\-W\-I Master}!T\-W\-I\-\_\-\-S\-U\-C\-C\-E\-S\-S@{T\-W\-I\-\_\-\-S\-U\-C\-C\-E\-S\-S}}
+\index{T\-W\-I\-\_\-\-S\-U\-C\-C\-E\-S\-S@{T\-W\-I\-\_\-\-S\-U\-C\-C\-E\-S\-S}!TWI Master@{T\-W\-I Master}}
+\subsubsection[{T\-W\-I\-\_\-\-S\-U\-C\-C\-E\-S\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-W\-I\-\_\-\-S\-U\-C\-C\-E\-S\-S~({\bf S\-T\-A\-T\-U\-S\-\_\-\-O\-K})}}\label{group__group__xmega__drivers__twi__twim_gae4fbb549f8f2ecf379b60922b20e911f}
+
+
+Error Codes for the Module. 
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000003}{Deprecated}]This definition is provided for compatibility with existing A\-S\-F example applications. This module uses the status\-\_\-code\-\_\-t values that will replace module-\/specific error codes in A\-S\-F drivers. \end{DoxyRefDesc}
+
+
+\subsection{Function Documentation}
+\hypertarget{group__group__xmega__drivers__twi__twim_ga8029a07f3322bf43c289f5acb442ef29}{\index{T\-W\-I Master@{T\-W\-I Master}!twi\-\_\-master\-\_\-init@{twi\-\_\-master\-\_\-init}}
+\index{twi\-\_\-master\-\_\-init@{twi\-\_\-master\-\_\-init}!TWI Master@{T\-W\-I Master}}
+\subsubsection[{twi\-\_\-master\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}status\-\_\-code\-\_\-t twi\-\_\-master\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{T\-W\-I\-\_\-t $\ast$}]{twi, }
+\item[{const {\bf twi\-\_\-options\-\_\-t} $\ast$}]{opt}
+\end{DoxyParamCaption}
+)}}\label{group__group__xmega__drivers__twi__twim_ga8029a07f3322bf43c289f5acb442ef29}
+
+
+Initialize the twi master module. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em twi} & Base address of the T\-W\-I (i.\-e. \&T\-W\-I\-C). \\
+\hline
+{\em $\ast$opt} & Options for initializing the twi module (see \hyperlink{structtwi__options__t}{twi\-\_\-options\-\_\-t}) \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em S\-T\-A\-T\-U\-S\-\_\-\-O\-K} & Transaction is successful \\
+\hline
+{\em E\-R\-R\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-A\-R\-G} & Invalid arguments in {\ttfamily opt}. \\
+\hline
+\end{DoxyRetVals}
+\hypertarget{group__group__xmega__drivers__twi__twim_ga87be99eb2911dfaecceda6521c0818b2}{\index{T\-W\-I Master@{T\-W\-I Master}!twi\-\_\-master\-\_\-transfer@{twi\-\_\-master\-\_\-transfer}}
+\index{twi\-\_\-master\-\_\-transfer@{twi\-\_\-master\-\_\-transfer}!TWI Master@{T\-W\-I Master}}
+\subsubsection[{twi\-\_\-master\-\_\-transfer}]{\setlength{\rightskip}{0pt plus 5cm}status\-\_\-code\-\_\-t twi\-\_\-master\-\_\-transfer (
+\begin{DoxyParamCaption}
+\item[{T\-W\-I\-\_\-t $\ast$}]{twi, }
+\item[{const {\bf twi\-\_\-package\-\_\-t} $\ast$}]{package, }
+\item[{{\bf bool}}]{read}
+\end{DoxyParamCaption}
+)}}\label{group__group__xmega__drivers__twi__twim_ga87be99eb2911dfaecceda6521c0818b2}
+
+
+Perform a T\-W\-I master write or read transfer. 
+
+This function is a T\-W\-I Master write or read transaction.
+
+
+\begin{DoxyParams}{Parameters}
+{\em twi} & Base address of the T\-W\-I (i.\-e. \&T\-W\-I\-\_\-t). \\
+\hline
+{\em package} & Package information and data (see \hyperlink{structtwi__package__t}{twi\-\_\-package\-\_\-t}) \\
+\hline
+{\em read} & Selects the transfer direction\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status\-\_\-code\-\_\-t
+\begin{DoxyItemize}
+\item S\-T\-A\-T\-U\-S\-\_\-\-O\-K if the transfer completes
+\item E\-R\-R\-\_\-\-B\-U\-S\-Y to indicate an unavailable bus
+\item E\-R\-R\-\_\-\-I\-O\-\_\-\-E\-R\-R\-O\-R to indicate a bus transaction error
+\item E\-R\-R\-\_\-\-N\-O\-\_\-\-M\-E\-M\-O\-R\-Y to indicate buffer errors
+\item E\-R\-R\-\_\-\-P\-R\-O\-T\-O\-C\-O\-L to indicate an unexpected bus state
+\item E\-R\-R\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-A\-R\-G to indicate invalid arguments. 
+\end{DoxyItemize}
+\end{DoxyReturn}

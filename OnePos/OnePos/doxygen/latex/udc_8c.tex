@@ -1,0 +1,51 @@
+\hypertarget{udc_8c}{\section{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/usb/udc/udc.c File Reference}
+\label{udc_8c}\index{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/usb/udc/udc.\-c@{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/usb/udc/udc.\-c}}
+}
+
+
+U\-S\-B Device Controller (U\-D\-C)  
+
+
+{\ttfamily \#include \char`\"{}conf\-\_\-usb.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}usb\-\_\-protocol.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}udd.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}udc\-\_\-desc.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}udi.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}udc.\-h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structudc__string__desc__t}{udc\-\_\-string\-\_\-desc\-\_\-t}
+\begin{DoxyCompactList}\small\item\em U\-S\-B device string descriptor Structure used to transfer A\-S\-C\-I\-I strings to U\-S\-B String descriptor structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structusb__iface__desc__t}{usb\-\_\-iface\-\_\-desc\-\_\-t} \hyperlink{group__udc__desc__group_gae086959cec07a2e71ab069e25a51764f}{U\-D\-C\-\_\-\-D\-E\-S\-C\-\_\-\-S\-T\-O\-R\-A\-G\-E} $\ast$ \hyperlink{group__udc__group__interne_gadb2a0f5ad1e834d4d7e7777f901d64d2}{udc\-\_\-get\-\_\-interface\-\_\-desc} (void)
+\begin{DoxyCompactList}\small\item\em Returns a pointer on the current interface descriptor. \end{DoxyCompactList}\item 
+\hypertarget{group__udc__group__interne_gadf4e193509cd03ab6333d62629ea51e7}{void \hyperlink{group__udc__group__interne_gadf4e193509cd03ab6333d62629ea51e7}{udc\-\_\-start} (void)}\label{group__udc__group__interne_gadf4e193509cd03ab6333d62629ea51e7}
+
+\begin{DoxyCompactList}\small\item\em Start the U\-S\-B Device stack. \end{DoxyCompactList}\item 
+\hypertarget{group__udc__group__interne_gae2264dd91b24db9d4bb23fb1a2014972}{void \hyperlink{group__udc__group__interne_gae2264dd91b24db9d4bb23fb1a2014972}{udc\-\_\-stop} (void)}\label{group__udc__group__interne_gae2264dd91b24db9d4bb23fb1a2014972}
+
+\begin{DoxyCompactList}\small\item\em Stop the U\-S\-B Device stack. \end{DoxyCompactList}\item 
+void \hyperlink{group__udc__group__interne_ga11a32ff7928ba06d3b59e95e0a2b7a92}{udc\-\_\-reset} (void)
+\begin{DoxyCompactList}\small\item\em Reset the current configuration of the U\-S\-B device, This routines can be called by U\-D\-D when a R\-E\-S\-E\-T on the U\-S\-B line occurs. \end{DoxyCompactList}\item 
+void \hyperlink{group__udc__group__interne_ga4afae313045f44b5eb4c60957ab8ef4e}{udc\-\_\-sof\-\_\-notify} (void)
+\begin{DoxyCompactList}\small\item\em To signal that a S\-O\-F is occurred. \end{DoxyCompactList}\item 
+\hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{group__udc__group__interne_ga58c2916d7984e0e5b2143cadf4af6080}{udc\-\_\-process\-\_\-setup} (void)
+\begin{DoxyCompactList}\small\item\em Main routine to manage the U\-S\-B S\-E\-T\-U\-P request. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Internal structure to store the U\-S\-B device main strings}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__udc__group__interne_gac2dafd8d9efe73f2709291818829a79b}{\#define \hyperlink{group__udc__group__interne_gac2dafd8d9efe73f2709291818829a79b}{U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-M\-A\-N\-U\-F\-A\-C\-T\-U\-R\-E\-\_\-\-N\-A\-M\-E\-\_\-\-S\-I\-Z\-E}~0}\label{group__udc__group__interne_gac2dafd8d9efe73f2709291818829a79b}
+
+\begin{DoxyCompactList}\small\item\em U\-S\-B device manufacture name storage String is allocated only if U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-M\-A\-N\-U\-F\-A\-C\-T\-U\-R\-E\-\_\-\-N\-A\-M\-E is declared by usb application configuration. \end{DoxyCompactList}\item 
+\hypertarget{group__udc__group__interne_ga76a9e0f1f322165feaf0a8f2f583ea8f}{\#define \hyperlink{group__udc__group__interne_ga76a9e0f1f322165feaf0a8f2f583ea8f}{U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-P\-R\-O\-D\-U\-C\-T\-\_\-\-N\-A\-M\-E\-\_\-\-S\-I\-Z\-E}~0}\label{group__udc__group__interne_ga76a9e0f1f322165feaf0a8f2f583ea8f}
+
+\begin{DoxyCompactList}\small\item\em U\-S\-B device product name storage String is allocated only if U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-P\-R\-O\-D\-U\-C\-T\-\_\-\-N\-A\-M\-E is declared by usb application configuration. \end{DoxyCompactList}\item 
+\#define \hyperlink{group__udc__group__interne_gacf4c1ef7c6001ee2b919e81143543899}{U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-S\-E\-R\-I\-A\-L\-\_\-\-N\-A\-M\-E\-\_\-\-S\-I\-Z\-E}~0
+\begin{DoxyCompactList}\small\item\em Get U\-S\-B device serial number. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+U\-S\-B Device Controller (U\-D\-C) Copyright (c) 2009 -\/ 2014 Atmel Corporation. All rights reserved.

@@ -1,0 +1,170 @@
+\hypertarget{group__ioport__group}{\section{Common I\-O\-P\-O\-R\-T A\-P\-I}
+\label{group__ioport__group}\index{Common I\-O\-P\-O\-R\-T A\-P\-I@{Common I\-O\-P\-O\-R\-T A\-P\-I}}
+}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group__ioport__group_gabc09edad7c3187dec63ce47e6f1b3c51}{I\-O\-P\-O\-R\-T\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-P\-I\-N}(port, pin)~((I\-O\-P\-O\-R\-T\-\_\- \#\# port) $\ast$ 8 + (pin))
+\begin{DoxyCompactList}\small\item\em Create I\-O\-P\-O\-R\-T pin number. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{group__ioport__group_ga9c267f89800e58bd9dfd74e662a4a4c1}{ioport\-\_\-direction} \{ \hyperlink{group__ioport__group_gga9c267f89800e58bd9dfd74e662a4a4c1af854a0dce084e5a8e8744f9a502e7b7b}{I\-O\-P\-O\-R\-T\-\_\-\-D\-I\-R\-\_\-\-I\-N\-P\-U\-T}, 
+\hyperlink{group__ioport__group_gga9c267f89800e58bd9dfd74e662a4a4c1a06de24313dad0169f3a366c62a84f4cc}{I\-O\-P\-O\-R\-T\-\_\-\-D\-I\-R\-\_\-\-O\-U\-T\-P\-U\-T}
+ \}
+\begin{DoxyCompactList}\small\item\em I\-O\-P\-O\-R\-T pin directions. \end{DoxyCompactList}\item 
+enum \hyperlink{group__ioport__group_gaed084e0b73201e5391dd37f484041a31}{ioport\-\_\-value} \{ \hyperlink{group__ioport__group_ggaed084e0b73201e5391dd37f484041a31a2a406eb5dcf70b9bcadc61d3d7cec65b}{I\-O\-P\-O\-R\-T\-\_\-\-P\-I\-N\-\_\-\-L\-E\-V\-E\-L\-\_\-\-L\-O\-W}, 
+\hyperlink{group__ioport__group_ggaed084e0b73201e5391dd37f484041a31a94f879952a99f7f19eb1ba87c6844082}{I\-O\-P\-O\-R\-T\-\_\-\-P\-I\-N\-\_\-\-L\-E\-V\-E\-L\-\_\-\-H\-I\-G\-H}
+ \}
+\begin{DoxyCompactList}\small\item\em I\-O\-P\-O\-R\-T levels. \end{DoxyCompactList}\item 
+enum \hyperlink{group__ioport__group_ga8c5d67795f1836c65f568e11d7cb9bd9}{ioport\-\_\-sense} \{ \hyperlink{group__ioport__group_gga8c5d67795f1836c65f568e11d7cb9bd9a29c5f09354671130c3c72705117b7f92}{I\-O\-P\-O\-R\-T\-\_\-\-S\-E\-N\-S\-E\-\_\-\-B\-O\-T\-H\-E\-D\-G\-E\-S}, 
+\hyperlink{group__ioport__group_gga8c5d67795f1836c65f568e11d7cb9bd9a65c95c9bea4a4c84749af3eba660d654}{I\-O\-P\-O\-R\-T\-\_\-\-S\-E\-N\-S\-E\-\_\-\-R\-I\-S\-I\-N\-G}, 
+\hyperlink{group__ioport__group_gga8c5d67795f1836c65f568e11d7cb9bd9adbf4e5509f715da8c470405785bb81f4}{I\-O\-P\-O\-R\-T\-\_\-\-S\-E\-N\-S\-E\-\_\-\-F\-A\-L\-L\-I\-N\-G}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{I\-O\-P\-O\-R\-T Mode bit definitions}
+\label{_amgrp174c526c7096d8e7bad7e68f9d853afd}%
+ \begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group__ioport__group_ga09bc83ba115ba2da8d9763625421001b}{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-T\-O\-T\-E\-M}~(0x00 $<$$<$ 3)
+\item 
+\#define \hyperlink{group__ioport__group_ga877f42c6b744dd9576da832b4772f0ea}{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-B\-U\-S\-K\-E\-E\-P\-E\-R}~(0x01 $<$$<$ 3)
+\item 
+\#define \hyperlink{group__ioport__group_ga790f18d21491a223709cec76bc0ecc4d}{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-P\-U\-L\-L\-D\-O\-W\-N}~(0x02 $<$$<$ 3)
+\item 
+\#define \hyperlink{group__ioport__group_ga4c5d85e77f012b73dce89cfb84ef851f}{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-P\-U\-L\-L\-U\-P}~(0x03 $<$$<$ 3)
+\item 
+\#define \hyperlink{group__ioport__group_gafe254c1a125d7a020b768af3ff5ceaf8}{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-O\-R}~(0x04 $<$$<$ 3)
+\item 
+\#define \hyperlink{group__ioport__group_gae0b77dcd28d7e2ec0f0a1967e462ced5}{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-A\-N\-D}~(0x05 $<$$<$ 3)
+\item 
+\#define \hyperlink{group__ioport__group_gae5079825b911f58645f7445c9dd7095d}{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-O\-R\-P\-U\-L\-L}~(0x06 $<$$<$ 3)
+\item 
+\#define \hyperlink{group__ioport__group_gad3d3d6ac518bb75052c40e4b1bc53d35}{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-A\-N\-D\-P\-U\-L\-L}~(0x07 $<$$<$ 3)
+\item 
+\#define \hyperlink{group__ioport__group_gaf3ae92747feac2e40c19bba09b169ac7}{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-I\-N\-V\-E\-R\-T\-\_\-\-P\-I\-N}~(0x01 $<$$<$ 6)
+\item 
+\#define \hyperlink{group__ioport__group_ga80394b4c617e7c772d7b5eb16a34952a}{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-S\-L\-E\-W\-\_\-\-R\-A\-T\-E\-\_\-\-L\-I\-M\-I\-T}~(0x01 $<$$<$ 7)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support}
+
+See \hyperlink{ioport_quickstart}{Quick start guide for the common I\-O\-P\-O\-R\-T service}.
+
+This is common I\-O\-P\-O\-R\-T service for G\-P\-I\-O pin configuration and control in a standardized manner across the M\-E\-G\-A, M\-E\-G\-A\-\_\-\-R\-F, X\-M\-E\-G\-A, U\-C3 and A\-R\-M devices.
+
+Port pin control code is optimized for each platform, and should produce both compact and fast execution times when used with constant values.\hypertarget{group__usart__group_dependencies}{}\subsection{Dependencies}\label{group__usart__group_dependencies}
+This driver depends on the following modules\-:
+\begin{DoxyItemize}
+\item \hyperlink{group__sysclk__group}{System Clock Management} for clock speed and functions.
+\end{DoxyItemize}\hypertarget{group__ioport__group_ioport_modes}{}\subsection{I\-O\-P\-O\-R\-T Modes}\label{group__ioport__group_ioport_modes}
+For details on these please see the X\-M\-E\-G\-A Manual. 
+
+\subsection{Macro Definition Documentation}
+\hypertarget{group__ioport__group_gabc09edad7c3187dec63ce47e6f1b3c51}{\index{Common I\-O\-P\-O\-R\-T A\-P\-I@{Common I\-O\-P\-O\-R\-T A\-P\-I}!I\-O\-P\-O\-R\-T\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-P\-I\-N@{I\-O\-P\-O\-R\-T\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-P\-I\-N}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-P\-I\-N@{I\-O\-P\-O\-R\-T\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-P\-I\-N}!Common IOPORT API@{Common I\-O\-P\-O\-R\-T A\-P\-I}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-P\-I\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-P\-I\-N(
+\begin{DoxyParamCaption}
+\item[{}]{port, }
+\item[{}]{pin}
+\end{DoxyParamCaption}
+)~((I\-O\-P\-O\-R\-T\-\_\- \#\# port) $\ast$ 8 + (pin))}}\label{group__ioport__group_gabc09edad7c3187dec63ce47e6f1b3c51}
+
+
+Create I\-O\-P\-O\-R\-T pin number. 
+
+Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support}
+
+Create a I\-O\-P\-O\-R\-T pin number for use with the I\-O\-P\-O\-R\-T functions.
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & I\-O\-P\-O\-R\-T port (e.\-g. P\-O\-R\-T\-A, P\-A or P\-I\-O\-A depending on chosen architecture) \\
+\hline
+{\em pin} & I\-O\-P\-O\-R\-T zero-\/based index of the I/\-O pin \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__ioport__group_ga877f42c6b744dd9576da832b4772f0ea}{\index{Common I\-O\-P\-O\-R\-T A\-P\-I@{Common I\-O\-P\-O\-R\-T A\-P\-I}!I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-B\-U\-S\-K\-E\-E\-P\-E\-R@{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-B\-U\-S\-K\-E\-E\-P\-E\-R}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-B\-U\-S\-K\-E\-E\-P\-E\-R@{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-B\-U\-S\-K\-E\-E\-P\-E\-R}!Common IOPORT API@{Common I\-O\-P\-O\-R\-T A\-P\-I}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-B\-U\-S\-K\-E\-E\-P\-E\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-B\-U\-S\-K\-E\-E\-P\-E\-R~(0x01 $<$$<$ 3)}}\label{group__ioport__group_ga877f42c6b744dd9576da832b4772f0ea}
+Buskeeper \hypertarget{group__ioport__group_gaf3ae92747feac2e40c19bba09b169ac7}{\index{Common I\-O\-P\-O\-R\-T A\-P\-I@{Common I\-O\-P\-O\-R\-T A\-P\-I}!I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-I\-N\-V\-E\-R\-T\-\_\-\-P\-I\-N@{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-I\-N\-V\-E\-R\-T\-\_\-\-P\-I\-N}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-I\-N\-V\-E\-R\-T\-\_\-\-P\-I\-N@{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-I\-N\-V\-E\-R\-T\-\_\-\-P\-I\-N}!Common IOPORT API@{Common I\-O\-P\-O\-R\-T A\-P\-I}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-I\-N\-V\-E\-R\-T\-\_\-\-P\-I\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-I\-N\-V\-E\-R\-T\-\_\-\-P\-I\-N~(0x01 $<$$<$ 6)}}\label{group__ioport__group_gaf3ae92747feac2e40c19bba09b169ac7}
+Invert output and input \hypertarget{group__ioport__group_ga790f18d21491a223709cec76bc0ecc4d}{\index{Common I\-O\-P\-O\-R\-T A\-P\-I@{Common I\-O\-P\-O\-R\-T A\-P\-I}!I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-P\-U\-L\-L\-D\-O\-W\-N@{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-P\-U\-L\-L\-D\-O\-W\-N}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-P\-U\-L\-L\-D\-O\-W\-N@{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-P\-U\-L\-L\-D\-O\-W\-N}!Common IOPORT API@{Common I\-O\-P\-O\-R\-T A\-P\-I}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-P\-U\-L\-L\-D\-O\-W\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-P\-U\-L\-L\-D\-O\-W\-N~(0x02 $<$$<$ 3)}}\label{group__ioport__group_ga790f18d21491a223709cec76bc0ecc4d}
+Pull-\/down \hypertarget{group__ioport__group_ga4c5d85e77f012b73dce89cfb84ef851f}{\index{Common I\-O\-P\-O\-R\-T A\-P\-I@{Common I\-O\-P\-O\-R\-T A\-P\-I}!I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-P\-U\-L\-L\-U\-P@{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-P\-U\-L\-L\-U\-P}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-P\-U\-L\-L\-U\-P@{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-P\-U\-L\-L\-U\-P}!Common IOPORT API@{Common I\-O\-P\-O\-R\-T A\-P\-I}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-P\-U\-L\-L\-U\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-P\-U\-L\-L\-U\-P~(0x03 $<$$<$ 3)}}\label{group__ioport__group_ga4c5d85e77f012b73dce89cfb84ef851f}
+Pull-\/up \hypertarget{group__ioport__group_ga80394b4c617e7c772d7b5eb16a34952a}{\index{Common I\-O\-P\-O\-R\-T A\-P\-I@{Common I\-O\-P\-O\-R\-T A\-P\-I}!I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-S\-L\-E\-W\-\_\-\-R\-A\-T\-E\-\_\-\-L\-I\-M\-I\-T@{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-S\-L\-E\-W\-\_\-\-R\-A\-T\-E\-\_\-\-L\-I\-M\-I\-T}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-S\-L\-E\-W\-\_\-\-R\-A\-T\-E\-\_\-\-L\-I\-M\-I\-T@{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-S\-L\-E\-W\-\_\-\-R\-A\-T\-E\-\_\-\-L\-I\-M\-I\-T}!Common IOPORT API@{Common I\-O\-P\-O\-R\-T A\-P\-I}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-S\-L\-E\-W\-\_\-\-R\-A\-T\-E\-\_\-\-L\-I\-M\-I\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-S\-L\-E\-W\-\_\-\-R\-A\-T\-E\-\_\-\-L\-I\-M\-I\-T~(0x01 $<$$<$ 7)}}\label{group__ioport__group_ga80394b4c617e7c772d7b5eb16a34952a}
+Slew rate limiting \hypertarget{group__ioport__group_ga09bc83ba115ba2da8d9763625421001b}{\index{Common I\-O\-P\-O\-R\-T A\-P\-I@{Common I\-O\-P\-O\-R\-T A\-P\-I}!I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-T\-O\-T\-E\-M@{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-T\-O\-T\-E\-M}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-T\-O\-T\-E\-M@{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-T\-O\-T\-E\-M}!Common IOPORT API@{Common I\-O\-P\-O\-R\-T A\-P\-I}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-T\-O\-T\-E\-M}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-T\-O\-T\-E\-M~(0x00 $<$$<$ 3)}}\label{group__ioport__group_ga09bc83ba115ba2da8d9763625421001b}
+Totem-\/pole \hypertarget{group__ioport__group_gae0b77dcd28d7e2ec0f0a1967e462ced5}{\index{Common I\-O\-P\-O\-R\-T A\-P\-I@{Common I\-O\-P\-O\-R\-T A\-P\-I}!I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-A\-N\-D@{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-A\-N\-D}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-A\-N\-D@{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-A\-N\-D}!Common IOPORT API@{Common I\-O\-P\-O\-R\-T A\-P\-I}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-A\-N\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-A\-N\-D~(0x05 $<$$<$ 3)}}\label{group__ioport__group_gae0b77dcd28d7e2ec0f0a1967e462ced5}
+Wired A\-N\-D \hypertarget{group__ioport__group_gad3d3d6ac518bb75052c40e4b1bc53d35}{\index{Common I\-O\-P\-O\-R\-T A\-P\-I@{Common I\-O\-P\-O\-R\-T A\-P\-I}!I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-A\-N\-D\-P\-U\-L\-L@{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-A\-N\-D\-P\-U\-L\-L}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-A\-N\-D\-P\-U\-L\-L@{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-A\-N\-D\-P\-U\-L\-L}!Common IOPORT API@{Common I\-O\-P\-O\-R\-T A\-P\-I}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-A\-N\-D\-P\-U\-L\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-A\-N\-D\-P\-U\-L\-L~(0x07 $<$$<$ 3)}}\label{group__ioport__group_gad3d3d6ac518bb75052c40e4b1bc53d35}
+Wired A\-N\-D with pull-\/up \hypertarget{group__ioport__group_gafe254c1a125d7a020b768af3ff5ceaf8}{\index{Common I\-O\-P\-O\-R\-T A\-P\-I@{Common I\-O\-P\-O\-R\-T A\-P\-I}!I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-O\-R@{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-O\-R}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-O\-R@{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-O\-R}!Common IOPORT API@{Common I\-O\-P\-O\-R\-T A\-P\-I}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-O\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-O\-R~(0x04 $<$$<$ 3)}}\label{group__ioport__group_gafe254c1a125d7a020b768af3ff5ceaf8}
+Wired O\-R \hypertarget{group__ioport__group_gae5079825b911f58645f7445c9dd7095d}{\index{Common I\-O\-P\-O\-R\-T A\-P\-I@{Common I\-O\-P\-O\-R\-T A\-P\-I}!I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-O\-R\-P\-U\-L\-L@{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-O\-R\-P\-U\-L\-L}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-O\-R\-P\-U\-L\-L@{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-O\-R\-P\-U\-L\-L}!Common IOPORT API@{Common I\-O\-P\-O\-R\-T A\-P\-I}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-O\-R\-P\-U\-L\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-M\-O\-D\-E\-\_\-\-W\-I\-R\-E\-D\-O\-R\-P\-U\-L\-L~(0x06 $<$$<$ 3)}}\label{group__ioport__group_gae5079825b911f58645f7445c9dd7095d}
+Wired O\-R with pull-\/down 
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{group__ioport__group_ga9c267f89800e58bd9dfd74e662a4a4c1}{\index{Common I\-O\-P\-O\-R\-T A\-P\-I@{Common I\-O\-P\-O\-R\-T A\-P\-I}!ioport\-\_\-direction@{ioport\-\_\-direction}}
+\index{ioport\-\_\-direction@{ioport\-\_\-direction}!Common IOPORT API@{Common I\-O\-P\-O\-R\-T A\-P\-I}}
+\subsubsection[{ioport\-\_\-direction}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf ioport\-\_\-direction}}}\label{group__ioport__group_ga9c267f89800e58bd9dfd74e662a4a4c1}
+
+
+I\-O\-P\-O\-R\-T pin directions. 
+
+\begin{Desc}
+\item[Enumerator\-: ]\par
+\begin{description}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-D\-I\-R\-\_\-\-I\-N\-P\-U\-T@{I\-O\-P\-O\-R\-T\-\_\-\-D\-I\-R\-\_\-\-I\-N\-P\-U\-T}!Common I\-O\-P\-O\-R\-T A\-P\-I@{Common I\-O\-P\-O\-R\-T A\-P\-I}}\index{Common I\-O\-P\-O\-R\-T A\-P\-I@{Common I\-O\-P\-O\-R\-T A\-P\-I}!I\-O\-P\-O\-R\-T\-\_\-\-D\-I\-R\-\_\-\-I\-N\-P\-U\-T@{I\-O\-P\-O\-R\-T\-\_\-\-D\-I\-R\-\_\-\-I\-N\-P\-U\-T}}\item[{\em 
+\hypertarget{group__ioport__group_gga9c267f89800e58bd9dfd74e662a4a4c1af854a0dce084e5a8e8744f9a502e7b7b}{I\-O\-P\-O\-R\-T\-\_\-\-D\-I\-R\-\_\-\-I\-N\-P\-U\-T}\label{group__ioport__group_gga9c267f89800e58bd9dfd74e662a4a4c1af854a0dce084e5a8e8744f9a502e7b7b}
+}]I\-O\-P\-O\-R\-T input direction \index{I\-O\-P\-O\-R\-T\-\_\-\-D\-I\-R\-\_\-\-O\-U\-T\-P\-U\-T@{I\-O\-P\-O\-R\-T\-\_\-\-D\-I\-R\-\_\-\-O\-U\-T\-P\-U\-T}!Common I\-O\-P\-O\-R\-T A\-P\-I@{Common I\-O\-P\-O\-R\-T A\-P\-I}}\index{Common I\-O\-P\-O\-R\-T A\-P\-I@{Common I\-O\-P\-O\-R\-T A\-P\-I}!I\-O\-P\-O\-R\-T\-\_\-\-D\-I\-R\-\_\-\-O\-U\-T\-P\-U\-T@{I\-O\-P\-O\-R\-T\-\_\-\-D\-I\-R\-\_\-\-O\-U\-T\-P\-U\-T}}\item[{\em 
+\hypertarget{group__ioport__group_gga9c267f89800e58bd9dfd74e662a4a4c1a06de24313dad0169f3a366c62a84f4cc}{I\-O\-P\-O\-R\-T\-\_\-\-D\-I\-R\-\_\-\-O\-U\-T\-P\-U\-T}\label{group__ioport__group_gga9c267f89800e58bd9dfd74e662a4a4c1a06de24313dad0169f3a366c62a84f4cc}
+}]I\-O\-P\-O\-R\-T output direction \end{description}
+\end{Desc}
+
+\hypertarget{group__ioport__group_ga8c5d67795f1836c65f568e11d7cb9bd9}{\index{Common I\-O\-P\-O\-R\-T A\-P\-I@{Common I\-O\-P\-O\-R\-T A\-P\-I}!ioport\-\_\-sense@{ioport\-\_\-sense}}
+\index{ioport\-\_\-sense@{ioport\-\_\-sense}!Common IOPORT API@{Common I\-O\-P\-O\-R\-T A\-P\-I}}
+\subsubsection[{ioport\-\_\-sense}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf ioport\-\_\-sense}}}\label{group__ioport__group_ga8c5d67795f1836c65f568e11d7cb9bd9}
+\begin{Desc}
+\item[Enumerator\-: ]\par
+\begin{description}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-S\-E\-N\-S\-E\-\_\-\-B\-O\-T\-H\-E\-D\-G\-E\-S@{I\-O\-P\-O\-R\-T\-\_\-\-S\-E\-N\-S\-E\-\_\-\-B\-O\-T\-H\-E\-D\-G\-E\-S}!Common I\-O\-P\-O\-R\-T A\-P\-I@{Common I\-O\-P\-O\-R\-T A\-P\-I}}\index{Common I\-O\-P\-O\-R\-T A\-P\-I@{Common I\-O\-P\-O\-R\-T A\-P\-I}!I\-O\-P\-O\-R\-T\-\_\-\-S\-E\-N\-S\-E\-\_\-\-B\-O\-T\-H\-E\-D\-G\-E\-S@{I\-O\-P\-O\-R\-T\-\_\-\-S\-E\-N\-S\-E\-\_\-\-B\-O\-T\-H\-E\-D\-G\-E\-S}}\item[{\em 
+\hypertarget{group__ioport__group_gga8c5d67795f1836c65f568e11d7cb9bd9a29c5f09354671130c3c72705117b7f92}{I\-O\-P\-O\-R\-T\-\_\-\-S\-E\-N\-S\-E\-\_\-\-B\-O\-T\-H\-E\-D\-G\-E\-S}\label{group__ioport__group_gga8c5d67795f1836c65f568e11d7cb9bd9a29c5f09354671130c3c72705117b7f92}
+}]I\-O\-P\-O\-R\-T sense both rising and falling edges \index{I\-O\-P\-O\-R\-T\-\_\-\-S\-E\-N\-S\-E\-\_\-\-R\-I\-S\-I\-N\-G@{I\-O\-P\-O\-R\-T\-\_\-\-S\-E\-N\-S\-E\-\_\-\-R\-I\-S\-I\-N\-G}!Common I\-O\-P\-O\-R\-T A\-P\-I@{Common I\-O\-P\-O\-R\-T A\-P\-I}}\index{Common I\-O\-P\-O\-R\-T A\-P\-I@{Common I\-O\-P\-O\-R\-T A\-P\-I}!I\-O\-P\-O\-R\-T\-\_\-\-S\-E\-N\-S\-E\-\_\-\-R\-I\-S\-I\-N\-G@{I\-O\-P\-O\-R\-T\-\_\-\-S\-E\-N\-S\-E\-\_\-\-R\-I\-S\-I\-N\-G}}\item[{\em 
+\hypertarget{group__ioport__group_gga8c5d67795f1836c65f568e11d7cb9bd9a65c95c9bea4a4c84749af3eba660d654}{I\-O\-P\-O\-R\-T\-\_\-\-S\-E\-N\-S\-E\-\_\-\-R\-I\-S\-I\-N\-G}\label{group__ioport__group_gga8c5d67795f1836c65f568e11d7cb9bd9a65c95c9bea4a4c84749af3eba660d654}
+}]I\-O\-P\-O\-R\-T sense rising edges \index{I\-O\-P\-O\-R\-T\-\_\-\-S\-E\-N\-S\-E\-\_\-\-F\-A\-L\-L\-I\-N\-G@{I\-O\-P\-O\-R\-T\-\_\-\-S\-E\-N\-S\-E\-\_\-\-F\-A\-L\-L\-I\-N\-G}!Common I\-O\-P\-O\-R\-T A\-P\-I@{Common I\-O\-P\-O\-R\-T A\-P\-I}}\index{Common I\-O\-P\-O\-R\-T A\-P\-I@{Common I\-O\-P\-O\-R\-T A\-P\-I}!I\-O\-P\-O\-R\-T\-\_\-\-S\-E\-N\-S\-E\-\_\-\-F\-A\-L\-L\-I\-N\-G@{I\-O\-P\-O\-R\-T\-\_\-\-S\-E\-N\-S\-E\-\_\-\-F\-A\-L\-L\-I\-N\-G}}\item[{\em 
+\hypertarget{group__ioport__group_gga8c5d67795f1836c65f568e11d7cb9bd9adbf4e5509f715da8c470405785bb81f4}{I\-O\-P\-O\-R\-T\-\_\-\-S\-E\-N\-S\-E\-\_\-\-F\-A\-L\-L\-I\-N\-G}\label{group__ioport__group_gga8c5d67795f1836c65f568e11d7cb9bd9adbf4e5509f715da8c470405785bb81f4}
+}]I\-O\-P\-O\-R\-T sense falling edges \end{description}
+\end{Desc}
+
+\hypertarget{group__ioport__group_gaed084e0b73201e5391dd37f484041a31}{\index{Common I\-O\-P\-O\-R\-T A\-P\-I@{Common I\-O\-P\-O\-R\-T A\-P\-I}!ioport\-\_\-value@{ioport\-\_\-value}}
+\index{ioport\-\_\-value@{ioport\-\_\-value}!Common IOPORT API@{Common I\-O\-P\-O\-R\-T A\-P\-I}}
+\subsubsection[{ioport\-\_\-value}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf ioport\-\_\-value}}}\label{group__ioport__group_gaed084e0b73201e5391dd37f484041a31}
+
+
+I\-O\-P\-O\-R\-T levels. 
+
+\begin{Desc}
+\item[Enumerator\-: ]\par
+\begin{description}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-P\-I\-N\-\_\-\-L\-E\-V\-E\-L\-\_\-\-L\-O\-W@{I\-O\-P\-O\-R\-T\-\_\-\-P\-I\-N\-\_\-\-L\-E\-V\-E\-L\-\_\-\-L\-O\-W}!Common I\-O\-P\-O\-R\-T A\-P\-I@{Common I\-O\-P\-O\-R\-T A\-P\-I}}\index{Common I\-O\-P\-O\-R\-T A\-P\-I@{Common I\-O\-P\-O\-R\-T A\-P\-I}!I\-O\-P\-O\-R\-T\-\_\-\-P\-I\-N\-\_\-\-L\-E\-V\-E\-L\-\_\-\-L\-O\-W@{I\-O\-P\-O\-R\-T\-\_\-\-P\-I\-N\-\_\-\-L\-E\-V\-E\-L\-\_\-\-L\-O\-W}}\item[{\em 
+\hypertarget{group__ioport__group_ggaed084e0b73201e5391dd37f484041a31a2a406eb5dcf70b9bcadc61d3d7cec65b}{I\-O\-P\-O\-R\-T\-\_\-\-P\-I\-N\-\_\-\-L\-E\-V\-E\-L\-\_\-\-L\-O\-W}\label{group__ioport__group_ggaed084e0b73201e5391dd37f484041a31a2a406eb5dcf70b9bcadc61d3d7cec65b}
+}]I\-O\-P\-O\-R\-T pin value low \index{I\-O\-P\-O\-R\-T\-\_\-\-P\-I\-N\-\_\-\-L\-E\-V\-E\-L\-\_\-\-H\-I\-G\-H@{I\-O\-P\-O\-R\-T\-\_\-\-P\-I\-N\-\_\-\-L\-E\-V\-E\-L\-\_\-\-H\-I\-G\-H}!Common I\-O\-P\-O\-R\-T A\-P\-I@{Common I\-O\-P\-O\-R\-T A\-P\-I}}\index{Common I\-O\-P\-O\-R\-T A\-P\-I@{Common I\-O\-P\-O\-R\-T A\-P\-I}!I\-O\-P\-O\-R\-T\-\_\-\-P\-I\-N\-\_\-\-L\-E\-V\-E\-L\-\_\-\-H\-I\-G\-H@{I\-O\-P\-O\-R\-T\-\_\-\-P\-I\-N\-\_\-\-L\-E\-V\-E\-L\-\_\-\-H\-I\-G\-H}}\item[{\em 
+\hypertarget{group__ioport__group_ggaed084e0b73201e5391dd37f484041a31a94f879952a99f7f19eb1ba87c6844082}{I\-O\-P\-O\-R\-T\-\_\-\-P\-I\-N\-\_\-\-L\-E\-V\-E\-L\-\_\-\-H\-I\-G\-H}\label{group__ioport__group_ggaed084e0b73201e5391dd37f484041a31a94f879952a99f7f19eb1ba87c6844082}
+}]I\-O\-P\-O\-R\-T pin value high \end{description}
+\end{Desc}
+

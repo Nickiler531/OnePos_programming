@@ -1,0 +1,89 @@
+\hypertarget{deca__mutex_8c}{\section{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/driver/deca\-\_\-mutex.c File Reference}
+\label{deca__mutex_8c}\index{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/driver/deca\-\_\-mutex.\-c@{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/driver/deca\-\_\-mutex.\-c}}
+}
+
+
+I\-R\-Q interface / mutex implementation.  
+
+
+{\ttfamily \#include \char`\"{}../include/deca\-\_\-device\-\_\-api.\-h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+deca\-Irq\-Status\-\_\-t \hyperlink{deca__mutex_8c_a4fc8d6de2a7f081f2cedaa52b288e3f6}{decamutexon} (void)
+\begin{DoxyCompactList}\small\item\em This function should disable interrupts. This is called at the start of a critical section It returns the I\-R\-Q state before disable, this value is used to re-\/enable in decamutexoff call. \end{DoxyCompactList}\item 
+void \hyperlink{deca__mutex_8c_a8f6fe52668f9a5399c39562acf696236}{decamutexoff} (deca\-Irq\-Status\-\_\-t s)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+I\-R\-Q interface / mutex implementation. 
+
+
+
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+Copyright 2013 (c) Deca\-Wave Ltd, Dublin, Ireland.
+
+All rights reserved. 
+
+\subsection{Function Documentation}
+\hypertarget{deca__mutex_8c_a8f6fe52668f9a5399c39562acf696236}{\index{deca\-\_\-mutex.\-c@{deca\-\_\-mutex.\-c}!decamutexoff@{decamutexoff}}
+\index{decamutexoff@{decamutexoff}!deca_mutex.c@{deca\-\_\-mutex.\-c}}
+\subsubsection[{decamutexoff}]{\setlength{\rightskip}{0pt plus 5cm}void decamutexoff (
+\begin{DoxyParamCaption}
+\item[{deca\-Irq\-Status\-\_\-t}]{s}
+\end{DoxyParamCaption}
+)}}\label{deca__mutex_8c_a8f6fe52668f9a5399c39562acf696236}
+
+
+ Function\-: \hyperlink{deca__mutex_8c_a8f6fe52668f9a5399c39562acf696236}{decamutexoff()}
+
+Description\-: This function should re-\/enable interrupts, or at least restore their state as returned(\&saved) by decamutexon This is called at the end of a critical section
+
+Note\-: The body of this function is defined in \hyperlink{deca__mutex_8c}{deca\-\_\-mutex.\-c} and is platform specific
+
+input parameters\-: 
+\begin{DoxyParams}{Parameters}
+{\em s} & -\/ the state of the D\-W1000 interrupt as returned by decamutexon\\
+\hline
+\end{DoxyParams}
+output parameters
+
+returns the state of the D\-W1000 interrupt \hypertarget{deca__mutex_8c_a4fc8d6de2a7f081f2cedaa52b288e3f6}{\index{deca\-\_\-mutex.\-c@{deca\-\_\-mutex.\-c}!decamutexon@{decamutexon}}
+\index{decamutexon@{decamutexon}!deca_mutex.c@{deca\-\_\-mutex.\-c}}
+\subsubsection[{decamutexon}]{\setlength{\rightskip}{0pt plus 5cm}decamutexon (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{deca__mutex_8c_a4fc8d6de2a7f081f2cedaa52b288e3f6}
+
+
+This function should disable interrupts. This is called at the start of a critical section It returns the I\-R\-Q state before disable, this value is used to re-\/enable in decamutexoff call. 
+
+
+
+ Function\-: \hyperlink{deca__mutex_8c_a4fc8d6de2a7f081f2cedaa52b288e3f6}{decamutexon()}
+
+Description\-: This function should disable interrupts. This is called at the start of a critical section It returns the irq state before disable, this value is used to re-\/enable in decamutexoff call
+
+Note\-: The body of this function is defined in \hyperlink{deca__mutex_8c}{deca\-\_\-mutex.\-c} and is platform specific
+
+input parameters\-:
+
+output parameters
+
+returns the state of the D\-W1000 interrupt
+
+
+
+
+
+Note\-: The body of this function is defined in \hyperlink{deca__mutex_8c}{deca\-\_\-mutex.\-c} and is platform specific
+
+input parameters\-:
+
+output parameters
+
+returns the state of the D\-W1000 interrupt 

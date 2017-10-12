@@ -1,0 +1,49 @@
+\hypertarget{structudd__ctrl__request__t}{\section{udd\-\_\-ctrl\-\_\-request\-\_\-t Struct Reference}
+\label{structudd__ctrl__request__t}\index{udd\-\_\-ctrl\-\_\-request\-\_\-t@{udd\-\_\-ctrl\-\_\-request\-\_\-t}}
+}
+
+
+Global variable to give and record information of the setup request management.  
+
+
+
+
+{\ttfamily \#include $<$udd.\-h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structusb__setup__req__t}{usb\-\_\-setup\-\_\-req\-\_\-t} \hyperlink{structudd__ctrl__request__t_ab662e15ddbc5bc5f77592b24b937757b}{req}
+\item 
+uint8\-\_\-t $\ast$ \hyperlink{structudd__ctrl__request__t_a30ee45cc3e128d219f779f32635b6ca0}{payload}
+\item 
+\hypertarget{structudd__ctrl__request__t_a0ba5f434c1f252576dd707db0034917c}{uint16\-\_\-t \hyperlink{structudd__ctrl__request__t_a0ba5f434c1f252576dd707db0034917c}{payload\-\_\-size}}\label{structudd__ctrl__request__t_a0ba5f434c1f252576dd707db0034917c}
+
+\begin{DoxyCompactList}\small\item\em Size of buffer to send or fill, and content the number of byte transfered. \end{DoxyCompactList}\item 
+\hypertarget{structudd__ctrl__request__t_a942a0402e868519a5ce6864941dd939e}{void($\ast$ \hyperlink{structudd__ctrl__request__t_a942a0402e868519a5ce6864941dd939e}{callback} )(void)}\label{structudd__ctrl__request__t_a942a0402e868519a5ce6864941dd939e}
+
+\begin{DoxyCompactList}\small\item\em Callback called after reception of Z\-L\-P from setup request. \end{DoxyCompactList}\item 
+\hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool}($\ast$ \hyperlink{structudd__ctrl__request__t_afb9dab5e58e325dae17ea02345b097c4}{over\-\_\-under\-\_\-run} )(void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Global variable to give and record information of the setup request management. 
+
+This global variable allows to decode and response a setup request. It can be updated by \hyperlink{group__udc__group__interne_ga58c2916d7984e0e5b2143cadf4af6080}{udc\-\_\-process\-\_\-setup()} from U\-D\-C or $\ast$setup() from U\-D\-Is. 
+
+\subsection{Member Data Documentation}
+\hypertarget{structudd__ctrl__request__t_afb9dab5e58e325dae17ea02345b097c4}{\index{udd\-\_\-ctrl\-\_\-request\-\_\-t@{udd\-\_\-ctrl\-\_\-request\-\_\-t}!over\-\_\-under\-\_\-run@{over\-\_\-under\-\_\-run}}
+\index{over\-\_\-under\-\_\-run@{over\-\_\-under\-\_\-run}!udd_ctrl_request_t@{udd\-\_\-ctrl\-\_\-request\-\_\-t}}
+\subsubsection[{over\-\_\-under\-\_\-run}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bool}($\ast$ udd\-\_\-ctrl\-\_\-request\-\_\-t\-::over\-\_\-under\-\_\-run)(void)}}\label{structudd__ctrl__request__t_afb9dab5e58e325dae17ea02345b097c4}
+Callback called when the buffer given (.payload) is full or empty. This one return false to abort data transfer, or true with a new buffer in .payload. \hypertarget{structudd__ctrl__request__t_a30ee45cc3e128d219f779f32635b6ca0}{\index{udd\-\_\-ctrl\-\_\-request\-\_\-t@{udd\-\_\-ctrl\-\_\-request\-\_\-t}!payload@{payload}}
+\index{payload@{payload}!udd_ctrl_request_t@{udd\-\_\-ctrl\-\_\-request\-\_\-t}}
+\subsubsection[{payload}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t$\ast$ udd\-\_\-ctrl\-\_\-request\-\_\-t\-::payload}}\label{structudd__ctrl__request__t_a30ee45cc3e128d219f779f32635b6ca0}
+Point to buffer to send or fill with data following S\-E\-T\-U\-P packet This buffer must be word align for D\-A\-T\-A I\-N phase (use prefix C\-O\-M\-P\-I\-L\-E\-R\-\_\-\-W\-O\-R\-D\-\_\-\-A\-L\-I\-G\-N\-E\-D for buffer) \hypertarget{structudd__ctrl__request__t_ab662e15ddbc5bc5f77592b24b937757b}{\index{udd\-\_\-ctrl\-\_\-request\-\_\-t@{udd\-\_\-ctrl\-\_\-request\-\_\-t}!req@{req}}
+\index{req@{req}!udd_ctrl_request_t@{udd\-\_\-ctrl\-\_\-request\-\_\-t}}
+\subsubsection[{req}]{\setlength{\rightskip}{0pt plus 5cm}{\bf usb\-\_\-setup\-\_\-req\-\_\-t} udd\-\_\-ctrl\-\_\-request\-\_\-t\-::req}}\label{structudd__ctrl__request__t_ab662e15ddbc5bc5f77592b24b937757b}
+Data received in U\-S\-B S\-E\-T\-U\-P packet Note\-: The swap of \char`\"{}req.\-w\-Values\char`\"{} from uin16\-\_\-t to le16\-\_\-t is done by U\-D\-D. 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/usb/udc/\hyperlink{udd_8h}{udd.\-h}\end{DoxyCompactItemize}

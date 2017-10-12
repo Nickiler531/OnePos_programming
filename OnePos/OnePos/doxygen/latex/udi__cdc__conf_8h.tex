@@ -1,0 +1,99 @@
+\hypertarget{udi__cdc__conf_8h}{\section{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/usb/class/cdc/device/udi\-\_\-cdc\-\_\-conf.h File Reference}
+\label{udi__cdc__conf_8h}\index{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/usb/class/cdc/device/udi\-\_\-cdc\-\_\-conf.\-h@{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/usb/class/cdc/device/udi\-\_\-cdc\-\_\-conf.\-h}}
+}
+
+
+Default C\-D\-C configuration for a U\-S\-B Device with a single interface.  
+
+
+{\ttfamily \#include \char`\"{}usb\-\_\-protocol\-\_\-cdc.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}conf\-\_\-usb.\-h\char`\"{}}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{udi__cdc__conf_8h_aecfe45ce8d46d80442a7d66111ac7c4e}{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-N\-B}~1
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga67d99007f1886e516e6705e19c38b541}{\#define \hyperlink{group__udi__cdc__group__single__desc_ga67d99007f1886e516e6705e19c38b541}{U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-E\-P\-\_\-\-C\-T\-R\-L\-\_\-\-S\-I\-Z\-E}~64}\label{group__udi__cdc__group__single__desc_ga67d99007f1886e516e6705e19c38b541}
+
+\begin{DoxyCompactList}\small\item\em Control endpoint size (Endpoint 0) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{Indent}{\bf Default endpoint configuration}\par
+{\em The U\-S\-B\-B, U\-D\-P, U\-D\-P\-H\-S and U\-O\-T\-G\-H\-S interfaces can support up to 2 C\-D\-C interfaces. }\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga5aa2ea29be14f30efe861f8fb2b57041}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-I\-N\-\_\-0}~(1 $|$ \hyperlink{group__usb__protocol__group_gaae8411e95f26738326bc25a0161dde99}{U\-S\-B\-\_\-\-E\-P\-\_\-\-D\-I\-R\-\_\-\-I\-N})}\label{group__udi__cdc__group__single__desc_ga5aa2ea29be14f30efe861f8fb2b57041}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga58651b4198deb73eb64002ffdb268add}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-O\-U\-T\-\_\-0}~(2 $|$ \hyperlink{group__usb__protocol__group_ga0510b0a04d9cef144e4d9793310abccf}{U\-S\-B\-\_\-\-E\-P\-\_\-\-D\-I\-R\-\_\-\-O\-U\-T})}\label{group__udi__cdc__group__single__desc_ga58651b4198deb73eb64002ffdb268add}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga578e3200ca7fb6ef694e465e04653572}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-C\-O\-M\-M\-\_\-\-E\-P\-\_\-0}~(3 $|$ \hyperlink{group__usb__protocol__group_gaae8411e95f26738326bc25a0161dde99}{U\-S\-B\-\_\-\-E\-P\-\_\-\-D\-I\-R\-\_\-\-I\-N})}\label{group__udi__cdc__group__single__desc_ga578e3200ca7fb6ef694e465e04653572}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga0386772c35ae2b7dd579fdae90e3ede4}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-I\-N\-\_\-1}~(4 $|$ \hyperlink{group__usb__protocol__group_gaae8411e95f26738326bc25a0161dde99}{U\-S\-B\-\_\-\-E\-P\-\_\-\-D\-I\-R\-\_\-\-I\-N})}\label{group__udi__cdc__group__single__desc_ga0386772c35ae2b7dd579fdae90e3ede4}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga94ee4c3472eae7ca401adc2f234d4b3d}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-O\-U\-T\-\_\-1}~(5 $|$ \hyperlink{group__usb__protocol__group_ga0510b0a04d9cef144e4d9793310abccf}{U\-S\-B\-\_\-\-E\-P\-\_\-\-D\-I\-R\-\_\-\-O\-U\-T})}\label{group__udi__cdc__group__single__desc_ga94ee4c3472eae7ca401adc2f234d4b3d}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_gac55b3eaf95ce09b4440799c952e3f803}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-C\-O\-M\-M\-\_\-\-E\-P\-\_\-1}~(6 $|$ \hyperlink{group__usb__protocol__group_gaae8411e95f26738326bc25a0161dde99}{U\-S\-B\-\_\-\-E\-P\-\_\-\-D\-I\-R\-\_\-\-I\-N})}\label{group__udi__cdc__group__single__desc_gac55b3eaf95ce09b4440799c952e3f803}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga94a9c8812ccfd31f8b0398b666c54453}{\#define \hyperlink{group__udi__cdc__group__single__desc_ga94a9c8812ccfd31f8b0398b666c54453}{U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-M\-A\-X\-\_\-\-E\-P}~(3$\ast$\hyperlink{conf__usb_8h_aecfe45ce8d46d80442a7d66111ac7c4e}{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-N\-B})}\label{group__udi__cdc__group__single__desc_ga94a9c8812ccfd31f8b0398b666c54453}
+
+\begin{DoxyCompactList}\small\item\em 3 endpoints used per C\-D\-C interface \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Default Interface numbers}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_gaa72bb6864eae7093300538949bf5d2cf}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-C\-O\-M\-M\-\_\-\-I\-F\-A\-C\-E\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-0}~0}\label{group__udi__cdc__group__single__desc_gaa72bb6864eae7093300538949bf5d2cf}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga4900aae039b50c8b0304fb72bce2f08f}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-I\-F\-A\-C\-E\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-0}~1}\label{group__udi__cdc__group__single__desc_ga4900aae039b50c8b0304fb72bce2f08f}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga73aa3a846dcb14fe0db7d24537e17968}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-C\-O\-M\-M\-\_\-\-I\-F\-A\-C\-E\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-1}~2}\label{group__udi__cdc__group__single__desc_ga73aa3a846dcb14fe0db7d24537e17968}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_gace227616da1eec96b10427427336ae9d}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-I\-F\-A\-C\-E\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-1}~3}\label{group__udi__cdc__group__single__desc_gace227616da1eec96b10427427336ae9d}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga51746df1068a46e8f8380d4d9637de7d}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-C\-O\-M\-M\-\_\-\-I\-F\-A\-C\-E\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-2}~4}\label{group__udi__cdc__group__single__desc_ga51746df1068a46e8f8380d4d9637de7d}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_gaf2332783751108d3a7196331d422d648}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-I\-F\-A\-C\-E\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-2}~5}\label{group__udi__cdc__group__single__desc_gaf2332783751108d3a7196331d422d648}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_gafcba0da585d8286250a25bb60d5fe2a0}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-C\-O\-M\-M\-\_\-\-I\-F\-A\-C\-E\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-3}~6}\label{group__udi__cdc__group__single__desc_gafcba0da585d8286250a25bb60d5fe2a0}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga025950aeedd93d7d00cc1754be5cf183}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-I\-F\-A\-C\-E\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-3}~7}\label{group__udi__cdc__group__single__desc_ga025950aeedd93d7d00cc1754be5cf183}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga8e135589db6eac98726ce02518bd2340}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-C\-O\-M\-M\-\_\-\-I\-F\-A\-C\-E\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-4}~8}\label{group__udi__cdc__group__single__desc_ga8e135589db6eac98726ce02518bd2340}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga0c3771d822965dddc9eef292f39ff347}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-I\-F\-A\-C\-E\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-4}~9}\label{group__udi__cdc__group__single__desc_ga0c3771d822965dddc9eef292f39ff347}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga040c811af32af103f96af72f55922259}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-C\-O\-M\-M\-\_\-\-I\-F\-A\-C\-E\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-5}~10}\label{group__udi__cdc__group__single__desc_ga040c811af32af103f96af72f55922259}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_gac99be51d82291d00c0188a6d05a6cc02}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-I\-F\-A\-C\-E\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-5}~11}\label{group__udi__cdc__group__single__desc_gac99be51d82291d00c0188a6d05a6cc02}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga7a7487e51450e9923a2ea3bf884a3039}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-C\-O\-M\-M\-\_\-\-I\-F\-A\-C\-E\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-6}~12}\label{group__udi__cdc__group__single__desc_ga7a7487e51450e9923a2ea3bf884a3039}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga0d859a246f282ed4f61692066d9a9a9d}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-I\-F\-A\-C\-E\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-6}~13}\label{group__udi__cdc__group__single__desc_ga0d859a246f282ed4f61692066d9a9a9d}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+Default C\-D\-C configuration for a U\-S\-B Device with a single interface. Copyright (c) 2009 -\/ 2014 Atmel Corporation. All rights reserved.
+
+\subsection{Macro Definition Documentation}
+\hypertarget{udi__cdc__conf_8h_aecfe45ce8d46d80442a7d66111ac7c4e}{\index{udi\-\_\-cdc\-\_\-conf.\-h@{udi\-\_\-cdc\-\_\-conf.\-h}!U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-N\-B@{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-N\-B}}
+\index{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-N\-B@{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-N\-B}!udi_cdc_conf.h@{udi\-\_\-cdc\-\_\-conf.\-h}}
+\subsubsection[{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-N\-B}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-N\-B~1}}\label{udi__cdc__conf_8h_aecfe45ce8d46d80442a7d66111ac7c4e}
+Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support} 

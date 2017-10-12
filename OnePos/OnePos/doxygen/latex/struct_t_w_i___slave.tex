@@ -1,0 +1,73 @@
+\hypertarget{struct_t_w_i___slave}{\section{T\-W\-I\-\_\-\-Slave Struct Reference}
+\label{struct_t_w_i___slave}\index{T\-W\-I\-\_\-\-Slave@{T\-W\-I\-\_\-\-Slave}}
+}
+
+
+T\-W\-I slave driver struct.  
+
+
+
+
+{\ttfamily \#include $<$twis.\-h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+T\-W\-I\-\_\-t $\ast$ \hyperlink{struct_t_w_i___slave_a77840b2d29e959498be84cc3bec0cd22}{interface}
+\item 
+void($\ast$ \hyperlink{struct_t_w_i___slave_a3b1cd58ff7d3c1ab6112265b652e4356}{Process\-\_\-\-Data} )(void)
+\item 
+register8\-\_\-t \hyperlink{struct_t_w_i___slave_a8c205728fdea8bcaeaa0f6f889d83d4d}{received\-Data} \mbox{[}T\-W\-I\-S\-\_\-\-R\-E\-C\-E\-I\-V\-E\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-S\-I\-Z\-E\mbox{]}
+\item 
+register8\-\_\-t \hyperlink{struct_t_w_i___slave_aac95534c65dbda49b778a3a05456682d}{send\-Data} \mbox{[}T\-W\-I\-S\-\_\-\-S\-E\-N\-D\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-S\-I\-Z\-E\mbox{]}
+\item 
+register8\-\_\-t \hyperlink{struct_t_w_i___slave_a35d1088ea403c9811886cc3a454d20ff}{bytes\-Received}
+\item 
+register8\-\_\-t \hyperlink{struct_t_w_i___slave_ae44adb76a49e3ecca8542d10a1d453f8}{bytes\-Sent}
+\item 
+register8\-\_\-t \hyperlink{struct_t_w_i___slave_af5c33c2e305df38d283d66cdd92d8024}{status}
+\item 
+register8\-\_\-t \hyperlink{struct_t_w_i___slave_a38f52b1274d890275ae25f68d289c8d8}{result}
+\item 
+\hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{struct_t_w_i___slave_a9f82420e39d70716410a66dcd3c22c1b}{abort}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+T\-W\-I slave driver struct. 
+
+T\-W\-I slave struct. Holds pointer to T\-W\-I module and data processing routine, buffers and necessary variables. 
+
+\subsection{Member Data Documentation}
+\hypertarget{struct_t_w_i___slave_a9f82420e39d70716410a66dcd3c22c1b}{\index{T\-W\-I\-\_\-\-Slave@{T\-W\-I\-\_\-\-Slave}!abort@{abort}}
+\index{abort@{abort}!TWI_Slave@{T\-W\-I\-\_\-\-Slave}}
+\subsubsection[{abort}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bool} T\-W\-I\-\_\-\-Slave\-::abort}}\label{struct_t_w_i___slave_a9f82420e39d70716410a66dcd3c22c1b}
+Strobe to abort \hypertarget{struct_t_w_i___slave_a35d1088ea403c9811886cc3a454d20ff}{\index{T\-W\-I\-\_\-\-Slave@{T\-W\-I\-\_\-\-Slave}!bytes\-Received@{bytes\-Received}}
+\index{bytes\-Received@{bytes\-Received}!TWI_Slave@{T\-W\-I\-\_\-\-Slave}}
+\subsubsection[{bytes\-Received}]{\setlength{\rightskip}{0pt plus 5cm}register8\-\_\-t T\-W\-I\-\_\-\-Slave\-::bytes\-Received}}\label{struct_t_w_i___slave_a35d1088ea403c9811886cc3a454d20ff}
+Number of bytes received \hypertarget{struct_t_w_i___slave_ae44adb76a49e3ecca8542d10a1d453f8}{\index{T\-W\-I\-\_\-\-Slave@{T\-W\-I\-\_\-\-Slave}!bytes\-Sent@{bytes\-Sent}}
+\index{bytes\-Sent@{bytes\-Sent}!TWI_Slave@{T\-W\-I\-\_\-\-Slave}}
+\subsubsection[{bytes\-Sent}]{\setlength{\rightskip}{0pt plus 5cm}register8\-\_\-t T\-W\-I\-\_\-\-Slave\-::bytes\-Sent}}\label{struct_t_w_i___slave_ae44adb76a49e3ecca8542d10a1d453f8}
+Number of bytes sent \hypertarget{struct_t_w_i___slave_a77840b2d29e959498be84cc3bec0cd22}{\index{T\-W\-I\-\_\-\-Slave@{T\-W\-I\-\_\-\-Slave}!interface@{interface}}
+\index{interface@{interface}!TWI_Slave@{T\-W\-I\-\_\-\-Slave}}
+\subsubsection[{interface}]{\setlength{\rightskip}{0pt plus 5cm}T\-W\-I\-\_\-t$\ast$ T\-W\-I\-\_\-\-Slave\-::interface}}\label{struct_t_w_i___slave_a77840b2d29e959498be84cc3bec0cd22}
+Pointer to what interface to use \hypertarget{struct_t_w_i___slave_a3b1cd58ff7d3c1ab6112265b652e4356}{\index{T\-W\-I\-\_\-\-Slave@{T\-W\-I\-\_\-\-Slave}!Process\-\_\-\-Data@{Process\-\_\-\-Data}}
+\index{Process\-\_\-\-Data@{Process\-\_\-\-Data}!TWI_Slave@{T\-W\-I\-\_\-\-Slave}}
+\subsubsection[{Process\-\_\-\-Data}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ T\-W\-I\-\_\-\-Slave\-::\-Process\-\_\-\-Data)(void)}}\label{struct_t_w_i___slave_a3b1cd58ff7d3c1ab6112265b652e4356}
+Pointer to process data function \hypertarget{struct_t_w_i___slave_a8c205728fdea8bcaeaa0f6f889d83d4d}{\index{T\-W\-I\-\_\-\-Slave@{T\-W\-I\-\_\-\-Slave}!received\-Data@{received\-Data}}
+\index{received\-Data@{received\-Data}!TWI_Slave@{T\-W\-I\-\_\-\-Slave}}
+\subsubsection[{received\-Data}]{\setlength{\rightskip}{0pt plus 5cm}register8\-\_\-t T\-W\-I\-\_\-\-Slave\-::received\-Data\mbox{[}T\-W\-I\-S\-\_\-\-R\-E\-C\-E\-I\-V\-E\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-S\-I\-Z\-E\mbox{]}}}\label{struct_t_w_i___slave_a8c205728fdea8bcaeaa0f6f889d83d4d}
+Read data \hypertarget{struct_t_w_i___slave_a38f52b1274d890275ae25f68d289c8d8}{\index{T\-W\-I\-\_\-\-Slave@{T\-W\-I\-\_\-\-Slave}!result@{result}}
+\index{result@{result}!TWI_Slave@{T\-W\-I\-\_\-\-Slave}}
+\subsubsection[{result}]{\setlength{\rightskip}{0pt plus 5cm}register8\-\_\-t T\-W\-I\-\_\-\-Slave\-::result}}\label{struct_t_w_i___slave_a38f52b1274d890275ae25f68d289c8d8}
+Result of transaction \hypertarget{struct_t_w_i___slave_aac95534c65dbda49b778a3a05456682d}{\index{T\-W\-I\-\_\-\-Slave@{T\-W\-I\-\_\-\-Slave}!send\-Data@{send\-Data}}
+\index{send\-Data@{send\-Data}!TWI_Slave@{T\-W\-I\-\_\-\-Slave}}
+\subsubsection[{send\-Data}]{\setlength{\rightskip}{0pt plus 5cm}register8\-\_\-t T\-W\-I\-\_\-\-Slave\-::send\-Data\mbox{[}T\-W\-I\-S\-\_\-\-S\-E\-N\-D\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-S\-I\-Z\-E\mbox{]}}}\label{struct_t_w_i___slave_aac95534c65dbda49b778a3a05456682d}
+Data to write \hypertarget{struct_t_w_i___slave_af5c33c2e305df38d283d66cdd92d8024}{\index{T\-W\-I\-\_\-\-Slave@{T\-W\-I\-\_\-\-Slave}!status@{status}}
+\index{status@{status}!TWI_Slave@{T\-W\-I\-\_\-\-Slave}}
+\subsubsection[{status}]{\setlength{\rightskip}{0pt plus 5cm}register8\-\_\-t T\-W\-I\-\_\-\-Slave\-::status}}\label{struct_t_w_i___slave_af5c33c2e305df38d283d66cdd92d8024}
+Status of transaction 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/xmega/drivers/twi/\hyperlink{twis_8h}{twis.\-h}\end{DoxyCompactItemize}

@@ -1,0 +1,16 @@
+\hypertarget{group__genclk__group}{\section{Generic Clock Management}
+\label{group__genclk__group}\index{Generic Clock Management@{Generic Clock Management}}
+}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structgenclk__config}{genclk\-\_\-config}
+\begin{DoxyCompactList}\small\item\em Hardware representation of a set of generic clock parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support}
+
+Generic clocks are configurable clocks which run outside the system clock domain. They are often connected to peripherals which have an asynchronous component running independently of the bus clock, e.\-g. U\-S\-B controllers, low-\/power timers and R\-T\-Cs, etc.
+
+Note that not all platforms have support for generic clocks; on such platforms, this A\-P\-I will not be available. 

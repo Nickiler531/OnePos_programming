@@ -1,0 +1,215 @@
+\hypertarget{group__nvm__flash__group}{\section{N\-V\-M driver flash handling}
+\label{group__nvm__flash__group}\index{N\-V\-M driver flash handling@{N\-V\-M driver flash handling}}
+}
+
+
+Functions for handling internal flash memory.  
+
+
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group__nvm__flash__group_ga1ff021ee17a7d4814fe900414e870c4f}{I\-A\-R\-\_\-\-F\-L\-A\-S\-H\-\_\-\-P\-T\-R}~\-\_\-\-\_\-flash
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef uint16\-\_\-t \hyperlink{group__nvm__flash__group_ga95a069fc064dc9cd089b7d9047b909b0}{flash\-\_\-addr\-\_\-t}
+\begin{DoxyCompactList}\small\item\em Size of a flash page in bytes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{group__nvm__flash__group_ga335244745ba451fade7e5a0215aaef4f}{nvm\-\_\-issue\-\_\-flash\-\_\-range\-\_\-crc} (\hyperlink{group__nvm__flash__group_ga95a069fc064dc9cd089b7d9047b909b0}{flash\-\_\-addr\-\_\-t} start\-\_\-addr, \hyperlink{group__nvm__flash__group_ga95a069fc064dc9cd089b7d9047b909b0}{flash\-\_\-addr\-\_\-t} end\-\_\-addr)
+\begin{DoxyCompactList}\small\item\em Issue flash range C\-R\-C command. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__flash__group_gae5fd84639f16bdf897cf3ed4e634634f}{nvm\-\_\-flash\-\_\-read\-\_\-buffer} (\hyperlink{group__nvm__flash__group_ga95a069fc064dc9cd089b7d9047b909b0}{flash\-\_\-addr\-\_\-t} address, void $\ast$buf, uint16\-\_\-t len)
+\begin{DoxyCompactList}\small\item\em Read buffer within the application section. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__flash__group_gaf16cad66506bd55382a66c83e0aa0c23}{nvm\-\_\-user\-\_\-sig\-\_\-read\-\_\-buffer} (\hyperlink{group__nvm__flash__group_ga95a069fc064dc9cd089b7d9047b909b0}{flash\-\_\-addr\-\_\-t} address, void $\ast$buf, uint16\-\_\-t len)
+\begin{DoxyCompactList}\small\item\em Read buffer within the user section. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__flash__group_ga5a18a268987412df30e291fa4e43e37f}{nvm\-\_\-user\-\_\-sig\-\_\-write\-\_\-buffer} (\hyperlink{group__nvm__flash__group_ga95a069fc064dc9cd089b7d9047b909b0}{flash\-\_\-addr\-\_\-t} address, const void $\ast$buf, uint16\-\_\-t len, \hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} b\-\_\-blank\-\_\-check)
+\begin{DoxyCompactList}\small\item\em Write specific parts of user flash section. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__flash__group_ga05906a0e64d2527fe92511c364548ebc}{nvm\-\_\-flash\-\_\-erase\-\_\-and\-\_\-write\-\_\-buffer} (\hyperlink{group__nvm__flash__group_ga95a069fc064dc9cd089b7d9047b909b0}{flash\-\_\-addr\-\_\-t} address, const void $\ast$buf, uint16\-\_\-t len, \hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} b\-\_\-blank\-\_\-check)
+\begin{DoxyCompactList}\small\item\em Erase and write specific parts of application flash section. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__flash__group_ga56f341c1aef558bd9b6504f5a6a95ef2}{nvm\-\_\-flash\-\_\-load\-\_\-word\-\_\-to\-\_\-buffer} (uint32\-\_\-t word\-\_\-addr, uint16\-\_\-t data)
+\begin{DoxyCompactList}\small\item\em Load word into flash page buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Functions for handling internal flash memory. The internal flash memory on the X\-M\-E\-G\-A devices consists of the application section, the application table section and the bootloader section. All these sections can store program code for the M\-C\-U, but if there is available space, they can be used for storing other persistent data.
+
+Writing the flash memory can only be done one page at a time. It consists of loading the data to the internal page buffer and then running one of the write commands. If the page has not been erased before writing, the data will not be written correctly.
+
+In order to be able to write to flash memory the programming commands need to be run from the boot section.
+\begin{DoxyItemize}
+\item When using I\-A\-R this is handled automatically by the linker script.
+\item When using G\-C\-C this needs to be specified manually in the make files. For example the A\-Txmega128\-A1 has the boot section at the word address 0x10000 the corresponding byte address of 0x20000 needs to be added to the config.\-mk makefile\-: L\-D\-F\-L\-A\-G\-S += -\/\-Wl,--section-\/start=.B\-O\-O\-T=0x20000 See the device datasheet for the correct address for other devices.
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+If using G\-C\-C and the flash sub-\/module, remember to configure the boot section in the make file.
+
+The functions in this module are modifying the N\-V\-M.\-C\-M\-D register. If the application are using program space access in interrupts (\-\_\-\-\_\-flash pointers in I\-A\-R E\-W or pgm\-\_\-read\-\_\-byte in G\-C\-C) interrupts needs to be disabled when running E\-E\-P\-R\-O\-M access functions. If not the program space reads will be corrupted. 
+\end{DoxyNote}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{group__nvm__flash__group_ga1ff021ee17a7d4814fe900414e870c4f}{\index{N\-V\-M driver flash handling@{N\-V\-M driver flash handling}!I\-A\-R\-\_\-\-F\-L\-A\-S\-H\-\_\-\-P\-T\-R@{I\-A\-R\-\_\-\-F\-L\-A\-S\-H\-\_\-\-P\-T\-R}}
+\index{I\-A\-R\-\_\-\-F\-L\-A\-S\-H\-\_\-\-P\-T\-R@{I\-A\-R\-\_\-\-F\-L\-A\-S\-H\-\_\-\-P\-T\-R}!NVM driver flash handling@{N\-V\-M driver flash handling}}
+\subsubsection[{I\-A\-R\-\_\-\-F\-L\-A\-S\-H\-\_\-\-P\-T\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-A\-R\-\_\-\-F\-L\-A\-S\-H\-\_\-\-P\-T\-R~\-\_\-\-\_\-flash}}\label{group__nvm__flash__group_ga1ff021ee17a7d4814fe900414e870c4f}
+Flash pointer type to use for accessing flash memory with I\-A\-R 
+
+\subsection{Typedef Documentation}
+\hypertarget{group__nvm__flash__group_ga95a069fc064dc9cd089b7d9047b909b0}{\index{N\-V\-M driver flash handling@{N\-V\-M driver flash handling}!flash\-\_\-addr\-\_\-t@{flash\-\_\-addr\-\_\-t}}
+\index{flash\-\_\-addr\-\_\-t@{flash\-\_\-addr\-\_\-t}!NVM driver flash handling@{N\-V\-M driver flash handling}}
+\subsubsection[{flash\-\_\-addr\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef uint16\-\_\-t {\bf flash\-\_\-addr\-\_\-t}}}\label{group__nvm__flash__group_ga95a069fc064dc9cd089b7d9047b909b0}
+
+
+Size of a flash page in bytes. 
+
+The page size in bytes taken from the toolchain header files.
+
+\begin{DoxyNote}{Note}
+Page size is currently missing from the I\-A\-R header files, so it needs to be defined in the driver until it is fixed. Data type for holding flash memory addresses. 
+\end{DoxyNote}
+
+
+\subsection{Function Documentation}
+\hypertarget{group__nvm__flash__group_ga05906a0e64d2527fe92511c364548ebc}{\index{N\-V\-M driver flash handling@{N\-V\-M driver flash handling}!nvm\-\_\-flash\-\_\-erase\-\_\-and\-\_\-write\-\_\-buffer@{nvm\-\_\-flash\-\_\-erase\-\_\-and\-\_\-write\-\_\-buffer}}
+\index{nvm\-\_\-flash\-\_\-erase\-\_\-and\-\_\-write\-\_\-buffer@{nvm\-\_\-flash\-\_\-erase\-\_\-and\-\_\-write\-\_\-buffer}!NVM driver flash handling@{N\-V\-M driver flash handling}}
+\subsubsection[{nvm\-\_\-flash\-\_\-erase\-\_\-and\-\_\-write\-\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}void nvm\-\_\-flash\-\_\-erase\-\_\-and\-\_\-write\-\_\-buffer (
+\begin{DoxyParamCaption}
+\item[{{\bf flash\-\_\-addr\-\_\-t}}]{address, }
+\item[{const void $\ast$}]{buf, }
+\item[{uint16\-\_\-t}]{len, }
+\item[{{\bf bool}}]{b\-\_\-blank\-\_\-check}
+\end{DoxyParamCaption}
+)}}\label{group__nvm__flash__group_ga05906a0e64d2527fe92511c364548ebc}
+
+
+Erase and write specific parts of application flash section. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & the address to where to write \\
+\hline
+{\em buf} & pointer to the data \\
+\hline
+{\em len} & the number of bytes to write \\
+\hline
+{\em b\-\_\-blank\-\_\-check} & if True then the page flash is checked before write to run or not the erase page command.\\
+\hline
+\end{DoxyParams}
+Set b\-\_\-blank\-\_\-check to false if all application flash is erased before. \hypertarget{group__nvm__flash__group_ga56f341c1aef558bd9b6504f5a6a95ef2}{\index{N\-V\-M driver flash handling@{N\-V\-M driver flash handling}!nvm\-\_\-flash\-\_\-load\-\_\-word\-\_\-to\-\_\-buffer@{nvm\-\_\-flash\-\_\-load\-\_\-word\-\_\-to\-\_\-buffer}}
+\index{nvm\-\_\-flash\-\_\-load\-\_\-word\-\_\-to\-\_\-buffer@{nvm\-\_\-flash\-\_\-load\-\_\-word\-\_\-to\-\_\-buffer}!NVM driver flash handling@{N\-V\-M driver flash handling}}
+\subsubsection[{nvm\-\_\-flash\-\_\-load\-\_\-word\-\_\-to\-\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}void nvm\-\_\-flash\-\_\-load\-\_\-word\-\_\-to\-\_\-buffer (
+\begin{DoxyParamCaption}
+\item[{uint32\-\_\-t}]{word\-\_\-addr, }
+\item[{uint16\-\_\-t}]{data}
+\end{DoxyParamCaption}
+)}}\label{group__nvm__flash__group_ga56f341c1aef558bd9b6504f5a6a95ef2}
+
+
+Load word into flash page buffer. 
+
+Clear the N\-V\-M controller page buffer for flash. This needs to be called before using \hyperlink{group__nvm__flash__group_ga56f341c1aef558bd9b6504f5a6a95ef2}{nvm\-\_\-flash\-\_\-load\-\_\-word\-\_\-to\-\_\-buffer} if it has not already been cleared.
+
+
+\begin{DoxyParams}{Parameters}
+{\em word\-\_\-addr} & Address to store data. The upper bits beyond the page size is ignored. F\-L\-A\-S\-H\-\_\-\-P\-A\-G\-E\-\_\-\-S\-I\-Z\-E \\
+\hline
+{\em data} & Data word to load into the page buffer \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__nvm__flash__group_gae5fd84639f16bdf897cf3ed4e634634f}{\index{N\-V\-M driver flash handling@{N\-V\-M driver flash handling}!nvm\-\_\-flash\-\_\-read\-\_\-buffer@{nvm\-\_\-flash\-\_\-read\-\_\-buffer}}
+\index{nvm\-\_\-flash\-\_\-read\-\_\-buffer@{nvm\-\_\-flash\-\_\-read\-\_\-buffer}!NVM driver flash handling@{N\-V\-M driver flash handling}}
+\subsubsection[{nvm\-\_\-flash\-\_\-read\-\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}void nvm\-\_\-flash\-\_\-read\-\_\-buffer (
+\begin{DoxyParamCaption}
+\item[{{\bf flash\-\_\-addr\-\_\-t}}]{address, }
+\item[{void $\ast$}]{buf, }
+\item[{uint16\-\_\-t}]{len}
+\end{DoxyParamCaption}
+)}}\label{group__nvm__flash__group_gae5fd84639f16bdf897cf3ed4e634634f}
+
+
+Read buffer within the application section. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & the address to where to read \\
+\hline
+{\em buf} & pointer to the data \\
+\hline
+{\em len} & the number of bytes to read \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__nvm__flash__group_ga335244745ba451fade7e5a0215aaef4f}{\index{N\-V\-M driver flash handling@{N\-V\-M driver flash handling}!nvm\-\_\-issue\-\_\-flash\-\_\-range\-\_\-crc@{nvm\-\_\-issue\-\_\-flash\-\_\-range\-\_\-crc}}
+\index{nvm\-\_\-issue\-\_\-flash\-\_\-range\-\_\-crc@{nvm\-\_\-issue\-\_\-flash\-\_\-range\-\_\-crc}!NVM driver flash handling@{N\-V\-M driver flash handling}}
+\subsubsection[{nvm\-\_\-issue\-\_\-flash\-\_\-range\-\_\-crc}]{\setlength{\rightskip}{0pt plus 5cm}void nvm\-\_\-issue\-\_\-flash\-\_\-range\-\_\-crc (
+\begin{DoxyParamCaption}
+\item[{{\bf flash\-\_\-addr\-\_\-t}}]{start\-\_\-addr, }
+\item[{{\bf flash\-\_\-addr\-\_\-t}}]{end\-\_\-addr}
+\end{DoxyParamCaption}
+)}}\label{group__nvm__flash__group_ga335244745ba451fade7e5a0215aaef4f}
+
+
+Issue flash range C\-R\-C command. 
+
+This function sets the F\-L\-A\-S\-H range C\-R\-C command in the N\-V\-M.\-C\-M\-D register. It then loads the start and end byte address of the part of F\-L\-A\-S\-H to generate a C\-R\-C-\/32 for into the A\-D\-D\-R and D\-A\-T\-A registers and finally performs the execute command.
+
+\begin{DoxyNote}{Note}
+Should only be called from the C\-R\-C module. The function saves and restores the N\-V\-M.\-C\-M\-D register, but if this function is called from an interrupt, interrupts must be disabled before this function is called.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em start\-\_\-addr} & end byte address \\
+\hline
+{\em end\-\_\-addr} & start byte address \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__nvm__flash__group_gaf16cad66506bd55382a66c83e0aa0c23}{\index{N\-V\-M driver flash handling@{N\-V\-M driver flash handling}!nvm\-\_\-user\-\_\-sig\-\_\-read\-\_\-buffer@{nvm\-\_\-user\-\_\-sig\-\_\-read\-\_\-buffer}}
+\index{nvm\-\_\-user\-\_\-sig\-\_\-read\-\_\-buffer@{nvm\-\_\-user\-\_\-sig\-\_\-read\-\_\-buffer}!NVM driver flash handling@{N\-V\-M driver flash handling}}
+\subsubsection[{nvm\-\_\-user\-\_\-sig\-\_\-read\-\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}void nvm\-\_\-user\-\_\-sig\-\_\-read\-\_\-buffer (
+\begin{DoxyParamCaption}
+\item[{{\bf flash\-\_\-addr\-\_\-t}}]{address, }
+\item[{void $\ast$}]{buf, }
+\item[{uint16\-\_\-t}]{len}
+\end{DoxyParamCaption}
+)}}\label{group__nvm__flash__group_gaf16cad66506bd55382a66c83e0aa0c23}
+
+
+Read buffer within the user section. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & the address to where to read \\
+\hline
+{\em buf} & pointer to the data \\
+\hline
+{\em len} & the number of bytes to read \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__nvm__flash__group_ga5a18a268987412df30e291fa4e43e37f}{\index{N\-V\-M driver flash handling@{N\-V\-M driver flash handling}!nvm\-\_\-user\-\_\-sig\-\_\-write\-\_\-buffer@{nvm\-\_\-user\-\_\-sig\-\_\-write\-\_\-buffer}}
+\index{nvm\-\_\-user\-\_\-sig\-\_\-write\-\_\-buffer@{nvm\-\_\-user\-\_\-sig\-\_\-write\-\_\-buffer}!NVM driver flash handling@{N\-V\-M driver flash handling}}
+\subsubsection[{nvm\-\_\-user\-\_\-sig\-\_\-write\-\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}void nvm\-\_\-user\-\_\-sig\-\_\-write\-\_\-buffer (
+\begin{DoxyParamCaption}
+\item[{{\bf flash\-\_\-addr\-\_\-t}}]{address, }
+\item[{const void $\ast$}]{buf, }
+\item[{uint16\-\_\-t}]{len, }
+\item[{{\bf bool}}]{b\-\_\-blank\-\_\-check}
+\end{DoxyParamCaption}
+)}}\label{group__nvm__flash__group_ga5a18a268987412df30e291fa4e43e37f}
+
+
+Write specific parts of user flash section. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & the address to where to write \\
+\hline
+{\em buf} & pointer to the data \\
+\hline
+{\em len} & the number of bytes to write \\
+\hline
+{\em b\-\_\-blank\-\_\-check} & if True then the page flash is checked before write to run or not the erase page command.\\
+\hline
+\end{DoxyParams}
+Set b\-\_\-blank\-\_\-check to false if all application flash is erased before. 

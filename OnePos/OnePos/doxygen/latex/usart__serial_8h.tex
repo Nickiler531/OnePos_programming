@@ -1,0 +1,92 @@
+\hypertarget{usart__serial_8h}{\section{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/serial/xmega\-\_\-usart/usart\-\_\-serial.h File Reference}
+\label{usart__serial_8h}\index{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/serial/xmega\-\_\-usart/usart\-\_\-serial.\-h@{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/serial/xmega\-\_\-usart/usart\-\_\-serial.\-h}}
+}
+{\ttfamily \#include \char`\"{}compiler.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}sysclk.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}status\-\_\-codes.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}usart.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}conf\-\_\-usart\-\_\-serial.\-h\char`\"{}}\\*
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{usart__serial_8h_ae1f1fb398e856e412ae0efa7e1daaa66}{typedef \hyperlink{group__usart__group_ga7ef7b0c900cfe5c657ed5dd41170091d}{usart\-\_\-rs232\-\_\-options\-\_\-t} {\bfseries usart\-\_\-serial\-\_\-options\-\_\-t}}\label{usart__serial_8h_ae1f1fb398e856e412ae0efa7e1daaa66}
+
+\item 
+typedef U\-S\-A\-R\-T\-\_\-t $\ast$ \hyperlink{usart__serial_8h_accf65192fb5345ed956bdd9524572f40}{usart\-\_\-if}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+status\-\_\-code\-\_\-t \hyperlink{usart__serial_8h_af9393f1fa29d87970159fabd511b7de1}{usart\-\_\-serial\-\_\-write\-\_\-packet} (\hyperlink{usart__serial_8h_accf65192fb5345ed956bdd9524572f40}{usart\-\_\-if} usart, const uint8\-\_\-t $\ast$data, size\-\_\-t len)
+\begin{DoxyCompactList}\small\item\em Send a sequence of bytes to U\-S\-A\-R\-T device. \end{DoxyCompactList}\item 
+status\-\_\-code\-\_\-t \hyperlink{usart__serial_8h_a87b33461b725f80263a8628b6e852e9e}{usart\-\_\-serial\-\_\-read\-\_\-packet} (\hyperlink{usart__serial_8h_accf65192fb5345ed956bdd9524572f40}{usart\-\_\-if} usart, uint8\-\_\-t $\ast$data, size\-\_\-t len)
+\begin{DoxyCompactList}\small\item\em Receive a sequence of bytes from U\-S\-A\-R\-T device. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file defines a useful set of functions for the Serial interface on A\-V\-R X\-M\-E\-G\-A devices.
+
+Copyright (c) 2009-\/2014 Atmel Corporation. All rights reserved.
+
+\subsection{Typedef Documentation}
+\hypertarget{usart__serial_8h_accf65192fb5345ed956bdd9524572f40}{\index{usart\-\_\-serial.\-h@{usart\-\_\-serial.\-h}!usart\-\_\-if@{usart\-\_\-if}}
+\index{usart\-\_\-if@{usart\-\_\-if}!usart_serial.h@{usart\-\_\-serial.\-h}}
+\subsubsection[{usart\-\_\-if}]{\setlength{\rightskip}{0pt plus 5cm}{\bf usart\-\_\-if}}}\label{usart__serial_8h_accf65192fb5345ed956bdd9524572f40}
+Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support}
+
+This type can be used independently to refer to U\-S\-A\-R\-T module for the architecture used. It refers to the correct type definition for the architecture, ie. U\-S\-A\-R\-T\-\_\-t$\ast$ for X\-M\-E\-G\-A or avr32\-\_\-usart\-\_\-t$\ast$ for U\-C3. 
+
+\subsection{Function Documentation}
+\hypertarget{usart__serial_8h_a87b33461b725f80263a8628b6e852e9e}{\index{usart\-\_\-serial.\-h@{usart\-\_\-serial.\-h}!usart\-\_\-serial\-\_\-read\-\_\-packet@{usart\-\_\-serial\-\_\-read\-\_\-packet}}
+\index{usart\-\_\-serial\-\_\-read\-\_\-packet@{usart\-\_\-serial\-\_\-read\-\_\-packet}!usart_serial.h@{usart\-\_\-serial.\-h}}
+\subsubsection[{usart\-\_\-serial\-\_\-read\-\_\-packet}]{\setlength{\rightskip}{0pt plus 5cm}status\-\_\-code\-\_\-t usart\-\_\-serial\-\_\-read\-\_\-packet (
+\begin{DoxyParamCaption}
+\item[{{\bf usart\-\_\-if}}]{usart, }
+\item[{uint8\-\_\-t $\ast$}]{data, }
+\item[{size\-\_\-t}]{len}
+\end{DoxyParamCaption}
+)}}\label{usart__serial_8h_a87b33461b725f80263a8628b6e852e9e}
+
+
+Receive a sequence of bytes from U\-S\-A\-R\-T device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em usart} & Base address of the U\-S\-A\-R\-T instance. \\
+\hline
+{\em data} & Data buffer to write \\
+\hline
+{\em len} & Length of data \\
+\hline
+\end{DoxyParams}
+\hypertarget{usart__serial_8h_af9393f1fa29d87970159fabd511b7de1}{\index{usart\-\_\-serial.\-h@{usart\-\_\-serial.\-h}!usart\-\_\-serial\-\_\-write\-\_\-packet@{usart\-\_\-serial\-\_\-write\-\_\-packet}}
+\index{usart\-\_\-serial\-\_\-write\-\_\-packet@{usart\-\_\-serial\-\_\-write\-\_\-packet}!usart_serial.h@{usart\-\_\-serial.\-h}}
+\subsubsection[{usart\-\_\-serial\-\_\-write\-\_\-packet}]{\setlength{\rightskip}{0pt plus 5cm}status\-\_\-code\-\_\-t usart\-\_\-serial\-\_\-write\-\_\-packet (
+\begin{DoxyParamCaption}
+\item[{{\bf usart\-\_\-if}}]{usart, }
+\item[{const uint8\-\_\-t $\ast$}]{data, }
+\item[{size\-\_\-t}]{len}
+\end{DoxyParamCaption}
+)}}\label{usart__serial_8h_af9393f1fa29d87970159fabd511b7de1}
+
+
+Send a sequence of bytes to U\-S\-A\-R\-T device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em usart} & Base address of the U\-S\-A\-R\-T instance. \\
+\hline
+{\em data} & Data buffer to read \\
+\hline
+{\em len} & Length of data\\
+\hline
+\end{DoxyParams}
+Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support} 
+\begin{DoxyParams}{Parameters}
+{\em usart} & Base address of the U\-S\-A\-R\-T instance. \\
+\hline
+{\em data} & Data buffer to read \\
+\hline
+{\em len} & Length of data \\
+\hline
+\end{DoxyParams}

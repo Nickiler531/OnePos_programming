@@ -20,6 +20,11 @@
 #include "include/deca_device_api.h"
 #include "include/deca_regs.h"
 #include "include/deca_spi.h"
+#include "include/deca_param_types.h"
+
+#include "include/onepos_config.h"
+#include "include/deca_onepos.h"
+#include "include/ble.h"
 #include "stdio.h"
 #include "string.h"
 

@@ -1,0 +1,206 @@
+This is the quick start guide for the \hyperlink{group__spi__group}{S\-P\-I Driver}, with step-\/by-\/step instructions on how to configure and use the driver for a specific use case.
+
+The use case contain several code fragments. The code fragments in the steps for setup can be copied into a custom initialization function, while the steps for usage can be copied into, e.\-g., the main application function.
+
+The steps for setting up the S\-P\-I master for X\-M\-E\-G\-A and U\-C3 use exactly the same approach, but note that there are different names on the peripherals. So to use this Quick Start for U\-C3 please make sure that all the peripheral names are updated according to the U\-C3 datasheet.
+\begin{DoxyItemize}
+\item \hyperlink{spi_master_xmega}{Quick start guide for S\-P\-I master on X\-M\-E\-G\-A devices} 
+\end{DoxyItemize}\hypertarget{spi_master_xmega}{}\section{Quick start guide for S\-P\-I master on X\-M\-E\-G\-A devices}\label{spi_master_xmega}
+\hypertarget{spi_master_xmega_spi_master_xmega_basic}{}\subsection{Basic setup for X\-M\-E\-G\-A devices}\label{spi_master_xmega_spi_master_xmega_basic}
+The S\-P\-I module will be set up as master\-:
+\begin{DoxyItemize}
+\item S\-P\-I on P\-O\-R\-T\-D
+\item 1\-M\-Hz S\-P\-I clock speed
+\item Slave Chip Select connected on P\-O\-R\-T\-D pin 1
+\item S\-P\-I mode 0 (data on rising clock edge)
+\end{DoxyItemize}\hypertarget{spi_master_xmega_spi_master_xmega_basic_setup}{}\subsection{Workflow}\label{spi_master_xmega_spi_master_xmega_basic_setup}
+\hypertarget{spi_master_xmega_spi_master_xmega_basic_setup_code}{}\subsubsection{Example code}\label{spi_master_xmega_spi_master_xmega_basic_setup_code}
+Add to application C-\/file (e.\-g. \hyperlink{main_8c}{main.\-c})\-: 
+\begin{DoxyCode}
+           \textcolor{keywordtype}{void} spi\_init\_pins(\textcolor{keywordtype}{void})
+           \{
+               \hyperlink{ioport__compat_8h_a8da4959022f2cec05f59a9939671ff7e}{ioport\_configure\_port\_pin}(&PORTD, 
+      PIN1\_bm, \hyperlink{ioport__compat_8h_a6fd5b83fc296e4d6d791f8b074731d8e}{IOPORT\_INIT\_HIGH} | \hyperlink{group__ioport__group_gga9c267f89800e58bd9dfd74e662a4a4c1a06de24313dad0169f3a366c62a84f4cc}{IOPORT\_DIR\_OUTPUT});
+
+               \hyperlink{ioport__compat_8h_a8da4959022f2cec05f59a9939671ff7e}{ioport\_configure\_port\_pin}(&PORTD, 
+      PIN4\_bm, \hyperlink{ioport__compat_8h_acbd350ec39fe567a7c0e423b000746fb}{IOPORT\_PULL\_UP} | \hyperlink{group__ioport__group_gga9c267f89800e58bd9dfd74e662a4a4c1af854a0dce084e5a8e8744f9a502e7b7b}{IOPORT\_DIR\_INPUT});
+               \hyperlink{ioport__compat_8h_a8da4959022f2cec05f59a9939671ff7e}{ioport\_configure\_port\_pin}(&PORTD, 
+      PIN5\_bm, \hyperlink{ioport__compat_8h_a6fd5b83fc296e4d6d791f8b074731d8e}{IOPORT\_INIT\_HIGH} | \hyperlink{group__ioport__group_gga9c267f89800e58bd9dfd74e662a4a4c1a06de24313dad0169f3a366c62a84f4cc}{IOPORT\_DIR\_OUTPUT});
+               \hyperlink{ioport__compat_8h_a8da4959022f2cec05f59a9939671ff7e}{ioport\_configure\_port\_pin}(&PORTD, 
+      PIN6\_bm, \hyperlink{group__ioport__group_gga9c267f89800e58bd9dfd74e662a4a4c1af854a0dce084e5a8e8744f9a502e7b7b}{IOPORT\_DIR\_INPUT});
+               \hyperlink{ioport__compat_8h_a8da4959022f2cec05f59a9939671ff7e}{ioport\_configure\_port\_pin}(&PORTD, 
+      PIN7\_bm, \hyperlink{ioport__compat_8h_a6fd5b83fc296e4d6d791f8b074731d8e}{IOPORT\_INIT\_HIGH} | \hyperlink{group__ioport__group_gga9c267f89800e58bd9dfd74e662a4a4c1a06de24313dad0169f3a366c62a84f4cc}{IOPORT\_DIR\_OUTPUT});
+           \}
+
+           \textcolor{keywordtype}{void} spi\_init\_module(\textcolor{keywordtype}{void})
+           \{
+              \textcolor{keyword}{struct }\hyperlink{structspi__device}{spi\_device} spi\_device\_conf = \{
+                  .\hyperlink{structspi__device_a46fd65e51a4d6c4d6056639a4f154186}{id} = \hyperlink{group__ioport__group_gabc09edad7c3187dec63ce47e6f1b3c51}{IOPORT\_CREATE\_PIN}(PORTD, 1)
+              \};
+
+              \hyperlink{group__xmega__spi__master__group_ga3238676989038a9dec0ebcd3aa625a42}{spi\_master\_init}(&SPID);
+              \hyperlink{group__xmega__spi__master__group_ga81164f6dd2297a64337f3a052171e0f8}{spi\_master\_setup\_device}(&SPID, &
+      spi\_device\_conf, \hyperlink{group__xmega__spi__master__group_ga1ec07ad94d5f6276c1c0b41d0550fe52}{SPI\_MODE\_0}, 1000000, 0);
+              \hyperlink{group__xmega__spi__master__group_ga82974e81370360e53b1276113de8a462}{spi\_enable}(&SPID);
+           \}
+\end{DoxyCode}
+\hypertarget{spi_master_xmega_spi_master_xmega_basic_setup}{}\subsubsection{Workflow}\label{spi_master_xmega_spi_master_xmega_basic_setup}
+
+\begin{DoxyEnumerate}
+\item Ensure that \hyperlink{conf__spi__master_8h}{conf\-\_\-spi\-\_\-master.\-h} is present for the driver.
+\begin{DoxyItemize}
+\item \begin{DoxyNote}{Note}
+This file is only for the driver and should not be included by the user. In this example the file can be left empty.
+\end{DoxyNote}
+
+\end{DoxyItemize}
+\item Initialize the pins used by the S\-P\-I interface (this initialization is for the A\-Txmega32\-A4\-U device).
+\begin{DoxyEnumerate}
+\item Set the pin used for slave select as output high\-: 
+\begin{DoxyCode}
+        \hyperlink{ioport__compat_8h_a8da4959022f2cec05f59a9939671ff7e}{ioport\_configure\_port\_pin}(&PORTD, PIN1\_bm, 
+      \hyperlink{ioport__compat_8h_a6fd5b83fc296e4d6d791f8b074731d8e}{IOPORT\_INIT\_HIGH} | \hyperlink{group__ioport__group_gga9c267f89800e58bd9dfd74e662a4a4c1a06de24313dad0169f3a366c62a84f4cc}{IOPORT\_DIR\_OUTPUT});
+\end{DoxyCode}
+
+\item Enable pull-\/up on own chip select (S\-S)\-: 
+\begin{DoxyCode}
+        \hyperlink{ioport__compat_8h_a8da4959022f2cec05f59a9939671ff7e}{ioport\_configure\_port\_pin}(&PORTD, PIN4\_bm, 
+      \hyperlink{ioport__compat_8h_acbd350ec39fe567a7c0e423b000746fb}{IOPORT\_PULL\_UP} | \hyperlink{group__ioport__group_gga9c267f89800e58bd9dfd74e662a4a4c1af854a0dce084e5a8e8744f9a502e7b7b}{IOPORT\_DIR\_INPUT});
+\end{DoxyCode}
+ \begin{DoxyAttention}{Attention}
+If this pin is pulled low the S\-P\-I module will go into slave mode.
+\end{DoxyAttention}
+
+\item Set M\-O\-S\-I and S\-C\-L as output high, and set M\-I\-S\-O as input\-: 
+\begin{DoxyCode}
+        \hyperlink{ioport__compat_8h_a8da4959022f2cec05f59a9939671ff7e}{ioport\_configure\_port\_pin}(&PORTD, PIN5\_bm, 
+      \hyperlink{ioport__compat_8h_a6fd5b83fc296e4d6d791f8b074731d8e}{IOPORT\_INIT\_HIGH} | \hyperlink{group__ioport__group_gga9c267f89800e58bd9dfd74e662a4a4c1a06de24313dad0169f3a366c62a84f4cc}{IOPORT\_DIR\_OUTPUT});
+        \hyperlink{ioport__compat_8h_a8da4959022f2cec05f59a9939671ff7e}{ioport\_configure\_port\_pin}(&PORTD, PIN6\_bm, 
+      \hyperlink{group__ioport__group_gga9c267f89800e58bd9dfd74e662a4a4c1af854a0dce084e5a8e8744f9a502e7b7b}{IOPORT\_DIR\_INPUT});
+        \hyperlink{ioport__compat_8h_a8da4959022f2cec05f59a9939671ff7e}{ioport\_configure\_port\_pin}(&PORTD, PIN7\_bm, 
+      \hyperlink{ioport__compat_8h_a6fd5b83fc296e4d6d791f8b074731d8e}{IOPORT\_INIT\_HIGH} | \hyperlink{group__ioport__group_gga9c267f89800e58bd9dfd74e662a4a4c1a06de24313dad0169f3a366c62a84f4cc}{IOPORT\_DIR\_OUTPUT});
+\end{DoxyCode}
+
+\end{DoxyEnumerate}
+\item Define the S\-P\-I device configuration struct to describe which pin the slave select (slave chip select) is connected to, in this case the slave select pin has been connected to P\-O\-R\-T\-D pin 1 (P\-D1)\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+        \textcolor{keyword}{struct }\hyperlink{structspi__device}{spi\_device} spi\_device\_conf = \{
+            .\hyperlink{structspi__device_a46fd65e51a4d6c4d6056639a4f154186}{id} = \hyperlink{group__ioport__group_gabc09edad7c3187dec63ce47e6f1b3c51}{IOPORT\_CREATE\_PIN}(PORTD, 1)
+        \};
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Initialize the S\-P\-I module, in this case S\-P\-I on P\-O\-R\-T\-D has been chosen\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+        \hyperlink{group__xmega__spi__master__group_ga3238676989038a9dec0ebcd3aa625a42}{spi\_master\_init}(&SPID);
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Setup the S\-P\-I master module for a specific device\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+        \hyperlink{group__xmega__spi__master__group_ga81164f6dd2297a64337f3a052171e0f8}{spi\_master\_setup\_device}(&SPID, &spi\_device\_conf,
+       \hyperlink{group__xmega__spi__master__group_ga1ec07ad94d5f6276c1c0b41d0550fe52}{SPI\_MODE\_0}, 1000000, 0);
+\end{DoxyCode}
+
+\item \begin{DoxyNote}{Note}
+The last argument, which is zero in this case, can be ignored and is only included for compatibility purposes.
+\end{DoxyNote}
+
+\end{DoxyItemize}
+\item Then enable the S\-P\-I\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+        \hyperlink{group__xmega__spi__master__group_ga82974e81370360e53b1276113de8a462}{spi\_enable}(&SPID);
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\end{DoxyEnumerate}\hypertarget{spi_master_xmega_spi_master_xmega_basic_usage}{}\subsection{Usage steps}\label{spi_master_xmega_spi_master_xmega_basic_usage}
+\hypertarget{spi_master_xmega_spi_master_xmega_basic_usage_code}{}\subsubsection{Example code}\label{spi_master_xmega_spi_master_xmega_basic_usage_code}
+Add to, e.\-g., the main loop in the application C-\/file\-: 
+\begin{DoxyCode}
+           uint8\_t data\_buffer[1] = \{0xAA\};
+
+           \textcolor{keyword}{struct }\hyperlink{structspi__device}{spi\_device} spi\_device\_conf = \{
+               .\hyperlink{structspi__device_a46fd65e51a4d6c4d6056639a4f154186}{id} = \hyperlink{group__ioport__group_gabc09edad7c3187dec63ce47e6f1b3c51}{IOPORT\_CREATE\_PIN}(PORTD, 1)
+           \};
+
+           \hyperlink{group__xmega__spi__master__group_gac8751c855b90ea2774b5007f519e487e}{spi\_select\_device}(&SPID, &spi\_device\_conf);
+
+           \hyperlink{group__xmega__spi__master__group_ga60595beff80eae31c8dad32a8720865a}{spi\_write\_packet}(&SPID, data\_buffer, 1);
+           \hyperlink{group__xmega__spi__master__group_ga504ee6688009acff607e0304cc59278d}{spi\_read\_packet}(&SPID, data\_buffer, 1);
+
+           \hyperlink{group__xmega__spi__master__group_gad528d94d606bda0fa6503f77a6a7bb78}{spi\_deselect\_device}(&SPID, &spi\_device\_conf);
+\end{DoxyCode}
+\hypertarget{spi_master_xmega_spi_master_xmega_basic_usage_flow}{}\subsubsection{Workflow}\label{spi_master_xmega_spi_master_xmega_basic_usage_flow}
+
+\begin{DoxyEnumerate}
+\item Create a buffer for data to be sent/received on the S\-P\-I bus, in this case a single byte buffer is used. The buffer can be of arbitrary size as long as there is space left in S\-R\-A\-M\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+        uint8\_t data\_buffer[1] = \{0xAA\};
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Define the S\-P\-I device configuration struct to describe which pin the slave select (slave chip select) is connected to, in this case the slave select pin has been connected to P\-O\-R\-T\-D pin 1 (P\-D1)\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+        \textcolor{keyword}{struct }\hyperlink{structspi__device}{spi\_device} spi\_device\_conf = \{
+            .\hyperlink{structspi__device_a46fd65e51a4d6c4d6056639a4f154186}{id} = \hyperlink{group__ioport__group_gabc09edad7c3187dec63ce47e6f1b3c51}{IOPORT\_CREATE\_PIN}(PORTD, 1)
+        \};
+\end{DoxyCode}
+
+\item \begin{DoxyNote}{Note}
+As this struct is the same for both the initializing part and the usage part it could be a good idea to make the struct global, and hence accessible for both the initializing part and usage part. Another solution could be to create the struct in the main function and pass the address of the struct to the spi\-\_\-init\-\_\-module() function, e.\-g.\-: 
+\begin{DoxyCode}
+           \textcolor{keywordtype}{void} spi\_init\_module(\textcolor{keyword}{struct} \hyperlink{structspi__device}{spi\_device} *spi\_device\_conf)
+           \{
+               ...
+
+               \hyperlink{group__xmega__spi__master__group_ga81164f6dd2297a64337f3a052171e0f8}{spi\_master\_setup\_device}(&SPID, 
+      spi\_device\_conf, \hyperlink{group__xmega__spi__master__group_ga1ec07ad94d5f6276c1c0b41d0550fe52}{SPI\_MODE\_0}, 1000000, 0);
+
+               ...
+           \}
+\end{DoxyCode}
+
+\end{DoxyNote}
+
+\end{DoxyItemize}
+\item Write data to the S\-P\-I slave device, in this case write one byte from the data\-\_\-buffer\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+        \hyperlink{group__xmega__spi__master__group_ga60595beff80eae31c8dad32a8720865a}{spi\_write\_packet}(&SPID, data\_buffer, 1);
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Read data from the S\-P\-I slave device, in this case read one byte and put it into the data\-\_\-buffer\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+        \hyperlink{group__xmega__spi__master__group_ga504ee6688009acff607e0304cc59278d}{spi\_read\_packet}(&SPID, data\_buffer, 1);
+\end{DoxyCode}
+
+\item \begin{DoxyAttention}{Attention}
+As the S\-P\-I works as a shift register so that data is shifted in at the same time as data is shifted out a read operation will mean that a dummy byte \hyperlink{group__xmega__spi__master__group_ga64f5ff62d19aab1a97cc5e72e062be49}{C\-O\-N\-F\-I\-G\-\_\-\-S\-P\-I\-\_\-\-M\-A\-S\-T\-E\-R\-\_\-\-D\-U\-M\-M\-Y} is written to the S\-P\-I bus. \hyperlink{group__xmega__spi__master__group_ga64f5ff62d19aab1a97cc5e72e062be49}{C\-O\-N\-F\-I\-G\-\_\-\-S\-P\-I\-\_\-\-M\-A\-S\-T\-E\-R\-\_\-\-D\-U\-M\-M\-Y} defaults to 0x\-F\-F, but can be changed by defining it inside the \hyperlink{conf__spi__master_8h}{conf\-\_\-spi\-\_\-master.\-h} file.
+\end{DoxyAttention}
+
+\end{DoxyItemize}
+\item When read and write operations is done de-\/select the slave\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+        \hyperlink{group__xmega__spi__master__group_gad528d94d606bda0fa6503f77a6a7bb78}{spi\_deselect\_device}(&SPID, &spi\_device\_conf);
+\end{DoxyCode}
+ 
+\end{DoxyItemize}
+\end{DoxyEnumerate}

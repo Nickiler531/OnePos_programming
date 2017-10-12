@@ -1,0 +1,34 @@
+\hypertarget{structudd__sram__data}{\section{udd\-\_\-sram\-\_\-data Struct Reference}
+\label{structudd__sram__data}\index{udd\-\_\-sram\-\_\-data@{udd\-\_\-sram\-\_\-data}}
+}
+
+
+U\-S\-B S\-R\-A\-M data about fifo, endpoint descriptor table and frame number.  
+
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structudd__sram__data_aad116702d70b883f4a76eb964018678a}{uint32\-\_\-t {\bfseries fifo} \mbox{[}\hyperlink{group__udi__cdc__group__single__desc_ga94a9c8812ccfd31f8b0398b666c54453}{U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-M\-A\-X\-\_\-\-E\-P}+1\mbox{]}}\label{structudd__sram__data_aad116702d70b883f4a76eb964018678a}
+
+\item 
+\hypertarget{structudd__sram__data_a007c2bc709284a3bcbec637b8063f3fd}{U\-S\-B\-\_\-\-E\-P\-\_\-t {\bfseries ep\-\_\-ctrl} \mbox{[}2 $\ast$(\hyperlink{group__udi__cdc__group__single__desc_ga94a9c8812ccfd31f8b0398b666c54453}{U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-M\-A\-X\-\_\-\-E\-P}+1)\mbox{]}}\label{structudd__sram__data_a007c2bc709284a3bcbec637b8063f3fd}
+
+\item 
+\hypertarget{structudd__sram__data_a73d612bb10856496ced32345cb6666eb}{uint16\-\_\-t {\bfseries frame\-\_\-number}}\label{structudd__sram__data_a73d612bb10856496ced32345cb6666eb}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+U\-S\-B S\-R\-A\-M data about fifo, endpoint descriptor table and frame number. 
+
+The content of the U\-S\-B S\-R\-A\-M can be\-:
+\begin{DoxyItemize}
+\item modified by U\-S\-B hardware by interface to signal endpoint status. Thereby, it is read by software.
+\item modified by U\-S\-B software to control endpoint. Thereby, it is read by hardware. This data section is volatile and the specific opcode read/modify/write must be used. 
+\end{DoxyItemize}
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/xmega/drivers/usb/\hyperlink{usb__device_8c}{usb\-\_\-device.\-c}\end{DoxyCompactItemize}

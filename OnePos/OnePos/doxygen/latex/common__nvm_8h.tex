@@ -1,0 +1,243 @@
+\hypertarget{common__nvm_8h}{\section{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/drivers/nvm/common\-\_\-nvm.h File Reference}
+\label{common__nvm_8h}\index{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/drivers/nvm/common\-\_\-nvm.\-h@{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/drivers/nvm/common\-\_\-nvm.\-h}}
+}
+
+
+Non volatile memories management.  
+
+
+{\ttfamily \#include \char`\"{}compiler.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}conf\-\_\-board.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}parts.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}status\-\_\-codes.\-h\char`\"{}}\\*
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{common__nvm_8h_afef014104baf9d5fe41a5310b30c1260}{mem\-\_\-type\-\_\-t} \{ {\bfseries I\-N\-T\-\_\-\-F\-L\-A\-S\-H}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+status\-\_\-code\-\_\-t \hyperlink{common__nvm_8h_a0ac16f4de49f2f0df16e3cf56be5f578}{nvm\-\_\-init} (\hyperlink{common__nvm_8h_afef014104baf9d5fe41a5310b30c1260}{mem\-\_\-type\-\_\-t} mem)
+\begin{DoxyCompactList}\small\item\em Initialize the non volatile memory specified. \end{DoxyCompactList}\item 
+status\-\_\-code\-\_\-t \hyperlink{common__nvm_8h_a9bf7017a9919ba4c2c5d6b467380d6ef}{nvm\-\_\-read\-\_\-char} (\hyperlink{common__nvm_8h_afef014104baf9d5fe41a5310b30c1260}{mem\-\_\-type\-\_\-t} mem, uint32\-\_\-t address, uint8\-\_\-t $\ast$data)
+\begin{DoxyCompactList}\small\item\em Read single byte of data. \end{DoxyCompactList}\item 
+status\-\_\-code\-\_\-t \hyperlink{common__nvm_8h_a42272bff20877bb19149a5073d8ffa3b}{nvm\-\_\-write\-\_\-char} (\hyperlink{common__nvm_8h_afef014104baf9d5fe41a5310b30c1260}{mem\-\_\-type\-\_\-t} mem, uint32\-\_\-t address, uint8\-\_\-t data)
+\begin{DoxyCompactList}\small\item\em Write single byte of data. \end{DoxyCompactList}\item 
+status\-\_\-code\-\_\-t \hyperlink{common__nvm_8h_a38c20e73ee79e686204f85e88854e5d1}{nvm\-\_\-read} (\hyperlink{common__nvm_8h_afef014104baf9d5fe41a5310b30c1260}{mem\-\_\-type\-\_\-t} mem, uint32\-\_\-t address, void $\ast$buffer, uint32\-\_\-t len)
+\begin{DoxyCompactList}\small\item\em Read {\itshape len} number of bytes from address {\itshape address} in non volatile memory {\itshape mem} and store it in the buffer {\itshape buffer}. \end{DoxyCompactList}\item 
+status\-\_\-code\-\_\-t \hyperlink{common__nvm_8h_ae2475c24bb003e7e1368d2c488d22db3}{nvm\-\_\-write} (\hyperlink{common__nvm_8h_afef014104baf9d5fe41a5310b30c1260}{mem\-\_\-type\-\_\-t} mem, uint32\-\_\-t address, void $\ast$buffer, uint32\-\_\-t len)
+\begin{DoxyCompactList}\small\item\em Write {\itshape len} number of bytes at address {\itshape address} in non volatile memory {\itshape mem} from the buffer {\itshape buffer}. \end{DoxyCompactList}\item 
+status\-\_\-code\-\_\-t \hyperlink{common__nvm_8h_a647ad906f2c90020d68084b0d3c7c206}{nvm\-\_\-page\-\_\-erase} (\hyperlink{common__nvm_8h_afef014104baf9d5fe41a5310b30c1260}{mem\-\_\-type\-\_\-t} mem, uint32\-\_\-t page\-\_\-number)
+\begin{DoxyCompactList}\small\item\em Erase a page in the non volatile memory. \end{DoxyCompactList}\item 
+status\-\_\-code\-\_\-t \hyperlink{common__nvm_8h_ad90ba5cf40374577ef525365bbc86641}{nvm\-\_\-get\-\_\-size} (\hyperlink{common__nvm_8h_afef014104baf9d5fe41a5310b30c1260}{mem\-\_\-type\-\_\-t} mem, uint32\-\_\-t $\ast$size)
+\begin{DoxyCompactList}\small\item\em Get the size of whole non volatile memory specified. \end{DoxyCompactList}\item 
+status\-\_\-code\-\_\-t \hyperlink{common__nvm_8h_a784427385b7243e8d69dcb52933116d8}{nvm\-\_\-get\-\_\-page\-\_\-size} (\hyperlink{common__nvm_8h_afef014104baf9d5fe41a5310b30c1260}{mem\-\_\-type\-\_\-t} mem, uint32\-\_\-t $\ast$size)
+\begin{DoxyCompactList}\small\item\em Get the size of a page in the non volatile memory specified. \end{DoxyCompactList}\item 
+status\-\_\-code\-\_\-t \hyperlink{common__nvm_8h_ae88b4f69e71b6c7991d2e222ec7f4bc6}{nvm\-\_\-get\-\_\-pagenumber} (\hyperlink{common__nvm_8h_afef014104baf9d5fe41a5310b30c1260}{mem\-\_\-type\-\_\-t} mem, uint32\-\_\-t address, uint32\-\_\-t $\ast$num)
+\begin{DoxyCompactList}\small\item\em Get the page number from the byte address {\itshape address}. \end{DoxyCompactList}\item 
+\hypertarget{common__nvm_8h_af15d68188f29bee24b7cdc19e835e293}{status\-\_\-code\-\_\-t \hyperlink{common__nvm_8h_af15d68188f29bee24b7cdc19e835e293}{nvm\-\_\-set\-\_\-security\-\_\-bit} (void)}\label{common__nvm_8h_af15d68188f29bee24b7cdc19e835e293}
+
+\begin{DoxyCompactList}\small\item\em Enable security bit which blocks external read and write access to the device. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Non volatile memories management. Copyright (c) 2012-\/2014 Atmel Corporation. All rights reserved.
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{common__nvm_8h_afef014104baf9d5fe41a5310b30c1260}{\index{common\-\_\-nvm.\-h@{common\-\_\-nvm.\-h}!mem\-\_\-type\-\_\-t@{mem\-\_\-type\-\_\-t}}
+\index{mem\-\_\-type\-\_\-t@{mem\-\_\-type\-\_\-t}!common_nvm.h@{common\-\_\-nvm.\-h}}
+\subsubsection[{mem\-\_\-type\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf mem\-\_\-type\-\_\-t}}}\label{common__nvm_8h_afef014104baf9d5fe41a5310b30c1260}
+Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support} 
+
+\subsection{Function Documentation}
+\hypertarget{common__nvm_8h_a784427385b7243e8d69dcb52933116d8}{\index{common\-\_\-nvm.\-h@{common\-\_\-nvm.\-h}!nvm\-\_\-get\-\_\-page\-\_\-size@{nvm\-\_\-get\-\_\-page\-\_\-size}}
+\index{nvm\-\_\-get\-\_\-page\-\_\-size@{nvm\-\_\-get\-\_\-page\-\_\-size}!common_nvm.h@{common\-\_\-nvm.\-h}}
+\subsubsection[{nvm\-\_\-get\-\_\-page\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}status\-\_\-code\-\_\-t nvm\-\_\-get\-\_\-page\-\_\-size (
+\begin{DoxyParamCaption}
+\item[{{\bf mem\-\_\-type\-\_\-t}}]{mem, }
+\item[{uint32\-\_\-t $\ast$}]{size}
+\end{DoxyParamCaption}
+)}}\label{common__nvm_8h_a784427385b7243e8d69dcb52933116d8}
+
+
+Get the size of a page in the non volatile memory specified. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mem} & Type of non volatile memory \\
+\hline
+{\em size} & Pointer to where to store the size \\
+\hline
+\end{DoxyParams}
+\hypertarget{common__nvm_8h_ae88b4f69e71b6c7991d2e222ec7f4bc6}{\index{common\-\_\-nvm.\-h@{common\-\_\-nvm.\-h}!nvm\-\_\-get\-\_\-pagenumber@{nvm\-\_\-get\-\_\-pagenumber}}
+\index{nvm\-\_\-get\-\_\-pagenumber@{nvm\-\_\-get\-\_\-pagenumber}!common_nvm.h@{common\-\_\-nvm.\-h}}
+\subsubsection[{nvm\-\_\-get\-\_\-pagenumber}]{\setlength{\rightskip}{0pt plus 5cm}status\-\_\-code\-\_\-t nvm\-\_\-get\-\_\-pagenumber (
+\begin{DoxyParamCaption}
+\item[{{\bf mem\-\_\-type\-\_\-t}}]{mem, }
+\item[{uint32\-\_\-t}]{address, }
+\item[{uint32\-\_\-t $\ast$}]{num}
+\end{DoxyParamCaption}
+)}}\label{common__nvm_8h_ae88b4f69e71b6c7991d2e222ec7f4bc6}
+
+
+Get the page number from the byte address {\itshape address}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mem} & Type of non volatile memory \\
+\hline
+{\em address} & Byte address of the non volatile memory \\
+\hline
+{\em num} & Pointer to where to store the page number \\
+\hline
+\end{DoxyParams}
+\hypertarget{common__nvm_8h_ad90ba5cf40374577ef525365bbc86641}{\index{common\-\_\-nvm.\-h@{common\-\_\-nvm.\-h}!nvm\-\_\-get\-\_\-size@{nvm\-\_\-get\-\_\-size}}
+\index{nvm\-\_\-get\-\_\-size@{nvm\-\_\-get\-\_\-size}!common_nvm.h@{common\-\_\-nvm.\-h}}
+\subsubsection[{nvm\-\_\-get\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}status\-\_\-code\-\_\-t nvm\-\_\-get\-\_\-size (
+\begin{DoxyParamCaption}
+\item[{{\bf mem\-\_\-type\-\_\-t}}]{mem, }
+\item[{uint32\-\_\-t $\ast$}]{size}
+\end{DoxyParamCaption}
+)}}\label{common__nvm_8h_ad90ba5cf40374577ef525365bbc86641}
+
+
+Get the size of whole non volatile memory specified. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mem} & Type of non volatile memory \\
+\hline
+{\em size} & Pointer to where to store the size \\
+\hline
+\end{DoxyParams}
+\hypertarget{common__nvm_8h_a0ac16f4de49f2f0df16e3cf56be5f578}{\index{common\-\_\-nvm.\-h@{common\-\_\-nvm.\-h}!nvm\-\_\-init@{nvm\-\_\-init}}
+\index{nvm\-\_\-init@{nvm\-\_\-init}!common_nvm.h@{common\-\_\-nvm.\-h}}
+\subsubsection[{nvm\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}status\-\_\-code\-\_\-t nvm\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{{\bf mem\-\_\-type\-\_\-t}}]{mem}
+\end{DoxyParamCaption}
+)}}\label{common__nvm_8h_a0ac16f4de49f2f0df16e3cf56be5f578}
+
+
+Initialize the non volatile memory specified. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mem} & Type of non volatile memory to initialize\\
+\hline
+\end{DoxyParams}
+Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support} \hypertarget{common__nvm_8h_a647ad906f2c90020d68084b0d3c7c206}{\index{common\-\_\-nvm.\-h@{common\-\_\-nvm.\-h}!nvm\-\_\-page\-\_\-erase@{nvm\-\_\-page\-\_\-erase}}
+\index{nvm\-\_\-page\-\_\-erase@{nvm\-\_\-page\-\_\-erase}!common_nvm.h@{common\-\_\-nvm.\-h}}
+\subsubsection[{nvm\-\_\-page\-\_\-erase}]{\setlength{\rightskip}{0pt plus 5cm}status\-\_\-code\-\_\-t nvm\-\_\-page\-\_\-erase (
+\begin{DoxyParamCaption}
+\item[{{\bf mem\-\_\-type\-\_\-t}}]{mem, }
+\item[{uint32\-\_\-t}]{page\-\_\-number}
+\end{DoxyParamCaption}
+)}}\label{common__nvm_8h_a647ad906f2c90020d68084b0d3c7c206}
+
+
+Erase a page in the non volatile memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mem} & Type of non volatile memory to erase \\
+\hline
+{\em page\-\_\-number} & Page number to erase \\
+\hline
+\end{DoxyParams}
+\hypertarget{common__nvm_8h_a38c20e73ee79e686204f85e88854e5d1}{\index{common\-\_\-nvm.\-h@{common\-\_\-nvm.\-h}!nvm\-\_\-read@{nvm\-\_\-read}}
+\index{nvm\-\_\-read@{nvm\-\_\-read}!common_nvm.h@{common\-\_\-nvm.\-h}}
+\subsubsection[{nvm\-\_\-read}]{\setlength{\rightskip}{0pt plus 5cm}status\-\_\-code\-\_\-t nvm\-\_\-read (
+\begin{DoxyParamCaption}
+\item[{{\bf mem\-\_\-type\-\_\-t}}]{mem, }
+\item[{uint32\-\_\-t}]{address, }
+\item[{void $\ast$}]{buffer, }
+\item[{uint32\-\_\-t}]{len}
+\end{DoxyParamCaption}
+)}}\label{common__nvm_8h_a38c20e73ee79e686204f85e88854e5d1}
+
+
+Read {\itshape len} number of bytes from address {\itshape address} in non volatile memory {\itshape mem} and store it in the buffer {\itshape buffer}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mem} & Type of non volatile memory to read \\
+\hline
+{\em address} & Address to read \\
+\hline
+{\em buffer} & Pointer to destination buffer \\
+\hline
+{\em len} & Number of bytes to read \\
+\hline
+\end{DoxyParams}
+\hypertarget{common__nvm_8h_a9bf7017a9919ba4c2c5d6b467380d6ef}{\index{common\-\_\-nvm.\-h@{common\-\_\-nvm.\-h}!nvm\-\_\-read\-\_\-char@{nvm\-\_\-read\-\_\-char}}
+\index{nvm\-\_\-read\-\_\-char@{nvm\-\_\-read\-\_\-char}!common_nvm.h@{common\-\_\-nvm.\-h}}
+\subsubsection[{nvm\-\_\-read\-\_\-char}]{\setlength{\rightskip}{0pt plus 5cm}status\-\_\-code\-\_\-t nvm\-\_\-read\-\_\-char (
+\begin{DoxyParamCaption}
+\item[{{\bf mem\-\_\-type\-\_\-t}}]{mem, }
+\item[{uint32\-\_\-t}]{address, }
+\item[{uint8\-\_\-t $\ast$}]{data}
+\end{DoxyParamCaption}
+)}}\label{common__nvm_8h_a9bf7017a9919ba4c2c5d6b467380d6ef}
+
+
+Read single byte of data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mem} & Type of non volatile memory to read \\
+\hline
+{\em address} & Address to read \\
+\hline
+{\em data} & Pointer to where to store the read data \\
+\hline
+\end{DoxyParams}
+\hypertarget{common__nvm_8h_ae2475c24bb003e7e1368d2c488d22db3}{\index{common\-\_\-nvm.\-h@{common\-\_\-nvm.\-h}!nvm\-\_\-write@{nvm\-\_\-write}}
+\index{nvm\-\_\-write@{nvm\-\_\-write}!common_nvm.h@{common\-\_\-nvm.\-h}}
+\subsubsection[{nvm\-\_\-write}]{\setlength{\rightskip}{0pt plus 5cm}status\-\_\-code\-\_\-t nvm\-\_\-write (
+\begin{DoxyParamCaption}
+\item[{{\bf mem\-\_\-type\-\_\-t}}]{mem, }
+\item[{uint32\-\_\-t}]{address, }
+\item[{void $\ast$}]{buffer, }
+\item[{uint32\-\_\-t}]{len}
+\end{DoxyParamCaption}
+)}}\label{common__nvm_8h_ae2475c24bb003e7e1368d2c488d22db3}
+
+
+Write {\itshape len} number of bytes at address {\itshape address} in non volatile memory {\itshape mem} from the buffer {\itshape buffer}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mem} & Type of non volatile memory to write \\
+\hline
+{\em address} & Address to write \\
+\hline
+{\em buffer} & Pointer to source buffer \\
+\hline
+{\em len} & Number of bytes to write \\
+\hline
+\end{DoxyParams}
+\hypertarget{common__nvm_8h_a42272bff20877bb19149a5073d8ffa3b}{\index{common\-\_\-nvm.\-h@{common\-\_\-nvm.\-h}!nvm\-\_\-write\-\_\-char@{nvm\-\_\-write\-\_\-char}}
+\index{nvm\-\_\-write\-\_\-char@{nvm\-\_\-write\-\_\-char}!common_nvm.h@{common\-\_\-nvm.\-h}}
+\subsubsection[{nvm\-\_\-write\-\_\-char}]{\setlength{\rightskip}{0pt plus 5cm}status\-\_\-code\-\_\-t nvm\-\_\-write\-\_\-char (
+\begin{DoxyParamCaption}
+\item[{{\bf mem\-\_\-type\-\_\-t}}]{mem, }
+\item[{uint32\-\_\-t}]{address, }
+\item[{uint8\-\_\-t}]{data}
+\end{DoxyParamCaption}
+)}}\label{common__nvm_8h_a42272bff20877bb19149a5073d8ffa3b}
+
+
+Write single byte of data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mem} & Type of non volatile memory to write \\
+\hline
+{\em address} & Address to write \\
+\hline
+{\em data} & Data to be written \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,331 @@
+\hypertarget{group__nvm__eeprom__group}{\section{N\-V\-M driver E\-E\-P\-R\-O\-M handling}
+\label{group__nvm__eeprom__group}\index{N\-V\-M driver E\-E\-P\-R\-O\-M handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}}
+}
+
+
+Functions for handling internal E\-E\-P\-R\-O\-M memory.  
+
+
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef uint16\-\_\-t \hyperlink{group__nvm__eeprom__group_ga9adfe2ae9400336ec4a715b2db1c3e79}{eeprom\-\_\-addr\-\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\-\_\-t \hyperlink{group__nvm__eeprom__group_ga5f2c4c625ef21cd65891d480f7e6e6b6}{nvm\-\_\-eeprom\-\_\-read\-\_\-byte} (\hyperlink{group__nvm__eeprom__group_ga9adfe2ae9400336ec4a715b2db1c3e79}{eeprom\-\_\-addr\-\_\-t} addr)
+\begin{DoxyCompactList}\small\item\em Read one byte from E\-E\-P\-R\-O\-M using mapped access. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__eeprom__group_ga723a1c1ef60ffb4d220f28c99e6c3014}{nvm\-\_\-eeprom\-\_\-read\-\_\-buffer} (\hyperlink{group__nvm__eeprom__group_ga9adfe2ae9400336ec4a715b2db1c3e79}{eeprom\-\_\-addr\-\_\-t} address, void $\ast$buf, uint16\-\_\-t len)
+\begin{DoxyCompactList}\small\item\em Read buffer within the eeprom. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__eeprom__group_ga683292d1a734f3222e18720ac66f2315}{nvm\-\_\-eeprom\-\_\-write\-\_\-byte} (\hyperlink{group__nvm__eeprom__group_ga9adfe2ae9400336ec4a715b2db1c3e79}{eeprom\-\_\-addr\-\_\-t} address, uint8\-\_\-t value)
+\begin{DoxyCompactList}\small\item\em Write one byte to E\-E\-P\-R\-O\-M using I\-O mapping. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__eeprom__group_gac913bbba11570b56b639682e7edf8327}{nvm\-\_\-eeprom\-\_\-erase\-\_\-and\-\_\-write\-\_\-buffer} (\hyperlink{group__nvm__eeprom__group_ga9adfe2ae9400336ec4a715b2db1c3e79}{eeprom\-\_\-addr\-\_\-t} address, const void $\ast$buf, uint16\-\_\-t len)
+\begin{DoxyCompactList}\small\item\em Write buffer within the eeprom. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__eeprom__group_ga309765606eafd344378f1ddd20fc4129}{nvm\-\_\-eeprom\-\_\-flush\-\_\-buffer} (void)
+\begin{DoxyCompactList}\small\item\em Flush temporary E\-E\-P\-R\-O\-M page buffer. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__eeprom__group_ga47aaaec22fa50f0cfb90657357885fa9}{nvm\-\_\-eeprom\-\_\-load\-\_\-byte\-\_\-to\-\_\-buffer} (uint8\-\_\-t byte\-\_\-addr, uint8\-\_\-t value)
+\begin{DoxyCompactList}\small\item\em Load single byte into temporary page buffer. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__eeprom__group_ga02f10adbf959b8525bbaf777ad6e43b6}{nvm\-\_\-eeprom\-\_\-load\-\_\-page\-\_\-to\-\_\-buffer} (const uint8\-\_\-t $\ast$values)
+\begin{DoxyCompactList}\small\item\em Load entire page into temporary E\-E\-P\-R\-O\-M page buffer. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__eeprom__group_ga6f939f98287b320d39418ed72ba8cfe1}{nvm\-\_\-eeprom\-\_\-atomic\-\_\-write\-\_\-page} (uint8\-\_\-t page\-\_\-addr)
+\begin{DoxyCompactList}\small\item\em Erase and write bytes from page buffer into E\-E\-P\-R\-O\-M. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__eeprom__group_gae8b5ca90e2d370109bed6e6adc8d9307}{nvm\-\_\-eeprom\-\_\-split\-\_\-write\-\_\-page} (uint8\-\_\-t page\-\_\-addr)
+\begin{DoxyCompactList}\small\item\em Write (without erasing) E\-E\-P\-R\-O\-M page. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__eeprom__group_ga6228a0fc4ddfe85c4b6c7b032f81e0df}{nvm\-\_\-eeprom\-\_\-fill\-\_\-buffer\-\_\-with\-\_\-value} (uint8\-\_\-t value)
+\begin{DoxyCompactList}\small\item\em Fill temporary E\-E\-P\-R\-O\-M page buffer with value. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__eeprom__group_gaf2f736b02cc1a2d7e27f45d0d5cc9bcb}{nvm\-\_\-eeprom\-\_\-erase\-\_\-bytes\-\_\-in\-\_\-page} (uint8\-\_\-t page\-\_\-addr)
+\begin{DoxyCompactList}\small\item\em Erase bytes from E\-E\-P\-R\-O\-M page. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__eeprom__group_ga75f4e0c9419252c81387e79356433bca}{nvm\-\_\-eeprom\-\_\-erase\-\_\-page} (uint8\-\_\-t page\-\_\-addr)
+\begin{DoxyCompactList}\small\item\em Erase E\-E\-P\-R\-O\-M page. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__eeprom__group_ga0d4308eb16bb32a0a522744a28f5969e}{nvm\-\_\-eeprom\-\_\-erase\-\_\-bytes\-\_\-in\-\_\-all\-\_\-pages} (void)
+\begin{DoxyCompactList}\small\item\em Erase bytes from all E\-E\-P\-R\-O\-M pages. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__eeprom__group_gac87e872a5b79f534b409735066514274}{nvm\-\_\-eeprom\-\_\-erase\-\_\-all} (void)
+\begin{DoxyCompactList}\small\item\em Erase entire E\-E\-P\-R\-O\-M memory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Functions for handling internal E\-E\-P\-R\-O\-M memory. The internal E\-E\-P\-R\-O\-M can be used to store data that will persist after power is removed. This can typically be used to store calibration data, application state, encryption keys or other data that need to be preserved when power is removed.
+
+The functions in this module uses I\-O register access to manipulate the E\-E\-P\-R\-O\-M.
+
+\begin{DoxyNote}{Note}
+The functions in this module are modifying the N\-V\-M.\-C\-M\-D register. If the application are using program space access in interrupts (\-\_\-\-\_\-flash pointers in I\-A\-R E\-W or pgm\-\_\-read\-\_\-byte in G\-C\-C) interrupts needs to be disabled when running E\-E\-P\-R\-O\-M access functions. If not the program space reads will be corrupted. 
+\end{DoxyNote}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{group__nvm__eeprom__group_ga9adfe2ae9400336ec4a715b2db1c3e79}{\index{N\-V\-M driver E\-E\-P\-R\-O\-M handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}!eeprom\-\_\-addr\-\_\-t@{eeprom\-\_\-addr\-\_\-t}}
+\index{eeprom\-\_\-addr\-\_\-t@{eeprom\-\_\-addr\-\_\-t}!NVM driver EEPROM handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}}
+\subsubsection[{eeprom\-\_\-addr\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef uint16\-\_\-t {\bf eeprom\-\_\-addr\-\_\-t}}}\label{group__nvm__eeprom__group_ga9adfe2ae9400336ec4a715b2db1c3e79}
+Data type for holding eeprom memory addresses. 
+
+\subsection{Function Documentation}
+\hypertarget{group__nvm__eeprom__group_ga6f939f98287b320d39418ed72ba8cfe1}{\index{N\-V\-M driver E\-E\-P\-R\-O\-M handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}!nvm\-\_\-eeprom\-\_\-atomic\-\_\-write\-\_\-page@{nvm\-\_\-eeprom\-\_\-atomic\-\_\-write\-\_\-page}}
+\index{nvm\-\_\-eeprom\-\_\-atomic\-\_\-write\-\_\-page@{nvm\-\_\-eeprom\-\_\-atomic\-\_\-write\-\_\-page}!NVM driver EEPROM handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}}
+\subsubsection[{nvm\-\_\-eeprom\-\_\-atomic\-\_\-write\-\_\-page}]{\setlength{\rightskip}{0pt plus 5cm}void nvm\-\_\-eeprom\-\_\-atomic\-\_\-write\-\_\-page (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{page\-\_\-addr}
+\end{DoxyParamCaption}
+)}}\label{group__nvm__eeprom__group_ga6f939f98287b320d39418ed72ba8cfe1}
+
+
+Erase and write bytes from page buffer into E\-E\-P\-R\-O\-M. 
+
+This function writes the contents of an already loaded E\-E\-P\-R\-O\-M page buffer into E\-E\-P\-R\-O\-M memory.
+
+As this is an atomic write, the page in E\-E\-P\-R\-O\-M will be erased automatically before writing. Note that only the page buffer locations that have been loaded will be used when writing to E\-E\-P\-R\-O\-M. Page buffer locations that have not been loaded will be left untouched in E\-E\-P\-R\-O\-M.
+
+
+\begin{DoxyParams}{Parameters}
+{\em page\-\_\-addr} & E\-E\-P\-R\-O\-M Page address, between 0 and E\-E\-P\-R\-O\-M\-\_\-\-S\-I\-Z\-E/\-E\-E\-P\-R\-O\-M\-\_\-\-P\-A\-G\-E\-\_\-\-S\-I\-Z\-E \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__nvm__eeprom__group_gac87e872a5b79f534b409735066514274}{\index{N\-V\-M driver E\-E\-P\-R\-O\-M handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}!nvm\-\_\-eeprom\-\_\-erase\-\_\-all@{nvm\-\_\-eeprom\-\_\-erase\-\_\-all}}
+\index{nvm\-\_\-eeprom\-\_\-erase\-\_\-all@{nvm\-\_\-eeprom\-\_\-erase\-\_\-all}!NVM driver EEPROM handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}}
+\subsubsection[{nvm\-\_\-eeprom\-\_\-erase\-\_\-all}]{\setlength{\rightskip}{0pt plus 5cm}void nvm\-\_\-eeprom\-\_\-erase\-\_\-all (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{group__nvm__eeprom__group_gac87e872a5b79f534b409735066514274}
+
+
+Erase entire E\-E\-P\-R\-O\-M memory. 
+
+This function erases the entire E\-E\-P\-R\-O\-M memory block to 0x\-F\-F. \hypertarget{group__nvm__eeprom__group_gac913bbba11570b56b639682e7edf8327}{\index{N\-V\-M driver E\-E\-P\-R\-O\-M handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}!nvm\-\_\-eeprom\-\_\-erase\-\_\-and\-\_\-write\-\_\-buffer@{nvm\-\_\-eeprom\-\_\-erase\-\_\-and\-\_\-write\-\_\-buffer}}
+\index{nvm\-\_\-eeprom\-\_\-erase\-\_\-and\-\_\-write\-\_\-buffer@{nvm\-\_\-eeprom\-\_\-erase\-\_\-and\-\_\-write\-\_\-buffer}!NVM driver EEPROM handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}}
+\subsubsection[{nvm\-\_\-eeprom\-\_\-erase\-\_\-and\-\_\-write\-\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}void nvm\-\_\-eeprom\-\_\-erase\-\_\-and\-\_\-write\-\_\-buffer (
+\begin{DoxyParamCaption}
+\item[{{\bf eeprom\-\_\-addr\-\_\-t}}]{address, }
+\item[{const void $\ast$}]{buf, }
+\item[{uint16\-\_\-t}]{len}
+\end{DoxyParamCaption}
+)}}\label{group__nvm__eeprom__group_gac913bbba11570b56b639682e7edf8327}
+
+
+Write buffer within the eeprom. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & the address to where to write \\
+\hline
+{\em buf} & pointer to the data \\
+\hline
+{\em len} & the number of bytes to write \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__nvm__eeprom__group_ga0d4308eb16bb32a0a522744a28f5969e}{\index{N\-V\-M driver E\-E\-P\-R\-O\-M handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}!nvm\-\_\-eeprom\-\_\-erase\-\_\-bytes\-\_\-in\-\_\-all\-\_\-pages@{nvm\-\_\-eeprom\-\_\-erase\-\_\-bytes\-\_\-in\-\_\-all\-\_\-pages}}
+\index{nvm\-\_\-eeprom\-\_\-erase\-\_\-bytes\-\_\-in\-\_\-all\-\_\-pages@{nvm\-\_\-eeprom\-\_\-erase\-\_\-bytes\-\_\-in\-\_\-all\-\_\-pages}!NVM driver EEPROM handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}}
+\subsubsection[{nvm\-\_\-eeprom\-\_\-erase\-\_\-bytes\-\_\-in\-\_\-all\-\_\-pages}]{\setlength{\rightskip}{0pt plus 5cm}void nvm\-\_\-eeprom\-\_\-erase\-\_\-bytes\-\_\-in\-\_\-all\-\_\-pages (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{group__nvm__eeprom__group_ga0d4308eb16bb32a0a522744a28f5969e}
+
+
+Erase bytes from all E\-E\-P\-R\-O\-M pages. 
+
+This function erases bytes from all E\-E\-P\-R\-O\-M pages, so that every location written to in the page buffer reads 0x\-F\-F. \hypertarget{group__nvm__eeprom__group_gaf2f736b02cc1a2d7e27f45d0d5cc9bcb}{\index{N\-V\-M driver E\-E\-P\-R\-O\-M handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}!nvm\-\_\-eeprom\-\_\-erase\-\_\-bytes\-\_\-in\-\_\-page@{nvm\-\_\-eeprom\-\_\-erase\-\_\-bytes\-\_\-in\-\_\-page}}
+\index{nvm\-\_\-eeprom\-\_\-erase\-\_\-bytes\-\_\-in\-\_\-page@{nvm\-\_\-eeprom\-\_\-erase\-\_\-bytes\-\_\-in\-\_\-page}!NVM driver EEPROM handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}}
+\subsubsection[{nvm\-\_\-eeprom\-\_\-erase\-\_\-bytes\-\_\-in\-\_\-page}]{\setlength{\rightskip}{0pt plus 5cm}void nvm\-\_\-eeprom\-\_\-erase\-\_\-bytes\-\_\-in\-\_\-page (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{page\-\_\-addr}
+\end{DoxyParamCaption}
+)}}\label{group__nvm__eeprom__group_gaf2f736b02cc1a2d7e27f45d0d5cc9bcb}
+
+
+Erase bytes from E\-E\-P\-R\-O\-M page. 
+
+This function erases bytes from one E\-E\-P\-R\-O\-M page, so that every location written to in the page buffer reads 0x\-F\-F.
+
+
+\begin{DoxyParams}{Parameters}
+{\em page\-\_\-addr} & E\-E\-P\-R\-O\-M Page address, between 0 and E\-E\-P\-R\-O\-M\-\_\-\-S\-I\-Z\-E/\-E\-E\-P\-R\-O\-M\-\_\-\-P\-A\-G\-E\-\_\-\-S\-I\-Z\-E \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__nvm__eeprom__group_ga75f4e0c9419252c81387e79356433bca}{\index{N\-V\-M driver E\-E\-P\-R\-O\-M handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}!nvm\-\_\-eeprom\-\_\-erase\-\_\-page@{nvm\-\_\-eeprom\-\_\-erase\-\_\-page}}
+\index{nvm\-\_\-eeprom\-\_\-erase\-\_\-page@{nvm\-\_\-eeprom\-\_\-erase\-\_\-page}!NVM driver EEPROM handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}}
+\subsubsection[{nvm\-\_\-eeprom\-\_\-erase\-\_\-page}]{\setlength{\rightskip}{0pt plus 5cm}void nvm\-\_\-eeprom\-\_\-erase\-\_\-page (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{page\-\_\-addr}
+\end{DoxyParamCaption}
+)}}\label{group__nvm__eeprom__group_ga75f4e0c9419252c81387e79356433bca}
+
+
+Erase E\-E\-P\-R\-O\-M page. 
+
+This function erases one E\-E\-P\-R\-O\-M page, so that every location reads 0x\-F\-F.
+
+
+\begin{DoxyParams}{Parameters}
+{\em page\-\_\-addr} & E\-E\-P\-R\-O\-M Page address, between 0 and E\-E\-P\-R\-O\-M\-\_\-\-S\-I\-Z\-E/\-E\-E\-P\-R\-O\-M\-\_\-\-P\-A\-G\-E\-\_\-\-S\-I\-Z\-E \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__nvm__eeprom__group_ga6228a0fc4ddfe85c4b6c7b032f81e0df}{\index{N\-V\-M driver E\-E\-P\-R\-O\-M handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}!nvm\-\_\-eeprom\-\_\-fill\-\_\-buffer\-\_\-with\-\_\-value@{nvm\-\_\-eeprom\-\_\-fill\-\_\-buffer\-\_\-with\-\_\-value}}
+\index{nvm\-\_\-eeprom\-\_\-fill\-\_\-buffer\-\_\-with\-\_\-value@{nvm\-\_\-eeprom\-\_\-fill\-\_\-buffer\-\_\-with\-\_\-value}!NVM driver EEPROM handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}}
+\subsubsection[{nvm\-\_\-eeprom\-\_\-fill\-\_\-buffer\-\_\-with\-\_\-value}]{\setlength{\rightskip}{0pt plus 5cm}void nvm\-\_\-eeprom\-\_\-fill\-\_\-buffer\-\_\-with\-\_\-value (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)}}\label{group__nvm__eeprom__group_ga6228a0fc4ddfe85c4b6c7b032f81e0df}
+
+
+Fill temporary E\-E\-P\-R\-O\-M page buffer with value. 
+
+This fills the the E\-E\-P\-R\-O\-M page buffers with a given value. If memory mapped E\-E\-P\-R\-O\-M is enabled, this function will not work.
+
+\begin{DoxyNote}{Note}
+Only the lower part of the address is used to address the buffer. Therefore, no address parameter is needed. In the end, the data is written to the E\-E\-P\-R\-O\-M page given by the address parameter to the E\-E\-P\-R\-O\-M write page operation.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em value} & Value to copy to the page buffer. \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__nvm__eeprom__group_ga309765606eafd344378f1ddd20fc4129}{\index{N\-V\-M driver E\-E\-P\-R\-O\-M handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}!nvm\-\_\-eeprom\-\_\-flush\-\_\-buffer@{nvm\-\_\-eeprom\-\_\-flush\-\_\-buffer}}
+\index{nvm\-\_\-eeprom\-\_\-flush\-\_\-buffer@{nvm\-\_\-eeprom\-\_\-flush\-\_\-buffer}!NVM driver EEPROM handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}}
+\subsubsection[{nvm\-\_\-eeprom\-\_\-flush\-\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}void nvm\-\_\-eeprom\-\_\-flush\-\_\-buffer (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{group__nvm__eeprom__group_ga309765606eafd344378f1ddd20fc4129}
+
+
+Flush temporary E\-E\-P\-R\-O\-M page buffer. 
+
+This function flushes the E\-E\-P\-R\-O\-M page buffers. This function will cancel any ongoing E\-E\-P\-R\-O\-M page buffer loading operations, if any. This function also works for memory mapped E\-E\-P\-R\-O\-M access.
+
+\begin{DoxyNote}{Note}
+An E\-E\-P\-R\-O\-M write operations will automatically flush the buffer for you. 
+
+The function does not preserve the value of the N\-V\-M.\-C\-M\-D register 
+\end{DoxyNote}
+\hypertarget{group__nvm__eeprom__group_ga47aaaec22fa50f0cfb90657357885fa9}{\index{N\-V\-M driver E\-E\-P\-R\-O\-M handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}!nvm\-\_\-eeprom\-\_\-load\-\_\-byte\-\_\-to\-\_\-buffer@{nvm\-\_\-eeprom\-\_\-load\-\_\-byte\-\_\-to\-\_\-buffer}}
+\index{nvm\-\_\-eeprom\-\_\-load\-\_\-byte\-\_\-to\-\_\-buffer@{nvm\-\_\-eeprom\-\_\-load\-\_\-byte\-\_\-to\-\_\-buffer}!NVM driver EEPROM handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}}
+\subsubsection[{nvm\-\_\-eeprom\-\_\-load\-\_\-byte\-\_\-to\-\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}void nvm\-\_\-eeprom\-\_\-load\-\_\-byte\-\_\-to\-\_\-buffer (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{byte\-\_\-addr, }
+\item[{uint8\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)}}\label{group__nvm__eeprom__group_ga47aaaec22fa50f0cfb90657357885fa9}
+
+
+Load single byte into temporary page buffer. 
+
+This function loads one byte into the temporary E\-E\-P\-R\-O\-M page buffers. If memory mapped E\-E\-P\-R\-O\-M is enabled, this function will not work. Make sure that the buffer is flushed before starting to load bytes. Also, if multiple bytes are loaded into the same location, they will be A\-N\-Ded together, thus 0x55 and 0x\-A\-A will result in 0x00 in the buffer.
+
+\begin{DoxyNote}{Note}
+Only one page buffer exist, thus only one page can be loaded with data and programmed into one page. If data needs to be written to different pages, the loading and writing needs to be repeated.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em byte\-\_\-addr} & E\-E\-P\-R\-O\-M Byte address, between 0 and E\-E\-P\-R\-O\-M\-\_\-\-P\-A\-G\-E\-\_\-\-S\-I\-Z\-E. \\
+\hline
+{\em value} & Byte value to write to buffer. \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__nvm__eeprom__group_ga02f10adbf959b8525bbaf777ad6e43b6}{\index{N\-V\-M driver E\-E\-P\-R\-O\-M handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}!nvm\-\_\-eeprom\-\_\-load\-\_\-page\-\_\-to\-\_\-buffer@{nvm\-\_\-eeprom\-\_\-load\-\_\-page\-\_\-to\-\_\-buffer}}
+\index{nvm\-\_\-eeprom\-\_\-load\-\_\-page\-\_\-to\-\_\-buffer@{nvm\-\_\-eeprom\-\_\-load\-\_\-page\-\_\-to\-\_\-buffer}!NVM driver EEPROM handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}}
+\subsubsection[{nvm\-\_\-eeprom\-\_\-load\-\_\-page\-\_\-to\-\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}void nvm\-\_\-eeprom\-\_\-load\-\_\-page\-\_\-to\-\_\-buffer (
+\begin{DoxyParamCaption}
+\item[{const uint8\-\_\-t $\ast$}]{values}
+\end{DoxyParamCaption}
+)}}\label{group__nvm__eeprom__group_ga02f10adbf959b8525bbaf777ad6e43b6}
+
+
+Load entire page into temporary E\-E\-P\-R\-O\-M page buffer. 
+
+This function loads an entire E\-E\-P\-R\-O\-M page from an S\-R\-A\-M buffer to the E\-E\-P\-R\-O\-M page buffers. If memory mapped E\-E\-P\-R\-O\-M is enabled, this function will not work. Make sure that the buffer is flushed before starting to load bytes.
+
+\begin{DoxyNote}{Note}
+Only the lower part of the address is used to address the buffer. Therefore, no address parameter is needed. In the end, the data is written to the E\-E\-P\-R\-O\-M page given by the address parameter to the E\-E\-P\-R\-O\-M write page operation.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em values} & Pointer to S\-R\-A\-M buffer containing an entire page. \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__nvm__eeprom__group_ga723a1c1ef60ffb4d220f28c99e6c3014}{\index{N\-V\-M driver E\-E\-P\-R\-O\-M handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}!nvm\-\_\-eeprom\-\_\-read\-\_\-buffer@{nvm\-\_\-eeprom\-\_\-read\-\_\-buffer}}
+\index{nvm\-\_\-eeprom\-\_\-read\-\_\-buffer@{nvm\-\_\-eeprom\-\_\-read\-\_\-buffer}!NVM driver EEPROM handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}}
+\subsubsection[{nvm\-\_\-eeprom\-\_\-read\-\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}void nvm\-\_\-eeprom\-\_\-read\-\_\-buffer (
+\begin{DoxyParamCaption}
+\item[{{\bf eeprom\-\_\-addr\-\_\-t}}]{address, }
+\item[{void $\ast$}]{buf, }
+\item[{uint16\-\_\-t}]{len}
+\end{DoxyParamCaption}
+)}}\label{group__nvm__eeprom__group_ga723a1c1ef60ffb4d220f28c99e6c3014}
+
+
+Read buffer within the eeprom. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & the address to where to read \\
+\hline
+{\em buf} & pointer to the data \\
+\hline
+{\em len} & the number of bytes to read \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__nvm__eeprom__group_ga5f2c4c625ef21cd65891d480f7e6e6b6}{\index{N\-V\-M driver E\-E\-P\-R\-O\-M handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}!nvm\-\_\-eeprom\-\_\-read\-\_\-byte@{nvm\-\_\-eeprom\-\_\-read\-\_\-byte}}
+\index{nvm\-\_\-eeprom\-\_\-read\-\_\-byte@{nvm\-\_\-eeprom\-\_\-read\-\_\-byte}!NVM driver EEPROM handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}}
+\subsubsection[{nvm\-\_\-eeprom\-\_\-read\-\_\-byte}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t nvm\-\_\-eeprom\-\_\-read\-\_\-byte (
+\begin{DoxyParamCaption}
+\item[{{\bf eeprom\-\_\-addr\-\_\-t}}]{addr}
+\end{DoxyParamCaption}
+)}}\label{group__nvm__eeprom__group_ga5f2c4c625ef21cd65891d480f7e6e6b6}
+
+
+Read one byte from E\-E\-P\-R\-O\-M using mapped access. 
+
+This function reads one byte from E\-E\-P\-R\-O\-M using mapped access.
+
+
+\begin{DoxyParams}{Parameters}
+{\em addr} & E\-E\-P\-R\-O\-M address, between 0 and E\-E\-P\-R\-O\-M\-\_\-\-S\-I\-Z\-E\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Byte value read from E\-E\-P\-R\-O\-M. 
+\end{DoxyReturn}
+\hypertarget{group__nvm__eeprom__group_gae8b5ca90e2d370109bed6e6adc8d9307}{\index{N\-V\-M driver E\-E\-P\-R\-O\-M handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}!nvm\-\_\-eeprom\-\_\-split\-\_\-write\-\_\-page@{nvm\-\_\-eeprom\-\_\-split\-\_\-write\-\_\-page}}
+\index{nvm\-\_\-eeprom\-\_\-split\-\_\-write\-\_\-page@{nvm\-\_\-eeprom\-\_\-split\-\_\-write\-\_\-page}!NVM driver EEPROM handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}}
+\subsubsection[{nvm\-\_\-eeprom\-\_\-split\-\_\-write\-\_\-page}]{\setlength{\rightskip}{0pt plus 5cm}void nvm\-\_\-eeprom\-\_\-split\-\_\-write\-\_\-page (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{page\-\_\-addr}
+\end{DoxyParamCaption}
+)}}\label{group__nvm__eeprom__group_gae8b5ca90e2d370109bed6e6adc8d9307}
+
+
+Write (without erasing) E\-E\-P\-R\-O\-M page. 
+
+This function writes the contents of an already loaded E\-E\-P\-R\-O\-M page buffer into E\-E\-P\-R\-O\-M memory.
+
+As this is a split write, the page in E\-E\-P\-R\-O\-M will {\itshape not} be erased before writing.
+
+
+\begin{DoxyParams}{Parameters}
+{\em page\-\_\-addr} & E\-E\-P\-R\-O\-M Page address, between 0 and E\-E\-P\-R\-O\-M\-\_\-\-S\-I\-Z\-E/\-E\-E\-P\-R\-O\-M\-\_\-\-P\-A\-G\-E\-\_\-\-S\-I\-Z\-E \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__nvm__eeprom__group_ga683292d1a734f3222e18720ac66f2315}{\index{N\-V\-M driver E\-E\-P\-R\-O\-M handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}!nvm\-\_\-eeprom\-\_\-write\-\_\-byte@{nvm\-\_\-eeprom\-\_\-write\-\_\-byte}}
+\index{nvm\-\_\-eeprom\-\_\-write\-\_\-byte@{nvm\-\_\-eeprom\-\_\-write\-\_\-byte}!NVM driver EEPROM handling@{N\-V\-M driver E\-E\-P\-R\-O\-M handling}}
+\subsubsection[{nvm\-\_\-eeprom\-\_\-write\-\_\-byte}]{\setlength{\rightskip}{0pt plus 5cm}void nvm\-\_\-eeprom\-\_\-write\-\_\-byte (
+\begin{DoxyParamCaption}
+\item[{{\bf eeprom\-\_\-addr\-\_\-t}}]{address, }
+\item[{uint8\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)}}\label{group__nvm__eeprom__group_ga683292d1a734f3222e18720ac66f2315}
+
+
+Write one byte to E\-E\-P\-R\-O\-M using I\-O mapping. 
+
+This function writes one byte to E\-E\-P\-R\-O\-M using I\-O-\/mapped access. This function will cancel all ongoing E\-E\-P\-R\-O\-M page buffer loading operations, if any.
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & E\-E\-P\-R\-O\-M address (max E\-E\-P\-R\-O\-M\-\_\-\-S\-I\-Z\-E) \\
+\hline
+{\em value} & Byte value to write to E\-E\-P\-R\-O\-M. \\
+\hline
+\end{DoxyParams}

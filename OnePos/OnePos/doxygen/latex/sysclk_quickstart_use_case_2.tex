@@ -1,0 +1,84 @@
+\hypertarget{sysclk_quickstart_use_case_2_sysclk_quickstart_use_case_2}{}\section{Advanced use case -\/ Peripheral Bus Clock Management (\-X\-M\-E\-G\-A)}\label{sysclk_quickstart_use_case_2_sysclk_quickstart_use_case_2}
+This section will present a more advanced use case for the System Clock Management service. This use case will configure the main system clock to 32\-M\-Hz, using an internal P\-L\-L module to multiply the frequency of a crystal attached to the microcontroller. The peripheral bus clocks will run at the same speed as the C\-P\-U clock, and the U\-S\-B clock will be configured to use the internal 32\-M\-Hz (nominal) R\-C oscillator calibrated to 48\-M\-Hz with the U\-S\-B Start-\/of-\/\-Frame as the calibration reference.\hypertarget{sysclk_quickstart_use_case_2_sysclk_quickstart_use_case_2_prereq}{}\subsection{Prerequisites}\label{sysclk_quickstart_use_case_2_sysclk_quickstart_use_case_2_prereq}
+
+\begin{DoxyItemize}
+\item None
+\end{DoxyItemize}\hypertarget{sysclk_quickstart_use_case_2_sysclk_quickstart_use_case_2_setup_steps}{}\subsection{Initialization code}\label{sysclk_quickstart_use_case_2_sysclk_quickstart_use_case_2_setup_steps}
+Add to the application initialization code\-: 
+\begin{DoxyCode}
+        \hyperlink{group__sysclk__group_ga242399e48a97739c88b4d0c00f6101de}{sysclk\_init}();
+\end{DoxyCode}
+\hypertarget{sysclk_quickstart_use_case_2_sysclk_quickstart_use_case_2_setup_steps_workflow}{}\subsection{Workflow}\label{sysclk_quickstart_use_case_2_sysclk_quickstart_use_case_2_setup_steps_workflow}
+
+\begin{DoxyEnumerate}
+\item Configure the system clocks according to the settings in \hyperlink{conf__clock_8h}{conf\-\_\-clock.\-h}\-: 
+\begin{DoxyCode}
+ \hyperlink{group__sysclk__group_ga242399e48a97739c88b4d0c00f6101de}{sysclk\_init}(); 
+\end{DoxyCode}
+
+\end{DoxyEnumerate}\hypertarget{sysclk_quickstart_use_case_2_sysclk_quickstart_use_case_2_example_code}{}\subsection{Example code}\label{sysclk_quickstart_use_case_2_sysclk_quickstart_use_case_2_example_code}
+Add or uncomment the following in your \hyperlink{conf__clock_8h}{conf\-\_\-clock.\-h} header file, commenting out all other definitions of the same symbol(s)\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{           #define CONFIG\_SYSCLK\_SOURCE        SYSCLK\_SRC\_PLL}
+\textcolor{preprocessor}{}
+           \textcolor{comment}{// Fpll0 = (Fclk * PLL\_mul) / PLL\_div}
+\textcolor{preprocessor}{           #define CONFIG\_PLL0\_SOURCE          PLL\_SRC\_XOSC}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{           #define CONFIG\_PLL0\_MUL             (32000000UL / BOARD\_XOSC\_HZ)}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{           #define CONFIG\_PLL0\_DIV             1}
+\textcolor{preprocessor}{}
+           \textcolor{comment}{// Fbus = Fsys / (2 ^ BUS\_div)}
+\textcolor{preprocessor}{           #define CONFIG\_SYSCLK\_PSADIV        SYSCLK\_PSADIV\_1}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{           #define CONFIG\_SYSCLK\_PSBCDIV       SYSCLK\_PSBCDIV\_1\_1}
+\textcolor{preprocessor}{}
+\textcolor{preprocessor}{           #define CONFIG\_USBCLK\_SOURCE        USBCLK\_SRC\_RCOSC}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{           #define CONFIG\_OSC\_RC32\_CAL         48000000UL}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{           #define CONFIG\_OSC\_AUTOCAL          OSC\_ID\_RC32MHZ}
+\textcolor{preprocessor}{           #define CONFIG\_OSC\_AUTOCAL\_REF\_OSC  OSC\_ID\_USBSOF}
+\end{DoxyCode}
+\hypertarget{sysclk_quickstart_use_case_2_sysclk_quickstart_use_case_2_example_workflow}{}\subsection{Workflow}\label{sysclk_quickstart_use_case_2_sysclk_quickstart_use_case_2_example_workflow}
+
+\begin{DoxyEnumerate}
+\item Configure the main system clock to use the output of the P\-L\-L module as its source\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{ #define CONFIG\_SYSCLK\_SOURCE           SYSCLK\_SRC\_PLL }
+\end{DoxyCode}
+
+\item Configure the P\-L\-L0 module to use external crystal oscillator X\-O\-S\-C as its source\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{ #define CONFIG\_PLL0\_SOURCE             PLL\_SRC\_XOSC }
+\end{DoxyCode}
+
+\item Configure the P\-L\-L0 module to multiply the external oscillator X\-O\-S\-C frequency up to 32\-M\-Hz\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{        #define CONFIG\_PLL0\_MUL              (32000000UL / BOARD\_XOSC\_HZ)}
+\textcolor{preprocessor}{        #define CONFIG\_PLL0\_DIV              1}
+\end{DoxyCode}
+ \begin{DoxyNote}{Note}
+For user boards, {\ttfamily B\-O\-A\-R\-D\-\_\-\-X\-O\-S\-C\-\_\-\-H\-Z} should be defined in the board {\ttfamily \hyperlink{conf__board_8h}{conf\-\_\-board.\-h}} configuration file as the frequency of the crystal attached to X\-O\-S\-C.
+\end{DoxyNote}
+
+\item Configure the main C\-P\-U and peripheral bus clocks to run at 32\-M\-Hz\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{        #define CONFIG\_SYSCLK\_PSADIV        SYSCLK\_PSADIV\_1}
+\textcolor{preprocessor}{        #define CONFIG\_SYSCLK\_PSBCDIV       SYSCLK\_PSBCDIV\_1\_2}
+\end{DoxyCode}
+ \begin{DoxyNote}{Note}
+Some dividers are powers of two, while others are integer division factors. Refer to the formulas in the \hyperlink{conf__clock_8h}{conf\-\_\-clock.\-h} template commented above each division define.
+\end{DoxyNote}
+
+\item Configure the U\-S\-B module clock to use the internal fast (32\-M\-Hz) R\-C oscillator\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{        #define CONFIG\_USBCLK\_SOURCE        USBCLK\_SRC\_RCOSC}
+\end{DoxyCode}
+ \begin{DoxyNote}{Note}
+When the internal R\-C oscillator is used for the U\-S\-B module, it must be recalibrated to 48\-M\-Hz for the U\-S\-B peripheral to function. If this oscillator is then used as the main system clock source, the clock must be divided down via the peripheral and C\-P\-U bus clock division constants to ensure that the maximum allowable C\-P\-U frequency is not exceeded.
+\end{DoxyNote}
+
+\item Configure the internal fast (32\-M\-Hz) R\-C oscillator to calibrate to 48\-M\-Hz using the U\-S\-B Start of Frame (S\-O\-F) as the calibration reference\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{        #define CONFIG\_OSC\_RC32\_CAL         48000000UL}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define CONFIG\_OSC\_AUTOCAL          OSC\_ID\_RC32MHZ}
+\textcolor{preprocessor}{        #define CONFIG\_OSC\_AUTOCAL\_REF\_OSC  OSC\_ID\_USBSOF}
+\end{DoxyCode}
+ 
+\end{DoxyEnumerate}

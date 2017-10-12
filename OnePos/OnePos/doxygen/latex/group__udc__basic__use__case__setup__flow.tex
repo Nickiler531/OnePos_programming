@@ -1,0 +1,38 @@
+\hypertarget{group__udc__basic__use__case__setup__flow}{\section{U\-S\-B Device Controller (U\-D\-C) -\/ Workflow}
+\label{group__udc__basic__use__case__setup__flow}\index{U\-S\-B Device Controller (\-U\-D\-C) -\/ Workflow@{U\-S\-B Device Controller (\-U\-D\-C) -\/ Workflow}}
+}
+Common workflow for all U\-S\-B devices.
+
+
+\begin{DoxyEnumerate}
+\item Ensure that \hyperlink{conf__usb_8h}{conf\-\_\-usb.\-h} is available and contains the following configuration which is the main U\-S\-B device configuration\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ \textcolor{comment}{// Vendor ID provided by USB org (ATMEL 0x03EB)}
+\textcolor{preprocessor}{        #define USB\_DEVICE\_VENDOR\_ID 0x03EB // Type Word}
+\textcolor{preprocessor}{}        \textcolor{comment}{// Product ID (Atmel PID referenced in usb\_atmel.h)}
+\textcolor{preprocessor}{        #define USB\_DEVICE\_PRODUCT\_ID 0xXXXX // Type Word}
+\textcolor{preprocessor}{}        \textcolor{comment}{// Major version of the device}
+\textcolor{preprocessor}{        #define USB\_DEVICE\_MAJOR\_VERSION 1 // Type Byte}
+\textcolor{preprocessor}{}        \textcolor{comment}{// Minor version of the device}
+\textcolor{preprocessor}{        #define USB\_DEVICE\_MINOR\_VERSION 0 // Type Byte}
+\textcolor{preprocessor}{}        \textcolor{comment}{// Maximum device power (mA)}
+\textcolor{preprocessor}{        #define USB\_DEVICE\_POWER 100 // Type 9-bits}
+\textcolor{preprocessor}{}        \textcolor{comment}{// USB attributes to enable features}
+\textcolor{preprocessor}{        #define USB\_DEVICE\_ATTR USB\_CONFIG\_ATTR\_BUS\_POWERED // Flags }
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Call the U\-S\-B device stack start function to enable stack and start U\-S\-B\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ \hyperlink{group__udc__group__interne_gadf4e193509cd03ab6333d62629ea51e7}{udc\_start}(); 
+\end{DoxyCode}
+ \begin{DoxyNote}{Note}
+In case of U\-S\-B dual roles (Device and Host) managed through U\-S\-B O\-T\-G connector (U\-S\-B I\-D pin), the call of \hyperlink{group__udc__group__interne_gadf4e193509cd03ab6333d62629ea51e7}{udc\-\_\-start()} must be removed and replaced by uhc\-\_\-start(). Se\-Refer to \char`\"{}\-A\-V\-R4950 section 6.\-1 Dual roles\char`\"{} for further information about dual roles. 
+\end{DoxyNote}
+
+\end{DoxyItemize}
+\end{DoxyEnumerate}

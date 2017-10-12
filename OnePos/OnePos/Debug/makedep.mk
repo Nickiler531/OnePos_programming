@@ -2,6 +2,8 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+src\ASF\common\drivers\nvm\xmega\xmega_nvm.c
+
 src\ASF\common\services\spi\xmega_spi\spi_master.c
 
 src\ASF\common\services\usb\class\cdc\device\udi_cdc.c
@@ -34,9 +36,13 @@ src\ASF\xmega\drivers\nvm\nvm_asm.s
 
 src\ASF\xmega\drivers\cpu\ccp.s
 
+src\driver\ble.c
+
 src\driver\deca_device.c
 
 src\driver\deca_mutex.c
+
+src\driver\deca_onepos.c
 
 src\driver\deca_params_init.c
 
@@ -45,6 +51,8 @@ src\driver\deca_sleep.c
 src\driver\deca_spi.c
 
 src\driver\onepos.c
+
+src\driver\onepos_config.c
 
 src\driver\queue.c
 

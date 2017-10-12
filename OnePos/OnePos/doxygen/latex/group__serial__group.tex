@@ -1,0 +1,16 @@
+\hypertarget{group__serial__group}{\section{Serial Interface (Serial)}
+\label{group__serial__group}\index{Serial Interface (\-Serial)@{Serial Interface (\-Serial)}}
+}
+See \hyperlink{serial_quickstart}{Quick start guide for Serial Interface service}.
+
+This is the common A\-P\-I for serial interface. Additional features are available in the documentation of the specific modules.\hypertarget{group__serial__group_serial_group_platform}{}\subsection{Platform Dependencies}\label{group__serial__group_serial_group_platform}
+The serial A\-P\-I is partially chip-\/ or platform-\/specific. While all platforms provide mostly the same functionality, there are some variations around how different bus types and clock tree structures are handled.
+
+The following functions are available on all platforms, but there may be variations in the function signature (i.\-e. parameters) and behaviour. These functions are typically called by platform-\/specific parts of drivers, and applications that aren't intended to be portable\-:
+\begin{DoxyItemize}
+\item usart\-\_\-serial\-\_\-init()
+\item usart\-\_\-serial\-\_\-putchar()
+\item usart\-\_\-serial\-\_\-getchar()
+\item \hyperlink{usart__serial_8h_af9393f1fa29d87970159fabd511b7de1}{usart\-\_\-serial\-\_\-write\-\_\-packet()}
+\item \hyperlink{usart__serial_8h_a87b33461b725f80263a8628b6e852e9e}{usart\-\_\-serial\-\_\-read\-\_\-packet()} 
+\end{DoxyItemize}

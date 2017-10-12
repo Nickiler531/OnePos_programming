@@ -1,0 +1,58 @@
+\hypertarget{sysclk_quickstart_use_case_3_sysclk_quickstart_use_case_3}{}\section{Advanced use case -\/ D\-F\-L\-L auto-\/calibration (\-X\-M\-E\-G\-A)}\label{sysclk_quickstart_use_case_3_sysclk_quickstart_use_case_3}
+This section will present a more advanced use case for the System Clock Management service. This use case will configure the main system clock to 2\-M\-Hz, using the internal 2\-M\-Hz R\-C oscillator calibrated against the internal 32\-K\-Hz oscillator. The peripheral bus clocks will run at the same speed as the C\-P\-U clock, and the U\-S\-B clock will be configured to use the internal 32\-M\-Hz (nominal) R\-C oscillator calibrated to 48\-M\-Hz with the U\-S\-B Start-\/of-\/\-Frame as the calibration reference.\hypertarget{sysclk_quickstart_use_case_3_sysclk_quickstart_use_case_3_prereq}{}\subsection{Prerequisites}\label{sysclk_quickstart_use_case_3_sysclk_quickstart_use_case_3_prereq}
+
+\begin{DoxyItemize}
+\item None
+\end{DoxyItemize}\hypertarget{sysclk_quickstart_use_case_3_sysclk_quickstart_use_case_3_setup_steps}{}\subsection{Initialization code}\label{sysclk_quickstart_use_case_3_sysclk_quickstart_use_case_3_setup_steps}
+Add to the application initialization code\-: 
+\begin{DoxyCode}
+        \hyperlink{group__sysclk__group_ga242399e48a97739c88b4d0c00f6101de}{sysclk\_init}();
+\end{DoxyCode}
+\hypertarget{sysclk_quickstart_use_case_3_sysclk_quickstart_use_case_3_setup_steps_workflow}{}\subsection{Workflow}\label{sysclk_quickstart_use_case_3_sysclk_quickstart_use_case_3_setup_steps_workflow}
+
+\begin{DoxyEnumerate}
+\item Configure the system clocks according to the settings in \hyperlink{conf__clock_8h}{conf\-\_\-clock.\-h}\-: 
+\begin{DoxyCode}
+ \hyperlink{group__sysclk__group_ga242399e48a97739c88b4d0c00f6101de}{sysclk\_init}(); 
+\end{DoxyCode}
+
+\end{DoxyEnumerate}\hypertarget{sysclk_quickstart_use_case_3_sysclk_quickstart_use_case_3_example_code}{}\subsection{Example code}\label{sysclk_quickstart_use_case_3_sysclk_quickstart_use_case_3_example_code}
+Add or uncomment the following in your \hyperlink{conf__clock_8h}{conf\-\_\-clock.\-h} header file, commenting out all other definitions of the same symbol(s)\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{           #define CONFIG\_SYSCLK\_SOURCE                SYSCLK\_SRC\_RC2MHZ}
+\textcolor{preprocessor}{}
+\textcolor{preprocessor}{           #define CONFIG\_OSC\_AUTOCAL\_RC2MHZ\_REF\_OSC   OSC\_ID\_RC32KHZ}
+\textcolor{preprocessor}{}
+\textcolor{preprocessor}{           #define CONFIG\_USBCLK\_SOURCE                USBCLK\_SRC\_RCOSC}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{           #define CONFIG\_OSC\_RC32\_CAL                 48000000UL}
+\textcolor{preprocessor}{           #define CONFIG\_OSC\_AUTOCAL\_RC32MHZ\_REF\_OSC  OSC\_ID\_USBSOF}
+\end{DoxyCode}
+\hypertarget{sysclk_quickstart_use_case_3_sysclk_quickstart_use_case_3_example_workflow}{}\subsection{Workflow}\label{sysclk_quickstart_use_case_3_sysclk_quickstart_use_case_3_example_workflow}
+
+\begin{DoxyEnumerate}
+\item Configure the main system clock to use the internal 2\-M\-Hz R\-C oscillator as its source\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{        #define CONFIG\_SYSCLK\_SOURCE                SYSCLK\_SRC\_RC2MHZ}
+\end{DoxyCode}
+
+\item Configure the 2\-M\-Hz D\-F\-L\-L auto-\/calibration to use the internal 32\-K\-Hz R\-C oscillator\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{        #define CONFIG\_OSC\_AUTOCAL\_RC2MHZ\_REF\_OSC   OSC\_ID\_RC32KHZ}
+\end{DoxyCode}
+ \begin{DoxyNote}{Note}
+For auto-\/calibration it's typically more relevant to use an external 32\-K\-Hz crystal. So if that's the case use O\-S\-C\-\_\-\-I\-D\-\_\-\-X\-O\-S\-C instead.
+\end{DoxyNote}
+
+\item Configure the U\-S\-B module clock to use the internal fast (32\-M\-Hz) R\-C oscillator\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{        #define CONFIG\_USBCLK\_SOURCE                USBCLK\_SRC\_RCOSC}
+\end{DoxyCode}
+
+\item Configure the internal fast (32\-M\-Hz) R\-C oscillator to calibrate to 48\-M\-Hz using the U\-S\-B Start of Frame (S\-O\-F) as the calibration reference\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{        #define CONFIG\_USBCLK\_SOURCE                USBCLK\_SRC\_RCOSC}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define CONFIG\_OSC\_RC32\_CAL                 48000000UL}
+\textcolor{preprocessor}{        #define CONFIG\_OSC\_AUTOCAL\_RC32MHZ\_REF\_OSC  OSC\_ID\_USBSOF}
+\end{DoxyCode}
+ 
+\end{DoxyEnumerate}

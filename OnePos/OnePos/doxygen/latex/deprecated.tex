@@ -1,0 +1,12 @@
+
+\begin{DoxyRefList}
+\item[\label{deprecated__deprecated000002}%
+\hypertarget{deprecated__deprecated000002}{}%
+Member \hyperlink{group__group__common__services__delay_ga62d461b94db6352d8ed8442d62ea39fb}{delay\-\_\-init} (fcpu\-\_\-hz)]This function is provided for compatibility with A\-S\-F applications that may not have been updated to configure the system clock via the common clock service; e.\-g. \hyperlink{group__sysclk__group_ga242399e48a97739c88b4d0c00f6101de}{sysclk\-\_\-init()} and a configuration header file are used to configure clocks. 
+\item[\label{deprecated__deprecated000001}%
+\hypertarget{deprecated__deprecated000001}{}%
+Member \hyperlink{group__group__common__services__delay_ga43bafb28b29491ec7f871319b5a3b2f8}{F\-\_\-\-C\-P\-U} ]The \hyperlink{group__group__common__services__delay_ga43bafb28b29491ec7f871319b5a3b2f8}{F\-\_\-\-C\-P\-U} configuration constant is used for compatibility with the \hyperlink{group__group__common__services__delay}{Busy-\/\-Wait Delay Routines} routines. The common loop-\/based delay routines are designed to use the \hyperlink{group__clk__group}{Clock Management} modules while anticipating support for legacy applications assuming a statically defined clock frequency. Applications using a statically configured M\-C\-U clock frequency can define \hyperlink{group__group__common__services__delay_ga43bafb28b29491ec7f871319b5a3b2f8}{F\-\_\-\-C\-P\-U} (Hertz), in which case the common delay routines will use this value rather than calling sysclk\-\_\-get\-\_\-cpu\-\_\-hz() to get the current M\-C\-U clock frequency.  
+\item[\label{deprecated__deprecated000003}%
+\hypertarget{deprecated__deprecated000003}{}%
+Member \hyperlink{group__group__xmega__drivers__twi__twim_gae4fbb549f8f2ecf379b60922b20e911f}{T\-W\-I\-\_\-\-S\-U\-C\-C\-E\-S\-S} ]This definition is provided for compatibility with existing A\-S\-F example applications. This module uses the status\-\_\-code\-\_\-t values that will replace module-\/specific error codes in A\-S\-F drivers. 
+\end{DoxyRefList}

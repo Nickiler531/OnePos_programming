@@ -1,0 +1,99 @@
+\hypertarget{nvm_8h}{\section{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/xmega/drivers/nvm/nvm.h File Reference}
+\label{nvm_8h}\index{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/xmega/drivers/nvm/nvm.\-h@{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/xmega/drivers/nvm/nvm.\-h}}
+}
+
+
+Non Volatile Memory controller driver.  
+
+
+{\ttfamily \#include $<$compiler.\-h$>$}\\*
+{\ttfamily \#include $<$ccp.\-h$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structnvm__device__id}{nvm\-\_\-device\-\_\-id}
+\begin{DoxyCompactList}\small\item\em Structure containing the device I\-D. \end{DoxyCompactList}\item 
+struct \hyperlink{structnvm__device__serial}{nvm\-\_\-device\-\_\-serial}
+\begin{DoxyCompactList}\small\item\em Structure containing the device serial. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group__nvm__flash__group_ga1ff021ee17a7d4814fe900414e870c4f}{I\-A\-R\-\_\-\-F\-L\-A\-S\-H\-\_\-\-P\-T\-R}~\-\_\-\-\_\-flash
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef uint16\-\_\-t \hyperlink{group__nvm__eeprom__group_ga9adfe2ae9400336ec4a715b2db1c3e79}{eeprom\-\_\-addr\-\_\-t}
+\item 
+typedef uint16\-\_\-t \hyperlink{group__nvm__flash__group_ga95a069fc064dc9cd089b7d9047b909b0}{flash\-\_\-addr\-\_\-t}
+\begin{DoxyCompactList}\small\item\em Size of a flash page in bytes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries fuse\-\_\-byte\-\_\-t} \{ \\*
+{\bfseries F\-U\-S\-E\-B\-Y\-T\-E0} =  0, 
+{\bfseries F\-U\-S\-E\-B\-Y\-T\-E1} =  1, 
+{\bfseries F\-U\-S\-E\-B\-Y\-T\-E2} =  2, 
+{\bfseries F\-U\-S\-E\-B\-Y\-T\-E3} =  3, 
+\\*
+{\bfseries F\-U\-S\-E\-B\-Y\-T\-E4} =  4, 
+{\bfseries F\-U\-S\-E\-B\-Y\-T\-E5} =  5
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__nvm__generic__group_gae7f70077c338416047bdd15bb867d620}{uint8\-\_\-t \hyperlink{group__nvm__generic__group_gae7f70077c338416047bdd15bb867d620}{nvm\-\_\-read\-\_\-byte} (uint8\-\_\-t nvm\-\_\-cmd, uint16\-\_\-t address)}\label{group__nvm__generic__group_gae7f70077c338416047bdd15bb867d620}
+
+\begin{DoxyCompactList}\small\item\em Read one byte using the L\-D\-I instruction. \end{DoxyCompactList}\item 
+\hypertarget{group__nvm__generic__group_ga71673dc8a752dc1455213bbceac8058a}{void \hyperlink{group__nvm__generic__group_ga71673dc8a752dc1455213bbceac8058a}{nvm\-\_\-common\-\_\-spm} (uint32\-\_\-t addr, uint8\-\_\-t nvm\-\_\-cmd)}\label{group__nvm__generic__group_ga71673dc8a752dc1455213bbceac8058a}
+
+\begin{DoxyCompactList}\small\item\em Perform S\-P\-M write. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__signature__group_ga38a7855d9e84c9cc7974552583854c81}{nvm\-\_\-read\-\_\-device\-\_\-serial} (struct \hyperlink{structnvm__device__serial}{nvm\-\_\-device\-\_\-serial} $\ast$storage)
+\begin{DoxyCompactList}\small\item\em Read the device serial. \end{DoxyCompactList}\item 
+uint8\-\_\-t \hyperlink{group__nvm__eeprom__group_ga5f2c4c625ef21cd65891d480f7e6e6b6}{nvm\-\_\-eeprom\-\_\-read\-\_\-byte} (\hyperlink{group__nvm__eeprom__group_ga9adfe2ae9400336ec4a715b2db1c3e79}{eeprom\-\_\-addr\-\_\-t} addr)
+\begin{DoxyCompactList}\small\item\em Read one byte from E\-E\-P\-R\-O\-M using mapped access. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__eeprom__group_ga683292d1a734f3222e18720ac66f2315}{nvm\-\_\-eeprom\-\_\-write\-\_\-byte} (\hyperlink{group__nvm__eeprom__group_ga9adfe2ae9400336ec4a715b2db1c3e79}{eeprom\-\_\-addr\-\_\-t} address, uint8\-\_\-t value)
+\begin{DoxyCompactList}\small\item\em Write one byte to E\-E\-P\-R\-O\-M using I\-O mapping. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__eeprom__group_ga723a1c1ef60ffb4d220f28c99e6c3014}{nvm\-\_\-eeprom\-\_\-read\-\_\-buffer} (\hyperlink{group__nvm__eeprom__group_ga9adfe2ae9400336ec4a715b2db1c3e79}{eeprom\-\_\-addr\-\_\-t} address, void $\ast$buf, uint16\-\_\-t len)
+\begin{DoxyCompactList}\small\item\em Read buffer within the eeprom. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__eeprom__group_gac913bbba11570b56b639682e7edf8327}{nvm\-\_\-eeprom\-\_\-erase\-\_\-and\-\_\-write\-\_\-buffer} (\hyperlink{group__nvm__eeprom__group_ga9adfe2ae9400336ec4a715b2db1c3e79}{eeprom\-\_\-addr\-\_\-t} address, const void $\ast$buf, uint16\-\_\-t len)
+\begin{DoxyCompactList}\small\item\em Write buffer within the eeprom. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__eeprom__group_ga309765606eafd344378f1ddd20fc4129}{nvm\-\_\-eeprom\-\_\-flush\-\_\-buffer} (void)
+\begin{DoxyCompactList}\small\item\em Flush temporary E\-E\-P\-R\-O\-M page buffer. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__eeprom__group_ga47aaaec22fa50f0cfb90657357885fa9}{nvm\-\_\-eeprom\-\_\-load\-\_\-byte\-\_\-to\-\_\-buffer} (uint8\-\_\-t byte\-\_\-addr, uint8\-\_\-t value)
+\begin{DoxyCompactList}\small\item\em Load single byte into temporary page buffer. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__eeprom__group_ga02f10adbf959b8525bbaf777ad6e43b6}{nvm\-\_\-eeprom\-\_\-load\-\_\-page\-\_\-to\-\_\-buffer} (const uint8\-\_\-t $\ast$values)
+\begin{DoxyCompactList}\small\item\em Load entire page into temporary E\-E\-P\-R\-O\-M page buffer. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__eeprom__group_ga6f939f98287b320d39418ed72ba8cfe1}{nvm\-\_\-eeprom\-\_\-atomic\-\_\-write\-\_\-page} (uint8\-\_\-t page\-\_\-addr)
+\begin{DoxyCompactList}\small\item\em Erase and write bytes from page buffer into E\-E\-P\-R\-O\-M. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__eeprom__group_gae8b5ca90e2d370109bed6e6adc8d9307}{nvm\-\_\-eeprom\-\_\-split\-\_\-write\-\_\-page} (uint8\-\_\-t page\-\_\-addr)
+\begin{DoxyCompactList}\small\item\em Write (without erasing) E\-E\-P\-R\-O\-M page. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__eeprom__group_ga6228a0fc4ddfe85c4b6c7b032f81e0df}{nvm\-\_\-eeprom\-\_\-fill\-\_\-buffer\-\_\-with\-\_\-value} (uint8\-\_\-t value)
+\begin{DoxyCompactList}\small\item\em Fill temporary E\-E\-P\-R\-O\-M page buffer with value. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__eeprom__group_gaf2f736b02cc1a2d7e27f45d0d5cc9bcb}{nvm\-\_\-eeprom\-\_\-erase\-\_\-bytes\-\_\-in\-\_\-page} (uint8\-\_\-t page\-\_\-addr)
+\begin{DoxyCompactList}\small\item\em Erase bytes from E\-E\-P\-R\-O\-M page. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__eeprom__group_ga75f4e0c9419252c81387e79356433bca}{nvm\-\_\-eeprom\-\_\-erase\-\_\-page} (uint8\-\_\-t page\-\_\-addr)
+\begin{DoxyCompactList}\small\item\em Erase E\-E\-P\-R\-O\-M page. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__eeprom__group_ga0d4308eb16bb32a0a522744a28f5969e}{nvm\-\_\-eeprom\-\_\-erase\-\_\-bytes\-\_\-in\-\_\-all\-\_\-pages} (void)
+\begin{DoxyCompactList}\small\item\em Erase bytes from all E\-E\-P\-R\-O\-M pages. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__eeprom__group_gac87e872a5b79f534b409735066514274}{nvm\-\_\-eeprom\-\_\-erase\-\_\-all} (void)
+\begin{DoxyCompactList}\small\item\em Erase entire E\-E\-P\-R\-O\-M memory. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__flash__group_ga56f341c1aef558bd9b6504f5a6a95ef2}{nvm\-\_\-flash\-\_\-load\-\_\-word\-\_\-to\-\_\-buffer} (uint32\-\_\-t word\-\_\-addr, uint16\-\_\-t data)
+\begin{DoxyCompactList}\small\item\em Load word into flash page buffer. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__flash__group_ga335244745ba451fade7e5a0215aaef4f}{nvm\-\_\-issue\-\_\-flash\-\_\-range\-\_\-crc} (\hyperlink{group__nvm__flash__group_ga95a069fc064dc9cd089b7d9047b909b0}{flash\-\_\-addr\-\_\-t} start\-\_\-addr, \hyperlink{group__nvm__flash__group_ga95a069fc064dc9cd089b7d9047b909b0}{flash\-\_\-addr\-\_\-t} end\-\_\-addr)
+\begin{DoxyCompactList}\small\item\em Issue flash range C\-R\-C command. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__flash__group_gae5fd84639f16bdf897cf3ed4e634634f}{nvm\-\_\-flash\-\_\-read\-\_\-buffer} (\hyperlink{group__nvm__flash__group_ga95a069fc064dc9cd089b7d9047b909b0}{flash\-\_\-addr\-\_\-t} address, void $\ast$buf, uint16\-\_\-t len)
+\begin{DoxyCompactList}\small\item\em Read buffer within the application section. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__flash__group_ga05906a0e64d2527fe92511c364548ebc}{nvm\-\_\-flash\-\_\-erase\-\_\-and\-\_\-write\-\_\-buffer} (\hyperlink{group__nvm__flash__group_ga95a069fc064dc9cd089b7d9047b909b0}{flash\-\_\-addr\-\_\-t} address, const void $\ast$buf, uint16\-\_\-t len, \hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} b\-\_\-blank\-\_\-check)
+\begin{DoxyCompactList}\small\item\em Erase and write specific parts of application flash section. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__flash__group_gaf16cad66506bd55382a66c83e0aa0c23}{nvm\-\_\-user\-\_\-sig\-\_\-read\-\_\-buffer} (\hyperlink{group__nvm__flash__group_ga95a069fc064dc9cd089b7d9047b909b0}{flash\-\_\-addr\-\_\-t} address, void $\ast$buf, uint16\-\_\-t len)
+\begin{DoxyCompactList}\small\item\em Read buffer within the user section. \end{DoxyCompactList}\item 
+void \hyperlink{group__nvm__flash__group_ga5a18a268987412df30e291fa4e43e37f}{nvm\-\_\-user\-\_\-sig\-\_\-write\-\_\-buffer} (\hyperlink{group__nvm__flash__group_ga95a069fc064dc9cd089b7d9047b909b0}{flash\-\_\-addr\-\_\-t} address, const void $\ast$buf, uint16\-\_\-t len, \hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} b\-\_\-blank\-\_\-check)
+\begin{DoxyCompactList}\small\item\em Write specific parts of user flash section. \end{DoxyCompactList}\item 
+uint8\-\_\-t \hyperlink{group__nvm__fuse__lock__group_ga7f38ae8b811b4b6c7a209e37cfe1b03d}{nvm\-\_\-fuses\-\_\-read} (enum fuse\-\_\-byte\-\_\-t fuse)
+\begin{DoxyCompactList}\small\item\em Read a fuse byte. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Non Volatile Memory controller driver. Copyright (c) 2010-\/2014 Atmel Corporation. All rights reserved.

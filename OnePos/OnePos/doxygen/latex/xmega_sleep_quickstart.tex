@@ -1,0 +1,66 @@
+This is the quick start guide for the \hyperlink{group__sleep__group}{Sleep Driver}, with step-\/by-\/step instructions on how to configure and use the driver for a specific use case.
+
+The section described below can be copied into, e.\-g. the main application loop or any other function that will need to control and execute different sleep modes on the device.\hypertarget{xmega_sleep_quickstart_xmega_sleep_quickstart_basic}{}\section{Basic usage of the sleep driver}\label{xmega_sleep_quickstart_xmega_sleep_quickstart_basic}
+This use case will prepare the device to enter the Power Down sleep mode and then enter the sleep mode. After waking up it will disable sleep.\hypertarget{xmega_sleep_quickstart_xmega_sleep_basic_usage}{}\section{Workflow}\label{xmega_sleep_quickstart_xmega_sleep_basic_usage}
+\hypertarget{xmega_sleep_quickstart_xmega_sleep_basic_usage_code}{}\subsection{Example code}\label{xmega_sleep_quickstart_xmega_sleep_basic_usage_code}
+Add to, e.\-g., the main loop in the application C-\/file\-: 
+\begin{DoxyCode}
+        sleep\_set\_mode(SLEEP\_SMODE\_PDOWN\_gc);
+        sleep\_enable();
+        sleep\_enter();
+        sleep\_disable();
+\end{DoxyCode}
+\hypertarget{xmega_sleep_quickstart_xmega_sleep_basic_usage}{}\subsection{Workflow}\label{xmega_sleep_quickstart_xmega_sleep_basic_usage}
+
+\begin{DoxyEnumerate}
+\item Set what sleep mode to use, the different sleep modes can be found in the device header file under the enum definition S\-L\-E\-E\-P\-\_\-\-S\-M\-O\-D\-E\-\_\-enum\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ sleep\_set\_mode(SLEEP\_SMODE\_PDOWN\_gc); 
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Enable that the device are allowed to go to sleep\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ sleep\_enable(); 
+\end{DoxyCode}
+
+\item \begin{DoxyNote}{Note}
+This function has to be called in order for the device to go to sleep. This is a safety feature to stop the device to go to sleep unintentionally, even though it is possible to have this enabled at all times it is recommended to enable sleep mode only when you intend to go to sleep within a few clock cycles.
+\end{DoxyNote}
+
+\end{DoxyItemize}
+\item Enter sleep mode\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ sleep\_enter(); 
+\end{DoxyCode}
+
+\item \begin{DoxyAttention}{Attention}
+Make sure to enable global interrupt and the interrupt you plan to use as wake-\/up source for your device, do also pay special attention to what wake-\/up sources are available for the different sleep modes. Failing to enable interrupts may result in indefinite sleep until power is cycled!
+\end{DoxyAttention}
+
+\end{DoxyItemize}
+\item When the device is woken from sleep it will execute the interrupt handler related to the wakeup-\/source (interrupt source) and continue on the next line of code after the sleep\-\_\-enter() call. Make sure to disable sleep when waking up.
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ sleep\_disable(); 
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\end{DoxyEnumerate}\hypertarget{xmega_sleep_quickstart_xmega_sleep_basic_sleep_modes}{}\subsection{Sleep Modes}\label{xmega_sleep_quickstart_xmega_sleep_basic_sleep_modes}
+Possible sleep modes depend on the device that is used. Please refer to the device datasheet and header file to find these definitions.
+
+As an example the A\-Txmega32\-A4\-U device has the following sleep modes\-:
+\begin{DoxyItemize}
+\item Idle sleep\-: S\-L\-E\-E\-P\-\_\-\-S\-M\-O\-D\-E\-\_\-\-I\-D\-L\-E\-\_\-gc
+\item Power Down\-: S\-L\-E\-E\-P\-\_\-\-S\-M\-O\-D\-E\-\_\-\-P\-D\-O\-W\-N\-\_\-gc
+\item Power Save\-: S\-L\-E\-E\-P\-\_\-\-S\-M\-O\-D\-E\-\_\-\-P\-S\-A\-V\-E\-\_\-gc
+\item Standby\-: S\-L\-E\-E\-P\-\_\-\-S\-M\-O\-D\-E\-\_\-\-S\-T\-D\-B\-Y\-\_\-gc
+\item Extended standby\-: S\-L\-E\-E\-P\-\_\-\-S\-M\-O\-D\-E\-\_\-\-E\-S\-T\-D\-B\-Y\-\_\-gc 
+\end{DoxyItemize}

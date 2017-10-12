@@ -1,0 +1,215 @@
+This is the quick start guide for the \hyperlink{group__ioport__group}{Common I\-O\-P\-O\-R\-T A\-P\-I}, with step-\/by-\/step instructions on how to configure and use the service in a selection of use cases.
+
+The use cases contain several code fragments. The code fragments in the steps for setup can be copied into a custom initialization function, while the steps for usage can be copied into, e.\-g., the main application function.\hypertarget{ioport_quickstart_ioport_quickstart_basic}{}\section{Basic use case}\label{ioport_quickstart_ioport_quickstart_basic}
+In this use case we will configure one I\-O pin for button input and one for L\-E\-D control. Then it will read the button state and output it on the L\-E\-D.\hypertarget{ioport_quickstart_ioport_quickstart_basic_setup}{}\section{Setup steps}\label{ioport_quickstart_ioport_quickstart_basic_setup}
+\hypertarget{ioport_quickstart_ioport_quickstart_basic_setup_code}{}\subsection{Example code}\label{ioport_quickstart_ioport_quickstart_basic_setup_code}
+
+\begin{DoxyCode}
+\textcolor{preprocessor}{         #define MY\_LED    IOPORT\_CREATE\_PIN(PORTA, 5)}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define MY\_BUTTON IOPORT\_CREATE\_PIN(PORTA, 6)}
+\textcolor{preprocessor}{}
+         ioport\_init();
+
+         ioport\_set\_pin\_dir(MY\_LED, \hyperlink{group__ioport__group_gga9c267f89800e58bd9dfd74e662a4a4c1a06de24313dad0169f3a366c62a84f4cc}{IOPORT\_DIR\_OUTPUT});
+         ioport\_set\_pin\_dir(MY\_BUTTON, \hyperlink{group__ioport__group_gga9c267f89800e58bd9dfd74e662a4a4c1af854a0dce084e5a8e8744f9a502e7b7b}{IOPORT\_DIR\_INPUT});
+         ioport\_set\_pin\_mode(MY\_BUTTON, \hyperlink{group__ioport__group_ga4c5d85e77f012b73dce89cfb84ef851f}{IOPORT\_MODE\_PULLUP});
+\end{DoxyCode}
+\hypertarget{ioport_quickstart_use_case_1_ioport_quickstart_basic_setup_flow}{}\subsection{Workflow}\label{ioport_quickstart_use_case_1_ioport_quickstart_basic_setup_flow}
+
+\begin{DoxyEnumerate}
+\item It's useful to give the G\-P\-I\-Os symbolic names and this can be done with the \hyperlink{group__ioport__group_gabc09edad7c3187dec63ce47e6f1b3c51}{I\-O\-P\-O\-R\-T\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-P\-I\-N} macro. We define one for a L\-E\-D and one for a button.
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+\textcolor{preprocessor}{        #define MY\_LED    IOPORT\_CREATE\_PIN(PORTA, 5)}
+\textcolor{preprocessor}{        #define MY\_BUTTON IOPORT\_CREATE\_PIN(PORTA, 6)}
+\end{DoxyCode}
+
+\item \begin{DoxyNote}{Note}
+The usefulness of the \hyperlink{group__ioport__group_gabc09edad7c3187dec63ce47e6f1b3c51}{I\-O\-P\-O\-R\-T\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-P\-I\-N} macro and port names differ between architectures\-:
+\begin{DoxyItemize}
+\item M\-E\-G\-A, M\-E\-G\-A\-\_\-\-R\-F and X\-M\-E\-G\-A\-: Use \hyperlink{group__ioport__group_gabc09edad7c3187dec63ce47e6f1b3c51}{I\-O\-P\-O\-R\-T\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-P\-I\-N} macro with port definitions P\-O\-R\-T\-A, P\-O\-R\-T\-B ...
+\item U\-C3\-: Most convenient to pick up the device header file pin definition and us it directly. E.\-g.\-: A\-V\-R32\-\_\-\-P\-I\-N\-\_\-\-P\-B06
+\item S\-A\-M\-: Most convenient to pick up the device header file pin definition and us it directly. E.\-g.\-: P\-I\-O\-\_\-\-P\-A5\-\_\-\-I\-D\-X\par
+ \hyperlink{group__ioport__group_gabc09edad7c3187dec63ce47e6f1b3c51}{I\-O\-P\-O\-R\-T\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-P\-I\-N} can also be used with port definitions P\-I\-O\-A, P\-I\-O\-B ...
+\end{DoxyItemize}
+\end{DoxyNote}
+
+\end{DoxyItemize}
+\item Initialize the ioport service. This typically enables the I\-O module if needed.
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ ioport\_init(); 
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Set the L\-E\-D G\-P\-I\-O as output\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ ioport\_set\_pin\_dir(MY\_LED, \hyperlink{group__ioport__group_gga9c267f89800e58bd9dfd74e662a4a4c1a06de24313dad0169f3a366c62a84f4cc}{IOPORT\_DIR\_OUTPUT}); 
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Set the button G\-P\-I\-O as input\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ ioport\_set\_pin\_dir(MY\_BUTTON, \hyperlink{group__ioport__group_gga9c267f89800e58bd9dfd74e662a4a4c1af854a0dce084e5a8e8744f9a502e7b7b}{IOPORT\_DIR\_INPUT}); 
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Enable pull-\/up for the button G\-P\-I\-O\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ ioport\_set\_pin\_mode(MY\_BUTTON, \hyperlink{group__ioport__group_ga4c5d85e77f012b73dce89cfb84ef851f}{IOPORT\_MODE\_PULLUP}); 
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\end{DoxyEnumerate}\hypertarget{ioport_quickstart_use_case_1_ioport_quickstart_basic_usage}{}\section{Usage steps}\label{ioport_quickstart_use_case_1_ioport_quickstart_basic_usage}
+\hypertarget{ioport_quickstart_use_case_1_ioport_quickstart_basic_usage_code}{}\subsection{Example code}\label{ioport_quickstart_use_case_1_ioport_quickstart_basic_usage_code}
+
+\begin{DoxyCode}
+         \textcolor{keywordtype}{bool} value;
+
+         value = ioport\_get\_pin\_level(MY\_BUTTON);
+         ioport\_set\_pin\_level(MY\_LED, value);
+\end{DoxyCode}
+\hypertarget{ioport_quickstart_use_case_1_ioport_quickstart_basic_usage_flow}{}\subsection{Workflow}\label{ioport_quickstart_use_case_1_ioport_quickstart_basic_usage_flow}
+
+\begin{DoxyEnumerate}
+\item Define a boolean variable for state storage\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ \textcolor{keywordtype}{bool} value; 
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Read out the button level into variable value\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ value = ioport\_get\_pin\_level(MY\_BUTTON); 
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Set the L\-E\-D to read out value from the button\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ ioport\_set\_pin\_level(MY\_LED, value); 
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\end{DoxyEnumerate}\hypertarget{ioport_quickstart_ioport_quickstart_advanced}{}\section{Advanced use cases}\label{ioport_quickstart_ioport_quickstart_advanced}
+
+\begin{DoxyItemize}
+\item \hyperlink{ioport_quickstart_use_case_1}{Advanced use case doing port access} \-: Port access 
+\end{DoxyItemize}\hypertarget{ioport_quickstart_use_case_1}{}\section{Advanced use case doing port access}\label{ioport_quickstart_use_case_1}
+In this case we will read out the pins from one whole port and write the read value to another port.\hypertarget{ioport_quickstart_use_case_1_ioport_quickstart_use_case_1_setup}{}\subsection{Setup steps}\label{ioport_quickstart_use_case_1_ioport_quickstart_use_case_1_setup}
+\hypertarget{ioport_quickstart_use_case_1_ioport_quickstart_use_case_1_setup_code}{}\subsubsection{Example code}\label{ioport_quickstart_use_case_1_ioport_quickstart_use_case_1_setup_code}
+
+\begin{DoxyCode}
+\textcolor{preprocessor}{         #define IN\_PORT  IOPORT\_PORTA}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define OUT\_PORT IOPORT\_PORTB}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define MASK     0x00000060}
+\textcolor{preprocessor}{}
+         ioport\_init();
+
+         ioport\_set\_port\_dir(IN\_PORT, MASK, \hyperlink{group__ioport__group_gga9c267f89800e58bd9dfd74e662a4a4c1af854a0dce084e5a8e8744f9a502e7b7b}{IOPORT\_DIR\_INPUT});
+         ioport\_set\_port\_dir(OUT\_PORT, MASK, \hyperlink{group__ioport__group_gga9c267f89800e58bd9dfd74e662a4a4c1a06de24313dad0169f3a366c62a84f4cc}{IOPORT\_DIR\_OUTPUT}
+      );
+\end{DoxyCode}
+\hypertarget{ioport_quickstart_use_case_1_ioport_quickstart_basic_setup_flow}{}\subsubsection{Workflow}\label{ioport_quickstart_use_case_1_ioport_quickstart_basic_setup_flow}
+
+\begin{DoxyEnumerate}
+\item It's useful to give the ports symbolic names\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+\textcolor{preprocessor}{        #define IN\_PORT  IOPORT\_PORTA}
+\textcolor{preprocessor}{        #define OUT\_PORT IOPORT\_PORTB}
+\end{DoxyCode}
+
+\item \begin{DoxyNote}{Note}
+The port names differ between architectures\-:
+\begin{DoxyItemize}
+\item M\-E\-G\-A\-\_\-\-R\-F, M\-E\-G\-A and X\-M\-E\-G\-A\-: There are predefined names for ports\-: I\-O\-P\-O\-R\-T\-\_\-\-P\-O\-R\-T\-A, I\-O\-P\-O\-R\-T\-\_\-\-P\-O\-R\-T\-B ...
+\item U\-C3\-: Use the index value of the different I\-O blocks\-: 0, 1 ...
+\item S\-A\-M\-: There are predefined names for ports\-: I\-O\-P\-O\-R\-T\-\_\-\-P\-I\-O\-A, I\-O\-P\-O\-R\-T\-\_\-\-P\-I\-O\-B ...
+\end{DoxyItemize}
+\end{DoxyNote}
+
+\end{DoxyItemize}
+\item Also useful to define a mask for the bits to work with\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+\textcolor{preprocessor}{ #define MASK     0x00000060 }
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Initialize the ioport service. This typically enables the I\-O module if needed.
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ ioport\_init(); 
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Set one of the ports as input\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ ioport\_set\_pin\_dir(IN\_PORT, MASK, \hyperlink{group__ioport__group_gga9c267f89800e58bd9dfd74e662a4a4c1af854a0dce084e5a8e8744f9a502e7b7b}{IOPORT\_DIR\_INPUT}); 
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Set the other port as output\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ ioport\_set\_pin\_dir(OUT\_PORT, MASK, \hyperlink{group__ioport__group_gga9c267f89800e58bd9dfd74e662a4a4c1a06de24313dad0169f3a366c62a84f4cc}{IOPORT\_DIR\_OUTPUT}); 
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\end{DoxyEnumerate}\hypertarget{ioport_quickstart_use_case_1_ioport_quickstart_basic_usage}{}\subsection{Usage steps}\label{ioport_quickstart_use_case_1_ioport_quickstart_basic_usage}
+\hypertarget{ioport_quickstart_use_case_1_ioport_quickstart_basic_usage_code}{}\subsubsection{Example code}\label{ioport_quickstart_use_case_1_ioport_quickstart_basic_usage_code}
+
+\begin{DoxyCode}
+         ioport\_port\_mask\_t value;
+
+         value = ioport\_get\_port\_level(IN\_PORT, MASK);
+         ioport\_set\_port\_level(OUT\_PORT, MASK, value);
+\end{DoxyCode}
+\hypertarget{ioport_quickstart_use_case_1_ioport_quickstart_basic_usage_flow}{}\subsubsection{Workflow}\label{ioport_quickstart_use_case_1_ioport_quickstart_basic_usage_flow}
+
+\begin{DoxyEnumerate}
+\item Define a variable for port date storage\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ ioport\_port\_mask\_t value; 
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Read out from one port\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ value = ioport\_get\_port\_level(IN\_PORT, MASK); 
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Put the read data out on the other port\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ ioport\_set\_port\_level(OUT\_PORT, MASK, value); 
+\end{DoxyCode}
+ 
+\end{DoxyItemize}
+\end{DoxyEnumerate}

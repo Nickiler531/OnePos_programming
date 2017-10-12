@@ -1,0 +1,60 @@
+\hypertarget{group__nvm__fuse__lock__group}{\section{N\-V\-M driver fuse and lock bits handling}
+\label{group__nvm__fuse__lock__group}\index{N\-V\-M driver fuse and lock bits handling@{N\-V\-M driver fuse and lock bits handling}}
+}
+
+
+Functions for reading fuses and writing lock bits.  
+
+
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries fuse\-\_\-byte\-\_\-t} \{ \\*
+{\bfseries F\-U\-S\-E\-B\-Y\-T\-E0} =  0, 
+{\bfseries F\-U\-S\-E\-B\-Y\-T\-E1} =  1, 
+{\bfseries F\-U\-S\-E\-B\-Y\-T\-E2} =  2, 
+{\bfseries F\-U\-S\-E\-B\-Y\-T\-E3} =  3, 
+\\*
+{\bfseries F\-U\-S\-E\-B\-Y\-T\-E4} =  4, 
+{\bfseries F\-U\-S\-E\-B\-Y\-T\-E5} =  5
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\-\_\-t \hyperlink{group__nvm__fuse__lock__group_ga7f38ae8b811b4b6c7a209e37cfe1b03d}{nvm\-\_\-fuses\-\_\-read} (enum fuse\-\_\-byte\-\_\-t fuse)
+\begin{DoxyCompactList}\small\item\em Read a fuse byte. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Functions for reading fuses and writing lock bits. The Fuses are used to set important system functions and can only be written from an external programming interface. The application software can read the fuses. The fuses are used to configure reset sources such as Brown-\/out Detector and Watchdog, Start-\/up configuration, J\-T\-A\-G enable and J\-T\-A\-G user I\-D.
+
+The Lock bits are used to set protection level on the different flash sections. They are used to block read and/or write on the different flash sections. Lock bits can be written from en external programmer and from the application software to set a more strict protection level, but not to set a less strict protection level. Chip erase is the only way to erase the lock bits. The lock bits are erased after the rest of the flash memory is erased. An unprogrammed fuse or lock bit will have the value one, while a programmed fuse or lock bit will have the value zero. Both fuses and lock bits are reprogrammable like the Flash Program memory.
+
+\begin{DoxyNote}{Note}
+The functions in this module are modifying the N\-V\-M.\-C\-M\-D register. If the application are using program space access in interrupts (\-\_\-\-\_\-flash pointers in I\-A\-R E\-W or pgm\-\_\-read\-\_\-byte in G\-C\-C) interrupts needs to be disabled when running E\-E\-P\-R\-O\-M access functions. If not the program space reads will be corrupted. 
+\end{DoxyNote}
+
+
+\subsection{Function Documentation}
+\hypertarget{group__nvm__fuse__lock__group_ga7f38ae8b811b4b6c7a209e37cfe1b03d}{\index{N\-V\-M driver fuse and lock bits handling@{N\-V\-M driver fuse and lock bits handling}!nvm\-\_\-fuses\-\_\-read@{nvm\-\_\-fuses\-\_\-read}}
+\index{nvm\-\_\-fuses\-\_\-read@{nvm\-\_\-fuses\-\_\-read}!NVM driver fuse and lock bits handling@{N\-V\-M driver fuse and lock bits handling}}
+\subsubsection[{nvm\-\_\-fuses\-\_\-read}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t nvm\-\_\-fuses\-\_\-read (
+\begin{DoxyParamCaption}
+\item[{enum fuse\-\_\-byte\-\_\-t}]{fuse}
+\end{DoxyParamCaption}
+)}}\label{group__nvm__fuse__lock__group_ga7f38ae8b811b4b6c7a209e37cfe1b03d}
+
+
+Read a fuse byte. 
+
+This function reads and returns the value of a given fuse byte.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fuse} & Fuse byte to read.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Byte value of fuse. 
+\end{DoxyReturn}

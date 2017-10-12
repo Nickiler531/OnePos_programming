@@ -1,0 +1,87 @@
+\hypertarget{usart_8h}{\section{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/xmega/drivers/usart/usart.h File Reference}
+\label{usart_8h}\index{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/xmega/drivers/usart/usart.\-h@{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/xmega/drivers/usart/usart.\-h}}
+}
+
+
+U\-S\-A\-R\-T driver for A\-V\-R X\-M\-E\-G\-A.  
+
+
+{\ttfamily \#include \char`\"{}compiler.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}pmic.\-h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structusart__rs232__options}{usart\-\_\-rs232\-\_\-options}
+\begin{DoxyCompactList}\small\item\em Input parameters when initializing R\-S232 and similar modes. \end{DoxyCompactList}\item 
+struct \hyperlink{structusart__spi__options}{usart\-\_\-spi\-\_\-options}
+\begin{DoxyCompactList}\small\item\em Input parameters when initializing S\-P\-I master mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__usart__group_ga17a08f1046fbf3863708a2aa43431aee}{\#define \hyperlink{group__usart__group_ga17a08f1046fbf3863708a2aa43431aee}{U\-S\-A\-R\-T\-\_\-\-B\-A\-U\-D\-\_\-1200}~0x00}\label{group__usart__group_ga17a08f1046fbf3863708a2aa43431aee}
+
+\begin{DoxyCompactList}\small\item\em Offset in lookup table for baudrate 1200. \end{DoxyCompactList}\item 
+\hypertarget{group__usart__group_ga32eb31cede35bb0d6e8eb779f37a909c}{\#define \hyperlink{group__usart__group_ga32eb31cede35bb0d6e8eb779f37a909c}{U\-S\-A\-R\-T\-\_\-\-B\-A\-U\-D\-\_\-2400}~0x01}\label{group__usart__group_ga32eb31cede35bb0d6e8eb779f37a909c}
+
+\begin{DoxyCompactList}\small\item\em Offset in lookup table for baudrate 2400. \end{DoxyCompactList}\item 
+\hypertarget{group__usart__group_gabd9285f345ab5963144fa05a2f11ad95}{\#define \hyperlink{group__usart__group_gabd9285f345ab5963144fa05a2f11ad95}{U\-S\-A\-R\-T\-\_\-\-B\-A\-U\-D\-\_\-4800}~0x02}\label{group__usart__group_gabd9285f345ab5963144fa05a2f11ad95}
+
+\begin{DoxyCompactList}\small\item\em Offset in lookup table for baudrate 4800. \end{DoxyCompactList}\item 
+\hypertarget{group__usart__group_ga171993cfe2a9c29f38eb32ca5f3ea7cf}{\#define \hyperlink{group__usart__group_ga171993cfe2a9c29f38eb32ca5f3ea7cf}{U\-S\-A\-R\-T\-\_\-\-B\-A\-U\-D\-\_\-9600}~0x03}\label{group__usart__group_ga171993cfe2a9c29f38eb32ca5f3ea7cf}
+
+\begin{DoxyCompactList}\small\item\em Offset in lookup table for baudrate 9600. \end{DoxyCompactList}\item 
+\hypertarget{group__usart__group_gaa36d864b7756a910158a75cbd6854221}{\#define \hyperlink{group__usart__group_gaa36d864b7756a910158a75cbd6854221}{U\-S\-A\-R\-T\-\_\-\-B\-A\-U\-D\-\_\-19200}~0x04}\label{group__usart__group_gaa36d864b7756a910158a75cbd6854221}
+
+\begin{DoxyCompactList}\small\item\em Offset in lookup table for baudrate 19200. \end{DoxyCompactList}\item 
+\hypertarget{group__usart__group_gad9a975fee800bda4e15299536fed021a}{\#define \hyperlink{group__usart__group_gad9a975fee800bda4e15299536fed021a}{U\-S\-A\-R\-T\-\_\-\-B\-A\-U\-D\-\_\-38400}~0x05}\label{group__usart__group_gad9a975fee800bda4e15299536fed021a}
+
+\begin{DoxyCompactList}\small\item\em Offset in lookup table for baudrate 38400. \end{DoxyCompactList}\item 
+\hypertarget{group__usart__group_ga256c82161d6a8093828c46d7f5c2cc99}{\#define \hyperlink{group__usart__group_ga256c82161d6a8093828c46d7f5c2cc99}{U\-S\-A\-R\-T\-\_\-\-B\-A\-U\-D\-\_\-57600}~0x06}\label{group__usart__group_ga256c82161d6a8093828c46d7f5c2cc99}
+
+\begin{DoxyCompactList}\small\item\em Offset in lookup table for baudrate 57600. \end{DoxyCompactList}\item 
+\hypertarget{group__usart__group_gaf0d4181704d619efa7d78b872824b56a}{\#define \hyperlink{group__usart__group_gaf0d4181704d619efa7d78b872824b56a}{U\-S\-A\-R\-T\-\_\-\-B\-A\-U\-D\-\_\-\-U\-N\-D\-E\-F\-I\-N\-E\-D}~0x\-F\-F}\label{group__usart__group_gaf0d4181704d619efa7d78b872824b56a}
+
+\begin{DoxyCompactList}\small\item\em Baudrate not in lookup table. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__usart__group_ga7ef7b0c900cfe5c657ed5dd41170091d}{typedef struct \hyperlink{structusart__rs232__options}{usart\-\_\-rs232\-\_\-options} \hyperlink{group__usart__group_ga7ef7b0c900cfe5c657ed5dd41170091d}{usart\-\_\-rs232\-\_\-options\-\_\-t}}\label{group__usart__group_ga7ef7b0c900cfe5c657ed5dd41170091d}
+
+\begin{DoxyCompactList}\small\item\em Input parameters when initializing R\-S232 and similar modes. \end{DoxyCompactList}\item 
+\hypertarget{group__usart__group_gaf687857c26a3ebf13a9e63767efe9e9c}{typedef struct \hyperlink{structusart__spi__options}{usart\-\_\-spi\-\_\-options} \hyperlink{group__usart__group_gaf687857c26a3ebf13a9e63767efe9e9c}{usart\-\_\-spi\-\_\-options\-\_\-t}}\label{group__usart__group_gaf687857c26a3ebf13a9e63767efe9e9c}
+
+\begin{DoxyCompactList}\small\item\em Input parameters when initializing S\-P\-I master mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{group__usart__group_gaf84fb6b93a9290f76ae44accf36469f7}{usart\-\_\-int\-\_\-level\-\_\-t} \{ {\bfseries U\-S\-A\-R\-T\-\_\-\-I\-N\-T\-\_\-\-L\-V\-L\-\_\-\-O\-F\-F} =  0x00, 
+{\bfseries U\-S\-A\-R\-T\-\_\-\-I\-N\-T\-\_\-\-L\-V\-L\-\_\-\-L\-O} =  0x01, 
+{\bfseries U\-S\-A\-R\-T\-\_\-\-I\-N\-T\-\_\-\-L\-V\-L\-\_\-\-M\-E\-D} =  0x02, 
+{\bfseries U\-S\-A\-R\-T\-\_\-\-I\-N\-T\-\_\-\-L\-V\-L\-\_\-\-H\-I} =  0x03
+ \}
+\begin{DoxyCompactList}\small\item\em U\-S\-A\-R\-T interrupt levels. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{group__usart__group_ga507caac3c2c003461cd6ded584af984d}{usart\-\_\-init\-\_\-rs232} (U\-S\-A\-R\-T\-\_\-t $\ast$usart, const \hyperlink{group__usart__group_ga7ef7b0c900cfe5c657ed5dd41170091d}{usart\-\_\-rs232\-\_\-options\-\_\-t} $\ast$opt)
+\begin{DoxyCompactList}\small\item\em Initialize U\-S\-A\-R\-T in R\-S232 mode. \end{DoxyCompactList}\item 
+void \hyperlink{group__usart__group_gaa71a564aca681701dc6b28150eda0ea1}{usart\-\_\-init\-\_\-spi} (U\-S\-A\-R\-T\-\_\-t $\ast$usart, const \hyperlink{group__usart__group_gaf687857c26a3ebf13a9e63767efe9e9c}{usart\-\_\-spi\-\_\-options\-\_\-t} $\ast$opt)
+\begin{DoxyCompactList}\small\item\em Initialize U\-S\-A\-R\-T in S\-P\-I master mode. \end{DoxyCompactList}\item 
+enum \hyperlink{group__group__xmega__utils__status__codes_ga751c892e5a46b8e7d282085a5a5bf151}{status\-\_\-code} \hyperlink{group__usart__group_gaf3c57d5ee2bacfbc36338e64ca8107a6}{usart\-\_\-putchar} (U\-S\-A\-R\-T\-\_\-t $\ast$usart, uint8\-\_\-t c)
+\begin{DoxyCompactList}\small\item\em Send a data with the U\-S\-A\-R\-T module. \end{DoxyCompactList}\item 
+uint8\-\_\-t \hyperlink{group__usart__group_ga194074a7bb28e694e22b604a5df7508f}{usart\-\_\-getchar} (U\-S\-A\-R\-T\-\_\-t $\ast$usart)
+\begin{DoxyCompactList}\small\item\em Receive a data with the U\-S\-A\-R\-T module. \end{DoxyCompactList}\item 
+void \hyperlink{group__usart__group_gad76d1ebafabf97ace1b4fabf3b95bad5}{usart\-\_\-set\-\_\-bsel\-\_\-bscale\-\_\-value} (U\-S\-A\-R\-T\-\_\-t $\ast$usart, uint16\-\_\-t bsel, uint8\-\_\-t bscale)
+\begin{DoxyCompactList}\small\item\em Set the baudrate by setting the B\-S\-E\-L and B\-S\-C\-A\-L\-E values in the U\-S\-A\-R\-T. \end{DoxyCompactList}\item 
+void \hyperlink{group__usart__group_ga6c66b2efc3ec852e5226fa1105669e98}{usart\-\_\-set\-\_\-baudrate\-\_\-precalculated} (U\-S\-A\-R\-T\-\_\-t $\ast$usart, uint32\-\_\-t baud, uint32\-\_\-t cpu\-\_\-hz)
+\begin{DoxyCompactList}\small\item\em Set the baudrate using precalculated B\-A\-U\-D\-C\-T\-R\-L values from P\-R\-O\-G\-M\-E\-M. \end{DoxyCompactList}\item 
+\hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{group__usart__group_ga621fa6540397b3b81a9a5176c17e782a}{usart\-\_\-set\-\_\-baudrate} (U\-S\-A\-R\-T\-\_\-t $\ast$usart, uint32\-\_\-t baud, uint32\-\_\-t cpu\-\_\-hz)
+\begin{DoxyCompactList}\small\item\em Set the baudrate value in the U\-S\-A\-R\-T module. \end{DoxyCompactList}\item 
+void \hyperlink{group__usart__group_gae0deed785e24da0fa21c9bf4748f9edf}{usart\-\_\-spi\-\_\-set\-\_\-baudrate} (U\-S\-A\-R\-T\-\_\-t $\ast$usart, uint32\-\_\-t baud, uint32\-\_\-t cpu\-\_\-hz)
+\begin{DoxyCompactList}\small\item\em Set the baudrate value in the U\-S\-A\-R\-T\-\_\-\-S\-P\-I module. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+U\-S\-A\-R\-T driver for A\-V\-R X\-M\-E\-G\-A. This file contains basic functions for the A\-V\-R X\-M\-E\-G\-A U\-S\-A\-R\-T, with support for all modes, settings and clock speeds.
+
+Copyright (c) 2009-\/2014 Atmel Corporation. All rights reserved.

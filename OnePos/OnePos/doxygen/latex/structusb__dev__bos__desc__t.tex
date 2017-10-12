@@ -1,0 +1,37 @@
+\hypertarget{structusb__dev__bos__desc__t}{\section{usb\-\_\-dev\-\_\-bos\-\_\-desc\-\_\-t Struct Reference}
+\label{structusb__dev__bos__desc__t}\index{usb\-\_\-dev\-\_\-bos\-\_\-desc\-\_\-t@{usb\-\_\-dev\-\_\-bos\-\_\-desc\-\_\-t}}
+}
+
+
+U\-S\-B Device B\-O\-S descriptor structure.  
+
+
+
+
+{\ttfamily \#include $<$usb\-\_\-protocol.\-h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structusb__dev__bos__desc__t_a4af3986ecabf5953fe6cb9c425f75477}{uint8\-\_\-t {\bfseries b\-Length}}\label{structusb__dev__bos__desc__t_a4af3986ecabf5953fe6cb9c425f75477}
+
+\item 
+\hypertarget{structusb__dev__bos__desc__t_a4f7474c73d7398723f958a2e716a54f3}{uint8\-\_\-t {\bfseries b\-Descriptor\-Type}}\label{structusb__dev__bos__desc__t_a4f7474c73d7398723f958a2e716a54f3}
+
+\item 
+\hypertarget{structusb__dev__bos__desc__t_aac3dc343f13ac0988c2cb7d9e68816ff}{le16\-\_\-t {\bfseries w\-Total\-Length}}\label{structusb__dev__bos__desc__t_aac3dc343f13ac0988c2cb7d9e68816ff}
+
+\item 
+\hypertarget{structusb__dev__bos__desc__t_a75f7ce415537c341b4e42bca1056e052}{uint8\-\_\-t {\bfseries b\-Num\-Device\-Caps}}\label{structusb__dev__bos__desc__t_a75f7ce415537c341b4e42bca1056e052}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+U\-S\-B Device B\-O\-S descriptor structure. 
+
+The B\-O\-S descriptor (Binary device Object Store) defines a root descriptor that is similar to the configuration descriptor, and is the base descriptor for accessing a family of related descriptors. A host can read a B\-O\-S descriptor and learn from the w\-Total\-Length field the entire size of the device-\/level descriptor set, or it can read in the entire B\-O\-S descriptor set of device capabilities. The host accesses this descriptor using the Get\-Descriptor() request. The descriptor type in the Get\-Descriptor() request is set to B\-O\-S. 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/usb/\hyperlink{usb__protocol_8h}{usb\-\_\-protocol.\-h}\end{DoxyCompactItemize}

@@ -1,0 +1,473 @@
+This is the quick start guide for the \hyperlink{group__group__xmega__drivers__twi}{T\-W\-I Driver}, with step-\/by-\/step instructions on how to configure and use the driver for specific use cases.
+
+The section described below can be compiled into e.\-g. the main application loop or any other function that might use the T\-W\-I functionality.\hypertarget{xmega_twi_quickstart_xmega_twi_quickstart_basic}{}\section{Basic use case of the T\-W\-I driver}\label{xmega_twi_quickstart_xmega_twi_quickstart_basic}
+In our basic use case, the T\-W\-I driver is used to set up internal communication between two T\-W\-I modules on the X\-M\-E\-G\-A A1 Xplained board, since this is the most simple way to show functionality without external dependencies. T\-W\-I\-C is set up in master mode, and T\-W\-I\-F is set up in slave mode, and these are connected together on the board by placing a connection between S\-D\-A/\-S\-C\-L on J1 to S\-D\-A/\-S\-C\-L on J4.\hypertarget{xmega_twi_quickstart_xmega_twi_qs_use_cases}{}\section{Specific use case for X\-M\-E\-G\-A E devices}\label{xmega_twi_quickstart_xmega_twi_qs_use_cases}
+
+\begin{DoxyItemize}
+\item \hyperlink{xmega_twi_xmegae}{X\-M\-E\-G\-A E T\-W\-I additions with Bridge and Fast Mode Plus}
+\end{DoxyItemize}\hypertarget{xmega_twi_quickstart_xmega_twi_quickstart_prereq}{}\section{Prerequisites}\label{xmega_twi_quickstart_xmega_twi_quickstart_prereq}
+The \hyperlink{group__sysclk__group}{System Clock Management} module is required to enable the clock to the T\-W\-I modules. The \hyperlink{group__group__xmega__drivers__twi__twim}{T\-W\-I Master} driver and \hyperlink{group__group__xmega__drivers__twi__twis}{T\-W\-I Slave} driver must also be included.\hypertarget{xmega_twi_quickstart_xmega_twi_quickstart_setup}{}\section{Setup}\label{xmega_twi_quickstart_xmega_twi_quickstart_setup}
+When the \hyperlink{group__sysclk__group}{System Clock Management} module has been included, it must be initialized\-: 
+\begin{DoxyCode}
+        \hyperlink{group__sysclk__group_ga242399e48a97739c88b4d0c00f6101de}{sysclk\_init}();
+\end{DoxyCode}
+\hypertarget{xmega_twi_quickstart_xmega_twi_quickstart_use_case}{}\section{Use case}\label{xmega_twi_quickstart_xmega_twi_quickstart_use_case}
+\hypertarget{xmega_twi_quickstart_xmega_twi_quickstart_use_case_example_code}{}\subsection{Example code}\label{xmega_twi_quickstart_xmega_twi_quickstart_use_case_example_code}
+
+\begin{DoxyCode}
+\textcolor{preprocessor}{         #define TWI\_MASTER       TWIC}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define TWI\_MASTER\_PORT  PORTC}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define TWI\_SLAVE        TWIF}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define TWI\_SPEED        50000}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define TWI\_MASTER\_ADDR  0x50}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define TWI\_SLAVE\_ADDR   0x60}
+\textcolor{preprocessor}{}
+\textcolor{preprocessor}{         #define DATA\_LENGTH     8}
+\textcolor{preprocessor}{}
+         \hyperlink{struct_t_w_i___slave}{TWI\_Slave\_t} slave;
+
+         uint8\_t data[DATA\_LENGTH] = \{
+             0x0f, 0x1f, 0x2f, 0x3f, 0x4f, 0x5f, 0x6f, 0x7f
+         \};
+
+         uint8\_t recv\_data[DATA\_LENGTH] = \{
+             0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+         \};
+
+         \hyperlink{structtwi__options__t}{twi\_options\_t} m\_options = \{
+             .\hyperlink{structtwi__options__t_ad81e7400d394a2f72d7ad84588d3d661}{speed}     = TWI\_SPEED,
+             .chip      = TWI\_MASTER\_ADDR,
+             .speed\_reg = \hyperlink{group__group__xmega__drivers__twi__twim_gaf373fdbc2054cf1a070ba2a24ddaedf3}{TWI\_BAUD}(sysclk\_get\_cpu\_hz(), TWI\_SPEED)
+         \};
+
+         \textcolor{keyword}{static} \textcolor{keywordtype}{void} slave\_process(\textcolor{keywordtype}{void}) \{
+             \textcolor{keywordtype}{int} i;
+
+             \textcolor{keywordflow}{for}(i = 0; i < DATA\_LENGTH; i++) \{
+                 recv\_data[i] = slave.\hyperlink{struct_t_w_i___slave_a8c205728fdea8bcaeaa0f6f889d83d4d}{receivedData}[i];
+             \}
+         \}
+
+         ISR(TWIF\_TWIS\_vect) \{
+             \hyperlink{group__group__xmega__drivers__twi__twis_ga0b140fb1b0b3f204e5c748c5f585fbb2}{TWI\_SlaveInterruptHandler}(&slave);
+         \}
+
+         \textcolor{keywordtype}{void} send\_and\_recv\_twi()
+         \{
+             \hyperlink{structtwi__package__t}{twi\_package\_t} packet = \{
+                 .\hyperlink{structtwi__package__t_a397e982e6fa809c3fb834309537ffdbd}{addr\_length} = 0,
+                 .chip        = TWI\_SLAVE\_ADDR,
+                 .buffer      = (\textcolor{keywordtype}{void} *)data,
+                 .length      = DATA\_LENGTH,
+                 .no\_wait     = \textcolor{keyword}{false}
+             \};
+
+             uint8\_t i;
+
+             TWI\_MASTER\_PORT.PIN0CTRL = PORT\_OPC\_WIREDANDPULL\_gc;
+             TWI\_MASTER\_PORT.PIN1CTRL = PORT\_OPC\_WIREDANDPULL\_gc;
+
+             irq\_initialize\_vectors();
+
+             sysclk\_enable\_peripheral\_clock(&TWI\_MASTER);
+             \hyperlink{group__group__xmega__drivers__twi__twim_ga8029a07f3322bf43c289f5acb442ef29}{twi\_master\_init}(&TWI\_MASTER, &m\_options);
+             twi\_master\_enable(&TWI\_MASTER);
+
+             sysclk\_enable\_peripheral\_clock(&TWI\_SLAVE);
+             \hyperlink{group__group__xmega__drivers__twi__twis_ga14b9327d32373a2481e23bec041cbd7e}{TWI\_SlaveInitializeDriver}(&slave, &
+      TWI\_SLAVE, *slave\_process);
+             \hyperlink{group__group__xmega__drivers__twi__twis_ga7516e604cb0aacddd8d1016a54039752}{TWI\_SlaveInitializeModule}(&slave, 
+      TWI\_SLAVE\_ADDR,
+                     TWI\_SLAVE\_INTLVL\_MED\_gc);
+
+             \textcolor{keywordflow}{for} (i = 0; i < TWIS\_SEND\_BUFFER\_SIZE; i++) \{
+                 slave.\hyperlink{struct_t_w_i___slave_a8c205728fdea8bcaeaa0f6f889d83d4d}{receivedData}[i] = 0;
+             \}
+
+             \hyperlink{group__interrupt__group_gae4922a4bd8ba4150211fbc7f2302403c}{cpu\_irq\_enable}();
+
+             twi\_master\_write(&TWI\_MASTER, &packet);
+
+             \textcolor{keywordflow}{do} \{
+                 \textcolor{comment}{// Nothing}
+             \} \textcolor{keywordflow}{while}(slave.\hyperlink{struct_t_w_i___slave_a38f52b1274d890275ae25f68d289c8d8}{result} != TWIS\_RESULT\_OK);
+         \}
+\end{DoxyCode}
+\hypertarget{xmega_twi_quickstart_xmega_twi_quickstart_use_case_workflow}{}\subsection{Workflow}\label{xmega_twi_quickstart_xmega_twi_quickstart_use_case_workflow}
+We first create some definitions. T\-W\-I master and slave, speed, and addresses\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{         #define TWI\_MASTER       TWIC}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define TWI\_MASTER\_PORT  PORTC}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define TWI\_SLAVE        TWIF}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define TWI\_SPEED        50000}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define TWI\_MASTER\_ADDR  0x50}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define TWI\_SLAVE\_ADDR   0x60}
+\textcolor{preprocessor}{}
+\textcolor{preprocessor}{         #define DATA\_LENGTH     8}
+\end{DoxyCode}
+
+
+We create a handle to contain information about the slave module\-: 
+\begin{DoxyCode}
+        \hyperlink{struct_t_w_i___slave}{TWI\_Slave\_t} slave;
+\end{DoxyCode}
+
+
+We create two variables, one which contains data that will be transmitted, and one which will contain the received data\-: 
+\begin{DoxyCode}
+         uint8\_t data[DATA\_LENGTH] = \{
+             0x0f, 0x1f, 0x2f, 0x3f, 0x4f, 0x5f, 0x6f, 0x7f
+         \};
+
+         uint8\_t recv\_data[DATA\_LENGTH] = \{
+             0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+         \};
+\end{DoxyCode}
+
+
+Options for the T\-W\-I module initialization procedure are given below\-: 
+\begin{DoxyCode}
+        \hyperlink{structtwi__options__t}{twi\_options\_t} m\_options = \{
+            .\hyperlink{structtwi__options__t_ad81e7400d394a2f72d7ad84588d3d661}{speed}     = TWI\_SPEED,
+            .chip      = TWI\_MASTER\_ADDR,
+            .speed\_reg = \hyperlink{group__group__xmega__drivers__twi__twim_gaf373fdbc2054cf1a070ba2a24ddaedf3}{TWI\_BAUD}(sysclk\_get\_cpu\_hz(), TWI\_SPEED)
+        \};
+\end{DoxyCode}
+
+
+The T\-W\-I slave will fire an interrupt when it has received data, and the function below will be called, which will copy the data from the driver to our recv\-\_\-data buffer\-: 
+\begin{DoxyCode}
+         \textcolor{keyword}{static} \textcolor{keywordtype}{void} slave\_process(\textcolor{keywordtype}{void}) \{
+             \textcolor{keywordtype}{int} i;
+
+             \textcolor{keywordflow}{for}(i = 0; i < DATA\_LENGTH; i++) \{
+                 recv\_data[i] = slave.\hyperlink{struct_t_w_i___slave_a8c205728fdea8bcaeaa0f6f889d83d4d}{receivedData}[i];
+             \}
+         \}
+\end{DoxyCode}
+
+
+Set up the interrupt handler\-: 
+\begin{DoxyCode}
+        ISR(TWIF\_TWIS\_vect) \{
+            \hyperlink{group__group__xmega__drivers__twi__twis_ga0b140fb1b0b3f204e5c748c5f585fbb2}{TWI\_SlaveInterruptHandler}(&slave);
+        \}
+\end{DoxyCode}
+
+
+We create a packet for the data that we will send to the slave T\-W\-I\-: 
+\begin{DoxyCode}
+        \hyperlink{structtwi__package__t}{twi\_package\_t} packet = \{
+            .\hyperlink{structtwi__package__t_a397e982e6fa809c3fb834309537ffdbd}{addr\_length} = 0,
+            .chip        = TWI\_SLAVE\_ADDR,
+            .buffer      = (\textcolor{keywordtype}{void} *)data,
+            .length      = DATA\_LENGTH,
+            .no\_wait     = \textcolor{keyword}{false}
+        \};
+\end{DoxyCode}
+
+
+We need to set S\-D\-A/\-S\-C\-L pins for the master T\-W\-I to be wired and enable pull-\/up\-: 
+\begin{DoxyCode}
+        TWI\_MASTER\_PORT.PIN0CTRL = PORT\_OPC\_WIREDANDPULL\_gc;
+        TWI\_MASTER\_PORT.PIN1CTRL = PORT\_OPC\_WIREDANDPULL\_gc;
+\end{DoxyCode}
+
+
+We enable all interrupt levels\-: 
+\begin{DoxyCode}
+        irq\_initialize\_vectors();
+\end{DoxyCode}
+
+
+We enable the clock to the master module, and initialize it with the options we described before\-: 
+\begin{DoxyCode}
+        sysclk\_enable\_peripheral\_clock(&TWI\_MASTER);
+        \hyperlink{group__group__xmega__drivers__twi__twim_ga8029a07f3322bf43c289f5acb442ef29}{twi\_master\_init}(&TWI\_MASTER, &m\_options);
+        twi\_master\_enable(&TWI\_MASTER);
+\end{DoxyCode}
+
+
+We do the same for the slave, using the slave portion of the driver, passing through the slave\-\_\-process function, its address, and set medium interrupt level\-: 
+\begin{DoxyCode}
+        sysclk\_enable\_peripheral\_clock(&TWI\_SLAVE);
+        \hyperlink{group__group__xmega__drivers__twi__twis_ga14b9327d32373a2481e23bec041cbd7e}{TWI\_SlaveInitializeDriver}(&slave, &TWI\_SLAVE, 
+      *slave\_process);
+        \hyperlink{group__group__xmega__drivers__twi__twis_ga7516e604cb0aacddd8d1016a54039752}{TWI\_SlaveInitializeModule}(&slave, 
+      TWI\_SLAVE\_ADDR,
+                TWI\_SLAVE\_INTLVL\_MED\_gc);
+\end{DoxyCode}
+
+
+We zero out the receive buffer in the slave handle\-: 
+\begin{DoxyCode}
+        \textcolor{keywordflow}{for} (i = 0; i < TWIS\_SEND\_BUFFER\_SIZE; i++) \{
+            slave.\hyperlink{struct_t_w_i___slave_a8c205728fdea8bcaeaa0f6f889d83d4d}{receivedData}[i] = 0;
+        \}
+\end{DoxyCode}
+
+
+And enable interrupts\-: 
+\begin{DoxyCode}
+        \hyperlink{group__interrupt__group_gae4922a4bd8ba4150211fbc7f2302403c}{cpu\_irq\_enable}();
+\end{DoxyCode}
+
+
+Finally, we write our packet through the master T\-W\-I module\-: 
+\begin{DoxyCode}
+        twi\_master\_write(&TWI\_MASTER, &packet);
+\end{DoxyCode}
+
+
+We wait for the slave to finish receiving\-: 
+\begin{DoxyCode}
+        \textcolor{keywordflow}{do} \{
+            \textcolor{comment}{// Waiting}
+        \} \textcolor{keywordflow}{while}(slave.\hyperlink{struct_t_w_i___slave_a38f52b1274d890275ae25f68d289c8d8}{result} != TWIS\_RESULT\_OK);
+\end{DoxyCode}
+ \begin{DoxyNote}{Note}
+When the slave has finished receiving, the slave\-\_\-process() function will copy the received data into our recv\-\_\-data buffer, which now contains what was sent through the master. 
+\end{DoxyNote}
+\hypertarget{xmega_twi_xmegae}{}\section{X\-M\-E\-G\-A E T\-W\-I additions with Bridge and Fast Mode Plus}\label{xmega_twi_xmegae}
+X\-M\-E\-G\-A E T\-W\-I module provides two additionnnal features compare to regular X\-M\-E\-G\-A T\-W\-I module\-:
+\begin{DoxyItemize}
+\item Fast Mode Plus communication speed
+\item Bridge Mode
+\end{DoxyItemize}
+
+The following use case will set up the T\-W\-I module to be used in in Fast Mode Plus together with bridge mode. This use case is similar to the regular X\-M\-E\-G\-A T\-W\-I initialization, it only differs by the activation of both Bridge and Fast Mode Plus mode.
+
+
+\begin{DoxyCode}
+\textcolor{preprocessor}{         #define TWI\_MASTER       TWIC}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define TWI\_MASTER\_PORT  PORTC}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define TWI\_SLAVE        TWIC}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define TWI\_SPEED        1000000}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define TWI\_MASTER\_ADDR  0x50}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define TWI\_SLAVE\_ADDR   0x50}
+\textcolor{preprocessor}{}
+\textcolor{preprocessor}{         #define DATA\_LENGTH     8}
+\textcolor{preprocessor}{}
+         \hyperlink{struct_t_w_i___slave}{TWI\_Slave\_t} slave;
+
+         uint8\_t data[DATA\_LENGTH] = \{
+             0x0f, 0x1f, 0x2f, 0x3f, 0x4f, 0x5f, 0x6f, 0x7f
+         \};
+
+         uint8\_t recv\_data[DATA\_LENGTH] = \{
+             0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+         \};
+
+         \hyperlink{structtwi__options__t}{twi\_options\_t} m\_options = \{
+             .\hyperlink{structtwi__options__t_ad81e7400d394a2f72d7ad84588d3d661}{speed}     = TWI\_SPEED,
+             .chip      = TWI\_MASTER\_ADDR,
+             .speed\_reg = \hyperlink{group__group__xmega__drivers__twi__twim_gaf373fdbc2054cf1a070ba2a24ddaedf3}{TWI\_BAUD}(sysclk\_get\_cpu\_hz(), TWI\_SPEED)
+         \};
+
+         \textcolor{keyword}{static} \textcolor{keywordtype}{void} slave\_process(\textcolor{keywordtype}{void}) \{
+             \textcolor{keywordtype}{int} i;
+
+             \textcolor{keywordflow}{for}(i = 0; i < DATA\_LENGTH; i++) \{
+                 recv\_data[i] = slave.\hyperlink{struct_t_w_i___slave_a8c205728fdea8bcaeaa0f6f889d83d4d}{receivedData}[i];
+             \}
+         \}
+
+         ISR(TWIC\_TWIS\_vect) \{
+             \hyperlink{group__group__xmega__drivers__twi__twis_ga0b140fb1b0b3f204e5c748c5f585fbb2}{TWI\_SlaveInterruptHandler}(&slave);
+         \}
+
+         \textcolor{keywordtype}{void} send\_and\_recv\_twi()
+         \{
+             \hyperlink{structtwi__package__t}{twi\_package\_t} packet = \{
+                 .\hyperlink{structtwi__package__t_a397e982e6fa809c3fb834309537ffdbd}{addr\_length} = 0,
+                 .chip        = TWI\_SLAVE\_ADDR,
+                 .buffer      = (\textcolor{keywordtype}{void} *)data,
+                 .length      = DATA\_LENGTH,
+                 .no\_wait     = \textcolor{keyword}{false}
+             \};
+
+             uint8\_t i;
+
+             TWI\_MASTER\_PORT.PIN0CTRL = PORT\_OPC\_WIREDANDPULL\_gc;
+             TWI\_MASTER\_PORT.PIN1CTRL = PORT\_OPC\_WIREDANDPULL\_gc;
+
+             irq\_initialize\_vectors();
+
+             sysclk\_enable\_peripheral\_clock(&TWI\_MASTER);
+
+             twi\_bridge\_enable(&TWI\_MASTER);
+             twi\_fast\_mode\_enable(&TWI\_MASTER);
+             twi\_slave\_fast\_mode\_enable(&TWI\_SLAVE);
+
+             \hyperlink{group__group__xmega__drivers__twi__twim_ga8029a07f3322bf43c289f5acb442ef29}{twi\_master\_init}(&TWI\_MASTER, &m\_options);
+             twi\_master\_enable(&TWI\_MASTER);
+
+             sysclk\_enable\_peripheral\_clock(&TWI\_SLAVE);
+             \hyperlink{group__group__xmega__drivers__twi__twis_ga14b9327d32373a2481e23bec041cbd7e}{TWI\_SlaveInitializeDriver}(&slave, &
+      TWI\_SLAVE, *slave\_process);
+             \hyperlink{group__group__xmega__drivers__twi__twis_ga7516e604cb0aacddd8d1016a54039752}{TWI\_SlaveInitializeModule}(&slave, 
+      TWI\_SLAVE\_ADDR,
+                     TWI\_SLAVE\_INTLVL\_MED\_gc);
+
+             \textcolor{keywordflow}{for} (i = 0; i < TWIS\_SEND\_BUFFER\_SIZE; i++) \{
+                 slave.\hyperlink{struct_t_w_i___slave_a8c205728fdea8bcaeaa0f6f889d83d4d}{receivedData}[i] = 0;
+             \}
+
+             \hyperlink{group__interrupt__group_gae4922a4bd8ba4150211fbc7f2302403c}{cpu\_irq\_enable}();
+
+             twi\_master\_write(&TWI\_MASTER, &packet);
+
+             \textcolor{keywordflow}{do} \{
+                 \textcolor{comment}{// Nothing}
+             \} \textcolor{keywordflow}{while}(slave.\hyperlink{struct_t_w_i___slave_a38f52b1274d890275ae25f68d289c8d8}{result} != TWIS\_RESULT\_OK);
+         \}
+\end{DoxyCode}
+
+
+We first create some definitions. T\-W\-I master and slave, speed, and addresses\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{         #define TWI\_MASTER       TWIC}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define TWI\_MASTER\_PORT  PORTC}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define TWI\_SLAVE        TWIC}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define TWI\_SPEED        1000000}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define TWI\_MASTER\_ADDR  0x50}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define TWI\_SLAVE\_ADDR   0x50}
+\textcolor{preprocessor}{}
+\textcolor{preprocessor}{         #define DATA\_LENGTH     8}
+\end{DoxyCode}
+
+
+We create a handle to contain information about the slave module\-: 
+\begin{DoxyCode}
+        \hyperlink{struct_t_w_i___slave}{TWI\_Slave\_t} slave;
+\end{DoxyCode}
+
+
+We create two variables, one which contains data that will be transmitted, and one which will contain the received data\-: 
+\begin{DoxyCode}
+         uint8\_t data[DATA\_LENGTH] = \{
+             0x0f, 0x1f, 0x2f, 0x3f, 0x4f, 0x5f, 0x6f, 0x7f
+         \};
+
+         uint8\_t recv\_data[DATA\_LENGTH] = \{
+             0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+         \};
+\end{DoxyCode}
+
+
+Options for the T\-W\-I module initialization procedure are given below\-: 
+\begin{DoxyCode}
+        \hyperlink{structtwi__options__t}{twi\_options\_t} m\_options = \{
+            .\hyperlink{structtwi__options__t_ad81e7400d394a2f72d7ad84588d3d661}{speed}     = TWI\_SPEED,
+            .chip      = TWI\_MASTER\_ADDR,
+            .speed\_reg = \hyperlink{group__group__xmega__drivers__twi__twim_gaf373fdbc2054cf1a070ba2a24ddaedf3}{TWI\_BAUD}(sysclk\_get\_cpu\_hz(), TWI\_SPEED)
+        \};
+\end{DoxyCode}
+
+
+The T\-W\-I slave will fire an interrupt when it has received data, and the function below will be called, which will copy the data from the driver to our recv\-\_\-data buffer\-: 
+\begin{DoxyCode}
+         \textcolor{keyword}{static} \textcolor{keywordtype}{void} slave\_process(\textcolor{keywordtype}{void}) \{
+             \textcolor{keywordtype}{int} i;
+
+             \textcolor{keywordflow}{for}(i = 0; i < DATA\_LENGTH; i++) \{
+                 recv\_data[i] = slave.\hyperlink{struct_t_w_i___slave_a8c205728fdea8bcaeaa0f6f889d83d4d}{receivedData}[i];
+             \}
+         \}
+\end{DoxyCode}
+
+
+Set up the interrupt handler\-: 
+\begin{DoxyCode}
+        ISR(TWIC\_TWIS\_vect) \{
+            \hyperlink{group__group__xmega__drivers__twi__twis_ga0b140fb1b0b3f204e5c748c5f585fbb2}{TWI\_SlaveInterruptHandler}(&slave);
+        \}
+\end{DoxyCode}
+
+
+We create a packet for the data that we will send to the slave T\-W\-I\-: 
+\begin{DoxyCode}
+        \hyperlink{structtwi__package__t}{twi\_package\_t} packet = \{
+            .\hyperlink{structtwi__package__t_a397e982e6fa809c3fb834309537ffdbd}{addr\_length} = 0,
+            .chip        = TWI\_SLAVE\_ADDR,
+            .buffer      = (\textcolor{keywordtype}{void} *)data,
+            .length      = DATA\_LENGTH,
+            .no\_wait     = \textcolor{keyword}{false}
+        \};
+\end{DoxyCode}
+
+
+We need to set S\-D\-A/\-S\-C\-L pins for the master T\-W\-I to be wired and enable pull-\/up\-: 
+\begin{DoxyCode}
+        TWI\_MASTER\_PORT.PIN0CTRL = PORT\_OPC\_WIREDANDPULL\_gc;
+        TWI\_MASTER\_PORT.PIN1CTRL = PORT\_OPC\_WIREDANDPULL\_gc;
+\end{DoxyCode}
+
+
+We enable all interrupt levels\-: 
+\begin{DoxyCode}
+        irq\_initialize\_vectors();
+\end{DoxyCode}
+
+
+We enable the clock to the master module\-: 
+\begin{DoxyCode}
+        sysclk\_enable\_peripheral\_clock(&TWI\_MASTER);
+\end{DoxyCode}
+
+
+We enable the global T\-W\-I bridge mode as well as the Fast Mode Plus communication speed for both master and slave\-: 
+\begin{DoxyCode}
+        twi\_bridge\_enable(&TWI\_MASTER);
+        twi\_fast\_mode\_enable(&TWI\_MASTER);
+        twi\_slave\_fast\_mode\_enable(&TWI\_SLAVE);
+\end{DoxyCode}
+
+
+Initialize the master module with the options we described before\-: 
+\begin{DoxyCode}
+        \hyperlink{group__group__xmega__drivers__twi__twim_ga8029a07f3322bf43c289f5acb442ef29}{twi\_master\_init}(&TWI\_MASTER, &m\_options);
+        twi\_master\_enable(&TWI\_MASTER);
+\end{DoxyCode}
+
+
+We do the same for the slave, using the slave portion of the driver, passing through the slave\-\_\-process function, its address, and set medium interrupt level\-: 
+\begin{DoxyCode}
+        sysclk\_enable\_peripheral\_clock(&TWI\_SLAVE);
+        \hyperlink{group__group__xmega__drivers__twi__twis_ga14b9327d32373a2481e23bec041cbd7e}{TWI\_SlaveInitializeDriver}(&slave, &TWI\_SLAVE, 
+      *slave\_process);
+        \hyperlink{group__group__xmega__drivers__twi__twis_ga7516e604cb0aacddd8d1016a54039752}{TWI\_SlaveInitializeModule}(&slave, 
+      TWI\_SLAVE\_ADDR,
+                TWI\_SLAVE\_INTLVL\_MED\_gc);
+\end{DoxyCode}
+
+
+We zero out the receive buffer in the slave handle\-: 
+\begin{DoxyCode}
+        \textcolor{keywordflow}{for} (i = 0; i < TWIS\_SEND\_BUFFER\_SIZE; i++) \{
+            slave.\hyperlink{struct_t_w_i___slave_a8c205728fdea8bcaeaa0f6f889d83d4d}{receivedData}[i] = 0;
+        \}
+\end{DoxyCode}
+
+
+And enable interrupts\-: 
+\begin{DoxyCode}
+        \hyperlink{group__interrupt__group_gae4922a4bd8ba4150211fbc7f2302403c}{cpu\_irq\_enable}();
+\end{DoxyCode}
+
+
+Finally, we write our packet through the master T\-W\-I module\-: 
+\begin{DoxyCode}
+        twi\_master\_write(&TWI\_MASTER, &packet);
+\end{DoxyCode}
+
+
+We wait for the slave to finish receiving\-: 
+\begin{DoxyCode}
+        \textcolor{keywordflow}{do} \{
+            \textcolor{comment}{// Waiting}
+        \} \textcolor{keywordflow}{while}(slave.\hyperlink{struct_t_w_i___slave_a38f52b1274d890275ae25f68d289c8d8}{result} != TWIS\_RESULT\_OK);
+\end{DoxyCode}
+ \begin{DoxyNote}{Note}
+When the slave has finished receiving, the slave\-\_\-process() function will copy the received data into our recv\-\_\-data buffer, which now contains what was sent through the master. 
+\end{DoxyNote}

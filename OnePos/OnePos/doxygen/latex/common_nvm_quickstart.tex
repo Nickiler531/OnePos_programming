@@ -1,0 +1,142 @@
+This is the quick start quide for the \hyperlink{group__nvm__group}{Common N\-V\-M driver}, with step-\/by-\/step instructions on how to configure and use the driver in a selection of use cases.
+
+The use cases contain several code fragments. The code fragments in the steps for setup can be copied into a custom initialization function, while the steps for usage can be copied into, e.\-g., the main application function.\hypertarget{common_nvm_quickstart_nvm_basic_use_case}{}\section{Basic use case}\label{common_nvm_quickstart_nvm_basic_use_case}
+In this basic use case, N\-V\-M driver is configured for Internal Flash\hypertarget{common_nvm_quickstart_nvm_basic_use_case_setup}{}\section{Setup steps}\label{common_nvm_quickstart_nvm_basic_use_case_setup}
+\hypertarget{common_nvm_quickstart_nvm_basic_use_case_setup_code}{}\subsection{Example code}\label{common_nvm_quickstart_nvm_basic_use_case_setup_code}
+Add to you application C-\/file\-: 
+\begin{DoxyCode}
+        \textcolor{keywordflow}{if}(\hyperlink{xmega__nvm_8c_a0ac16f4de49f2f0df16e3cf56be5f578}{nvm\_init}(INT\_FLASH) == \hyperlink{group__group__xmega__utils__status__codes_gga751c892e5a46b8e7d282085a5a5bf151a7e4a42e3b6dd63708c64cf3db6f69566}{STATUS\_OK})
+          do\_something();
+\end{DoxyCode}
+\hypertarget{common_nvm_quickstart_nvm_basic_use_case_setup_flow}{}\subsection{Workflow}\label{common_nvm_quickstart_nvm_basic_use_case_setup_flow}
+
+\begin{DoxyEnumerate}
+\item Ensure that \hyperlink{group__group__common__boards_ga916f2adc2080b4fe88034086d107a8dc}{board\-\_\-init()} has configured selected I/\-Os for T\-W\-I function when using external A\-T45\-D\-B\-X dataflash
+\item Ensure that \hyperlink{conf__nvm_8h}{conf\-\_\-nvm.\-h} is present for the driver.
+\begin{DoxyItemize}
+\item \begin{DoxyNote}{Note}
+This file is only for the driver and should not be included by the user.
+\end{DoxyNote}
+
+\end{DoxyItemize}
+\item Call nvm\-\_\-init 
+\begin{DoxyCode}
+ \hyperlink{xmega__nvm_8c_a0ac16f4de49f2f0df16e3cf56be5f578}{nvm\_init}(INT\_FLASH); 
+\end{DoxyCode}
+ and optionally check its return code
+\end{DoxyEnumerate}\hypertarget{common_nvm_quickstart_nvm_basic_use_case_usage}{}\section{Usage steps}\label{common_nvm_quickstart_nvm_basic_use_case_usage}
+\hypertarget{common_nvm_quickstart_nvm_basic_use_case_usage_code_writing}{}\subsection{Example code\-: Writing to}\label{common_nvm_quickstart_nvm_basic_use_case_usage_code_writing}
+non volatile memory Use in the application C-\/file\-: 
+\begin{DoxyCode}
+           uint8\_t buffer[] = \{0xAA, 0xBB, 0xCC, 0xDD, 0xEE\};
+
+           \textcolor{keywordflow}{if}(\hyperlink{xmega__nvm_8c_ae2475c24bb003e7e1368d2c488d22db3}{nvm\_write}(INT\_FLASH, test\_address, (\textcolor{keywordtype}{void} *)buffer, \textcolor{keyword}{
+      sizeof}(buffer)) ==
+         \hyperlink{group__group__xmega__utils__status__codes_gga751c892e5a46b8e7d282085a5a5bf151a7e4a42e3b6dd63708c64cf3db6f69566}{STATUS\_OK})
+             do\_something();
+\end{DoxyCode}
+\hypertarget{common_nvm_quickstart_nvm_basic_use_case_usage_flow}{}\subsection{Workflow}\label{common_nvm_quickstart_nvm_basic_use_case_usage_flow}
+
+\begin{DoxyEnumerate}
+\item Prepare the data you want to send to the non volatile memory 
+\begin{DoxyCode}
+ uint8\_t buffer[] = \{0xAA, 0xBB, 0xCC, 0xDD, 0xEE\}; 
+\end{DoxyCode}
+
+\item Call nvm\-\_\-write 
+\begin{DoxyCode}
+ \hyperlink{xmega__nvm_8c_ae2475c24bb003e7e1368d2c488d22db3}{nvm\_write}(INT\_FLASH, test\_address, (\textcolor{keywordtype}{void} *)buffer,
+         \textcolor{keyword}{sizeof}(buffer)) 
+\end{DoxyCode}
+ and optionally check its return value for S\-T\-A\-T\-U\-S\-\_\-\-O\-K.
+\end{DoxyEnumerate}\hypertarget{common_nvm_quickstart_nvm_basic_use_case_usage_code_reading}{}\subsection{Example code\-: Reading from}\label{common_nvm_quickstart_nvm_basic_use_case_usage_code_reading}
+non volatile memory Use in application C-\/file\-: 
+\begin{DoxyCode}
+           uint8\_t data\_read[8];
+
+           \textcolor{keywordflow}{if}(\hyperlink{xmega__nvm_8c_a38c20e73ee79e686204f85e88854e5d1}{nvm\_read}(INT\_FLASH, test\_address, (\textcolor{keywordtype}{void} *)data\_read, \textcolor{keyword}{
+      sizeof}(data\_read))
+         == \hyperlink{group__group__xmega__utils__status__codes_gga751c892e5a46b8e7d282085a5a5bf151a7e4a42e3b6dd63708c64cf3db6f69566}{STATUS\_OK}) \{
+             \textcolor{comment}{//Check read content}
+             \textcolor{keywordflow}{if}(data\_read[0] == 0xAA)
+               do\_something();
+           \}
+\end{DoxyCode}
+\hypertarget{common_nvm_quickstart_nvm_basic_use_case_usage_flow}{}\subsection{Workflow}\label{common_nvm_quickstart_nvm_basic_use_case_usage_flow}
+
+\begin{DoxyEnumerate}
+\item Prepare a data buffer that will read data from non volatile memory 
+\begin{DoxyCode}
+ uint8\_t data\_read[8]; 
+\end{DoxyCode}
+
+\item Call nvm\-\_\-read 
+\begin{DoxyCode}
+ \hyperlink{xmega__nvm_8c_a38c20e73ee79e686204f85e88854e5d1}{nvm\_read}(INT\_FLASH, test\_address, (\textcolor{keywordtype}{void} *)data\_read,
+         \textcolor{keyword}{sizeof}(data\_read)); 
+\end{DoxyCode}
+ and optionally check its return value for S\-T\-A\-T\-U\-S\-\_\-\-O\-K. The data read from the non volatile memory are in data\-\_\-read.
+\end{DoxyEnumerate}\hypertarget{common_nvm_quickstart_nvm_basic_use_case_usage_code_erasing}{}\subsection{Example code\-: Erasing a}\label{common_nvm_quickstart_nvm_basic_use_case_usage_code_erasing}
+page of non volatile memory Use in the application C-\/file\-: 
+\begin{DoxyCode}
+        \textcolor{keywordflow}{if}(\hyperlink{xmega__nvm_8c_a647ad906f2c90020d68084b0d3c7c206}{nvm\_page\_erase}(INT\_FLASH, test\_page) == \hyperlink{group__group__xmega__utils__status__codes_gga751c892e5a46b8e7d282085a5a5bf151a7e4a42e3b6dd63708c64cf3db6f69566}{STATUS\_OK}
+      )
+          do\_something();
+\end{DoxyCode}
+\hypertarget{common_nvm_quickstart_nvm_basic_use_case_usage_flow}{}\subsection{Workflow}\label{common_nvm_quickstart_nvm_basic_use_case_usage_flow}
+
+\begin{DoxyEnumerate}
+\item Call nvm\-\_\-page\-\_\-erase 
+\begin{DoxyCode}
+ \hyperlink{xmega__nvm_8c_a647ad906f2c90020d68084b0d3c7c206}{nvm\_page\_erase}(INT\_FLASH, test\_page) 
+\end{DoxyCode}
+ and optionally check its return value for S\-T\-A\-T\-U\-S\-\_\-\-O\-K.
+\end{DoxyEnumerate}\hypertarget{common_nvm_quickstart_nvm_basic_use_case_usage_code_config}{}\subsection{Example code\-: Reading}\label{common_nvm_quickstart_nvm_basic_use_case_usage_code_config}
+$\ast$configuration of non volatile memory Use in application C-\/file\-: 
+\begin{DoxyCode}
+           uint8\_t mem\_size, page\_size, page\_num;
+
+           \hyperlink{xmega__nvm_8c_ad90ba5cf40374577ef525365bbc86641}{nvm\_get\_size}(INT\_FLASH, &mem\_size);
+           \hyperlink{xmega__nvm_8c_a784427385b7243e8d69dcb52933116d8}{nvm\_get\_page\_size}(INT\_FLASH, &page\_size);
+           \hyperlink{xmega__nvm_8c_ae88b4f69e71b6c7991d2e222ec7f4bc6}{nvm\_get\_pagenumber}(INT\_FLASH, test\_address, &
+      page\_num);
+\end{DoxyCode}
+\hypertarget{common_nvm_quickstart_nvm_basic_use_case_usage_flow}{}\subsection{Workflow}\label{common_nvm_quickstart_nvm_basic_use_case_usage_flow}
+
+\begin{DoxyEnumerate}
+\item Prepare a buffer to store configuration of non volatile memory 
+\begin{DoxyCode}
+ uint8\_t mem\_size, page\_size, page\_num; 
+\end{DoxyCode}
+
+\item Call nvm\-\_\-get\-\_\-size 
+\begin{DoxyCode}
+ \hyperlink{xmega__nvm_8c_ad90ba5cf40374577ef525365bbc86641}{nvm\_get\_size}(INT\_FLASH, &mem\_size); 
+\end{DoxyCode}
+ and optionally check its return value for S\-T\-A\-T\-U\-S\-\_\-\-O\-K. The memory size of the non volatile memory is in mem\-\_\-size.
+\item Call nvm\-\_\-get\-\_\-page\-\_\-size 
+\begin{DoxyCode}
+ \hyperlink{xmega__nvm_8c_a784427385b7243e8d69dcb52933116d8}{nvm\_get\_page\_size}(INT\_FLASH, &page\_size);
+\end{DoxyCode}
+ and optionally check its return value for S\-T\-A\-T\-U\-S\-\_\-\-O\-K. The page size of the non volatile memory is in page\-\_\-size.
+\item Call nvm\-\_\-get\-\_\-pagenumber 
+\begin{DoxyCode}
+ nvm\_get\_page\_number(INT\_FLASH, test\_address,
+         &page\_num); 
+\end{DoxyCode}
+ and optionally check its return value for S\-T\-A\-T\-U\-S\-\_\-\-O\-K. The page number of given address in the non volatile memory is in page\-\_\-num.
+\end{DoxyEnumerate}\hypertarget{common_nvm_quickstart_nvm_basic_use_case_usage_code_locking}{}\subsection{Example code\-: Enabling}\label{common_nvm_quickstart_nvm_basic_use_case_usage_code_locking}
+security bit Use in the application C-\/file\-: 
+\begin{DoxyCode}
+        \textcolor{keywordflow}{if}(\hyperlink{xmega__nvm_8c_af15d68188f29bee24b7cdc19e835e293}{nvm\_set\_security\_bit}() == \hyperlink{group__group__xmega__utils__status__codes_gga751c892e5a46b8e7d282085a5a5bf151a7e4a42e3b6dd63708c64cf3db6f69566}{STATUS\_OK})
+          do\_something();
+\end{DoxyCode}
+\hypertarget{common_nvm_quickstart_nvm_basic_use_case_usage_flow}{}\subsection{Workflow}\label{common_nvm_quickstart_nvm_basic_use_case_usage_flow}
+
+\begin{DoxyEnumerate}
+\item Call nvm\-\_\-set\-\_\-security\-\_\-bit 
+\begin{DoxyCode}
+ \hyperlink{xmega__nvm_8c_af15d68188f29bee24b7cdc19e835e293}{nvm\_set\_security\_bit}() 
+\end{DoxyCode}
+ and optionally check its return value for S\-T\-A\-T\-U\-S\-\_\-\-O\-K. 
+\end{DoxyEnumerate}

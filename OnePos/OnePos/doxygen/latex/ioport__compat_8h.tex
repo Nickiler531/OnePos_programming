@@ -1,0 +1,312 @@
+\hypertarget{ioport__compat_8h}{\section{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/ioport/xmega/ioport\-\_\-compat.h File Reference}
+\label{ioport__compat_8h}\index{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/ioport/xmega/ioport\-\_\-compat.\-h@{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/ioport/xmega/ioport\-\_\-compat.\-h}}
+}
+
+
+X\-M\-E\-G\-A legacy I\-O\-P\-O\-R\-T software compatibility driver interface header file.  
+
+
+{\ttfamily \#include \char`\"{}../ioport.\-h\char`\"{}}\\*
+\subsection*{Macros}
+\begin{Indent}{\bf Initial Output State Flags}\par
+{\em }\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{ioport__compat_8h_ac1e2824691a262350b726d5739dcfa97}{I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-I\-T\-\_\-\-L\-O\-W}~(0 $<$$<$ 1)
+\item 
+\#define \hyperlink{ioport__compat_8h_a6fd5b83fc296e4d6d791f8b074731d8e}{I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-I\-T\-\_\-\-H\-I\-G\-H}~(1 $<$$<$ 1)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Input/\-Sense Configuration Flags}\par
+{\em }\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{ioport__compat_8h_af0b34704510a90ef8e4713d4fccfaa3e}{I\-O\-P\-O\-R\-T\-\_\-\-B\-O\-T\-H\-E\-D\-G\-E\-S}~(0 $<$$<$ 8)
+\item 
+\#define \hyperlink{ioport__compat_8h_a0e85e0b01c17becac675277e9b330fa6}{I\-O\-P\-O\-R\-T\-\_\-\-R\-I\-S\-I\-N\-G}~(1 $<$$<$ 8)
+\item 
+\#define \hyperlink{ioport__compat_8h_a9264c6b0666d6636c89828c71a609f81}{I\-O\-P\-O\-R\-T\-\_\-\-F\-A\-L\-L\-I\-N\-G}~(2 $<$$<$ 8)
+\item 
+\#define \hyperlink{ioport__compat_8h_af4a16682fa2d98ee703977b43c64b088}{I\-O\-P\-O\-R\-T\-\_\-\-L\-E\-V\-E\-L}~(3 $<$$<$ 8)
+\item 
+\#define \hyperlink{ioport__compat_8h_a94a689447996964e8c7e36e751b9733f}{I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-P\-U\-T\-\_\-\-D\-I\-S\-A\-B\-L\-E}~(7 $<$$<$ 8)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Output and Pull Configuration Flags}\par
+{\em }\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{ioport__compat_8h_a73b6ab8a3ee056ec5bcbe27213536995}{I\-O\-P\-O\-R\-T\-\_\-\-T\-O\-T\-E\-M}~(0 $<$$<$ 11)
+\item 
+\#define \hyperlink{ioport__compat_8h_af0ae787a777e62872280a35f0b9f9c51}{I\-O\-P\-O\-R\-T\-\_\-\-B\-U\-S\-K\-E\-E\-P\-E\-R}~(1 $<$$<$ 11)
+\item 
+\#define \hyperlink{ioport__compat_8h_a1a350ceb4d80bfd23d763cc105b3f910}{I\-O\-P\-O\-R\-T\-\_\-\-P\-U\-L\-L\-\_\-\-D\-O\-W\-N}~(2 $<$$<$ 11)
+\item 
+\#define \hyperlink{ioport__compat_8h_acbd350ec39fe567a7c0e423b000746fb}{I\-O\-P\-O\-R\-T\-\_\-\-P\-U\-L\-L\-\_\-\-U\-P}~(3 $<$$<$ 11)
+\item 
+\#define \hyperlink{ioport__compat_8h_aa1c6d94fa048e18ef24713490e1f5ad0}{I\-O\-P\-O\-R\-T\-\_\-\-W\-I\-R\-E\-D\-\_\-\-O\-R}~(4 $<$$<$ 11)
+\item 
+\#define \hyperlink{ioport__compat_8h_a3d1f8e67d08a6de3ba6cc1a857f31ca1}{I\-O\-P\-O\-R\-T\-\_\-\-W\-I\-R\-E\-D\-\_\-\-A\-N\-D}~(5 $<$$<$ 11)
+\item 
+\#define \hyperlink{ioport__compat_8h_acfc2a281b83914f2f588d1332f2eff21}{I\-O\-P\-O\-R\-T\-\_\-\-W\-I\-R\-E\-D\-\_\-\-O\-R\-\_\-\-P\-U\-L\-L\-\_\-\-D\-O\-W\-N}~(6 $<$$<$ 11)
+\item 
+\#define \hyperlink{ioport__compat_8h_a17c2c559457089db56aa3ea1eb140b62}{I\-O\-P\-O\-R\-T\-\_\-\-W\-I\-R\-E\-D\-\_\-\-A\-N\-D\-\_\-\-P\-U\-L\-L\-\_\-\-U\-P}~(7 $<$$<$ 11)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Inverted I/\-O Configuration Flags}\par
+{\em }\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{ioport__compat_8h_aedf9e903a471cb6f19c043f970d8d4b4}{I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-V\-\_\-\-E\-N\-A\-B\-L\-E\-D}~(1 $<$$<$ 14)
+\item 
+\#define \hyperlink{ioport__compat_8h_a0ddaa70de092dde7173e2f4c1ba6c507}{I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-V\-\_\-\-D\-I\-S\-A\-B\-L\-E}~(0 $<$$<$ 14)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Slew Rate Limit Configuration Flags}\par
+{\em }\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{ioport__compat_8h_ad0226bc3c0a55d3889f10d7c6f103285}{I\-O\-P\-O\-R\-T\-\_\-\-S\-R\-L\-\_\-\-E\-N\-A\-B\-L\-E\-D}~(1 $<$$<$ 15)
+\item 
+\#define \hyperlink{ioport__compat_8h_a773f25d00aa36800b0a25c588f914c25}{I\-O\-P\-O\-R\-T\-\_\-\-S\-R\-L\-\_\-\-D\-I\-S\-A\-B\-L\-E\-D}~(0 $<$$<$ 15)
+\end{DoxyCompactItemize}
+\end{Indent}
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{ioport__compat_8h_a6035774ef51a86241d190f29e881368d}{P\-O\-R\-T\-\_\-\-D\-I\-R}~0x00
+\item 
+\#define \hyperlink{ioport__compat_8h_aff5eb975774079cf5c23b54693cdd571}{P\-O\-R\-T\-\_\-\-D\-I\-R\-S\-E\-T}~0x01
+\item 
+\#define \hyperlink{ioport__compat_8h_ad8fb119fafd3532d518d97b63a82cad8}{P\-O\-R\-T\-\_\-\-D\-I\-R\-C\-L\-R}~0x02
+\item 
+\#define \hyperlink{ioport__compat_8h_a932912f5a6af2579a9782eae01a5469b}{P\-O\-R\-T\-\_\-\-D\-I\-R\-T\-G\-L}~0x03
+\item 
+\#define \hyperlink{ioport__compat_8h_a0fda9ae06cc668afc95a2b2a79dd696a}{P\-O\-R\-T\-\_\-\-O\-U\-T}~0x04
+\item 
+\#define \hyperlink{ioport__compat_8h_aa41cbfbbb7d7e35233974ba96bbf99f0}{P\-O\-R\-T\-\_\-\-O\-U\-T\-S\-E\-T}~0x05
+\item 
+\#define \hyperlink{ioport__compat_8h_a0addcf5e908ef42b2bf6f845ad62c68e}{P\-O\-R\-T\-\_\-\-O\-U\-T\-C\-L\-R}~0x06
+\item 
+\#define \hyperlink{ioport__compat_8h_a2fb62cc12ad006549dff5c4cd541f3e9}{P\-O\-R\-T\-\_\-\-O\-U\-T\-T\-G\-L}~0x07
+\item 
+\#define \hyperlink{ioport__compat_8h_a0011d72ffaee9df08d2b91d768621593}{P\-O\-R\-T\-\_\-\-I\-N}~0x08
+\item 
+\#define \hyperlink{ioport__compat_8h_ad187eb10993a93ca2c5d76c7dfbae5b3}{P\-O\-R\-T\-\_\-\-I\-N\-T\-C\-T\-R\-L}~0x09
+\item 
+\#define \hyperlink{ioport__compat_8h_ae69a778efa89be62b4ef320c30f8cf0c}{P\-O\-R\-T\-\_\-\-I\-N\-T0\-M\-A\-S\-K}~0x0\-A
+\item 
+\#define \hyperlink{ioport__compat_8h_ad12d3d5db253d69e1c97a85557a474d8}{P\-O\-R\-T\-\_\-\-I\-N\-T1\-M\-A\-S\-K}~0x0\-B
+\item 
+\#define \hyperlink{ioport__compat_8h_a327892d4aedc523ab1e5f1ddfcf0e7a6}{P\-O\-R\-T\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S}~0x0\-C
+\item 
+\#define \hyperlink{ioport__compat_8h_aced56a46ec811831674f8d14ba9c2fb8}{P\-O\-R\-T\-\_\-\-P\-I\-N0\-C\-T\-R\-L}~0x10
+\item 
+\#define \hyperlink{ioport__compat_8h_a35dd2976730a87ff389c1834e8579911}{P\-O\-R\-T\-\_\-\-P\-I\-N1\-C\-T\-R\-L}~0x11
+\item 
+\#define \hyperlink{ioport__compat_8h_a5ddd4fac70263c7bdaa3374fd76d6f86}{P\-O\-R\-T\-\_\-\-P\-I\-N2\-C\-T\-R\-L}~0x12
+\item 
+\#define \hyperlink{ioport__compat_8h_a174ca84f3e22e13b6175be3fe918e345}{P\-O\-R\-T\-\_\-\-P\-I\-N3\-C\-T\-R\-L}~0x13
+\item 
+\#define \hyperlink{ioport__compat_8h_aadc2e910c2208b660e8d4695092b185f}{P\-O\-R\-T\-\_\-\-P\-I\-N4\-C\-T\-R\-L}~0x14
+\item 
+\#define \hyperlink{ioport__compat_8h_a6abe2460fd4a30519ab30274660b576a}{P\-O\-R\-T\-\_\-\-P\-I\-N5\-C\-T\-R\-L}~0x15
+\item 
+\#define \hyperlink{ioport__compat_8h_afa52ac2042ec7c4ee46b7306793e99a0}{P\-O\-R\-T\-\_\-\-P\-I\-N6\-C\-T\-R\-L}~0x16
+\item 
+\#define \hyperlink{ioport__compat_8h_a8927b189b59e6d24e6cb4048b3e7abad}{P\-O\-R\-T\-\_\-\-P\-I\-N7\-C\-T\-R\-L}~0x17
+\end{DoxyCompactItemize}
+
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef uint8\-\_\-t \hyperlink{ioport__compat_8h_a23a511823adf39eb1330169685db2a89}{pin\-\_\-mask\-\_\-t}
+\begin{DoxyCompactList}\small\item\em A pin mask. \end{DoxyCompactList}\item 
+typedef uint8\-\_\-t \hyperlink{ioport__compat_8h_ac219d604c520dca5681bf4d7c2855d6c}{port\-\_\-pin\-\_\-t}
+\begin{DoxyCompactList}\small\item\em A P\-O\-R\-T pin. \end{DoxyCompactList}\item 
+typedef uint16\-\_\-t \hyperlink{ioport__compat_8h_a9c786379535d50672a1fcd566db6d70a}{port\-\_\-pin\-\_\-flags\-\_\-t}
+\begin{DoxyCompactList}\small\item\em Pin configuration flags. \end{DoxyCompactList}\item 
+typedef uint8\-\_\-t \hyperlink{ioport__compat_8h_a9a63be45eb76e153671cc1baf59ec53e}{port\-\_\-id\-\_\-t}
+\begin{DoxyCompactList}\small\item\em A port id. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{ioport__compat_8h_a8da4959022f2cec05f59a9939671ff7e}{ioport\-\_\-configure\-\_\-port\-\_\-pin} (void $\ast$port, \hyperlink{ioport__compat_8h_a23a511823adf39eb1330169685db2a89}{pin\-\_\-mask\-\_\-t} pin\-\_\-mask, \hyperlink{ioport__compat_8h_a9c786379535d50672a1fcd566db6d70a}{port\-\_\-pin\-\_\-flags\-\_\-t} flags)
+\begin{DoxyCompactList}\small\item\em Configure the I\-O P\-O\-R\-T pin function for a set of pins on a port. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+X\-M\-E\-G\-A legacy I\-O\-P\-O\-R\-T software compatibility driver interface header file. Copyright (c) 2014 Atmel Corporation. All rights reserved.
+
+\subsection{Macro Definition Documentation}
+\hypertarget{ioport__compat_8h_af0b34704510a90ef8e4713d4fccfaa3e}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!I\-O\-P\-O\-R\-T\-\_\-\-B\-O\-T\-H\-E\-D\-G\-E\-S@{I\-O\-P\-O\-R\-T\-\_\-\-B\-O\-T\-H\-E\-D\-G\-E\-S}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-B\-O\-T\-H\-E\-D\-G\-E\-S@{I\-O\-P\-O\-R\-T\-\_\-\-B\-O\-T\-H\-E\-D\-G\-E\-S}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-B\-O\-T\-H\-E\-D\-G\-E\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-B\-O\-T\-H\-E\-D\-G\-E\-S~(0 $<$$<$ 8)}}\label{ioport__compat_8h_af0b34704510a90ef8e4713d4fccfaa3e}
+Sense Both Edges \hypertarget{ioport__compat_8h_af0ae787a777e62872280a35f0b9f9c51}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!I\-O\-P\-O\-R\-T\-\_\-\-B\-U\-S\-K\-E\-E\-P\-E\-R@{I\-O\-P\-O\-R\-T\-\_\-\-B\-U\-S\-K\-E\-E\-P\-E\-R}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-B\-U\-S\-K\-E\-E\-P\-E\-R@{I\-O\-P\-O\-R\-T\-\_\-\-B\-U\-S\-K\-E\-E\-P\-E\-R}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-B\-U\-S\-K\-E\-E\-P\-E\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-B\-U\-S\-K\-E\-E\-P\-E\-R~(1 $<$$<$ 11)}}\label{ioport__compat_8h_af0ae787a777e62872280a35f0b9f9c51}
+Bus Keeper \hypertarget{ioport__compat_8h_a9264c6b0666d6636c89828c71a609f81}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!I\-O\-P\-O\-R\-T\-\_\-\-F\-A\-L\-L\-I\-N\-G@{I\-O\-P\-O\-R\-T\-\_\-\-F\-A\-L\-L\-I\-N\-G}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-F\-A\-L\-L\-I\-N\-G@{I\-O\-P\-O\-R\-T\-\_\-\-F\-A\-L\-L\-I\-N\-G}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-F\-A\-L\-L\-I\-N\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-F\-A\-L\-L\-I\-N\-G~(2 $<$$<$ 8)}}\label{ioport__compat_8h_a9264c6b0666d6636c89828c71a609f81}
+Sense Falling Edge \hypertarget{ioport__compat_8h_a6fd5b83fc296e4d6d791f8b074731d8e}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-I\-T\-\_\-\-H\-I\-G\-H@{I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-I\-T\-\_\-\-H\-I\-G\-H}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-I\-T\-\_\-\-H\-I\-G\-H@{I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-I\-T\-\_\-\-H\-I\-G\-H}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-I\-T\-\_\-\-H\-I\-G\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-I\-T\-\_\-\-H\-I\-G\-H~(1 $<$$<$ 1)}}\label{ioport__compat_8h_a6fd5b83fc296e4d6d791f8b074731d8e}
+Initial Output State High \hypertarget{ioport__compat_8h_ac1e2824691a262350b726d5739dcfa97}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-I\-T\-\_\-\-L\-O\-W@{I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-I\-T\-\_\-\-L\-O\-W}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-I\-T\-\_\-\-L\-O\-W@{I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-I\-T\-\_\-\-L\-O\-W}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-I\-T\-\_\-\-L\-O\-W}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-I\-T\-\_\-\-L\-O\-W~(0 $<$$<$ 1)}}\label{ioport__compat_8h_ac1e2824691a262350b726d5739dcfa97}
+Initial Output State Low \hypertarget{ioport__compat_8h_a94a689447996964e8c7e36e751b9733f}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-P\-U\-T\-\_\-\-D\-I\-S\-A\-B\-L\-E@{I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-P\-U\-T\-\_\-\-D\-I\-S\-A\-B\-L\-E}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-P\-U\-T\-\_\-\-D\-I\-S\-A\-B\-L\-E@{I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-P\-U\-T\-\_\-\-D\-I\-S\-A\-B\-L\-E}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-P\-U\-T\-\_\-\-D\-I\-S\-A\-B\-L\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-P\-U\-T\-\_\-\-D\-I\-S\-A\-B\-L\-E~(7 $<$$<$ 8)}}\label{ioport__compat_8h_a94a689447996964e8c7e36e751b9733f}
+Input Buffer Disabled \hypertarget{ioport__compat_8h_a0ddaa70de092dde7173e2f4c1ba6c507}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-V\-\_\-\-D\-I\-S\-A\-B\-L\-E@{I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-V\-\_\-\-D\-I\-S\-A\-B\-L\-E}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-V\-\_\-\-D\-I\-S\-A\-B\-L\-E@{I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-V\-\_\-\-D\-I\-S\-A\-B\-L\-E}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-V\-\_\-\-D\-I\-S\-A\-B\-L\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-V\-\_\-\-D\-I\-S\-A\-B\-L\-E~(0 $<$$<$ 14)}}\label{ioport__compat_8h_a0ddaa70de092dde7173e2f4c1ba6c507}
+I/\-O is Not Inverted \hypertarget{ioport__compat_8h_aedf9e903a471cb6f19c043f970d8d4b4}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-V\-\_\-\-E\-N\-A\-B\-L\-E\-D@{I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-V\-\_\-\-E\-N\-A\-B\-L\-E\-D}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-V\-\_\-\-E\-N\-A\-B\-L\-E\-D@{I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-V\-\_\-\-E\-N\-A\-B\-L\-E\-D}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-V\-\_\-\-E\-N\-A\-B\-L\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-I\-N\-V\-\_\-\-E\-N\-A\-B\-L\-E\-D~(1 $<$$<$ 14)}}\label{ioport__compat_8h_aedf9e903a471cb6f19c043f970d8d4b4}
+I/\-O is Inverted \hypertarget{ioport__compat_8h_af4a16682fa2d98ee703977b43c64b088}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!I\-O\-P\-O\-R\-T\-\_\-\-L\-E\-V\-E\-L@{I\-O\-P\-O\-R\-T\-\_\-\-L\-E\-V\-E\-L}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-L\-E\-V\-E\-L@{I\-O\-P\-O\-R\-T\-\_\-\-L\-E\-V\-E\-L}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-L\-E\-V\-E\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-L\-E\-V\-E\-L~(3 $<$$<$ 8)}}\label{ioport__compat_8h_af4a16682fa2d98ee703977b43c64b088}
+Sense Low Level \hypertarget{ioport__compat_8h_a1a350ceb4d80bfd23d763cc105b3f910}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!I\-O\-P\-O\-R\-T\-\_\-\-P\-U\-L\-L\-\_\-\-D\-O\-W\-N@{I\-O\-P\-O\-R\-T\-\_\-\-P\-U\-L\-L\-\_\-\-D\-O\-W\-N}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-P\-U\-L\-L\-\_\-\-D\-O\-W\-N@{I\-O\-P\-O\-R\-T\-\_\-\-P\-U\-L\-L\-\_\-\-D\-O\-W\-N}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-P\-U\-L\-L\-\_\-\-D\-O\-W\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-P\-U\-L\-L\-\_\-\-D\-O\-W\-N~(2 $<$$<$ 11)}}\label{ioport__compat_8h_a1a350ceb4d80bfd23d763cc105b3f910}
+Pull-\/\-Down (when input) \hypertarget{ioport__compat_8h_acbd350ec39fe567a7c0e423b000746fb}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!I\-O\-P\-O\-R\-T\-\_\-\-P\-U\-L\-L\-\_\-\-U\-P@{I\-O\-P\-O\-R\-T\-\_\-\-P\-U\-L\-L\-\_\-\-U\-P}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-P\-U\-L\-L\-\_\-\-U\-P@{I\-O\-P\-O\-R\-T\-\_\-\-P\-U\-L\-L\-\_\-\-U\-P}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-P\-U\-L\-L\-\_\-\-U\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-P\-U\-L\-L\-\_\-\-U\-P~(3 $<$$<$ 11)}}\label{ioport__compat_8h_acbd350ec39fe567a7c0e423b000746fb}
+Pull-\/\-Up (when input) \hypertarget{ioport__compat_8h_a0e85e0b01c17becac675277e9b330fa6}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!I\-O\-P\-O\-R\-T\-\_\-\-R\-I\-S\-I\-N\-G@{I\-O\-P\-O\-R\-T\-\_\-\-R\-I\-S\-I\-N\-G}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-R\-I\-S\-I\-N\-G@{I\-O\-P\-O\-R\-T\-\_\-\-R\-I\-S\-I\-N\-G}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-R\-I\-S\-I\-N\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-R\-I\-S\-I\-N\-G~(1 $<$$<$ 8)}}\label{ioport__compat_8h_a0e85e0b01c17becac675277e9b330fa6}
+Sense Rising Edge \hypertarget{ioport__compat_8h_a773f25d00aa36800b0a25c588f914c25}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!I\-O\-P\-O\-R\-T\-\_\-\-S\-R\-L\-\_\-\-D\-I\-S\-A\-B\-L\-E\-D@{I\-O\-P\-O\-R\-T\-\_\-\-S\-R\-L\-\_\-\-D\-I\-S\-A\-B\-L\-E\-D}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-S\-R\-L\-\_\-\-D\-I\-S\-A\-B\-L\-E\-D@{I\-O\-P\-O\-R\-T\-\_\-\-S\-R\-L\-\_\-\-D\-I\-S\-A\-B\-L\-E\-D}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-S\-R\-L\-\_\-\-D\-I\-S\-A\-B\-L\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-S\-R\-L\-\_\-\-D\-I\-S\-A\-B\-L\-E\-D~(0 $<$$<$ 15)}}\label{ioport__compat_8h_a773f25d00aa36800b0a25c588f914c25}
+Slew Rate Limit Disabled \hypertarget{ioport__compat_8h_ad0226bc3c0a55d3889f10d7c6f103285}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!I\-O\-P\-O\-R\-T\-\_\-\-S\-R\-L\-\_\-\-E\-N\-A\-B\-L\-E\-D@{I\-O\-P\-O\-R\-T\-\_\-\-S\-R\-L\-\_\-\-E\-N\-A\-B\-L\-E\-D}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-S\-R\-L\-\_\-\-E\-N\-A\-B\-L\-E\-D@{I\-O\-P\-O\-R\-T\-\_\-\-S\-R\-L\-\_\-\-E\-N\-A\-B\-L\-E\-D}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-S\-R\-L\-\_\-\-E\-N\-A\-B\-L\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-S\-R\-L\-\_\-\-E\-N\-A\-B\-L\-E\-D~(1 $<$$<$ 15)}}\label{ioport__compat_8h_ad0226bc3c0a55d3889f10d7c6f103285}
+Slew Rate Limit Enabled \hypertarget{ioport__compat_8h_a73b6ab8a3ee056ec5bcbe27213536995}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!I\-O\-P\-O\-R\-T\-\_\-\-T\-O\-T\-E\-M@{I\-O\-P\-O\-R\-T\-\_\-\-T\-O\-T\-E\-M}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-T\-O\-T\-E\-M@{I\-O\-P\-O\-R\-T\-\_\-\-T\-O\-T\-E\-M}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-T\-O\-T\-E\-M}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-T\-O\-T\-E\-M~(0 $<$$<$ 11)}}\label{ioport__compat_8h_a73b6ab8a3ee056ec5bcbe27213536995}
+Normal push/pull output \hypertarget{ioport__compat_8h_a3d1f8e67d08a6de3ba6cc1a857f31ca1}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!I\-O\-P\-O\-R\-T\-\_\-\-W\-I\-R\-E\-D\-\_\-\-A\-N\-D@{I\-O\-P\-O\-R\-T\-\_\-\-W\-I\-R\-E\-D\-\_\-\-A\-N\-D}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-W\-I\-R\-E\-D\-\_\-\-A\-N\-D@{I\-O\-P\-O\-R\-T\-\_\-\-W\-I\-R\-E\-D\-\_\-\-A\-N\-D}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-W\-I\-R\-E\-D\-\_\-\-A\-N\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-W\-I\-R\-E\-D\-\_\-\-A\-N\-D~(5 $<$$<$ 11)}}\label{ioport__compat_8h_a3d1f8e67d08a6de3ba6cc1a857f31ca1}
+Wired A\-N\-D \hypertarget{ioport__compat_8h_a17c2c559457089db56aa3ea1eb140b62}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!I\-O\-P\-O\-R\-T\-\_\-\-W\-I\-R\-E\-D\-\_\-\-A\-N\-D\-\_\-\-P\-U\-L\-L\-\_\-\-U\-P@{I\-O\-P\-O\-R\-T\-\_\-\-W\-I\-R\-E\-D\-\_\-\-A\-N\-D\-\_\-\-P\-U\-L\-L\-\_\-\-U\-P}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-W\-I\-R\-E\-D\-\_\-\-A\-N\-D\-\_\-\-P\-U\-L\-L\-\_\-\-U\-P@{I\-O\-P\-O\-R\-T\-\_\-\-W\-I\-R\-E\-D\-\_\-\-A\-N\-D\-\_\-\-P\-U\-L\-L\-\_\-\-U\-P}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-W\-I\-R\-E\-D\-\_\-\-A\-N\-D\-\_\-\-P\-U\-L\-L\-\_\-\-U\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-W\-I\-R\-E\-D\-\_\-\-A\-N\-D\-\_\-\-P\-U\-L\-L\-\_\-\-U\-P~(7 $<$$<$ 11)}}\label{ioport__compat_8h_a17c2c559457089db56aa3ea1eb140b62}
+Wired A\-N\-D and Pull-\/\-Up \hypertarget{ioport__compat_8h_aa1c6d94fa048e18ef24713490e1f5ad0}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!I\-O\-P\-O\-R\-T\-\_\-\-W\-I\-R\-E\-D\-\_\-\-O\-R@{I\-O\-P\-O\-R\-T\-\_\-\-W\-I\-R\-E\-D\-\_\-\-O\-R}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-W\-I\-R\-E\-D\-\_\-\-O\-R@{I\-O\-P\-O\-R\-T\-\_\-\-W\-I\-R\-E\-D\-\_\-\-O\-R}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-W\-I\-R\-E\-D\-\_\-\-O\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-W\-I\-R\-E\-D\-\_\-\-O\-R~(4 $<$$<$ 11)}}\label{ioport__compat_8h_aa1c6d94fa048e18ef24713490e1f5ad0}
+Wired O\-R \hypertarget{ioport__compat_8h_acfc2a281b83914f2f588d1332f2eff21}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!I\-O\-P\-O\-R\-T\-\_\-\-W\-I\-R\-E\-D\-\_\-\-O\-R\-\_\-\-P\-U\-L\-L\-\_\-\-D\-O\-W\-N@{I\-O\-P\-O\-R\-T\-\_\-\-W\-I\-R\-E\-D\-\_\-\-O\-R\-\_\-\-P\-U\-L\-L\-\_\-\-D\-O\-W\-N}}
+\index{I\-O\-P\-O\-R\-T\-\_\-\-W\-I\-R\-E\-D\-\_\-\-O\-R\-\_\-\-P\-U\-L\-L\-\_\-\-D\-O\-W\-N@{I\-O\-P\-O\-R\-T\-\_\-\-W\-I\-R\-E\-D\-\_\-\-O\-R\-\_\-\-P\-U\-L\-L\-\_\-\-D\-O\-W\-N}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{I\-O\-P\-O\-R\-T\-\_\-\-W\-I\-R\-E\-D\-\_\-\-O\-R\-\_\-\-P\-U\-L\-L\-\_\-\-D\-O\-W\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-O\-P\-O\-R\-T\-\_\-\-W\-I\-R\-E\-D\-\_\-\-O\-R\-\_\-\-P\-U\-L\-L\-\_\-\-D\-O\-W\-N~(6 $<$$<$ 11)}}\label{ioport__compat_8h_acfc2a281b83914f2f588d1332f2eff21}
+Wired O\-R and Pull-\/\-Down \hypertarget{ioport__compat_8h_a6035774ef51a86241d190f29e881368d}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!P\-O\-R\-T\-\_\-\-D\-I\-R@{P\-O\-R\-T\-\_\-\-D\-I\-R}}
+\index{P\-O\-R\-T\-\_\-\-D\-I\-R@{P\-O\-R\-T\-\_\-\-D\-I\-R}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{P\-O\-R\-T\-\_\-\-D\-I\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-O\-R\-T\-\_\-\-D\-I\-R~0x00}}\label{ioport__compat_8h_a6035774ef51a86241d190f29e881368d}
+Data Direction \hypertarget{ioport__compat_8h_ad8fb119fafd3532d518d97b63a82cad8}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!P\-O\-R\-T\-\_\-\-D\-I\-R\-C\-L\-R@{P\-O\-R\-T\-\_\-\-D\-I\-R\-C\-L\-R}}
+\index{P\-O\-R\-T\-\_\-\-D\-I\-R\-C\-L\-R@{P\-O\-R\-T\-\_\-\-D\-I\-R\-C\-L\-R}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{P\-O\-R\-T\-\_\-\-D\-I\-R\-C\-L\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-O\-R\-T\-\_\-\-D\-I\-R\-C\-L\-R~0x02}}\label{ioport__compat_8h_ad8fb119fafd3532d518d97b63a82cad8}
+Data Direction Clear \hypertarget{ioport__compat_8h_aff5eb975774079cf5c23b54693cdd571}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!P\-O\-R\-T\-\_\-\-D\-I\-R\-S\-E\-T@{P\-O\-R\-T\-\_\-\-D\-I\-R\-S\-E\-T}}
+\index{P\-O\-R\-T\-\_\-\-D\-I\-R\-S\-E\-T@{P\-O\-R\-T\-\_\-\-D\-I\-R\-S\-E\-T}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{P\-O\-R\-T\-\_\-\-D\-I\-R\-S\-E\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-O\-R\-T\-\_\-\-D\-I\-R\-S\-E\-T~0x01}}\label{ioport__compat_8h_aff5eb975774079cf5c23b54693cdd571}
+Data Direction Set \hypertarget{ioport__compat_8h_a932912f5a6af2579a9782eae01a5469b}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!P\-O\-R\-T\-\_\-\-D\-I\-R\-T\-G\-L@{P\-O\-R\-T\-\_\-\-D\-I\-R\-T\-G\-L}}
+\index{P\-O\-R\-T\-\_\-\-D\-I\-R\-T\-G\-L@{P\-O\-R\-T\-\_\-\-D\-I\-R\-T\-G\-L}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{P\-O\-R\-T\-\_\-\-D\-I\-R\-T\-G\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-O\-R\-T\-\_\-\-D\-I\-R\-T\-G\-L~0x03}}\label{ioport__compat_8h_a932912f5a6af2579a9782eae01a5469b}
+Data Direction Toggle \hypertarget{ioport__compat_8h_a0011d72ffaee9df08d2b91d768621593}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!P\-O\-R\-T\-\_\-\-I\-N@{P\-O\-R\-T\-\_\-\-I\-N}}
+\index{P\-O\-R\-T\-\_\-\-I\-N@{P\-O\-R\-T\-\_\-\-I\-N}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{P\-O\-R\-T\-\_\-\-I\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-O\-R\-T\-\_\-\-I\-N~0x08}}\label{ioport__compat_8h_a0011d72ffaee9df08d2b91d768621593}
+Data Input Value \hypertarget{ioport__compat_8h_ae69a778efa89be62b4ef320c30f8cf0c}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!P\-O\-R\-T\-\_\-\-I\-N\-T0\-M\-A\-S\-K@{P\-O\-R\-T\-\_\-\-I\-N\-T0\-M\-A\-S\-K}}
+\index{P\-O\-R\-T\-\_\-\-I\-N\-T0\-M\-A\-S\-K@{P\-O\-R\-T\-\_\-\-I\-N\-T0\-M\-A\-S\-K}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{P\-O\-R\-T\-\_\-\-I\-N\-T0\-M\-A\-S\-K}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-O\-R\-T\-\_\-\-I\-N\-T0\-M\-A\-S\-K~0x0\-A}}\label{ioport__compat_8h_ae69a778efa89be62b4ef320c30f8cf0c}
+Interrupt 0 Mask \hypertarget{ioport__compat_8h_ad12d3d5db253d69e1c97a85557a474d8}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!P\-O\-R\-T\-\_\-\-I\-N\-T1\-M\-A\-S\-K@{P\-O\-R\-T\-\_\-\-I\-N\-T1\-M\-A\-S\-K}}
+\index{P\-O\-R\-T\-\_\-\-I\-N\-T1\-M\-A\-S\-K@{P\-O\-R\-T\-\_\-\-I\-N\-T1\-M\-A\-S\-K}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{P\-O\-R\-T\-\_\-\-I\-N\-T1\-M\-A\-S\-K}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-O\-R\-T\-\_\-\-I\-N\-T1\-M\-A\-S\-K~0x0\-B}}\label{ioport__compat_8h_ad12d3d5db253d69e1c97a85557a474d8}
+Interrupt 1 Mask \hypertarget{ioport__compat_8h_ad187eb10993a93ca2c5d76c7dfbae5b3}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!P\-O\-R\-T\-\_\-\-I\-N\-T\-C\-T\-R\-L@{P\-O\-R\-T\-\_\-\-I\-N\-T\-C\-T\-R\-L}}
+\index{P\-O\-R\-T\-\_\-\-I\-N\-T\-C\-T\-R\-L@{P\-O\-R\-T\-\_\-\-I\-N\-T\-C\-T\-R\-L}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{P\-O\-R\-T\-\_\-\-I\-N\-T\-C\-T\-R\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-O\-R\-T\-\_\-\-I\-N\-T\-C\-T\-R\-L~0x09}}\label{ioport__compat_8h_ad187eb10993a93ca2c5d76c7dfbae5b3}
+Interrupt Control \hypertarget{ioport__compat_8h_a327892d4aedc523ab1e5f1ddfcf0e7a6}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!P\-O\-R\-T\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S@{P\-O\-R\-T\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S}}
+\index{P\-O\-R\-T\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S@{P\-O\-R\-T\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{P\-O\-R\-T\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-O\-R\-T\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S~0x0\-C}}\label{ioport__compat_8h_a327892d4aedc523ab1e5f1ddfcf0e7a6}
+Interrupt Flags \hypertarget{ioport__compat_8h_a0fda9ae06cc668afc95a2b2a79dd696a}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!P\-O\-R\-T\-\_\-\-O\-U\-T@{P\-O\-R\-T\-\_\-\-O\-U\-T}}
+\index{P\-O\-R\-T\-\_\-\-O\-U\-T@{P\-O\-R\-T\-\_\-\-O\-U\-T}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{P\-O\-R\-T\-\_\-\-O\-U\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-O\-R\-T\-\_\-\-O\-U\-T~0x04}}\label{ioport__compat_8h_a0fda9ae06cc668afc95a2b2a79dd696a}
+Data Output Value \hypertarget{ioport__compat_8h_a0addcf5e908ef42b2bf6f845ad62c68e}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!P\-O\-R\-T\-\_\-\-O\-U\-T\-C\-L\-R@{P\-O\-R\-T\-\_\-\-O\-U\-T\-C\-L\-R}}
+\index{P\-O\-R\-T\-\_\-\-O\-U\-T\-C\-L\-R@{P\-O\-R\-T\-\_\-\-O\-U\-T\-C\-L\-R}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{P\-O\-R\-T\-\_\-\-O\-U\-T\-C\-L\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-O\-R\-T\-\_\-\-O\-U\-T\-C\-L\-R~0x06}}\label{ioport__compat_8h_a0addcf5e908ef42b2bf6f845ad62c68e}
+Data Output Value Clear \hypertarget{ioport__compat_8h_aa41cbfbbb7d7e35233974ba96bbf99f0}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!P\-O\-R\-T\-\_\-\-O\-U\-T\-S\-E\-T@{P\-O\-R\-T\-\_\-\-O\-U\-T\-S\-E\-T}}
+\index{P\-O\-R\-T\-\_\-\-O\-U\-T\-S\-E\-T@{P\-O\-R\-T\-\_\-\-O\-U\-T\-S\-E\-T}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{P\-O\-R\-T\-\_\-\-O\-U\-T\-S\-E\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-O\-R\-T\-\_\-\-O\-U\-T\-S\-E\-T~0x05}}\label{ioport__compat_8h_aa41cbfbbb7d7e35233974ba96bbf99f0}
+Data Output Value Set \hypertarget{ioport__compat_8h_a2fb62cc12ad006549dff5c4cd541f3e9}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!P\-O\-R\-T\-\_\-\-O\-U\-T\-T\-G\-L@{P\-O\-R\-T\-\_\-\-O\-U\-T\-T\-G\-L}}
+\index{P\-O\-R\-T\-\_\-\-O\-U\-T\-T\-G\-L@{P\-O\-R\-T\-\_\-\-O\-U\-T\-T\-G\-L}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{P\-O\-R\-T\-\_\-\-O\-U\-T\-T\-G\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-O\-R\-T\-\_\-\-O\-U\-T\-T\-G\-L~0x07}}\label{ioport__compat_8h_a2fb62cc12ad006549dff5c4cd541f3e9}
+Data Output Value Toggle \hypertarget{ioport__compat_8h_aced56a46ec811831674f8d14ba9c2fb8}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!P\-O\-R\-T\-\_\-\-P\-I\-N0\-C\-T\-R\-L@{P\-O\-R\-T\-\_\-\-P\-I\-N0\-C\-T\-R\-L}}
+\index{P\-O\-R\-T\-\_\-\-P\-I\-N0\-C\-T\-R\-L@{P\-O\-R\-T\-\_\-\-P\-I\-N0\-C\-T\-R\-L}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{P\-O\-R\-T\-\_\-\-P\-I\-N0\-C\-T\-R\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-O\-R\-T\-\_\-\-P\-I\-N0\-C\-T\-R\-L~0x10}}\label{ioport__compat_8h_aced56a46ec811831674f8d14ba9c2fb8}
+Pin 0 Configuration \hypertarget{ioport__compat_8h_a35dd2976730a87ff389c1834e8579911}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!P\-O\-R\-T\-\_\-\-P\-I\-N1\-C\-T\-R\-L@{P\-O\-R\-T\-\_\-\-P\-I\-N1\-C\-T\-R\-L}}
+\index{P\-O\-R\-T\-\_\-\-P\-I\-N1\-C\-T\-R\-L@{P\-O\-R\-T\-\_\-\-P\-I\-N1\-C\-T\-R\-L}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{P\-O\-R\-T\-\_\-\-P\-I\-N1\-C\-T\-R\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-O\-R\-T\-\_\-\-P\-I\-N1\-C\-T\-R\-L~0x11}}\label{ioport__compat_8h_a35dd2976730a87ff389c1834e8579911}
+Pin 1 Configuration \hypertarget{ioport__compat_8h_a5ddd4fac70263c7bdaa3374fd76d6f86}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!P\-O\-R\-T\-\_\-\-P\-I\-N2\-C\-T\-R\-L@{P\-O\-R\-T\-\_\-\-P\-I\-N2\-C\-T\-R\-L}}
+\index{P\-O\-R\-T\-\_\-\-P\-I\-N2\-C\-T\-R\-L@{P\-O\-R\-T\-\_\-\-P\-I\-N2\-C\-T\-R\-L}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{P\-O\-R\-T\-\_\-\-P\-I\-N2\-C\-T\-R\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-O\-R\-T\-\_\-\-P\-I\-N2\-C\-T\-R\-L~0x12}}\label{ioport__compat_8h_a5ddd4fac70263c7bdaa3374fd76d6f86}
+Pin 2 Configuration \hypertarget{ioport__compat_8h_a174ca84f3e22e13b6175be3fe918e345}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!P\-O\-R\-T\-\_\-\-P\-I\-N3\-C\-T\-R\-L@{P\-O\-R\-T\-\_\-\-P\-I\-N3\-C\-T\-R\-L}}
+\index{P\-O\-R\-T\-\_\-\-P\-I\-N3\-C\-T\-R\-L@{P\-O\-R\-T\-\_\-\-P\-I\-N3\-C\-T\-R\-L}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{P\-O\-R\-T\-\_\-\-P\-I\-N3\-C\-T\-R\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-O\-R\-T\-\_\-\-P\-I\-N3\-C\-T\-R\-L~0x13}}\label{ioport__compat_8h_a174ca84f3e22e13b6175be3fe918e345}
+Pin 3 Configuration \hypertarget{ioport__compat_8h_aadc2e910c2208b660e8d4695092b185f}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!P\-O\-R\-T\-\_\-\-P\-I\-N4\-C\-T\-R\-L@{P\-O\-R\-T\-\_\-\-P\-I\-N4\-C\-T\-R\-L}}
+\index{P\-O\-R\-T\-\_\-\-P\-I\-N4\-C\-T\-R\-L@{P\-O\-R\-T\-\_\-\-P\-I\-N4\-C\-T\-R\-L}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{P\-O\-R\-T\-\_\-\-P\-I\-N4\-C\-T\-R\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-O\-R\-T\-\_\-\-P\-I\-N4\-C\-T\-R\-L~0x14}}\label{ioport__compat_8h_aadc2e910c2208b660e8d4695092b185f}
+Pin 4 Configuration \hypertarget{ioport__compat_8h_a6abe2460fd4a30519ab30274660b576a}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!P\-O\-R\-T\-\_\-\-P\-I\-N5\-C\-T\-R\-L@{P\-O\-R\-T\-\_\-\-P\-I\-N5\-C\-T\-R\-L}}
+\index{P\-O\-R\-T\-\_\-\-P\-I\-N5\-C\-T\-R\-L@{P\-O\-R\-T\-\_\-\-P\-I\-N5\-C\-T\-R\-L}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{P\-O\-R\-T\-\_\-\-P\-I\-N5\-C\-T\-R\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-O\-R\-T\-\_\-\-P\-I\-N5\-C\-T\-R\-L~0x15}}\label{ioport__compat_8h_a6abe2460fd4a30519ab30274660b576a}
+Pin 5 Configuration \hypertarget{ioport__compat_8h_afa52ac2042ec7c4ee46b7306793e99a0}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!P\-O\-R\-T\-\_\-\-P\-I\-N6\-C\-T\-R\-L@{P\-O\-R\-T\-\_\-\-P\-I\-N6\-C\-T\-R\-L}}
+\index{P\-O\-R\-T\-\_\-\-P\-I\-N6\-C\-T\-R\-L@{P\-O\-R\-T\-\_\-\-P\-I\-N6\-C\-T\-R\-L}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{P\-O\-R\-T\-\_\-\-P\-I\-N6\-C\-T\-R\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-O\-R\-T\-\_\-\-P\-I\-N6\-C\-T\-R\-L~0x16}}\label{ioport__compat_8h_afa52ac2042ec7c4ee46b7306793e99a0}
+Pin 6 Configuration \hypertarget{ioport__compat_8h_a8927b189b59e6d24e6cb4048b3e7abad}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!P\-O\-R\-T\-\_\-\-P\-I\-N7\-C\-T\-R\-L@{P\-O\-R\-T\-\_\-\-P\-I\-N7\-C\-T\-R\-L}}
+\index{P\-O\-R\-T\-\_\-\-P\-I\-N7\-C\-T\-R\-L@{P\-O\-R\-T\-\_\-\-P\-I\-N7\-C\-T\-R\-L}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{P\-O\-R\-T\-\_\-\-P\-I\-N7\-C\-T\-R\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-O\-R\-T\-\_\-\-P\-I\-N7\-C\-T\-R\-L~0x17}}\label{ioport__compat_8h_a8927b189b59e6d24e6cb4048b3e7abad}
+Pin 7 Configuration 
+
+\subsection{Typedef Documentation}
+\hypertarget{ioport__compat_8h_a23a511823adf39eb1330169685db2a89}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!pin\-\_\-mask\-\_\-t@{pin\-\_\-mask\-\_\-t}}
+\index{pin\-\_\-mask\-\_\-t@{pin\-\_\-mask\-\_\-t}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{pin\-\_\-mask\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef uint8\-\_\-t {\bf pin\-\_\-mask\-\_\-t}}}\label{ioport__compat_8h_a23a511823adf39eb1330169685db2a89}
+
+
+A pin mask. 
+
+Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support} This type is used to describe the port pin mask on the part. \hypertarget{ioport__compat_8h_a9a63be45eb76e153671cc1baf59ec53e}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!port\-\_\-id\-\_\-t@{port\-\_\-id\-\_\-t}}
+\index{port\-\_\-id\-\_\-t@{port\-\_\-id\-\_\-t}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{port\-\_\-id\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef uint8\-\_\-t {\bf port\-\_\-id\-\_\-t}}}\label{ioport__compat_8h_a9a63be45eb76e153671cc1baf59ec53e}
+
+
+A port id. 
+
+This type is used to describe the port id on the part (0 is P\-O\-R\-T\-A). \hypertarget{ioport__compat_8h_a9c786379535d50672a1fcd566db6d70a}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!port\-\_\-pin\-\_\-flags\-\_\-t@{port\-\_\-pin\-\_\-flags\-\_\-t}}
+\index{port\-\_\-pin\-\_\-flags\-\_\-t@{port\-\_\-pin\-\_\-flags\-\_\-t}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{port\-\_\-pin\-\_\-flags\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef uint16\-\_\-t {\bf port\-\_\-pin\-\_\-flags\-\_\-t}}}\label{ioport__compat_8h_a9c786379535d50672a1fcd566db6d70a}
+
+
+Pin configuration flags. 
+
+This is a bitmask containing configuration flags for the pins that shall be configured. \hypertarget{ioport__compat_8h_ac219d604c520dca5681bf4d7c2855d6c}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!port\-\_\-pin\-\_\-t@{port\-\_\-pin\-\_\-t}}
+\index{port\-\_\-pin\-\_\-t@{port\-\_\-pin\-\_\-t}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{port\-\_\-pin\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef uint8\-\_\-t {\bf port\-\_\-pin\-\_\-t}}}\label{ioport__compat_8h_ac219d604c520dca5681bf4d7c2855d6c}
+
+
+A P\-O\-R\-T pin. 
+
+This type is used to describe the P\-O\-R\-T pins on the part. 
+
+\subsection{Function Documentation}
+\hypertarget{ioport__compat_8h_a8da4959022f2cec05f59a9939671ff7e}{\index{ioport\-\_\-compat.\-h@{ioport\-\_\-compat.\-h}!ioport\-\_\-configure\-\_\-port\-\_\-pin@{ioport\-\_\-configure\-\_\-port\-\_\-pin}}
+\index{ioport\-\_\-configure\-\_\-port\-\_\-pin@{ioport\-\_\-configure\-\_\-port\-\_\-pin}!ioport_compat.h@{ioport\-\_\-compat.\-h}}
+\subsubsection[{ioport\-\_\-configure\-\_\-port\-\_\-pin}]{\setlength{\rightskip}{0pt plus 5cm}void ioport\-\_\-configure\-\_\-port\-\_\-pin (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{port, }
+\item[{{\bf pin\-\_\-mask\-\_\-t}}]{pin\-\_\-mask, }
+\item[{{\bf port\-\_\-pin\-\_\-flags\-\_\-t}}]{flags}
+\end{DoxyParamCaption}
+)}}\label{ioport__compat_8h_a8da4959022f2cec05f59a9939671ff7e}
+
+
+Configure the I\-O P\-O\-R\-T pin function for a set of pins on a port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & Pointer to the port \\
+\hline
+{\em pin\-\_\-mask} & Mask containing the pins that should be configured \\
+\hline
+{\em flags} & Bitmask of flags specifying additional configuration parameters. \\
+\hline
+\end{DoxyParams}

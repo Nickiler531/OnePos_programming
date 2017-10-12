@@ -1,0 +1,40 @@
+\hypertarget{group__ccp__group}{\section{Configuration Change Protection}
+\label{group__ccp__group}\index{Configuration Change Protection@{Configuration Change Protection}}
+}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{group__ccp__group_gaa5e4806ffd4f56e4907009ad87b769da}{ccp\-\_\-write\-\_\-io} (void $\ast$addr, uint8\-\_\-t value)
+\begin{DoxyCompactList}\small\item\em Write to a C\-C\-P-\/protected 8-\/bit I/\-O register. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support}
+
+See \hyperlink{xmega_ccp_quickstart}{Quick start guide for C\-C\-P driver}.
+
+Function for writing to protected I\-O registers. 
+
+\subsection{Function Documentation}
+\hypertarget{group__ccp__group_gaa5e4806ffd4f56e4907009ad87b769da}{\index{Configuration Change Protection@{Configuration Change Protection}!ccp\-\_\-write\-\_\-io@{ccp\-\_\-write\-\_\-io}}
+\index{ccp\-\_\-write\-\_\-io@{ccp\-\_\-write\-\_\-io}!Configuration Change Protection@{Configuration Change Protection}}
+\subsubsection[{ccp\-\_\-write\-\_\-io}]{\setlength{\rightskip}{0pt plus 5cm}void ccp\-\_\-write\-\_\-io (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{addr, }
+\item[{uint8\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)}}\label{group__ccp__group_gaa5e4806ffd4f56e4907009ad87b769da}
+
+
+Write to a C\-C\-P-\/protected 8-\/bit I/\-O register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em addr} & Address of the I/\-O register \\
+\hline
+{\em value} & Value to be written\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Using I\-A\-R Embedded workbench, the choice of memory model has an impact on calling convention. The memory model is not visible to the preprocessor, so it must be defined in the Assembler preprocessor directives. 
+\end{DoxyNote}

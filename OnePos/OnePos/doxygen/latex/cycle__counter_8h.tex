@@ -1,0 +1,123 @@
+\hypertarget{cycle__counter_8h}{\section{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/delay/xmega/cycle\-\_\-counter.h File Reference}
+\label{cycle__counter_8h}\index{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/delay/xmega/cycle\-\_\-counter.\-h@{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/delay/xmega/cycle\-\_\-counter.\-h}}
+}
+
+
+A\-V\-R functions for busy-\/wait delay loops.  
+
+
+{\ttfamily \#include $<$compiler.\-h$>$}\\*
+\subsection*{Convenience functions for busy-\/wait delay loops}
+\label{_amgrpc006fed6ac8870f73289616cfd86e5e4}%
+ Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support} \begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{cycle__counter_8h_a84ecb39fb8b32180b27236ae02392d39}{delay\-\_\-cycles}~\-\_\-\-\_\-portable\-\_\-avr\-\_\-delay\-\_\-cycles
+\begin{DoxyCompactList}\small\item\em Delay program execution for a specified number of C\-P\-U cycles. \end{DoxyCompactList}\item 
+\#define \hyperlink{cycle__counter_8h_a677458b76b894b9a1b9f323156c3a0ac}{cpu\-\_\-ms\-\_\-2\-\_\-cy}(ms, f\-\_\-cpu)~(((uint64\-\_\-t)(ms) $\ast$ (f\-\_\-cpu) + 999) / 6e3)
+\begin{DoxyCompactList}\small\item\em Convert milli-\/seconds into C\-P\-U cycles. \end{DoxyCompactList}\item 
+\#define \hyperlink{cycle__counter_8h_a5732b379c3ffd4b0446c495cbc719431}{cpu\-\_\-us\-\_\-2\-\_\-cy}(us, f\-\_\-cpu)~(((uint64\-\_\-t)(us) $\ast$ (f\-\_\-cpu) + 999999ul) / 6e6)
+\begin{DoxyCompactList}\small\item\em Convert micro-\/seconds into C\-P\-U cycles. \end{DoxyCompactList}\item 
+\#define \hyperlink{cycle__counter_8h_a2b733c4de847b6d4e6d5ba466f21da52}{cpu\-\_\-delay\-\_\-ms}(delay, f\-\_\-cpu)~\hyperlink{cycle__counter_8h_a84ecb39fb8b32180b27236ae02392d39}{delay\-\_\-cycles}((uint64\-\_\-t)\hyperlink{cycle__counter_8h_a677458b76b894b9a1b9f323156c3a0ac}{cpu\-\_\-ms\-\_\-2\-\_\-cy}(delay, f\-\_\-cpu))
+\begin{DoxyCompactList}\small\item\em Delay program execution for a specified number of milliseconds. \end{DoxyCompactList}\item 
+\#define \hyperlink{cycle__counter_8h_a1f5289578e4f08b99cfca749dcaca964}{cpu\-\_\-delay\-\_\-us}(delay, f\-\_\-cpu)~\hyperlink{cycle__counter_8h_a84ecb39fb8b32180b27236ae02392d39}{delay\-\_\-cycles}((uint64\-\_\-t)\hyperlink{cycle__counter_8h_a5732b379c3ffd4b0446c495cbc719431}{cpu\-\_\-us\-\_\-2\-\_\-cy}(delay, f\-\_\-cpu))
+\begin{DoxyCompactList}\small\item\em Delay program execution for a specified number of microseconds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A\-V\-R functions for busy-\/wait delay loops. Copyright (c) 2011 -\/ 2014 Atmel Corporation. All rights reserved.
+
+\subsection{Macro Definition Documentation}
+\hypertarget{cycle__counter_8h_a2b733c4de847b6d4e6d5ba466f21da52}{\index{cycle\-\_\-counter.\-h@{cycle\-\_\-counter.\-h}!cpu\-\_\-delay\-\_\-ms@{cpu\-\_\-delay\-\_\-ms}}
+\index{cpu\-\_\-delay\-\_\-ms@{cpu\-\_\-delay\-\_\-ms}!cycle_counter.h@{cycle\-\_\-counter.\-h}}
+\subsubsection[{cpu\-\_\-delay\-\_\-ms}]{\setlength{\rightskip}{0pt plus 5cm}\#define cpu\-\_\-delay\-\_\-ms(
+\begin{DoxyParamCaption}
+\item[{}]{delay, }
+\item[{}]{f\-\_\-cpu}
+\end{DoxyParamCaption}
+)~{\bf delay\-\_\-cycles}((uint64\-\_\-t){\bf cpu\-\_\-ms\-\_\-2\-\_\-cy}(delay, f\-\_\-cpu))}}\label{cycle__counter_8h_a2b733c4de847b6d4e6d5ba466f21da52}
+
+
+Delay program execution for a specified number of milliseconds. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delay} & number of milliseconds to wait \\
+\hline
+{\em f\-\_\-cpu} & C\-P\-U frequency in Hertz \\
+\hline
+\end{DoxyParams}
+\hypertarget{cycle__counter_8h_a1f5289578e4f08b99cfca749dcaca964}{\index{cycle\-\_\-counter.\-h@{cycle\-\_\-counter.\-h}!cpu\-\_\-delay\-\_\-us@{cpu\-\_\-delay\-\_\-us}}
+\index{cpu\-\_\-delay\-\_\-us@{cpu\-\_\-delay\-\_\-us}!cycle_counter.h@{cycle\-\_\-counter.\-h}}
+\subsubsection[{cpu\-\_\-delay\-\_\-us}]{\setlength{\rightskip}{0pt plus 5cm}\#define cpu\-\_\-delay\-\_\-us(
+\begin{DoxyParamCaption}
+\item[{}]{delay, }
+\item[{}]{f\-\_\-cpu}
+\end{DoxyParamCaption}
+)~{\bf delay\-\_\-cycles}((uint64\-\_\-t){\bf cpu\-\_\-us\-\_\-2\-\_\-cy}(delay, f\-\_\-cpu))}}\label{cycle__counter_8h_a1f5289578e4f08b99cfca749dcaca964}
+
+
+Delay program execution for a specified number of microseconds. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delay} & number of microseconds to wait \\
+\hline
+{\em f\-\_\-cpu} & C\-P\-U frequency in Hertz \\
+\hline
+\end{DoxyParams}
+\hypertarget{cycle__counter_8h_a677458b76b894b9a1b9f323156c3a0ac}{\index{cycle\-\_\-counter.\-h@{cycle\-\_\-counter.\-h}!cpu\-\_\-ms\-\_\-2\-\_\-cy@{cpu\-\_\-ms\-\_\-2\-\_\-cy}}
+\index{cpu\-\_\-ms\-\_\-2\-\_\-cy@{cpu\-\_\-ms\-\_\-2\-\_\-cy}!cycle_counter.h@{cycle\-\_\-counter.\-h}}
+\subsubsection[{cpu\-\_\-ms\-\_\-2\-\_\-cy}]{\setlength{\rightskip}{0pt plus 5cm}\#define cpu\-\_\-ms\-\_\-2\-\_\-cy(
+\begin{DoxyParamCaption}
+\item[{}]{ms, }
+\item[{}]{f\-\_\-cpu}
+\end{DoxyParamCaption}
+)~(((uint64\-\_\-t)(ms) $\ast$ (f\-\_\-cpu) + 999) / 6e3)}}\label{cycle__counter_8h_a677458b76b894b9a1b9f323156c3a0ac}
+
+
+Convert milli-\/seconds into C\-P\-U cycles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ms} & number of milliseconds \\
+\hline
+{\em f\-\_\-cpu} & C\-P\-U frequency in Hertz \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the converted number of C\-P\-U cycles 
+\end{DoxyReturn}
+\hypertarget{cycle__counter_8h_a5732b379c3ffd4b0446c495cbc719431}{\index{cycle\-\_\-counter.\-h@{cycle\-\_\-counter.\-h}!cpu\-\_\-us\-\_\-2\-\_\-cy@{cpu\-\_\-us\-\_\-2\-\_\-cy}}
+\index{cpu\-\_\-us\-\_\-2\-\_\-cy@{cpu\-\_\-us\-\_\-2\-\_\-cy}!cycle_counter.h@{cycle\-\_\-counter.\-h}}
+\subsubsection[{cpu\-\_\-us\-\_\-2\-\_\-cy}]{\setlength{\rightskip}{0pt plus 5cm}\#define cpu\-\_\-us\-\_\-2\-\_\-cy(
+\begin{DoxyParamCaption}
+\item[{}]{us, }
+\item[{}]{f\-\_\-cpu}
+\end{DoxyParamCaption}
+)~(((uint64\-\_\-t)(us) $\ast$ (f\-\_\-cpu) + 999999ul) / 6e6)}}\label{cycle__counter_8h_a5732b379c3ffd4b0446c495cbc719431}
+
+
+Convert micro-\/seconds into C\-P\-U cycles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ms} & number of microseconds \\
+\hline
+{\em f\-\_\-cpu} & C\-P\-U frequency in Hertz \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the converted number of C\-P\-U cycles 
+\end{DoxyReturn}
+\hypertarget{cycle__counter_8h_a84ecb39fb8b32180b27236ae02392d39}{\index{cycle\-\_\-counter.\-h@{cycle\-\_\-counter.\-h}!delay\-\_\-cycles@{delay\-\_\-cycles}}
+\index{delay\-\_\-cycles@{delay\-\_\-cycles}!cycle_counter.h@{cycle\-\_\-counter.\-h}}
+\subsubsection[{delay\-\_\-cycles}]{\setlength{\rightskip}{0pt plus 5cm}\#define delay\-\_\-cycles~\-\_\-\-\_\-portable\-\_\-avr\-\_\-delay\-\_\-cycles}}\label{cycle__counter_8h_a84ecb39fb8b32180b27236ae02392d39}
+
+
+Delay program execution for a specified number of C\-P\-U cycles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & number of C\-P\-U cycles to wait \\
+\hline
+\end{DoxyParams}

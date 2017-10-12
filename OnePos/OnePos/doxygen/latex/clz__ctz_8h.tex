@@ -1,0 +1,63 @@
+\hypertarget{clz__ctz_8h}{\section{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/xmega/utils/bit\-\_\-handling/clz\-\_\-ctz.h File Reference}
+\label{clz__ctz_8h}\index{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/xmega/utils/bit\-\_\-handling/clz\-\_\-ctz.\-h@{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/xmega/utils/bit\-\_\-handling/clz\-\_\-ctz.\-h}}
+}
+
+
+C\-L\-Z/\-C\-T\-Z C implementation.  
+
+
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{clz__ctz_8h_a495c58c00277d4d3ce46badd943beb3a}{clz}(x)~compiler\-\_\-demux\-\_\-size(sizeof(x), clz, (x))
+\begin{DoxyCompactList}\small\item\em Count leading zeros in unsigned integer. \end{DoxyCompactList}\item 
+\#define \hyperlink{clz__ctz_8h_a241e747a4a1dbc730f2ec05b0d0ebd72}{ctz}(x)~compiler\-\_\-demux\-\_\-size(sizeof(x), ctz, (x))
+\begin{DoxyCompactList}\small\item\em Count trailing zeros in unsigned integer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+C\-L\-Z/\-C\-T\-Z C implementation. Copyright (c) 2014 Atmel Corporation. All rights reserved.
+
+\subsection{Macro Definition Documentation}
+\hypertarget{clz__ctz_8h_a495c58c00277d4d3ce46badd943beb3a}{\index{clz\-\_\-ctz.\-h@{clz\-\_\-ctz.\-h}!clz@{clz}}
+\index{clz@{clz}!clz_ctz.h@{clz\-\_\-ctz.\-h}}
+\subsubsection[{clz}]{\setlength{\rightskip}{0pt plus 5cm}\#define clz(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~compiler\-\_\-demux\-\_\-size(sizeof(x), clz, (x))}}\label{clz__ctz_8h_a495c58c00277d4d3ce46badd943beb3a}
+
+
+Count leading zeros in unsigned integer. 
+
+Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support} This macro takes unsigned integers of any size, and evaluates to a call to the clz-\/function for its size. These functions count the number of zeros, starting with the M\-S\-B, before a one occurs in the integer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Unsigned integer to count the leading zeros in.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of leading zeros in {\itshape x}. 
+\end{DoxyReturn}
+\hypertarget{clz__ctz_8h_a241e747a4a1dbc730f2ec05b0d0ebd72}{\index{clz\-\_\-ctz.\-h@{clz\-\_\-ctz.\-h}!ctz@{ctz}}
+\index{ctz@{ctz}!clz_ctz.h@{clz\-\_\-ctz.\-h}}
+\subsubsection[{ctz}]{\setlength{\rightskip}{0pt plus 5cm}\#define ctz(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~compiler\-\_\-demux\-\_\-size(sizeof(x), ctz, (x))}}\label{clz__ctz_8h_a241e747a4a1dbc730f2ec05b0d0ebd72}
+
+
+Count trailing zeros in unsigned integer. 
+
+This macro takes unsigned integers of any size, and evaluates to a call to the ctz-\/function for its size. These functions count the number of zeros, starting with the L\-S\-B, before a one occurs in the integer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Unsigned integer to count the trailing zeros in.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of trailing zeros in {\itshape x}. 
+\end{DoxyReturn}

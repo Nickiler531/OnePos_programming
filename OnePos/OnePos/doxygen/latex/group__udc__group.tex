@@ -1,0 +1,97 @@
+\hypertarget{group__udc__group}{\section{U\-S\-B Device Controller (U\-D\-C)}
+\label{group__udc__group}\index{U\-S\-B Device Controller (\-U\-D\-C)@{U\-S\-B Device Controller (\-U\-D\-C)}}
+}
+\subsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group__udc__group__interne}{Implementation of U\-D\-C}
+\item 
+\hyperlink{group__udc__basic__use__case__setup__prereq}{U\-S\-B Device Controller (\-U\-D\-C) -\/ Prerequisites}
+\item 
+\hyperlink{group__udc__basic__use__case__setup__code}{U\-S\-B Device Controller (\-U\-D\-C) -\/ Example code}
+\item 
+\hyperlink{group__udc__basic__use__case__setup__flow}{U\-S\-B Device Controller (\-U\-D\-C) -\/ Workflow}
+\item 
+\hyperlink{group__udc__desc__group}{U\-S\-B Device Descriptor}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__udc__group_gadf4e193509cd03ab6333d62629ea51e7}{void \hyperlink{group__udc__group_gadf4e193509cd03ab6333d62629ea51e7}{udc\-\_\-start} (void)}\label{group__udc__group_gadf4e193509cd03ab6333d62629ea51e7}
+
+\begin{DoxyCompactList}\small\item\em Start the U\-S\-B Device stack. \end{DoxyCompactList}\item 
+\hypertarget{group__udc__group_gae2264dd91b24db9d4bb23fb1a2014972}{void \hyperlink{group__udc__group_gae2264dd91b24db9d4bb23fb1a2014972}{udc\-\_\-stop} (void)}\label{group__udc__group_gae2264dd91b24db9d4bb23fb1a2014972}
+
+\begin{DoxyCompactList}\small\item\em Stop the U\-S\-B Device stack. \end{DoxyCompactList}\item 
+\hyperlink{structusb__iface__desc__t}{usb\-\_\-iface\-\_\-desc\-\_\-t} \hyperlink{group__udc__desc__group_gae086959cec07a2e71ab069e25a51764f}{U\-D\-C\-\_\-\-D\-E\-S\-C\-\_\-\-S\-T\-O\-R\-A\-G\-E} $\ast$ \hyperlink{group__udc__group_gadb2a0f5ad1e834d4d7e7777f901d64d2}{udc\-\_\-get\-\_\-interface\-\_\-desc} (void)
+\begin{DoxyCompactList}\small\item\em Returns a pointer on the current interface descriptor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support}
+
+The U\-D\-C provides a high-\/level abstraction of the usb device. You can use these functions to control the main device state (start/attach/wakeup).\hypertarget{group__udc__group_USB_DEVICE_CONF}{}\subsection{U\-S\-B Device Custom configuration}\label{group__udc__group_USB_DEVICE_CONF}
+The following U\-S\-B Device configuration must be included in the \hyperlink{conf__usb_8h}{conf\-\_\-usb.\-h} file of the application.
+
+U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-V\-E\-N\-D\-O\-R\-\_\-\-I\-D (Word)\par
+ Vendor I\-D provided by U\-S\-B org (A\-T\-M\-E\-L 0x03\-E\-B).
+
+U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-P\-R\-O\-D\-U\-C\-T\-\_\-\-I\-D (Word)\par
+ Product I\-D (Referenced in \hyperlink{usb__atmel_8h}{usb\-\_\-atmel.\-h}).
+
+U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-M\-A\-J\-O\-R\-\_\-\-V\-E\-R\-S\-I\-O\-N (Byte)\par
+ Major version of the device
+
+U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-M\-I\-N\-O\-R\-\_\-\-V\-E\-R\-S\-I\-O\-N (Byte)\par
+ Minor version of the device
+
+U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-M\-A\-N\-U\-F\-A\-C\-T\-U\-R\-E\-\_\-\-N\-A\-M\-E (string)\par
+ A\-S\-C\-I\-I name for the manufacture
+
+U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-P\-R\-O\-D\-U\-C\-T\-\_\-\-N\-A\-M\-E (string)\par
+ A\-S\-C\-I\-I name for the product
+
+U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-S\-E\-R\-I\-A\-L\-\_\-\-N\-A\-M\-E (string)\par
+ A\-S\-C\-I\-I name to enable and set a serial number
+
+U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-P\-O\-W\-E\-R (Numeric)\par
+ (unit m\-A) Maximum device power
+
+U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-A\-T\-T\-R (Byte)\par
+ U\-S\-B attributes available\-:
+\begin{DoxyItemize}
+\item U\-S\-B\-\_\-\-C\-O\-N\-F\-I\-G\-\_\-\-A\-T\-T\-R\-\_\-\-S\-E\-L\-F\-\_\-\-P\-O\-W\-E\-R\-E\-D
+\item U\-S\-B\-\_\-\-C\-O\-N\-F\-I\-G\-\_\-\-A\-T\-T\-R\-\_\-\-R\-E\-M\-O\-T\-E\-\_\-\-W\-A\-K\-E\-U\-P Note\-: if remote wake enabled then defines remotewakeup callbacks, see Table 5-\/2. External A\-P\-I from U\-D\-C -\/ Callback
+\end{DoxyItemize}
+
+U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-L\-O\-W\-\_\-\-S\-P\-E\-E\-D (Only defined)\par
+ Force the U\-S\-B Device to run in low speed
+
+U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-H\-S\-\_\-\-S\-U\-P\-P\-O\-R\-T (Only defined)\par
+ Authorize the U\-S\-B Device to run in high speed
+
+U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-M\-A\-X\-\_\-\-E\-P (Byte)\par
+ Define the maximum endpoint number used by the U\-S\-B Device.\par
+ This one is already defined in U\-D\-I default configuration. Ex\-:
+\begin{DoxyItemize}
+\item When endpoint control 0x00, endpoint 0x01 and endpoint 0x82 is used then U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-M\-A\-X\-\_\-\-E\-P=2
+\item When only endpoint control 0x00 is used then U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-M\-A\-X\-\_\-\-E\-P=0
+\item When endpoint 0x01 and endpoint 0x81 is used then U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-M\-A\-X\-\_\-\-E\-P=1\par
+ (configuration not possible on U\-S\-B\-B interface) 
+\end{DoxyItemize}
+
+\subsection{Function Documentation}
+\hypertarget{group__udc__group_gadb2a0f5ad1e834d4d7e7777f901d64d2}{\index{U\-S\-B Device Controller (\-U\-D\-C)@{U\-S\-B Device Controller (\-U\-D\-C)}!udc\-\_\-get\-\_\-interface\-\_\-desc@{udc\-\_\-get\-\_\-interface\-\_\-desc}}
+\index{udc\-\_\-get\-\_\-interface\-\_\-desc@{udc\-\_\-get\-\_\-interface\-\_\-desc}!USB Device Controller (UDC)@{U\-S\-B Device Controller (\-U\-D\-C)}}
+\subsubsection[{udc\-\_\-get\-\_\-interface\-\_\-desc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf usb\-\_\-iface\-\_\-desc\-\_\-t} {\bf U\-D\-C\-\_\-\-D\-E\-S\-C\-\_\-\-S\-T\-O\-R\-A\-G\-E}$\ast$ udc\-\_\-get\-\_\-interface\-\_\-desc (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{group__udc__group_gadb2a0f5ad1e834d4d7e7777f901d64d2}
+
+
+Returns a pointer on the current interface descriptor. 
+
+\begin{DoxyReturn}{Returns}
+pointer on the current interface descriptor. 
+\end{DoxyReturn}

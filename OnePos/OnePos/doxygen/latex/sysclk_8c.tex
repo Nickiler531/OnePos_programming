@@ -1,0 +1,29 @@
+\hypertarget{sysclk_8c}{\section{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/clock/xmega/sysclk.c File Reference}
+\label{sysclk_8c}\index{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/clock/xmega/sysclk.\-c@{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/clock/xmega/sysclk.\-c}}
+}
+
+
+Chip-\/specific system clock management functions.  
+
+
+{\ttfamily \#include $<$compiler.\-h$>$}\\*
+{\ttfamily \#include $<$sysclk.\-h$>$}\\*
+{\ttfamily \#include $<$osc.\-h$>$}\\*
+{\ttfamily \#include $<$pll.\-h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{group__sysclk__group_gac31edbbb1296f1eb737401b7b2b4e352}{sysclk\-\_\-enable\-\_\-module} (enum \hyperlink{group__sysclk__group_ga8e29b46d7670875f4c509efd7a8d5f1a}{sysclk\-\_\-port\-\_\-id} port, uint8\-\_\-t id)
+\begin{DoxyCompactList}\small\item\em Enable the clock to peripheral {\itshape id} on port {\itshape port}. \end{DoxyCompactList}\item 
+void \hyperlink{group__sysclk__group_gaa2610ab0fbb9f2d68c7415c7c15b7008}{sysclk\-\_\-disable\-\_\-module} (enum \hyperlink{group__sysclk__group_ga8e29b46d7670875f4c509efd7a8d5f1a}{sysclk\-\_\-port\-\_\-id} port, uint8\-\_\-t id)
+\begin{DoxyCompactList}\small\item\em Disable the clock to peripheral {\itshape id} on port {\itshape port}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{Indent}{\bf System Clock Initialization}\par
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{group__sysclk__group_ga242399e48a97739c88b4d0c00f6101de}{sysclk\-\_\-init} (void)
+\begin{DoxyCompactList}\small\item\em Initialize the synchronous clock system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+Chip-\/specific system clock management functions. Copyright (c) 2010-\/2014 Atmel Corporation. All rights reserved.

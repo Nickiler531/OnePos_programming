@@ -1,0 +1,266 @@
+\hypertarget{udi__cdc_8c}{\section{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/usb/class/cdc/device/udi\-\_\-cdc.c File Reference}
+\label{udi__cdc_8c}\index{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/usb/class/cdc/device/udi\-\_\-cdc.\-c@{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/usb/class/cdc/device/udi\-\_\-cdc.\-c}}
+}
+
+
+U\-S\-B Device Communication Device Class (C\-D\-C) interface.  
+
+
+{\ttfamily \#include \char`\"{}conf\-\_\-usb.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}usb\-\_\-protocol.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}usb\-\_\-protocol\-\_\-cdc.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}udd.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}udc.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}udi\-\_\-cdc.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{udi__cdc_8c_a6f3d34eb0f2fa47047521c97b1c0b110}{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-T\-X\-\_\-\-B\-U\-F\-F\-E\-R\-S}~(5$\ast$\hyperlink{group__udi__cdc__group__desc_gaacbee1668eb15fb80ae0f64992346e6b}{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-S\-\_\-\-F\-S\-\_\-\-S\-I\-Z\-E})
+\item 
+\hypertarget{udi__cdc_8c_a5ca1c336726b1cea7a4603cef001341e}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-R\-X\-\_\-\-B\-U\-F\-F\-E\-R\-S}~(5$\ast$\hyperlink{group__udi__cdc__group__desc_gaacbee1668eb15fb80ae0f64992346e6b}{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-S\-\_\-\-F\-S\-\_\-\-S\-I\-Z\-E})}\label{udi__cdc_8c_a5ca1c336726b1cea7a4603cef001341e}
+
+\item 
+\hypertarget{udi__cdc_8c_ab2bc1eb26565febc07bcdada9bec06d1}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-T\-X\-\_\-\-E\-M\-P\-T\-Y\-\_\-\-N\-O\-T\-I\-F\-Y}(port)}\label{udi__cdc_8c_ab2bc1eb26565febc07bcdada9bec06d1}
+
+\item 
+\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-T\-O\-\_\-\-I\-F\-A\-C\-E\-\_\-\-C\-O\-M\-M}(index, \hyperlink{group__group__xmega__utils_ga417dba7f63dde98dbebd6336d8af9d91}{unused})
+\item 
+\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-I\-F\-A\-C\-E\-\_\-\-C\-O\-M\-M\-\_\-\-T\-O\-\_\-\-P\-O\-R\-T}(iface, \hyperlink{group__group__xmega__utils_ga417dba7f63dde98dbebd6336d8af9d91}{unused})
+\item 
+\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-T\-O\-\_\-\-C\-O\-M\-M\-\_\-\-E\-P}(index, \hyperlink{group__group__xmega__utils_ga417dba7f63dde98dbebd6336d8af9d91}{unused})
+\item 
+\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-G\-E\-T\-\_\-\-P\-O\-R\-T\-\_\-\-F\-R\-O\-M\-\_\-\-C\-O\-M\-M\-\_\-\-E\-P}(iface, \hyperlink{group__group__xmega__utils_ga417dba7f63dde98dbebd6336d8af9d91}{unused})
+\item 
+\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-T\-O\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-O\-U\-T}(index, \hyperlink{group__group__xmega__utils_ga417dba7f63dde98dbebd6336d8af9d91}{unused})
+\item 
+\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-O\-U\-T\-\_\-\-T\-O\-\_\-\-P\-O\-R\-T}(index, \hyperlink{group__group__xmega__utils_ga417dba7f63dde98dbebd6336d8af9d91}{unused})
+\item 
+\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-I\-N\-\_\-\-T\-O\-\_\-\-P\-O\-R\-T}(index, \hyperlink{group__group__xmega__utils_ga417dba7f63dde98dbebd6336d8af9d91}{unused})
+\item 
+\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-T\-O\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-I\-N}(index, \hyperlink{group__group__xmega__utils_ga417dba7f63dde98dbebd6336d8af9d91}{unused})
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__udi__cdc__group__udc_ga48b8cd17138f1e31d2f705e47bd798fc}{\hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} {\bfseries udi\-\_\-cdc\-\_\-comm\-\_\-enable} (void)}\label{group__udi__cdc__group__udc_ga48b8cd17138f1e31d2f705e47bd798fc}
+
+\item 
+\hypertarget{group__udi__cdc__group__udc_ga1d9234e7ec38cb7fbc306b1d4624ac7d}{void {\bfseries udi\-\_\-cdc\-\_\-comm\-\_\-disable} (void)}\label{group__udi__cdc__group__udc_ga1d9234e7ec38cb7fbc306b1d4624ac7d}
+
+\item 
+\hypertarget{group__udi__cdc__group__udc_ga9f1ce6a914bf00a929285d4b9876ff6c}{\hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} {\bfseries udi\-\_\-cdc\-\_\-comm\-\_\-setup} (void)}\label{group__udi__cdc__group__udc_ga9f1ce6a914bf00a929285d4b9876ff6c}
+
+\item 
+\hypertarget{group__udi__cdc__group__udc_gacff97f0d95101ef8beebe3a7d5cf1541}{\hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} {\bfseries udi\-\_\-cdc\-\_\-data\-\_\-enable} (void)}\label{group__udi__cdc__group__udc_gacff97f0d95101ef8beebe3a7d5cf1541}
+
+\item 
+\hypertarget{group__udi__cdc__group__udc_gad6183b6bb4f836b69c2a176b8a1631da}{void {\bfseries udi\-\_\-cdc\-\_\-data\-\_\-disable} (void)}\label{group__udi__cdc__group__udc_gad6183b6bb4f836b69c2a176b8a1631da}
+
+\item 
+\hypertarget{group__udi__cdc__group__udc_ga9a66dccf928f55850d243abd1ca51eb3}{\hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} {\bfseries udi\-\_\-cdc\-\_\-data\-\_\-setup} (void)}\label{group__udi__cdc__group__udc_ga9a66dccf928f55850d243abd1ca51eb3}
+
+\item 
+\hypertarget{group__udi__cdc__group__udc_ga89512d97844e09864336d3df2f73af59}{uint8\-\_\-t {\bfseries udi\-\_\-cdc\-\_\-getsetting} (void)}\label{group__udi__cdc__group__udc_ga89512d97844e09864336d3df2f73af59}
+
+\item 
+\hypertarget{group__udi__cdc__group__udc_ga304bed0ef46f8046e41de6e161db0864}{void {\bfseries udi\-\_\-cdc\-\_\-data\-\_\-sof\-\_\-notify} (void)}\label{group__udi__cdc__group__udc_ga304bed0ef46f8046e41de6e161db0864}
+
+\item 
+void \hyperlink{group__udi__cdc__group_ga5507164c7c4ff2c9b94af48229dc0c3c}{udi\-\_\-cdc\-\_\-ctrl\-\_\-signal\-\_\-dcd} (\hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} b\-\_\-set)
+\begin{DoxyCompactList}\small\item\em Notify a state change of D\-C\-D signal. \end{DoxyCompactList}\item 
+void \hyperlink{group__udi__cdc__group_ga6b34b223f6c03cd35fc16d29cb9cfb78}{udi\-\_\-cdc\-\_\-ctrl\-\_\-signal\-\_\-dsr} (\hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} b\-\_\-set)
+\begin{DoxyCompactList}\small\item\em Notify a state change of D\-S\-R signal. \end{DoxyCompactList}\item 
+\hypertarget{group__udi__cdc__group_gaf62c55c329d7e7ff3913274b124e54aa}{void \hyperlink{group__udi__cdc__group_gaf62c55c329d7e7ff3913274b124e54aa}{udi\-\_\-cdc\-\_\-signal\-\_\-framing\-\_\-error} (void)}\label{group__udi__cdc__group_gaf62c55c329d7e7ff3913274b124e54aa}
+
+\begin{DoxyCompactList}\small\item\em Notify a framing error. \end{DoxyCompactList}\item 
+\hypertarget{group__udi__cdc__group_gab6dd1be8afa57a1bece870338bdc5f74}{void \hyperlink{group__udi__cdc__group_gab6dd1be8afa57a1bece870338bdc5f74}{udi\-\_\-cdc\-\_\-signal\-\_\-parity\-\_\-error} (void)}\label{group__udi__cdc__group_gab6dd1be8afa57a1bece870338bdc5f74}
+
+\begin{DoxyCompactList}\small\item\em Notify a parity error. \end{DoxyCompactList}\item 
+\hypertarget{group__udi__cdc__group_ga7730a564c9cb117af611958500a4fa7f}{void \hyperlink{group__udi__cdc__group_ga7730a564c9cb117af611958500a4fa7f}{udi\-\_\-cdc\-\_\-signal\-\_\-overrun} (void)}\label{group__udi__cdc__group_ga7730a564c9cb117af611958500a4fa7f}
+
+\begin{DoxyCompactList}\small\item\em Notify a overrun. \end{DoxyCompactList}\item 
+void \hyperlink{group__udi__cdc__group_ga15a1ee3d8fde1f2687b9ffb93cfa16b4}{udi\-\_\-cdc\-\_\-multi\-\_\-ctrl\-\_\-signal\-\_\-dcd} (uint8\-\_\-t port, \hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} b\-\_\-set)
+\begin{DoxyCompactList}\small\item\em Notify a state change of D\-C\-D signal. \end{DoxyCompactList}\item 
+void \hyperlink{group__udi__cdc__group_ga5b9248dde2e26a04bf1915da8531ed4f}{udi\-\_\-cdc\-\_\-multi\-\_\-ctrl\-\_\-signal\-\_\-dsr} (uint8\-\_\-t port, \hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} b\-\_\-set)
+\begin{DoxyCompactList}\small\item\em Notify a state change of D\-S\-R signal. \end{DoxyCompactList}\item 
+void \hyperlink{group__udi__cdc__group_gaeb3ad676fa423d7be61886397c5b5954}{udi\-\_\-cdc\-\_\-multi\-\_\-signal\-\_\-framing\-\_\-error} (uint8\-\_\-t port)
+\begin{DoxyCompactList}\small\item\em Notify a framing error. \end{DoxyCompactList}\item 
+void \hyperlink{group__udi__cdc__group_ga7c6d996cf1697fdcbb0e6dfae3de701d}{udi\-\_\-cdc\-\_\-multi\-\_\-signal\-\_\-parity\-\_\-error} (uint8\-\_\-t port)
+\begin{DoxyCompactList}\small\item\em Notify a parity error. \end{DoxyCompactList}\item 
+void \hyperlink{group__udi__cdc__group_ga79edbdac74537196ef0afd4263a7e9cc}{udi\-\_\-cdc\-\_\-multi\-\_\-signal\-\_\-overrun} (uint8\-\_\-t port)
+\begin{DoxyCompactList}\small\item\em Notify a overrun. \end{DoxyCompactList}\item 
+iram\-\_\-size\-\_\-t \hyperlink{group__udi__cdc__group_ga733e450aa820ee812aac0ba101886afe}{udi\-\_\-cdc\-\_\-multi\-\_\-get\-\_\-nb\-\_\-received\-\_\-data} (uint8\-\_\-t port)
+\begin{DoxyCompactList}\small\item\em Gets the number of byte received. \end{DoxyCompactList}\item 
+iram\-\_\-size\-\_\-t \hyperlink{group__udi__cdc__group_ga64d9a6a6c3404b2d7362ced2d36fe7b0}{udi\-\_\-cdc\-\_\-get\-\_\-nb\-\_\-received\-\_\-data} (void)
+\begin{DoxyCompactList}\small\item\em Gets the number of byte received. \end{DoxyCompactList}\item 
+\hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{group__udi__cdc__group_ga1eea169426a593cb41125a2d0745bdd3}{udi\-\_\-cdc\-\_\-multi\-\_\-is\-\_\-rx\-\_\-ready} (uint8\-\_\-t port)
+\begin{DoxyCompactList}\small\item\em This function checks if a character has been received on the C\-D\-C line. \end{DoxyCompactList}\item 
+\hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{group__udi__cdc__group_gab5beb4e918e089e0eacf20dba1df73ea}{udi\-\_\-cdc\-\_\-is\-\_\-rx\-\_\-ready} (void)
+\begin{DoxyCompactList}\small\item\em This function checks if a character has been received on the C\-D\-C line. \end{DoxyCompactList}\item 
+int \hyperlink{group__udi__cdc__group_ga89406b73cd57b6ac589b3663d97abd9e}{udi\-\_\-cdc\-\_\-multi\-\_\-getc} (uint8\-\_\-t port)
+\begin{DoxyCompactList}\small\item\em Waits and gets a value on C\-D\-C line. \end{DoxyCompactList}\item 
+int \hyperlink{group__udi__cdc__group_ga202f3fd7b153f6e1a41601735e0febb6}{udi\-\_\-cdc\-\_\-getc} (void)
+\begin{DoxyCompactList}\small\item\em Waits and gets a value on C\-D\-C line. \end{DoxyCompactList}\item 
+iram\-\_\-size\-\_\-t \hyperlink{group__udi__cdc__group_gae7f98639f63b0f9413f64235a0dcdbf4}{udi\-\_\-cdc\-\_\-multi\-\_\-read\-\_\-buf} (uint8\-\_\-t port, void $\ast$buf, iram\-\_\-size\-\_\-t size)
+\begin{DoxyCompactList}\small\item\em Reads a R\-A\-M buffer on C\-D\-C line. \end{DoxyCompactList}\item 
+iram\-\_\-size\-\_\-t \hyperlink{group__udi__cdc__group_gaf100ac6cd39574749c54d203b5d7835b}{udi\-\_\-cdc\-\_\-read\-\_\-buf} (void $\ast$buf, iram\-\_\-size\-\_\-t size)
+\begin{DoxyCompactList}\small\item\em Reads a R\-A\-M buffer on C\-D\-C line. \end{DoxyCompactList}\item 
+iram\-\_\-size\-\_\-t \hyperlink{group__udi__cdc__group_ga729e06f59cf4288e5a64ca291e9fe620}{udi\-\_\-cdc\-\_\-multi\-\_\-get\-\_\-free\-\_\-tx\-\_\-buffer} (uint8\-\_\-t port)
+\begin{DoxyCompactList}\small\item\em Gets the number of free byte in T\-X buffer. \end{DoxyCompactList}\item 
+iram\-\_\-size\-\_\-t \hyperlink{group__udi__cdc__group_gac3e2670ee5ace77796c948702c295c2b}{udi\-\_\-cdc\-\_\-get\-\_\-free\-\_\-tx\-\_\-buffer} (void)
+\begin{DoxyCompactList}\small\item\em Gets the number of free byte in T\-X buffer. \end{DoxyCompactList}\item 
+\hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{group__udi__cdc__group_ga6228a9513a17dbd90d03b0dcba64bd15}{udi\-\_\-cdc\-\_\-multi\-\_\-is\-\_\-tx\-\_\-ready} (uint8\-\_\-t port)
+\begin{DoxyCompactList}\small\item\em This function checks if a new character sent is possible The type int is used to support scanf redirection from compiler L\-I\-B. \end{DoxyCompactList}\item 
+\hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{group__udi__cdc__group_ga7d0d458a5731da95dd05f30714c42dde}{udi\-\_\-cdc\-\_\-is\-\_\-tx\-\_\-ready} (void)
+\begin{DoxyCompactList}\small\item\em This function checks if a new character sent is possible The type int is used to support scanf redirection from compiler L\-I\-B. \end{DoxyCompactList}\item 
+int \hyperlink{group__udi__cdc__group_gaf6c7f0d68af6d00d2aa83d4dfc126f59}{udi\-\_\-cdc\-\_\-multi\-\_\-putc} (uint8\-\_\-t port, int value)
+\begin{DoxyCompactList}\small\item\em Puts a byte on C\-D\-C line The type int is used to support printf redirection from compiler L\-I\-B. \end{DoxyCompactList}\item 
+int \hyperlink{group__udi__cdc__group_ga8faae3fcf4911017c0fcf0aa127179f6}{udi\-\_\-cdc\-\_\-putc} (int value)
+\begin{DoxyCompactList}\small\item\em Puts a byte on C\-D\-C line The type int is used to support printf redirection from compiler L\-I\-B. \end{DoxyCompactList}\item 
+iram\-\_\-size\-\_\-t \hyperlink{group__udi__cdc__group_gae74f9c89ca08f6c1cbb263bc529a3c3c}{udi\-\_\-cdc\-\_\-multi\-\_\-write\-\_\-buf} (uint8\-\_\-t port, const void $\ast$buf, iram\-\_\-size\-\_\-t size)
+\begin{DoxyCompactList}\small\item\em Writes a R\-A\-M buffer on C\-D\-C line. \end{DoxyCompactList}\item 
+iram\-\_\-size\-\_\-t \hyperlink{group__udi__cdc__group_ga705496169ff423f3e3d3b5ff882d3f9b}{udi\-\_\-cdc\-\_\-write\-\_\-buf} (const void $\ast$buf, iram\-\_\-size\-\_\-t size)
+\begin{DoxyCompactList}\small\item\em Writes a R\-A\-M buffer on C\-D\-C line. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{Indent}{\bf Routines to control serial line}\par
+\end{Indent}
+\begin{Indent}{\bf Routines to process data transfer}\par
+\end{Indent}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group__udc__desc__group_gae086959cec07a2e71ab069e25a51764f}{U\-D\-C\-\_\-\-D\-E\-S\-C\-\_\-\-S\-T\-O\-R\-A\-G\-E} \hyperlink{structudi__api__t}{udi\-\_\-api\-\_\-t} \hyperlink{group__udi__cdc__group__udc_gad7b0a90350a1f1a7c62fab1a749bf687}{udi\-\_\-api\-\_\-cdc\-\_\-comm}
+\begin{DoxyCompactList}\small\item\em Global structure which contains standard U\-D\-I A\-P\-I for U\-D\-C. \end{DoxyCompactList}\item 
+\hyperlink{group__udc__desc__group_gae086959cec07a2e71ab069e25a51764f}{U\-D\-C\-\_\-\-D\-E\-S\-C\-\_\-\-S\-T\-O\-R\-A\-G\-E} \hyperlink{structudi__api__t}{udi\-\_\-api\-\_\-t} {\bfseries udi\-\_\-api\-\_\-cdc\-\_\-data}
+\end{DoxyCompactItemize}
+\begin{Indent}{\bf Information about configuration of communication line}\par
+\end{Indent}
+\subsection*{Variables to manage R\-X/\-T\-X transfer requests}
+\label{_amgrp212b06c4e5cdd346092967876fa4335a}%
+ Two buffers for each sense are used to optimize the speed. \begin{DoxyCompactItemize}
+\item 
+\hypertarget{udi__cdc_8c_a91892013c1c5dcb7fa2127ac2e2090f7}{\#define \hyperlink{udi__cdc_8c_a91892013c1c5dcb7fa2127ac2e2090f7}{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-T\-R\-A\-N\-S\-\_\-\-H\-A\-L\-T\-E\-D}~2}\label{udi__cdc_8c_a91892013c1c5dcb7fa2127ac2e2090f7}
+
+\begin{DoxyCompactList}\small\item\em Define a transfer halted. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+U\-S\-B Device Communication Device Class (C\-D\-C) interface. Copyright (c) 2009 -\/ 2014 Atmel Corporation. All rights reserved.
+
+\subsection{Macro Definition Documentation}
+\hypertarget{udi__cdc_8c_a55a27129dccd3b6a951756feb09ac357}{\index{udi\-\_\-cdc.\-c@{udi\-\_\-cdc.\-c}!U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-I\-N\-\_\-\-T\-O\-\_\-\-P\-O\-R\-T@{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-I\-N\-\_\-\-T\-O\-\_\-\-P\-O\-R\-T}}
+\index{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-I\-N\-\_\-\-T\-O\-\_\-\-P\-O\-R\-T@{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-I\-N\-\_\-\-T\-O\-\_\-\-P\-O\-R\-T}!udi_cdc.c@{udi\-\_\-cdc.\-c}}
+\subsubsection[{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-I\-N\-\_\-\-T\-O\-\_\-\-P\-O\-R\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-I\-N\-\_\-\-T\-O\-\_\-\-P\-O\-R\-T(
+\begin{DoxyParamCaption}
+\item[{}]{index, }
+\item[{}]{{\bf unused}}
+\end{DoxyParamCaption}
+)}}\label{udi__cdc_8c_a55a27129dccd3b6a951756feb09ac357}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{case} UDI\_CDC\_DATA\_EP\_IN\_##index: \(\backslash\)
+                port = index; \(\backslash\)
+                break;
+\end{DoxyCode}
+\hypertarget{udi__cdc_8c_a412ccdc6cd4eb345d31008ceb81caf43}{\index{udi\-\_\-cdc.\-c@{udi\-\_\-cdc.\-c}!U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-O\-U\-T\-\_\-\-T\-O\-\_\-\-P\-O\-R\-T@{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-O\-U\-T\-\_\-\-T\-O\-\_\-\-P\-O\-R\-T}}
+\index{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-O\-U\-T\-\_\-\-T\-O\-\_\-\-P\-O\-R\-T@{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-O\-U\-T\-\_\-\-T\-O\-\_\-\-P\-O\-R\-T}!udi_cdc.c@{udi\-\_\-cdc.\-c}}
+\subsubsection[{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-O\-U\-T\-\_\-\-T\-O\-\_\-\-P\-O\-R\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-O\-U\-T\-\_\-\-T\-O\-\_\-\-P\-O\-R\-T(
+\begin{DoxyParamCaption}
+\item[{}]{index, }
+\item[{}]{{\bf unused}}
+\end{DoxyParamCaption}
+)}}\label{udi__cdc_8c_a412ccdc6cd4eb345d31008ceb81caf43}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{case} UDI\_CDC\_DATA\_EP\_OUT\_##index: \(\backslash\)
+                port = index; \(\backslash\)
+                break;
+\end{DoxyCode}
+\hypertarget{udi__cdc_8c_ac8f00d296bc299d56b2666c72e0db772}{\index{udi\-\_\-cdc.\-c@{udi\-\_\-cdc.\-c}!U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-G\-E\-T\-\_\-\-P\-O\-R\-T\-\_\-\-F\-R\-O\-M\-\_\-\-C\-O\-M\-M\-\_\-\-E\-P@{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-G\-E\-T\-\_\-\-P\-O\-R\-T\-\_\-\-F\-R\-O\-M\-\_\-\-C\-O\-M\-M\-\_\-\-E\-P}}
+\index{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-G\-E\-T\-\_\-\-P\-O\-R\-T\-\_\-\-F\-R\-O\-M\-\_\-\-C\-O\-M\-M\-\_\-\-E\-P@{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-G\-E\-T\-\_\-\-P\-O\-R\-T\-\_\-\-F\-R\-O\-M\-\_\-\-C\-O\-M\-M\-\_\-\-E\-P}!udi_cdc.c@{udi\-\_\-cdc.\-c}}
+\subsubsection[{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-G\-E\-T\-\_\-\-P\-O\-R\-T\-\_\-\-F\-R\-O\-M\-\_\-\-C\-O\-M\-M\-\_\-\-E\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-G\-E\-T\-\_\-\-P\-O\-R\-T\-\_\-\-F\-R\-O\-M\-\_\-\-C\-O\-M\-M\-\_\-\-E\-P(
+\begin{DoxyParamCaption}
+\item[{}]{iface, }
+\item[{}]{{\bf unused}}
+\end{DoxyParamCaption}
+)}}\label{udi__cdc_8c_ac8f00d296bc299d56b2666c72e0db772}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{case} UDI\_CDC\_COMM\_EP\_##iface: \(\backslash\)
+                port = iface; \(\backslash\)
+                break;
+\end{DoxyCode}
+\hypertarget{udi__cdc_8c_a514bb25df4e70d7242adaba2bda6e590}{\index{udi\-\_\-cdc.\-c@{udi\-\_\-cdc.\-c}!U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-I\-F\-A\-C\-E\-\_\-\-C\-O\-M\-M\-\_\-\-T\-O\-\_\-\-P\-O\-R\-T@{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-I\-F\-A\-C\-E\-\_\-\-C\-O\-M\-M\-\_\-\-T\-O\-\_\-\-P\-O\-R\-T}}
+\index{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-I\-F\-A\-C\-E\-\_\-\-C\-O\-M\-M\-\_\-\-T\-O\-\_\-\-P\-O\-R\-T@{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-I\-F\-A\-C\-E\-\_\-\-C\-O\-M\-M\-\_\-\-T\-O\-\_\-\-P\-O\-R\-T}!udi_cdc.c@{udi\-\_\-cdc.\-c}}
+\subsubsection[{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-I\-F\-A\-C\-E\-\_\-\-C\-O\-M\-M\-\_\-\-T\-O\-\_\-\-P\-O\-R\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-I\-F\-A\-C\-E\-\_\-\-C\-O\-M\-M\-\_\-\-T\-O\-\_\-\-P\-O\-R\-T(
+\begin{DoxyParamCaption}
+\item[{}]{iface, }
+\item[{}]{{\bf unused}}
+\end{DoxyParamCaption}
+)}}\label{udi__cdc_8c_a514bb25df4e70d7242adaba2bda6e590}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{case} UDI\_CDC\_COMM\_IFACE\_NUMBER\_##iface: \(\backslash\)
+                port = iface; \(\backslash\)
+                break;
+\end{DoxyCode}
+\hypertarget{udi__cdc_8c_a64acd88bc27c2d9dc639ed3c320b4e4f}{\index{udi\-\_\-cdc.\-c@{udi\-\_\-cdc.\-c}!U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-T\-O\-\_\-\-C\-O\-M\-M\-\_\-\-E\-P@{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-T\-O\-\_\-\-C\-O\-M\-M\-\_\-\-E\-P}}
+\index{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-T\-O\-\_\-\-C\-O\-M\-M\-\_\-\-E\-P@{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-T\-O\-\_\-\-C\-O\-M\-M\-\_\-\-E\-P}!udi_cdc.c@{udi\-\_\-cdc.\-c}}
+\subsubsection[{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-T\-O\-\_\-\-C\-O\-M\-M\-\_\-\-E\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-T\-O\-\_\-\-C\-O\-M\-M\-\_\-\-E\-P(
+\begin{DoxyParamCaption}
+\item[{}]{index, }
+\item[{}]{{\bf unused}}
+\end{DoxyParamCaption}
+)}}\label{udi__cdc_8c_a64acd88bc27c2d9dc639ed3c320b4e4f}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{case} index: \(\backslash\)
+                ep\_comm = UDI\_CDC\_COMM\_EP\_##index; \(\backslash\)
+                break;
+\end{DoxyCode}
+\hypertarget{udi__cdc_8c_ac7bb55c898bcd408085bb99c5c5f7080}{\index{udi\-\_\-cdc.\-c@{udi\-\_\-cdc.\-c}!U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-T\-O\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-I\-N@{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-T\-O\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-I\-N}}
+\index{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-T\-O\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-I\-N@{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-T\-O\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-I\-N}!udi_cdc.c@{udi\-\_\-cdc.\-c}}
+\subsubsection[{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-T\-O\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-I\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-T\-O\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-I\-N(
+\begin{DoxyParamCaption}
+\item[{}]{index, }
+\item[{}]{{\bf unused}}
+\end{DoxyParamCaption}
+)}}\label{udi__cdc_8c_ac7bb55c898bcd408085bb99c5c5f7080}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{case} index: \(\backslash\)
+                ep = UDI\_CDC\_DATA\_EP\_IN\_##index; \(\backslash\)
+                break;
+\end{DoxyCode}
+\hypertarget{udi__cdc_8c_adf4046521edf063e28e1a374c74cf1c4}{\index{udi\-\_\-cdc.\-c@{udi\-\_\-cdc.\-c}!U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-T\-O\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-O\-U\-T@{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-T\-O\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-O\-U\-T}}
+\index{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-T\-O\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-O\-U\-T@{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-T\-O\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-O\-U\-T}!udi_cdc.c@{udi\-\_\-cdc.\-c}}
+\subsubsection[{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-T\-O\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-O\-U\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-T\-O\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-O\-U\-T(
+\begin{DoxyParamCaption}
+\item[{}]{index, }
+\item[{}]{{\bf unused}}
+\end{DoxyParamCaption}
+)}}\label{udi__cdc_8c_adf4046521edf063e28e1a374c74cf1c4}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{case} index: \(\backslash\)
+                ep = UDI\_CDC\_DATA\_EP\_OUT\_##index; \(\backslash\)
+                break;
+\end{DoxyCode}
+\hypertarget{udi__cdc_8c_af77a982aa04c027d9ea7bbbefbeae1e3}{\index{udi\-\_\-cdc.\-c@{udi\-\_\-cdc.\-c}!U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-T\-O\-\_\-\-I\-F\-A\-C\-E\-\_\-\-C\-O\-M\-M@{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-T\-O\-\_\-\-I\-F\-A\-C\-E\-\_\-\-C\-O\-M\-M}}
+\index{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-T\-O\-\_\-\-I\-F\-A\-C\-E\-\_\-\-C\-O\-M\-M@{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-T\-O\-\_\-\-I\-F\-A\-C\-E\-\_\-\-C\-O\-M\-M}!udi_cdc.c@{udi\-\_\-cdc.\-c}}
+\subsubsection[{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-T\-O\-\_\-\-I\-F\-A\-C\-E\-\_\-\-C\-O\-M\-M}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-T\-O\-\_\-\-I\-F\-A\-C\-E\-\_\-\-C\-O\-M\-M(
+\begin{DoxyParamCaption}
+\item[{}]{index, }
+\item[{}]{{\bf unused}}
+\end{DoxyParamCaption}
+)}}\label{udi__cdc_8c_af77a982aa04c027d9ea7bbbefbeae1e3}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{case} index: \(\backslash\)
+                iface\_comm\_num = UDI\_CDC\_COMM\_IFACE\_NUMBER\_##index; \(\backslash\)
+                break;
+\end{DoxyCode}
+\hypertarget{udi__cdc_8c_a6f3d34eb0f2fa47047521c97b1c0b110}{\index{udi\-\_\-cdc.\-c@{udi\-\_\-cdc.\-c}!U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-T\-X\-\_\-\-B\-U\-F\-F\-E\-R\-S@{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-T\-X\-\_\-\-B\-U\-F\-F\-E\-R\-S}}
+\index{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-T\-X\-\_\-\-B\-U\-F\-F\-E\-R\-S@{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-T\-X\-\_\-\-B\-U\-F\-F\-E\-R\-S}!udi_cdc.c@{udi\-\_\-cdc.\-c}}
+\subsubsection[{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-T\-X\-\_\-\-B\-U\-F\-F\-E\-R\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-T\-X\-\_\-\-B\-U\-F\-F\-E\-R\-S~(5$\ast${\bf U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-S\-\_\-\-F\-S\-\_\-\-S\-I\-Z\-E})}}\label{udi__cdc_8c_a6f3d34eb0f2fa47047521c97b1c0b110}
+Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support} 

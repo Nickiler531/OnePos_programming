@@ -1,0 +1,27 @@
+\hypertarget{group__spi__group}{\section{Serial Peripheral Interface (S\-P\-I)}
+\label{group__spi__group}\index{Serial Peripheral Interface (\-S\-P\-I)@{Serial Peripheral Interface (\-S\-P\-I)}}
+}
+Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support}
+
+This is the common A\-P\-I for S\-P\-I interface. Additional features are available in the documentation of the specific modules.\hypertarget{group__spi__group_spi_group_platform}{}\subsection{Platform Dependencies}\label{group__spi__group_spi_group_platform}
+The S\-P\-I A\-P\-I is partially chip-\/ or platform-\/specific. While all platforms provide mostly the same functionality, there are some variations around how different bus types and clock tree structures are handled.
+
+The following functions are available on all platforms, but there may be variations in the function signature (i.\-e. parameters) and behavior. These functions are typically called by platform-\/specific parts of drivers, and applications that aren't intended to be portable\-:
+\begin{DoxyItemize}
+\item \hyperlink{group__xmega__spi__master__group_ga3238676989038a9dec0ebcd3aa625a42}{spi\-\_\-master\-\_\-init()}
+\item \hyperlink{group__xmega__spi__master__group_ga81164f6dd2297a64337f3a052171e0f8}{spi\-\_\-master\-\_\-setup\-\_\-device()}
+\item \hyperlink{group__xmega__spi__master__group_gac8751c855b90ea2774b5007f519e487e}{spi\-\_\-select\-\_\-device()}
+\item \hyperlink{group__xmega__spi__master__group_gad528d94d606bda0fa6503f77a6a7bb78}{spi\-\_\-deselect\-\_\-device()}
+\item spi\-\_\-write\-\_\-single()
+\item \hyperlink{group__xmega__spi__master__group_ga60595beff80eae31c8dad32a8720865a}{spi\-\_\-write\-\_\-packet()}
+\item spi\-\_\-read\-\_\-single()
+\item \hyperlink{group__xmega__spi__master__group_ga504ee6688009acff607e0304cc59278d}{spi\-\_\-read\-\_\-packet()}
+\item spi\-\_\-is\-\_\-tx\-\_\-empty()
+\item spi\-\_\-is\-\_\-tx\-\_\-ready()
+\item spi\-\_\-is\-\_\-rx\-\_\-full()
+\item spi\-\_\-is\-\_\-rx\-\_\-ready()
+\item \hyperlink{group__xmega__spi__master__group_ga82974e81370360e53b1276113de8a462}{spi\-\_\-enable()}
+\item \hyperlink{group__xmega__spi__master__group_gaea58710ce1a779f0eb234f24094b0120}{spi\-\_\-disable()}
+\item \hyperlink{group__xmega__spi__master__group_ga7d25f0b8b0b0eef0e71123d90d5f58c2}{spi\-\_\-is\-\_\-enabled()}
+\end{DoxyItemize}\hypertarget{group__spi__group_spi_master_quickstart_section}{}\subsection{Quick Start Guide}\label{group__spi__group_spi_master_quickstart_section}
+See \hyperlink{common_spi_master_quickstart}{Quick Start Guide for the S\-P\-I Master Driver} 

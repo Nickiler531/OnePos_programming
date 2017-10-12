@@ -1,0 +1,112 @@
+\hypertarget{twis_8h}{\section{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/xmega/drivers/twi/twis.h File Reference}
+\label{twis_8h}\index{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/xmega/drivers/twi/twis.\-h@{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/xmega/drivers/twi/twis.\-h}}
+}
+
+
+X\-M\-E\-G\-A T\-W\-I slave driver header file.  
+
+
+{\ttfamily \#include \char`\"{}compiler.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}twi\-\_\-common.\-h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_t_w_i___slave}{T\-W\-I\-\_\-\-Slave}
+\begin{DoxyCompactList}\small\item\em T\-W\-I slave driver struct. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group__group__xmega__drivers__twi__twis_gaf373fdbc2054cf1a070ba2a24ddaedf3}{T\-W\-I\-\_\-\-B\-A\-U\-D}(F\-\_\-\-S\-Y\-S, F\-\_\-\-T\-W\-I)~((F\-\_\-\-S\-Y\-S / (2 $\ast$ F\-\_\-\-T\-W\-I)) -\/ 5)
+\item 
+\hypertarget{group__group__xmega__drivers__twi__twis_ga29a0dd867f9750813df434b03a538243}{\#define {\bfseries T\-W\-I\-S\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-R\-E\-A\-D\-Y}~0}\label{group__group__xmega__drivers__twi__twis_ga29a0dd867f9750813df434b03a538243}
+
+\item 
+\hypertarget{group__group__xmega__drivers__twi__twis_ga72007cf9dc0aa3fc2c8ff81115d3a425}{\#define {\bfseries T\-W\-I\-S\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-B\-U\-S\-Y}~1}\label{group__group__xmega__drivers__twi__twis_ga72007cf9dc0aa3fc2c8ff81115d3a425}
+
+\item 
+\hypertarget{group__group__xmega__drivers__twi__twis_gae04807263061939fbe5605b438458fd0}{\#define {\bfseries T\-W\-I\-S\-\_\-\-R\-E\-C\-E\-I\-V\-E\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-S\-I\-Z\-E}~8}\label{group__group__xmega__drivers__twi__twis_gae04807263061939fbe5605b438458fd0}
+
+\item 
+\hypertarget{group__group__xmega__drivers__twi__twis_ga9485472cdd2d9d40bbe1a29df42310ab}{\#define {\bfseries T\-W\-I\-S\-\_\-\-S\-E\-N\-D\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-S\-I\-Z\-E}~8}\label{group__group__xmega__drivers__twi__twis_ga9485472cdd2d9d40bbe1a29df42310ab}
+
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__group__xmega__drivers__twi__twis_ga036675f5b6136f27e7528086051dd4e0}{typedef enum T\-W\-I\-S\-\_\-\-R\-E\-S\-U\-L\-T\-\_\-enum {\bfseries T\-W\-I\-S\-\_\-\-R\-E\-S\-U\-L\-T\-\_\-t}}\label{group__group__xmega__drivers__twi__twis_ga036675f5b6136f27e7528086051dd4e0}
+
+\item 
+typedef struct \hyperlink{struct_t_w_i___slave}{T\-W\-I\-\_\-\-Slave} \hyperlink{group__group__xmega__drivers__twi__twis_gabf4af194b6abde4d5fce8ded2aa33c18}{T\-W\-I\-\_\-\-Slave\-\_\-t}
+\begin{DoxyCompactList}\small\item\em T\-W\-I slave driver struct. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries T\-W\-I\-S\-\_\-\-R\-E\-S\-U\-L\-T\-\_\-enum} \{ \\*
+{\bfseries T\-W\-I\-S\-\_\-\-R\-E\-S\-U\-L\-T\-\_\-\-U\-N\-K\-N\-O\-W\-N} =  (0x00$<$$<$0), 
+{\bfseries T\-W\-I\-S\-\_\-\-R\-E\-S\-U\-L\-T\-\_\-\-O\-K} =  (0x01$<$$<$0), 
+{\bfseries T\-W\-I\-S\-\_\-\-R\-E\-S\-U\-L\-T\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-O\-V\-E\-R\-F\-L\-O\-W} =  (0x02$<$$<$0), 
+{\bfseries T\-W\-I\-S\-\_\-\-R\-E\-S\-U\-L\-T\-\_\-\-T\-R\-A\-N\-S\-M\-I\-T\-\_\-\-C\-O\-L\-L\-I\-S\-I\-O\-N} =  (0x03$<$$<$0), 
+\\*
+{\bfseries T\-W\-I\-S\-\_\-\-R\-E\-S\-U\-L\-T\-\_\-\-B\-U\-S\-\_\-\-E\-R\-R\-O\-R} =  (0x04$<$$<$0), 
+{\bfseries T\-W\-I\-S\-\_\-\-R\-E\-S\-U\-L\-T\-\_\-\-F\-A\-I\-L} =  (0x05$<$$<$0), 
+{\bfseries T\-W\-I\-S\-\_\-\-R\-E\-S\-U\-L\-T\-\_\-\-A\-B\-O\-R\-T\-E\-D} =  (0x06$<$$<$0)
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{group__group__xmega__drivers__twi__twis_ga14b9327d32373a2481e23bec041cbd7e}{T\-W\-I\-\_\-\-Slave\-Initialize\-Driver} (\hyperlink{group__group__xmega__drivers__twi__twis_gabf4af194b6abde4d5fce8ded2aa33c18}{T\-W\-I\-\_\-\-Slave\-\_\-t} $\ast$twi, T\-W\-I\-\_\-t $\ast$module, void($\ast$process\-Data\-Function)(void))
+\begin{DoxyCompactList}\small\item\em Initalizes T\-W\-I slave driver structure. \end{DoxyCompactList}\item 
+void \hyperlink{group__group__xmega__drivers__twi__twis_ga7516e604cb0aacddd8d1016a54039752}{T\-W\-I\-\_\-\-Slave\-Initialize\-Module} (\hyperlink{group__group__xmega__drivers__twi__twis_gabf4af194b6abde4d5fce8ded2aa33c18}{T\-W\-I\-\_\-\-Slave\-\_\-t} $\ast$twi, uint8\-\_\-t address, T\-W\-I\-\_\-\-S\-L\-A\-V\-E\-\_\-\-I\-N\-T\-L\-V\-L\-\_\-t int\-Level)
+\begin{DoxyCompactList}\small\item\em Initialize the T\-W\-I module. \end{DoxyCompactList}\item 
+void \hyperlink{group__group__xmega__drivers__twi__twis_ga0b140fb1b0b3f204e5c748c5f585fbb2}{T\-W\-I\-\_\-\-Slave\-Interrupt\-Handler} (\hyperlink{group__group__xmega__drivers__twi__twis_gabf4af194b6abde4d5fce8ded2aa33c18}{T\-W\-I\-\_\-\-Slave\-\_\-t} $\ast$twi)
+\begin{DoxyCompactList}\small\item\em Common T\-W\-I slave interrupt service routine. \end{DoxyCompactList}\item 
+void \hyperlink{group__group__xmega__drivers__twi__twis_gab96f35de69dbc4fa7dcd0ca605e79323}{T\-W\-I\-\_\-\-Slave\-Address\-Match\-Handler} (\hyperlink{group__group__xmega__drivers__twi__twis_gabf4af194b6abde4d5fce8ded2aa33c18}{T\-W\-I\-\_\-\-Slave\-\_\-t} $\ast$twi)
+\begin{DoxyCompactList}\small\item\em T\-W\-I address match interrupt handler. \end{DoxyCompactList}\item 
+void \hyperlink{group__group__xmega__drivers__twi__twis_gad41cfd81c56ee94ef6d147221881b131}{T\-W\-I\-\_\-\-Slave\-Stop\-Handler} (\hyperlink{group__group__xmega__drivers__twi__twis_gabf4af194b6abde4d5fce8ded2aa33c18}{T\-W\-I\-\_\-\-Slave\-\_\-t} $\ast$twi)
+\begin{DoxyCompactList}\small\item\em T\-W\-I stop condition interrupt handler. \end{DoxyCompactList}\item 
+void \hyperlink{group__group__xmega__drivers__twi__twis_ga947368a10697462e8afadfe34a7a6274}{T\-W\-I\-\_\-\-Slave\-Data\-Handler} (\hyperlink{group__group__xmega__drivers__twi__twis_gabf4af194b6abde4d5fce8ded2aa33c18}{T\-W\-I\-\_\-\-Slave\-\_\-t} $\ast$twi)
+\begin{DoxyCompactList}\small\item\em T\-W\-I data interrupt handler. \end{DoxyCompactList}\item 
+void \hyperlink{group__group__xmega__drivers__twi__twis_gabb3eb0f58aa8d023748a66b952c34b51}{T\-W\-I\-\_\-\-Slave\-Read\-Handler} (\hyperlink{group__group__xmega__drivers__twi__twis_gabf4af194b6abde4d5fce8ded2aa33c18}{T\-W\-I\-\_\-\-Slave\-\_\-t} $\ast$twi)
+\begin{DoxyCompactList}\small\item\em T\-W\-I slave read interrupt handler. \end{DoxyCompactList}\item 
+void \hyperlink{group__group__xmega__drivers__twi__twis_ga1d1d99fa64ae60b098cf23f767c6212e}{T\-W\-I\-\_\-\-Slave\-Write\-Handler} (\hyperlink{group__group__xmega__drivers__twi__twis_gabf4af194b6abde4d5fce8ded2aa33c18}{T\-W\-I\-\_\-\-Slave\-\_\-t} $\ast$twi)
+\begin{DoxyCompactList}\small\item\em T\-W\-I slave write interrupt handler. \end{DoxyCompactList}\item 
+void \hyperlink{group__group__xmega__drivers__twi__twis_ga0486374e93f591d085238b105f804af9}{T\-W\-I\-\_\-\-Slave\-Transaction\-Finished} (\hyperlink{group__group__xmega__drivers__twi__twis_gabf4af194b6abde4d5fce8ded2aa33c18}{T\-W\-I\-\_\-\-Slave\-\_\-t} $\ast$twi, uint8\-\_\-t result)
+\begin{DoxyCompactList}\small\item\em T\-W\-I transaction finished function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+X\-M\-E\-G\-A T\-W\-I slave driver header file. \begin{DoxyVerb} This file contains the function prototypes and enumerator definitions
+ for various configuration parameters for the XMEGA TWI slave driver.
+
+ The driver is not intended for size and/or speed critical code, since
+ most functions are just a few lines of code, and the function call
+ overhead would decrease code performance. The driver is intended for
+ rapid prototyping and documentation purposes for getting started with
+ the XMEGA TWI slave module.
+
+ For size and/or speed critical code, it is recommended to copy the
+ function contents directly into your application instead of making
+ a function call.
+\end{DoxyVerb}
+
+
+\begin{DoxyParagraph}{Application note\-:}
+A\-V\-R1307\-: Using the X\-M\-E\-G\-A T\-W\-I
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Documentation}
+For comprehensive code documentation, supported compilers, compiler settings and supported devices see readme.\-html
+\end{DoxyParagraph}
+Atmel Corporation\-: \href{http://www.atmel.com}{\tt http\-://www.\-atmel.\-com} \par
+
+
+\begin{DoxyParagraph}{Revision\-:}
+1569 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Date\-:}
+2008-\/04-\/22 13\-:03\-:43 +0200 (Tue, 22 Apr 2008) 
+\end{DoxyParagraph}
+\par
+
+
+Copyright (c) 2014 Atmel Corporation. All rights reserved.

@@ -1,0 +1,15 @@
+This is the quick start guide for the \hyperlink{group__ccp__group}{Configuration Change Protection (C\-C\-P) driver}, with step-\/by-\/step instructions on how to use the driver.
+
+The use case contains a code fragment, and this can be copied into, e.\-g., the main application function.\hypertarget{xmega_ccp_quickstart_ccp_basic_use_case}{}\section{Basic use case}\label{xmega_ccp_quickstart_ccp_basic_use_case}
+In this use case, the C\-C\-P is used to write to the protected X\-M\-E\-G\-A Clock Control register.\hypertarget{xmega_ccp_quickstart_ccp_basic_use_case_setup_flow}{}\subsection{Workflow}\label{xmega_ccp_quickstart_ccp_basic_use_case_setup_flow}
+
+\begin{DoxyEnumerate}
+\item call C\-C\-P write io to change system clock selection\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ \hyperlink{group__ccp__group_gaa5e4806ffd4f56e4907009ad87b769da}{ccp\_write\_io}((uint8\_t *)&CLK.CTRL, CLK\_SCLKSEL\_RC32M\_gc); 
+\end{DoxyCode}
+ 
+\end{DoxyItemize}
+\end{DoxyEnumerate}

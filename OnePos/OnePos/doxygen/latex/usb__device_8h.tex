@@ -1,0 +1,529 @@
+\hypertarget{usb__device_8h}{\section{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/xmega/drivers/usb/usb\-\_\-device.h File Reference}
+\label{usb__device_8h}\index{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/xmega/drivers/usb/usb\-\_\-device.\-h@{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/xmega/drivers/usb/usb\-\_\-device.\-h}}
+}
+
+
+U\-S\-B Driver header file for X\-M\-E\-G\-A products including U\-S\-B interface.  
+
+
+{\ttfamily \#include $<$nvm.\-h$>$}\\*
+\subsection*{Macros}
+\begin{Indent}{\bf U\-S\-B Device read/modify/write management}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga048859b0a809c3bc41a071f35dc115dc}{\#define {\bfseries L\-A\-C\-R16}(addr, msk)~\-\_\-\-\_\-lac((unsigned char)msk,(unsigned char$\ast$)addr)}\label{group__udd__xmega__usb__group_ga048859b0a809c3bc41a071f35dc115dc}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gaaf6e2396057830a78f515bd834457cde}{\#define {\bfseries L\-A\-S\-R16}(addr, msk)~\-\_\-\-\_\-las((unsigned char)msk,(unsigned char$\ast$)addr)}\label{group__udd__xmega__usb__group_gaaf6e2396057830a78f515bd834457cde}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gad331aaae1172fca7ec2b49bfd9b3a5ff}{\#define {\bfseries X\-C\-H\-R16}(addr, msk)~\-\_\-\-\_\-xch(msk,addr)}\label{group__udd__xmega__usb__group_gad331aaae1172fca7ec2b49bfd9b3a5ff}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gaff08c233c2171f67eb38375006ac07ac}{\#define {\bfseries L\-A\-T\-R16}(addr, msk)~\-\_\-\-\_\-lat(msk,addr)}\label{group__udd__xmega__usb__group_gaff08c233c2171f67eb38375006ac07ac}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf U\-S\-B Device endpoints table management}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga657b3b38a6be5193260e83b106af74c8}{\#define {\bfseries udd\-\_\-endpoint\-\_\-set\-\_\-control}(ep\-\_\-ctrl, val)~(ep\-\_\-ctrl-\/$>$C\-T\-R\-L=val)}\label{group__udd__xmega__usb__group_ga657b3b38a6be5193260e83b106af74c8}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga2afc28726188976e0d2206c176ae8fbe}{\#define {\bfseries udd\-\_\-endpoint\-\_\-get\-\_\-control}(ep\-\_\-ctrl)~(ep\-\_\-ctrl-\/$>$C\-T\-R\-L)}\label{group__udd__xmega__usb__group_ga2afc28726188976e0d2206c176ae8fbe}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga61a7de0374644d6f85852a6ceda7d9d2}{\#define {\bfseries udd\-\_\-endpoint\-\_\-disable}(ep\-\_\-ctrl)~udd\-\_\-endpoint\-\_\-set\-\_\-control(ep\-\_\-ctrl,0)}\label{group__udd__xmega__usb__group_ga61a7de0374644d6f85852a6ceda7d9d2}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga784fb682f08b0b6b13a1447e3301715d}{\#define {\bfseries udd\-\_\-endpoint\-\_\-is\-\_\-enable}(ep\-\_\-ctrl)~(U\-S\-B\-\_\-\-E\-P\-\_\-\-T\-Y\-P\-E\-\_\-\-D\-I\-S\-A\-B\-L\-E\-\_\-gc!=udd\-\_\-endpoint\-\_\-get\-\_\-type(ep\-\_\-ctrl))}\label{group__udd__xmega__usb__group_ga784fb682f08b0b6b13a1447e3301715d}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga3a1639cbf97fc167a55930b116435314}{\#define {\bfseries udd\-\_\-endpoint\-\_\-enable\-\_\-stall}(ep\-\_\-ctrl)~(ep\-\_\-ctrl-\/$>$C\-T\-R\-L $|$= U\-S\-B\-\_\-\-E\-P\-\_\-\-S\-T\-A\-L\-L\-\_\-bm)}\label{group__udd__xmega__usb__group_ga3a1639cbf97fc167a55930b116435314}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga8561fda3e10485f6400c262733e88282}{\#define {\bfseries udd\-\_\-endpoint\-\_\-disable\-\_\-stall}(ep\-\_\-ctrl)~(ep\-\_\-ctrl-\/$>$C\-T\-R\-L \&= $\sim$U\-S\-B\-\_\-\-E\-P\-\_\-\-S\-T\-A\-L\-L\-\_\-bm)}\label{group__udd__xmega__usb__group_ga8561fda3e10485f6400c262733e88282}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga34128a4de7a3a56100b1d63b8bc96152}{\#define {\bfseries udd\-\_\-endpoint\-\_\-is\-\_\-stall}(ep\-\_\-ctrl)~(ep\-\_\-ctrl-\/$>$C\-T\-R\-L \&U\-S\-B\-\_\-\-E\-P\-\_\-\-S\-T\-A\-L\-L\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_ga34128a4de7a3a56100b1d63b8bc96152}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga998292e605e48c1e39002f278ac3210a}{\#define {\bfseries udd\-\_\-endpoint\-\_\-set\-\_\-multipacket}(ep\-\_\-ctrl)~(ep\-\_\-ctrl-\/$>$C\-T\-R\-L $|$= U\-S\-B\-\_\-\-E\-P\-\_\-\-M\-U\-L\-T\-I\-P\-K\-T\-\_\-bm)}\label{group__udd__xmega__usb__group_ga998292e605e48c1e39002f278ac3210a}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga2a9c112f29af733fea9d60517b9f9968}{\#define {\bfseries udd\-\_\-endpoint\-\_\-\-T\-C\-\_\-int\-\_\-disable}(ep\-\_\-ctrl)~(ep\-\_\-ctrl-\/$>$C\-T\-R\-L $|$= U\-S\-B\-\_\-\-E\-P\-\_\-\-I\-N\-T\-D\-S\-B\-L\-\_\-bm)}\label{group__udd__xmega__usb__group_ga2a9c112f29af733fea9d60517b9f9968}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga54aefdab9dc21e871cc51703c937bf86}{\#define {\bfseries udd\-\_\-endpoint\-\_\-set\-\_\-pingpong}(ep\-\_\-ctrl)~(ep\-\_\-ctrl-\/$>$C\-T\-R\-L $|$= U\-S\-B\-\_\-\-E\-P\-\_\-\-P\-I\-N\-G\-P\-O\-N\-G\-\_\-bm)}\label{group__udd__xmega__usb__group_ga54aefdab9dc21e871cc51703c937bf86}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gac4c3b0418c8acb7c0813a43814aabe75}{\#define {\bfseries udd\-\_\-endpoint\-\_\-get\-\_\-size\-\_\-field}(ep\-\_\-ctrl)~(ep\-\_\-ctrl-\/$>$C\-T\-R\-L \& U\-S\-B\-\_\-\-E\-P\-\_\-\-B\-U\-F\-S\-I\-Z\-E\-\_\-gm)}\label{group__udd__xmega__usb__group_gac4c3b0418c8acb7c0813a43814aabe75}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga628f72699e2bff59c50bbe7b8a459068}{\#define {\bfseries udd\-\_\-endpoint\-\_\-get\-\_\-type}(ep\-\_\-ctrl)~(ep\-\_\-ctrl-\/$>$C\-T\-R\-L \& U\-S\-B\-\_\-\-E\-P\-\_\-\-T\-Y\-P\-E\-\_\-gm)}\label{group__udd__xmega__usb__group_ga628f72699e2bff59c50bbe7b8a459068}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga147160f6d653e9244f4cee044b62ff39}{\#define {\bfseries udd\-\_\-endpoint\-\_\-get\-\_\-status}(ep\-\_\-ctrl)~(ep\-\_\-ctrl-\/$>$S\-T\-A\-T\-U\-S)}\label{group__udd__xmega__usb__group_ga147160f6d653e9244f4cee044b62ff39}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga95e7bb565e2b9a87ba1741a91cbf2314}{\#define {\bfseries udd\-\_\-endpoint\-\_\-clear\-\_\-status}(ep\-\_\-ctrl)~(ep\-\_\-ctrl-\/$>$S\-T\-A\-T\-U\-S=U\-S\-B\-\_\-\-E\-P\-\_\-\-B\-U\-S\-N\-A\-C\-K0\-\_\-bm$|$U\-S\-B\-\_\-\-E\-P\-\_\-\-B\-U\-S\-N\-A\-C\-K1\-\_\-bm)}\label{group__udd__xmega__usb__group_ga95e7bb565e2b9a87ba1741a91cbf2314}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga226c81deb98287812f6220f869cdb15c}{\#define {\bfseries udd\-\_\-endpoint\-\_\-setup\-\_\-received}(ep\-\_\-ctrl)~(ep\-\_\-ctrl-\/$>$S\-T\-A\-T\-U\-S\&U\-S\-B\-\_\-\-E\-P\-\_\-\-S\-E\-T\-U\-P\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_ga226c81deb98287812f6220f869cdb15c}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga39ebaa42cd780ded107b3e3197bfda76}{\#define {\bfseries udd\-\_\-endpoint\-\_\-ack\-\_\-setup\-\_\-received}(ep\-\_\-ctrl)~L\-A\-C\-R16(\&ep\-\_\-ctrl-\/$>$S\-T\-A\-T\-U\-S, U\-S\-B\-\_\-\-E\-P\-\_\-\-S\-E\-T\-U\-P\-\_\-bm)}\label{group__udd__xmega__usb__group_ga39ebaa42cd780ded107b3e3197bfda76}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gaa286d5f9c879328dd67dab4293bc0d19}{\#define {\bfseries udd\-\_\-endpoint\-\_\-transfer\-\_\-complete}(ep\-\_\-ctrl)~(ep\-\_\-ctrl-\/$>$S\-T\-A\-T\-U\-S\&U\-S\-B\-\_\-\-E\-P\-\_\-\-T\-R\-N\-C\-O\-M\-P\-L0\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_gaa286d5f9c879328dd67dab4293bc0d19}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga80a968af11220a0382a7e9081466a7ae}{\#define {\bfseries udd\-\_\-endpoint\-\_\-ack\-\_\-transfer\-\_\-complete}(ep\-\_\-ctrl)~L\-A\-C\-R16(\&(ep\-\_\-ctrl-\/$>$S\-T\-A\-T\-U\-S), U\-S\-B\-\_\-\-E\-P\-\_\-\-T\-R\-N\-C\-O\-M\-P\-L0\-\_\-bm)}\label{group__udd__xmega__usb__group_ga80a968af11220a0382a7e9081466a7ae}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga8ad7a27d331e45cb93336c3f41418983}{\#define {\bfseries udd\-\_\-endpoint\-\_\-transfer\-\_\-complete\-\_\-bank0}(ep\-\_\-ctrl)~(ep\-\_\-ctrl-\/$>$S\-T\-A\-T\-U\-S\&U\-S\-B\-\_\-\-E\-P\-\_\-\-T\-R\-N\-C\-O\-M\-P\-L0\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_ga8ad7a27d331e45cb93336c3f41418983}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga7a85ef2804cc6663c84069e1d5dc6926}{\#define {\bfseries udd\-\_\-endpoint\-\_\-ack\-\_\-transfer\-\_\-complete\-\_\-bank\-O}(ep\-\_\-ctrl)~L\-A\-C\-R16(\&ep\-\_\-ctrl-\/$>$S\-T\-A\-T\-U\-S, U\-S\-B\-\_\-\-E\-P\-\_\-\-T\-R\-N\-C\-O\-M\-P\-L0\-\_\-bm)}\label{group__udd__xmega__usb__group_ga7a85ef2804cc6663c84069e1d5dc6926}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga6df21d195cf4fdb960a6aadccaa6dff9}{\#define {\bfseries udd\-\_\-endpoint\-\_\-transfer\-\_\-complete\-\_\-bank1}(ep\-\_\-ctrl)~(ep\-\_\-ctrl-\/$>$S\-T\-A\-T\-U\-S\&U\-S\-B\-\_\-\-E\-P\-\_\-\-S\-E\-T\-U\-P\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_ga6df21d195cf4fdb960a6aadccaa6dff9}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga32f367ad572c9de7294bd600305a978a}{\#define {\bfseries udd\-\_\-endpoint\-\_\-ack\-\_\-transfer\-\_\-complete\-\_\-bank1}(ep\-\_\-ctrl)~L\-A\-C\-R16(\&ep\-\_\-ctrl-\/$>$S\-T\-A\-T\-U\-S, U\-S\-B\-\_\-\-E\-P\-\_\-\-S\-E\-T\-U\-P\-\_\-bm)}\label{group__udd__xmega__usb__group_ga32f367ad572c9de7294bd600305a978a}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gabf1b8ac3c086da3f1dbd9ec103c8c4d5}{\#define {\bfseries udd\-\_\-endpoint\-\_\-get\-\_\-bank}(ep\-\_\-ctrl)~(ep\-\_\-ctrl-\/$>$S\-T\-A\-T\-U\-S \& U\-S\-B\-\_\-\-E\-P\-\_\-\-B\-A\-N\-K\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_gabf1b8ac3c086da3f1dbd9ec103c8c4d5}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga3b55a8fbfc664e0b2a86ff75d60a7320}{\#define {\bfseries udd\-\_\-endpoint\-\_\-set\-\_\-bank}(ep\-\_\-ctrl)~L\-A\-S\-R16(\&ep\-\_\-ctrl-\/$>$S\-T\-A\-T\-U\-S, U\-S\-B\-\_\-\-E\-P\-\_\-\-B\-A\-N\-K\-\_\-bm)}\label{group__udd__xmega__usb__group_ga3b55a8fbfc664e0b2a86ff75d60a7320}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga9ae12e95b39ff7739c39d9dfb1dedb25}{\#define {\bfseries udd\-\_\-endpoint\-\_\-clear\-\_\-bank}(ep\-\_\-ctrl)~L\-A\-C\-R16(\&ep\-\_\-ctrl-\/$>$S\-T\-A\-T\-U\-S, U\-S\-B\-\_\-\-E\-P\-\_\-\-B\-A\-N\-K\-\_\-bm)}\label{group__udd__xmega__usb__group_ga9ae12e95b39ff7739c39d9dfb1dedb25}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga514f5321fc0444f0d006d0c791e773f7}{\#define {\bfseries udd\-\_\-endpoint\-\_\-set\-\_\-dtgl}(ep\-\_\-ctrl)~L\-A\-S\-R16(\&ep\-\_\-ctrl-\/$>$S\-T\-A\-T\-U\-S,U\-S\-B\-\_\-\-E\-P\-\_\-\-T\-O\-G\-G\-L\-E\-\_\-bm)}\label{group__udd__xmega__usb__group_ga514f5321fc0444f0d006d0c791e773f7}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga5e4f834d20fc824afb6441d8562e6bff}{\#define {\bfseries udd\-\_\-endpoint\-\_\-clear\-\_\-dtgl}(ep\-\_\-ctrl)~L\-A\-C\-R16(\&ep\-\_\-ctrl-\/$>$S\-T\-A\-T\-U\-S, U\-S\-B\-\_\-\-E\-P\-\_\-\-T\-O\-G\-G\-L\-E\-\_\-bm )}\label{group__udd__xmega__usb__group_ga5e4f834d20fc824afb6441d8562e6bff}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gaf1fb30ab493539973f723e150e23be1f}{\#define {\bfseries udd\-\_\-endpoint\-\_\-get\-\_\-dtgl}(ep\-\_\-ctrl)~((ep\-\_\-ctrl-\/$>$S\-T\-A\-T\-U\-S)\&U\-S\-B\-\_\-\-E\-P\-\_\-\-T\-O\-G\-G\-L\-E\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_gaf1fb30ab493539973f723e150e23be1f}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga2c2e577006c61e2dc45d20501cfb59ac}{\#define {\bfseries udd\-\_\-endpoint\-\_\-toggle\-\_\-dtgl}(ep\-\_\-ctrl)~L\-A\-T\-R16(\&ep\-\_\-ctrl-\/$>$S\-T\-A\-T\-U\-S, U\-S\-B\-\_\-\-E\-P\-\_\-\-T\-O\-G\-G\-L\-E\-\_\-bm)}\label{group__udd__xmega__usb__group_ga2c2e577006c61e2dc45d20501cfb59ac}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga98a372156c53d61f5230f502eb42184b}{\#define {\bfseries udd\-\_\-endpoint\-\_\-set\-\_\-\-N\-A\-C\-K0}(ep\-\_\-ctrl)~L\-A\-S\-R16(\&ep\-\_\-ctrl-\/$>$S\-T\-A\-T\-U\-S,U\-S\-B\-\_\-\-E\-P\-\_\-\-B\-U\-S\-N\-A\-C\-K0\-\_\-bm)}\label{group__udd__xmega__usb__group_ga98a372156c53d61f5230f502eb42184b}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga80f29d5cea9942ea1a8657c5aa355482}{\#define {\bfseries udd\-\_\-endpoint\-\_\-set\-\_\-\-N\-A\-C\-K1}(ep\-\_\-ctrl)~L\-A\-S\-R16(\&ep\-\_\-ctrl-\/$>$S\-T\-A\-T\-U\-S,U\-S\-B\-\_\-\-E\-P\-\_\-\-B\-U\-S\-N\-A\-C\-K1\-\_\-bm)}\label{group__udd__xmega__usb__group_ga80f29d5cea9942ea1a8657c5aa355482}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga529ac89cc177be1dfef991c122bf9823}{\#define {\bfseries udd\-\_\-endpoint\-\_\-clear\-\_\-\-N\-A\-C\-K0}(ep\-\_\-ctrl)~L\-A\-C\-R16(\&ep\-\_\-ctrl-\/$>$S\-T\-A\-T\-U\-S, U\-S\-B\-\_\-\-E\-P\-\_\-\-B\-U\-S\-N\-A\-C\-K0\-\_\-bm)}\label{group__udd__xmega__usb__group_ga529ac89cc177be1dfef991c122bf9823}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga8a3a38dc00cbdff08d1cf685609a4d58}{\#define {\bfseries udd\-\_\-endpoint\-\_\-clear\-\_\-\-N\-A\-C\-K1}(ep\-\_\-ctrl)~L\-A\-C\-R16(\&ep\-\_\-ctrl-\/$>$S\-T\-A\-T\-U\-S, U\-S\-B\-\_\-\-E\-P\-\_\-\-B\-U\-S\-N\-A\-C\-K1\-\_\-bm)}\label{group__udd__xmega__usb__group_ga8a3a38dc00cbdff08d1cf685609a4d58}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gafddf32b16d82e537f7e152d7ae6357df}{\#define {\bfseries udd\-\_\-endpoint\-\_\-get\-\_\-\-N\-A\-C\-K1}(ep\-\_\-ctrl)~((ep\-\_\-ctrl-\/$>$S\-T\-A\-T\-U\-S\&U\-S\-B\-\_\-\-E\-P\-\_\-\-B\-U\-S\-N\-A\-C\-K1\-\_\-bm) ? true \-: false)}\label{group__udd__xmega__usb__group_gafddf32b16d82e537f7e152d7ae6357df}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gae47ea293fe31fcf7592b35b28bc732a1}{\#define {\bfseries udd\-\_\-endpoint\-\_\-get\-\_\-\-N\-A\-C\-K0}(ep\-\_\-ctrl)~((ep\-\_\-ctrl-\/$>$S\-T\-A\-T\-U\-S\&U\-S\-B\-\_\-\-E\-P\-\_\-\-B\-U\-S\-N\-A\-C\-K0\-\_\-bm) ? true \-: false)}\label{group__udd__xmega__usb__group_gae47ea293fe31fcf7592b35b28bc732a1}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga7faab4cb3630357695f2a5f0ed1935c4}{\#define {\bfseries udd\-\_\-endpoint\-\_\-overflow}(ep\-\_\-ctrl)~(ep\-\_\-ctrl-\/$>$S\-T\-A\-T\-U\-S\&U\-S\-B\-\_\-\-E\-P\-\_\-\-O\-V\-F\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_ga7faab4cb3630357695f2a5f0ed1935c4}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gabcbb67d30efaf7270d9b6ad4cc59bbdc}{\#define {\bfseries udd\-\_\-endpoint\-\_\-underflow}(ep\-\_\-ctrl)~(ep\-\_\-ctrl-\/$>$S\-T\-A\-T\-U\-S\&U\-S\-B\-\_\-\-E\-P\-\_\-\-U\-N\-F\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_gabcbb67d30efaf7270d9b6ad4cc59bbdc}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga9b73a2cd4488b39038d49d865e03fe0e}{\#define {\bfseries U\-D\-D\-\_\-\-E\-N\-D\-P\-O\-I\-N\-T\-\_\-\-M\-A\-X\-\_\-\-T\-R\-A\-N\-S}~(0x3\-F\-F)}\label{group__udd__xmega__usb__group_ga9b73a2cd4488b39038d49d865e03fe0e}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga904d1887320cac074f175b423811db61}{\#define {\bfseries udd\-\_\-endpoint\-\_\-out\-\_\-nb\-\_\-receiv}(ep\-\_\-ctrl)~(ep\-\_\-ctrl-\/$>$C\-N\-T)}\label{group__udd__xmega__usb__group_ga904d1887320cac074f175b423811db61}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gaef854961b312c4b6fa9c7f0241a0d74f}{\#define {\bfseries udd\-\_\-endpoint\-\_\-out\-\_\-reset\-\_\-nb\-\_\-received}(ep\-\_\-ctrl)~(ep\-\_\-ctrl-\/$>$C\-N\-T = 0)}\label{group__udd__xmega__usb__group_gaef854961b312c4b6fa9c7f0241a0d74f}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga070229059685cb8077547b3f1361c1a1}{\#define {\bfseries udd\-\_\-endpoint\-\_\-in\-\_\-set\-\_\-bytecnt}(ep\-\_\-ctrl, n)~(ep\-\_\-ctrl-\/$>$C\-N\-T = n)}\label{group__udd__xmega__usb__group_ga070229059685cb8077547b3f1361c1a1}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga170bb9db14024ddf63ca9ec0a28d07c6}{\#define {\bfseries udd\-\_\-endpoint\-\_\-set\-\_\-azlp}(ep\-\_\-ctrl)~(ep\-\_\-ctrl-\/$>$C\-N\-T $|$= 0x8000)}\label{group__udd__xmega__usb__group_ga170bb9db14024ddf63ca9ec0a28d07c6}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga7f87cb43d003e6ee11c46d067d80968e}{\#define {\bfseries udd\-\_\-endpoint\-\_\-clear\-\_\-azlp}(ep\-\_\-ctrl)~(ep\-\_\-ctrl-\/$>$C\-N\-T \&= $\sim$0x8000)}\label{group__udd__xmega__usb__group_ga7f87cb43d003e6ee11c46d067d80968e}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga714934792b9f0f37b708e101daa3304c}{\#define {\bfseries udd\-\_\-endpoint\-\_\-set\-\_\-buf}(ep\-\_\-ctrl, buf)~(ep\-\_\-ctrl-\/$>$D\-A\-T\-A\-P\-T\-R = (uint16\-\_\-t) buf)}\label{group__udd__xmega__usb__group_ga714934792b9f0f37b708e101daa3304c}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga4131567a7cff3a0b166d1f4799649398}{\#define {\bfseries udd\-\_\-endpoint\-\_\-in\-\_\-nb\-\_\-sent}(ep\-\_\-ctrl)~(ep\-\_\-ctrl-\/$>$A\-U\-X\-D\-A\-T\-A)}\label{group__udd__xmega__usb__group_ga4131567a7cff3a0b166d1f4799649398}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gaaa219301e6462b97ed377affb3c0573d}{\#define {\bfseries udd\-\_\-endpoint\-\_\-in\-\_\-reset\-\_\-nb\-\_\-sent}(ep\-\_\-ctrl)~(ep\-\_\-ctrl-\/$>$A\-U\-X\-D\-A\-T\-A = 0)}\label{group__udd__xmega__usb__group_gaaa219301e6462b97ed377affb3c0573d}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga18d557272e3e0892de9e5f638b07be0b}{\#define {\bfseries udd\-\_\-endpoint\-\_\-out\-\_\-set\-\_\-nbbyte}(ep\-\_\-ctrl, nb)~(ep\-\_\-ctrl-\/$>$A\-U\-X\-D\-A\-T\-A = nb)}\label{group__udd__xmega__usb__group_ga18d557272e3e0892de9e5f638b07be0b}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gac20250b3599a6436868e421a1fbbd98f}{\#define {\bfseries udd\-\_\-endpoint\-\_\-out\-\_\-get\-\_\-nbbyte\-\_\-requested}(ep\-\_\-ctrl)~(ep\-\_\-ctrl-\/$>$A\-U\-X\-D\-A\-T\-A)}\label{group__udd__xmega__usb__group_gac20250b3599a6436868e421a1fbbd98f}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gab89ae1d905abaed4d224f6bff50d440b}{\#define {\bfseries udd\-\_\-endpoint\-\_\-set\-\_\-aux}(ep\-\_\-ctrl, buf)~(ep\-\_\-ctrl-\/$>$A\-U\-X\-D\-A\-T\-A = (uint16\-\_\-t) buf)}\label{group__udd__xmega__usb__group_gab89ae1d905abaed4d224f6bff50d440b}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf U\-S\-B Device endpoint control setup field management}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga8509d5cc41d521cb43159a80ac260254}{\#define {\bfseries udd\-\_\-control\-\_\-setup}()~(udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}0\mbox{]}.S\-T\-A\-T\-U\-S\&U\-S\-B\-\_\-\-E\-P\-\_\-\-S\-E\-T\-U\-P\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_ga8509d5cc41d521cb43159a80ac260254}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gac0b743d67f36aeb81c4724cd87162f3e}{\#define {\bfseries udd\-\_\-control\-\_\-ack\-\_\-setup}()~L\-A\-C\-R16(\&udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}0\mbox{]}.S\-T\-A\-T\-U\-S,U\-S\-B\-\_\-\-E\-P\-\_\-\-S\-E\-T\-U\-P\-\_\-bm)}\label{group__udd__xmega__usb__group_gac0b743d67f36aeb81c4724cd87162f3e}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf U\-S\-B Device endpoint control O\-U\-T field management}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__udd__xmega__usb__group_gae1263d0878d16a4c15b7b43386efa02b}{\#define {\bfseries udd\-\_\-control\-\_\-out\-\_\-is\-\_\-enable\-\_\-stall}()~(udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}0\mbox{]}.C\-T\-R\-L\&U\-S\-B\-\_\-\-E\-P\-\_\-\-S\-T\-A\-L\-L\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_gae1263d0878d16a4c15b7b43386efa02b}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gabf0bdcf99cd5847d1f9cd5ea4d5ef41a}{\#define {\bfseries udd\-\_\-control\-\_\-out\-\_\-enable\-\_\-stall}()~L\-A\-S\-R16(\&udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}0\mbox{]}.C\-T\-R\-L,U\-S\-B\-\_\-\-E\-P\-\_\-\-S\-T\-A\-L\-L\-\_\-bm)}\label{group__udd__xmega__usb__group_gabf0bdcf99cd5847d1f9cd5ea4d5ef41a}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga251f22f1df2e9ed64bee829c9b22831a}{\#define {\bfseries udd\-\_\-control\-\_\-out\-\_\-disable\-\_\-stall}()~L\-A\-C\-R16(\&udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}0\mbox{]}.C\-T\-R\-L,U\-S\-B\-\_\-\-E\-P\-\_\-\-S\-T\-A\-L\-L\-\_\-bm)}\label{group__udd__xmega__usb__group_ga251f22f1df2e9ed64bee829c9b22831a}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga85e18b60c1ec91175a3f3b2d85733874}{\#define {\bfseries udd\-\_\-control\-\_\-out\-\_\-is\-\_\-stalled}()~(udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}0\mbox{]}.S\-T\-A\-T\-U\-S\&U\-S\-B\-\_\-\-E\-P\-\_\-\-S\-T\-A\-L\-L\-F\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_ga85e18b60c1ec91175a3f3b2d85733874}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gac4c27963d2479cb46af9fdbda90eea92}{\#define {\bfseries udd\-\_\-control\-\_\-out\-\_\-ack\-\_\-stall}()~L\-A\-C\-R16(\&udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}0\mbox{]}.S\-T\-A\-T\-U\-S,U\-S\-B\-\_\-\-E\-P\-\_\-\-S\-T\-A\-L\-L\-F\-\_\-bm)}\label{group__udd__xmega__usb__group_gac4c27963d2479cb46af9fdbda90eea92}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gaca248ccaaf8ad6592ebc4a144b472e27}{\#define {\bfseries udd\-\_\-control\-\_\-out\-\_\-set\-\_\-\-N\-A\-C\-K0}()~L\-A\-S\-R16(\&udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}0\mbox{]}.S\-T\-A\-T\-U\-S,U\-S\-B\-\_\-\-E\-P\-\_\-\-B\-U\-S\-N\-A\-C\-K0\-\_\-bm)}\label{group__udd__xmega__usb__group_gaca248ccaaf8ad6592ebc4a144b472e27}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga655ecf1ac8367ac647ff972fb403b535}{\#define {\bfseries udd\-\_\-control\-\_\-out\-\_\-clear\-\_\-\-N\-A\-C\-K0}()~L\-A\-C\-R16(\&udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}0\mbox{]}.S\-T\-A\-T\-U\-S,U\-S\-B\-\_\-\-E\-P\-\_\-\-B\-U\-S\-N\-A\-C\-K0\-\_\-bm)}\label{group__udd__xmega__usb__group_ga655ecf1ac8367ac647ff972fb403b535}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gaa7bb755967f3e3be07e584bbbde99fbf}{\#define {\bfseries udd\-\_\-control\-\_\-out\-\_\-overflow}()~(udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}0\mbox{]}.S\-T\-A\-T\-U\-S\&U\-S\-B\-\_\-\-E\-P\-\_\-\-O\-V\-F\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_gaa7bb755967f3e3be07e584bbbde99fbf}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga6efab86ee705f097b504bb11e7539553}{\#define {\bfseries udd\-\_\-control\-\_\-ack\-\_\-out\-\_\-overflow}()~L\-A\-C\-R16(\&udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}0\mbox{]}.S\-T\-A\-T\-U\-S,U\-S\-B\-\_\-\-E\-P\-\_\-\-O\-V\-F\-\_\-bm)}\label{group__udd__xmega__usb__group_ga6efab86ee705f097b504bb11e7539553}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga62b17a12d9e3993332a2649ad406a95d}{\#define {\bfseries udd\-\_\-control\-\_\-out\-\_\-tc}()~(udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}0\mbox{]}.S\-T\-A\-T\-U\-S\&U\-S\-B\-\_\-\-E\-P\-\_\-\-T\-R\-N\-C\-O\-M\-P\-L0\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_ga62b17a12d9e3993332a2649ad406a95d}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga96697fdb1bcc8da969bdb34ffb44b084}{\#define {\bfseries udd\-\_\-control\-\_\-out\-\_\-ack\-\_\-tc}()~L\-A\-C\-R16(\&udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}0\mbox{]}.S\-T\-A\-T\-U\-S,U\-S\-B\-\_\-\-E\-P\-\_\-\-T\-R\-N\-C\-O\-M\-P\-L0\-\_\-bm)}\label{group__udd__xmega__usb__group_ga96697fdb1bcc8da969bdb34ffb44b084}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga620d4d9b5a1758b094615e512e12ba54}{\#define {\bfseries udd\-\_\-control\-\_\-out\-\_\-set\-\_\-tc}()~L\-A\-S\-R16(\&udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}0\mbox{]}.S\-T\-A\-T\-U\-S,U\-S\-B\-\_\-\-E\-P\-\_\-\-T\-R\-N\-C\-O\-M\-P\-L0\-\_\-bm)}\label{group__udd__xmega__usb__group_ga620d4d9b5a1758b094615e512e12ba54}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gaaebde283abafed21d59a46d463dc47d1}{\#define {\bfseries udd\-\_\-control\-\_\-out\-\_\-dt\-\_\-get}()~(udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}0\mbox{]}.S\-T\-A\-T\-U\-S\&U\-S\-B\-\_\-\-E\-P\-\_\-\-T\-O\-G\-G\-L\-E\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_gaaebde283abafed21d59a46d463dc47d1}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gaa092d16d9c92b48cc928429471bdfaca}{\#define {\bfseries udd\-\_\-control\-\_\-out\-\_\-dt\-\_\-set}()~L\-A\-S\-R16(\&udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}0\mbox{]}.S\-T\-A\-T\-U\-S,U\-S\-B\-\_\-\-E\-P\-\_\-\-T\-O\-G\-G\-L\-E\-\_\-bm )}\label{group__udd__xmega__usb__group_gaa092d16d9c92b48cc928429471bdfaca}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gadf74aab79a4c399266a2c17c8050b9ad}{\#define {\bfseries udd\-\_\-control\-\_\-out\-\_\-dt\-\_\-clear}()~L\-A\-C\-R16(\&udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}0\mbox{]}.S\-T\-A\-T\-U\-S,U\-S\-B\-\_\-\-E\-P\-\_\-\-T\-O\-G\-G\-L\-E\-\_\-bm )}\label{group__udd__xmega__usb__group_gadf74aab79a4c399266a2c17c8050b9ad}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga1c470322f4c920a39a18617148e0f6a1}{\#define {\bfseries udd\-\_\-control\-\_\-out\-\_\-dt\-\_\-toggle}()~L\-A\-T\-R16(\&udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}0\mbox{]}.S\-T\-A\-T\-U\-S,U\-S\-B\-\_\-\-E\-P\-\_\-\-T\-O\-G\-G\-L\-E\-\_\-bm)}\label{group__udd__xmega__usb__group_ga1c470322f4c920a39a18617148e0f6a1}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga169a1bf5df92576c493758430e3da246}{\#define {\bfseries udd\-\_\-control\-\_\-out\-\_\-set\-\_\-buf}(buf)~(udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}0\mbox{]}.D\-A\-T\-A\-P\-T\-R = (uint16\-\_\-t) buf)}\label{group__udd__xmega__usb__group_ga169a1bf5df92576c493758430e3da246}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gadb60f2d916b019324277854383af78c8}{\#define {\bfseries udd\-\_\-control\-\_\-out\-\_\-get\-\_\-bytecnt}()~(udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}0\mbox{]}.C\-N\-T)}\label{group__udd__xmega__usb__group_gadb60f2d916b019324277854383af78c8}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf U\-S\-B Device endpoint control I\-N field management}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__udd__xmega__usb__group_gae15590f51e4b6d633f923d8e22d2c74e}{\#define {\bfseries udd\-\_\-control\-\_\-in\-\_\-is\-\_\-enable\-\_\-stall}()~(udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}1\mbox{]}.C\-T\-R\-L\&U\-S\-B\-\_\-\-E\-P\-\_\-\-S\-T\-A\-L\-L\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_gae15590f51e4b6d633f923d8e22d2c74e}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gac43e6ddd6ab3c8c6b975bd2c51cdbddc}{\#define {\bfseries udd\-\_\-control\-\_\-in\-\_\-enable\-\_\-stall}()~L\-A\-S\-R16(\&udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}1\mbox{]}.C\-T\-R\-L,U\-S\-B\-\_\-\-E\-P\-\_\-\-S\-T\-A\-L\-L\-\_\-bm)}\label{group__udd__xmega__usb__group_gac43e6ddd6ab3c8c6b975bd2c51cdbddc}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga37e95131b3bb4dac1f542f059c7453f9}{\#define {\bfseries udd\-\_\-control\-\_\-in\-\_\-disable\-\_\-stall}()~L\-A\-C\-R16(\&udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}1\mbox{]}.C\-T\-R\-L,U\-S\-B\-\_\-\-E\-P\-\_\-\-S\-T\-A\-L\-L\-\_\-bm)}\label{group__udd__xmega__usb__group_ga37e95131b3bb4dac1f542f059c7453f9}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gad03e4ff92ea258778208f35c6ab8294f}{\#define {\bfseries udd\-\_\-control\-\_\-in\-\_\-is\-\_\-stalled}()~(udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}1\mbox{]}.S\-T\-A\-T\-U\-S\&U\-S\-B\-\_\-\-E\-P\-\_\-\-S\-T\-A\-L\-L\-F\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_gad03e4ff92ea258778208f35c6ab8294f}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gad1c226388b78b12bfa29fafeca4f7421}{\#define {\bfseries udd\-\_\-control\-\_\-in\-\_\-ack\-\_\-stall}()~L\-A\-C\-R16(\&udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}1\mbox{]}.S\-T\-A\-T\-U\-S,U\-S\-B\-\_\-\-E\-P\-\_\-\-S\-T\-A\-L\-L\-F\-\_\-bm)}\label{group__udd__xmega__usb__group_gad1c226388b78b12bfa29fafeca4f7421}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gaf2d9dff2f782745f6c325dd544a91b4f}{\#define {\bfseries udd\-\_\-control\-\_\-in\-\_\-set\-\_\-\-N\-A\-C\-K0}()~L\-A\-S\-R16(\&udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}1\mbox{]}.S\-T\-A\-T\-U\-S,U\-S\-B\-\_\-\-E\-P\-\_\-\-B\-U\-S\-N\-A\-C\-K0\-\_\-bm)}\label{group__udd__xmega__usb__group_gaf2d9dff2f782745f6c325dd544a91b4f}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gacbb082c115c3a3256e401344ec10c790}{\#define {\bfseries udd\-\_\-control\-\_\-in\-\_\-clear\-\_\-\-N\-A\-C\-K0}()~L\-A\-C\-R16(\&udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}1\mbox{]}.S\-T\-A\-T\-U\-S,U\-S\-B\-\_\-\-E\-P\-\_\-\-B\-U\-S\-N\-A\-C\-K0\-\_\-bm)}\label{group__udd__xmega__usb__group_gacbb082c115c3a3256e401344ec10c790}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga25b6d94b1ac444adeee6a82c6319170b}{\#define {\bfseries udd\-\_\-control\-\_\-in\-\_\-underflow}()~(udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}1\mbox{]}.S\-T\-A\-T\-U\-S\&U\-S\-B\-\_\-\-E\-P\-\_\-\-U\-N\-F\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_ga25b6d94b1ac444adeee6a82c6319170b}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gaf8e1abf451481ff3e8fd366559bf44d6}{\#define {\bfseries udd\-\_\-control\-\_\-ack\-\_\-in\-\_\-underflow}()~L\-A\-C\-R16(\&udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}1\mbox{]}.S\-T\-A\-T\-U\-S,U\-S\-B\-\_\-\-E\-P\-\_\-\-U\-N\-F\-\_\-bm)}\label{group__udd__xmega__usb__group_gaf8e1abf451481ff3e8fd366559bf44d6}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga2c8db665238eaed5b930d028754008c4}{\#define {\bfseries udd\-\_\-control\-\_\-in\-\_\-tc}()~(udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}1\mbox{]}.S\-T\-A\-T\-U\-S\&U\-S\-B\-\_\-\-E\-P\-\_\-\-T\-R\-N\-C\-O\-M\-P\-L0\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_ga2c8db665238eaed5b930d028754008c4}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga8c75e311c52b06da4100ab05e49f6f3b}{\#define {\bfseries udd\-\_\-control\-\_\-in\-\_\-ack\-\_\-tc}()~L\-A\-C\-R16(\&udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}1\mbox{]}.S\-T\-A\-T\-U\-S,U\-S\-B\-\_\-\-E\-P\-\_\-\-T\-R\-N\-C\-O\-M\-P\-L0\-\_\-bm)}\label{group__udd__xmega__usb__group_ga8c75e311c52b06da4100ab05e49f6f3b}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga901dda8d1264e823c13f6200d4439d44}{\#define {\bfseries udd\-\_\-control\-\_\-in\-\_\-set\-\_\-tc}()~L\-A\-S\-R16(\&udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}1\mbox{]}.S\-T\-A\-T\-U\-S,U\-S\-B\-\_\-\-E\-P\-\_\-\-T\-R\-N\-C\-O\-M\-P\-L0\-\_\-bm)}\label{group__udd__xmega__usb__group_ga901dda8d1264e823c13f6200d4439d44}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gac86135da845b7a4cd5b334f2799a4943}{\#define {\bfseries udd\-\_\-control\-\_\-in\-\_\-dt\-\_\-get}()~(udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}1\mbox{]}.S\-T\-A\-T\-U\-S\&U\-S\-B\-\_\-\-E\-P\-\_\-\-T\-O\-G\-G\-L\-E\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_gac86135da845b7a4cd5b334f2799a4943}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga05b59293f08c7bb4f0fb2390d8caf350}{\#define {\bfseries udd\-\_\-control\-\_\-in\-\_\-dt\-\_\-set}()~L\-A\-S\-R16(\&udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}1\mbox{]}.S\-T\-A\-T\-U\-S,U\-S\-B\-\_\-\-E\-P\-\_\-\-T\-O\-G\-G\-L\-E\-\_\-bm )}\label{group__udd__xmega__usb__group_ga05b59293f08c7bb4f0fb2390d8caf350}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga2e1f267daf46c2202b4cc4917a5a586a}{\#define {\bfseries udd\-\_\-control\-\_\-in\-\_\-dt\-\_\-clear}()~L\-A\-C\-R16(\&udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}1\mbox{]}.S\-T\-A\-T\-U\-S,U\-S\-B\-\_\-\-E\-P\-\_\-\-T\-O\-G\-G\-L\-E\-\_\-bm )}\label{group__udd__xmega__usb__group_ga2e1f267daf46c2202b4cc4917a5a586a}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga2aeff640b5d22316ec7906fc351f5ee9}{\#define {\bfseries udd\-\_\-control\-\_\-in\-\_\-dt\-\_\-toggle}()~L\-A\-T\-R16(\&udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}1\mbox{]}.S\-T\-A\-T\-U\-S,U\-S\-B\-\_\-\-E\-P\-\_\-\-T\-O\-G\-G\-L\-E\-\_\-bm)}\label{group__udd__xmega__usb__group_ga2aeff640b5d22316ec7906fc351f5ee9}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gad09a38e83b378c42879348287338df8c}{\#define {\bfseries udd\-\_\-control\-\_\-in\-\_\-set\-\_\-buf}(buf)~(udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}1\mbox{]}.D\-A\-T\-A\-P\-T\-R = (uint16\-\_\-t) buf)}\label{group__udd__xmega__usb__group_gad09a38e83b378c42879348287338df8c}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gaf7af88c6c6fa0580eb047101f97f4d9b}{\#define {\bfseries udd\-\_\-control\-\_\-in\-\_\-set\-\_\-bytecnt}(n)~(udd\-\_\-sram.\-ep\-\_\-ctrl\mbox{[}1\mbox{]}.C\-N\-T = n)}\label{group__udd__xmega__usb__group_gaf7af88c6c6fa0580eb047101f97f4d9b}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{U\-S\-B Device main management}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga2d97a59a9b0c720c24deffafc256e862}{\#define {\bfseries udd\-\_\-enable\-\_\-interface}()~(U\-S\-B\-\_\-\-C\-T\-R\-L\-A $|$= U\-S\-B\-\_\-\-E\-N\-A\-B\-L\-E\-\_\-bm)}\label{group__udd__xmega__usb__group_ga2d97a59a9b0c720c24deffafc256e862}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga0edb39b954b46c1759b992f2170b4ff7}{\#define {\bfseries udd\-\_\-disable\-\_\-interface}()~(U\-S\-B\-\_\-\-C\-T\-R\-L\-A \&= $\sim$U\-S\-B\-\_\-\-E\-N\-A\-B\-L\-E\-\_\-bm)}\label{group__udd__xmega__usb__group_ga0edb39b954b46c1759b992f2170b4ff7}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga55686d13fc7b23f4945f527f0dd15906}{\#define {\bfseries udd\-\_\-attach\-\_\-device}()~(U\-S\-B\-\_\-\-C\-T\-R\-L\-B $|$= U\-S\-B\-\_\-\-A\-T\-T\-A\-C\-H\-\_\-bm)}\label{group__udd__xmega__usb__group_ga55686d13fc7b23f4945f527f0dd15906}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga1863dacf593fb3c1b5f275b48f1e529a}{\#define {\bfseries udd\-\_\-detach\-\_\-device}()~(U\-S\-B\-\_\-\-C\-T\-R\-L\-B \&= $\sim$U\-S\-B\-\_\-\-A\-T\-T\-A\-C\-H\-\_\-bm)}\label{group__udd__xmega__usb__group_ga1863dacf593fb3c1b5f275b48f1e529a}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gafd9b1d23a9d6561d70be775bb2244342}{\#define {\bfseries udd\-\_\-gnak\-\_\-disable}()~(U\-S\-B\-\_\-\-C\-T\-R\-L\-B \&= $\sim$U\-S\-B\-\_\-\-G\-N\-A\-C\-K\-\_\-bm)}\label{group__udd__xmega__usb__group_gafd9b1d23a9d6561d70be775bb2244342}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga502e1bf0452c51cdaa0bd8549b669dc2}{\#define {\bfseries udd\-\_\-gnak\-\_\-enable}()~(U\-S\-B\-\_\-\-C\-T\-R\-L\-B $|$=  U\-S\-B\-\_\-\-G\-N\-A\-C\-K\-\_\-bm)}\label{group__udd__xmega__usb__group_ga502e1bf0452c51cdaa0bd8549b669dc2}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga9b1f90f2b9b1aa15039f1a15ae266f92}{\#define {\bfseries udd\-\_\-gnak\-\_\-is\-\_\-enable}()~(U\-S\-B\-\_\-\-C\-T\-R\-L\-B \& U\-S\-B\-\_\-\-G\-N\-A\-C\-K\-\_\-bm)}\label{group__udd__xmega__usb__group_ga9b1f90f2b9b1aa15039f1a15ae266f92}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga14ed95528b80214dd1df09b5b7598586}{\#define {\bfseries udd\-\_\-set\-\_\-nb\-\_\-max\-\_\-ep}(n)~(U\-S\-B\-\_\-\-C\-T\-R\-L\-A $|$= n)}\label{group__udd__xmega__usb__group_ga14ed95528b80214dd1df09b5b7598586}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gab08620be78796aad64041954be11182f}{\#define {\bfseries udd\-\_\-enable\-\_\-store\-\_\-frame\-\_\-number}()~(U\-S\-B\-\_\-\-C\-T\-R\-L\-A $|$= U\-S\-B\-\_\-\-S\-T\-F\-R\-N\-U\-M\-\_\-bm)}\label{group__udd__xmega__usb__group_gab08620be78796aad64041954be11182f}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga860cdccc855a04ac37d38597816458b8}{\#define {\bfseries udd\-\_\-disable\-\_\-store\-\_\-frame\-\_\-number}()~(U\-S\-B\-\_\-\-C\-T\-R\-L\-A \&= $\sim$U\-S\-B\-\_\-\-S\-T\-F\-R\-N\-U\-M\-\_\-bm)}\label{group__udd__xmega__usb__group_ga860cdccc855a04ac37d38597816458b8}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gad52e281c388e027a7c08159af2748e8a}{\#define {\bfseries udd\-\_\-set\-\_\-full\-\_\-speed}()~(U\-S\-B\-\_\-\-C\-T\-R\-L\-A $|$= U\-S\-B\-\_\-\-S\-P\-E\-E\-D\-\_\-bm)}\label{group__udd__xmega__usb__group_gad52e281c388e027a7c08159af2748e8a}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gabfd20b45d237cbbdcef8e8784da880bb}{\#define {\bfseries udd\-\_\-set\-\_\-low\-\_\-speed}()~(U\-S\-B\-\_\-\-C\-T\-R\-L\-A \&= $\sim$U\-S\-B\-\_\-\-S\-P\-E\-E\-D\-\_\-bm)}\label{group__udd__xmega__usb__group_gabfd20b45d237cbbdcef8e8784da880bb}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga7b2b0dff485302cbcfb93959038d2273}{\#define {\bfseries udd\-\_\-set\-\_\-ep\-\_\-table\-\_\-addr}(n)~(U\-S\-B.\-E\-P\-P\-T\-R = (uint16\-\_\-t)n)}\label{group__udd__xmega__usb__group_ga7b2b0dff485302cbcfb93959038d2273}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga7997857ef462537a13e961eb03505ec0}{\#define {\bfseries udd\-\_\-get\-\_\-ep\-\_\-table\-\_\-addr}()~(U\-S\-B.\-E\-P\-P\-T\-R)}\label{group__udd__xmega__usb__group_ga7997857ef462537a13e961eb03505ec0}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga55620b0a684e97d30e6acc1d35e98a32}{\#define {\bfseries udd\-\_\-get\-\_\-fifo\-\_\-rp}()~(U\-S\-B\-\_\-\-F\-I\-F\-O\-R\-P)}\label{group__udd__xmega__usb__group_ga55620b0a684e97d30e6acc1d35e98a32}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga6b540b640f84b387740c0def675210b0}{\#define {\bfseries udd\-\_\-reset\-\_\-fifo}()~(U\-S\-B\-\_\-\-F\-I\-F\-O\-R\-P=0x\-F\-F)}\label{group__udd__xmega__usb__group_ga6b540b640f84b387740c0def675210b0}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gac38126f95f98fb850f4e82bd69331fc9}{\#define {\bfseries udd\-\_\-enable\-\_\-interrupt}(level)~(U\-S\-B\-\_\-\-I\-N\-T\-C\-T\-R\-L\-A $|$= level\&(U\-S\-B\-\_\-\-I\-N\-T\-L\-V\-L1\-\_\-bm$|$U\-S\-B\-\_\-\-I\-N\-T\-L\-V\-L0\-\_\-bm))}\label{group__udd__xmega__usb__group_gac38126f95f98fb850f4e82bd69331fc9}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga41192c7b538bdfbf244176716b7958e0}{\#define {\bfseries udd\-\_\-set\-\_\-device\-\_\-address}(n)~(U\-S\-B\-\_\-\-A\-D\-D\-R=n)}\label{group__udd__xmega__usb__group_ga41192c7b538bdfbf244176716b7958e0}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga8f71bf0f43c8322c5eb7b3ece6f6696e}{\#define {\bfseries udd\-\_\-get\-\_\-device\-\_\-address}()~(U\-S\-B\-\_\-\-A\-D\-D\-R)}\label{group__udd__xmega__usb__group_ga8f71bf0f43c8322c5eb7b3ece6f6696e}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gaead26d93692eadfa10d2cd816ebbc446}{\#define {\bfseries udd\-\_\-enable\-\_\-fifo}()~(U\-S\-B\-\_\-\-C\-T\-R\-L\-A $|$= U\-S\-B\-\_\-\-F\-I\-F\-O\-E\-N\-\_\-bm)}\label{group__udd__xmega__usb__group_gaead26d93692eadfa10d2cd816ebbc446}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga4e2827241d29a454ded324e10208c200}{\#define {\bfseries udd\-\_\-disable\-\_\-fifo}()~(U\-S\-B\-\_\-\-C\-T\-R\-L\-A \&= $\sim$U\-S\-B\-\_\-\-F\-I\-F\-O\-E\-N\-\_\-bm)}\label{group__udd__xmega__usb__group_ga4e2827241d29a454ded324e10208c200}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga0f041fe28778b1bc69d9829295b5c76a}{\#define {\bfseries udd\-\_\-send\-\_\-remote\-\_\-wake\-\_\-up}()~(U\-S\-B\-\_\-\-C\-T\-R\-L\-B \&= $\sim$U\-S\-B\-\_\-\-R\-W\-A\-K\-E\-U\-P\-\_\-bm, U\-S\-B\-\_\-\-C\-T\-R\-L\-B $|$= U\-S\-B\-\_\-\-R\-W\-A\-K\-E\-U\-P\-\_\-bm)}\label{group__udd__xmega__usb__group_ga0f041fe28778b1bc69d9829295b5c76a}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gaef53e2de128cd33b05901c707c1509fd}{\#define {\bfseries udd\-\_\-set\-\_\-global\-\_\-nack}()~(U\-S\-B\-\_\-\-C\-T\-R\-L\-B $|$= U\-S\-B\-\_\-\-G\-N\-A\-C\-K\-\_\-bm)}\label{group__udd__xmega__usb__group_gaef53e2de128cd33b05901c707c1509fd}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga3a13ddb16a3d9cb4b79576ce1e895f7e}{\#define {\bfseries udd\-\_\-is\-\_\-crc\-\_\-event}()~(U\-S\-B\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S\-A\-S\-E\-T \& U\-S\-B\-\_\-\-C\-R\-C\-I\-F\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_ga3a13ddb16a3d9cb4b79576ce1e895f7e}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga97e65f575190ed3b68dcef62a699b7cc}{\#define {\bfseries udd\-\_\-ack\-\_\-crc\-\_\-event}()~(U\-S\-B\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S\-A\-C\-L\-R = U\-S\-B\-\_\-\-C\-R\-C\-I\-F\-\_\-bm)}\label{group__udd__xmega__usb__group_ga97e65f575190ed3b68dcef62a699b7cc}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga034017fceeeaa75f26b7cdc657608180}{\#define {\bfseries udd\-\_\-set\-\_\-crc\-\_\-event}()~(U\-S\-B\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S\-A\-S\-E\-T = U\-S\-B\-\_\-\-C\-R\-C\-I\-F\-\_\-bm)}\label{group__udd__xmega__usb__group_ga034017fceeeaa75f26b7cdc657608180}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga059c595bb4ed526b8f3d22ad6263874a}{\#define {\bfseries udd\-\_\-enable\-\_\-crc\-\_\-interrupt}()~(U\-S\-B\-\_\-\-I\-N\-T\-C\-T\-R\-L\-A $|$= U\-S\-B\-\_\-\-C\-R\-C\-I\-E\-\_\-bm)}\label{group__udd__xmega__usb__group_ga059c595bb4ed526b8f3d22ad6263874a}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga7d8e4f646264a620a2d413b5ad03feaf}{\#define {\bfseries udd\-\_\-disable\-\_\-crc\-\_\-interrupt}()~(U\-S\-B\-\_\-\-I\-N\-T\-C\-T\-R\-L\-A \&= $\sim$U\-S\-B\-\_\-\-C\-R\-C\-I\-E\-\_\-bm)}\label{group__udd__xmega__usb__group_ga7d8e4f646264a620a2d413b5ad03feaf}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga680f2a7b6011b34731880b34e315128b}{\#define {\bfseries udd\-\_\-is\-\_\-start\-\_\-of\-\_\-frame\-\_\-event}()~(U\-S\-B\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S\-A\-S\-E\-T \& U\-S\-B\-\_\-\-S\-O\-F\-I\-F\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_ga680f2a7b6011b34731880b34e315128b}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga0f6802698ef2ff515cdb61ab87d17d02}{\#define {\bfseries udd\-\_\-ack\-\_\-start\-\_\-of\-\_\-frame\-\_\-event}()~(U\-S\-B\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S\-A\-C\-L\-R = U\-S\-B\-\_\-\-S\-O\-F\-I\-F\-\_\-bm)}\label{group__udd__xmega__usb__group_ga0f6802698ef2ff515cdb61ab87d17d02}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gab3b6d2f80b8e0d1097524e8b6752b3ed}{\#define {\bfseries udd\-\_\-set\-\_\-start\-\_\-of\-\_\-frame\-\_\-event}()~(U\-S\-B\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S\-A\-S\-E\-T = U\-S\-B\-\_\-\-S\-O\-F\-I\-F\-\_\-bm)}\label{group__udd__xmega__usb__group_gab3b6d2f80b8e0d1097524e8b6752b3ed}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga14e11a1e75615641ca4192efae6591be}{\#define {\bfseries udd\-\_\-enable\-\_\-start\-\_\-of\-\_\-frame\-\_\-interrupt}()~(U\-S\-B\-\_\-\-I\-N\-T\-C\-T\-R\-L\-A $|$= U\-S\-B\-\_\-\-S\-O\-F\-I\-E\-\_\-bm)}\label{group__udd__xmega__usb__group_ga14e11a1e75615641ca4192efae6591be}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga3b77a33bfa47416665714ce24e19706f}{\#define {\bfseries udd\-\_\-disable\-\_\-start\-\_\-of\-\_\-frame\-\_\-interrupt}()~(U\-S\-B\-\_\-\-I\-N\-T\-C\-T\-R\-L\-A \&= $\sim$U\-S\-B\-\_\-\-S\-O\-F\-I\-E\-\_\-bm)}\label{group__udd__xmega__usb__group_ga3b77a33bfa47416665714ce24e19706f}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga29d3588870501badf48b406deddd23a7}{\#define {\bfseries udd\-\_\-is\-\_\-enable\-\_\-start\-\_\-of\-\_\-frame\-\_\-interrupt}()~(0!=(U\-S\-B\-\_\-\-I\-N\-T\-C\-T\-R\-L\-A$|$U\-S\-B\-\_\-\-S\-O\-F\-I\-E\-\_\-bm))}\label{group__udd__xmega__usb__group_ga29d3588870501badf48b406deddd23a7}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gadb4972f859c9a21e2d7f3b0b72755b33}{\#define {\bfseries udd\-\_\-is\-\_\-reset\-\_\-event}()~(U\-S\-B\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S\-A\-S\-E\-T \& U\-S\-B\-\_\-\-R\-S\-T\-I\-F\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_gadb4972f859c9a21e2d7f3b0b72755b33}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga6ae662b05869b4da113e9292623270dd}{\#define {\bfseries udd\-\_\-ack\-\_\-reset\-\_\-event}()~(U\-S\-B\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S\-A\-C\-L\-R = U\-S\-B\-\_\-\-R\-S\-T\-I\-F\-\_\-bm)}\label{group__udd__xmega__usb__group_ga6ae662b05869b4da113e9292623270dd}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga1e1d2efe56473014a72df19df90082b5}{\#define {\bfseries udd\-\_\-set\-\_\-reset\-\_\-event}()~(U\-S\-B\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S\-A\-S\-E\-T = U\-S\-B\-\_\-\-R\-S\-T\-I\-F\-\_\-bm)}\label{group__udd__xmega__usb__group_ga1e1d2efe56473014a72df19df90082b5}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga3880e30ef3f0547db72dce1a7e98d249}{\#define {\bfseries udd\-\_\-is\-\_\-suspend\-\_\-event}()~(U\-S\-B\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S\-A\-S\-E\-T \& U\-S\-B\-\_\-\-S\-U\-S\-P\-E\-N\-D\-I\-F\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_ga3880e30ef3f0547db72dce1a7e98d249}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga342f3fb6a2837adb5f993f73daa84af0}{\#define {\bfseries udd\-\_\-ack\-\_\-suspend\-\_\-event}()~(U\-S\-B\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S\-A\-C\-L\-R = U\-S\-B\-\_\-\-S\-U\-S\-P\-E\-N\-D\-I\-F\-\_\-bm)}\label{group__udd__xmega__usb__group_ga342f3fb6a2837adb5f993f73daa84af0}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga3e08da29f93f12f7e8fe2e67912ceb07}{\#define {\bfseries udd\-\_\-set\-\_\-suspend\-\_\-event}()~(U\-S\-B\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S\-A\-S\-E\-T = U\-S\-B\-\_\-\-S\-U\-S\-P\-E\-N\-D\-I\-F\-\_\-bm)}\label{group__udd__xmega__usb__group_ga3e08da29f93f12f7e8fe2e67912ceb07}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga1362bf05c27afb84e8584abc7f13fd2b}{\#define {\bfseries udd\-\_\-is\-\_\-resume\-\_\-event}()~(U\-S\-B\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S\-A\-S\-E\-T \& U\-S\-B\-\_\-\-R\-E\-S\-U\-M\-E\-I\-F\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_ga1362bf05c27afb84e8584abc7f13fd2b}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gaeafd1cb56aa572af8d01243295d17458}{\#define {\bfseries udd\-\_\-ack\-\_\-resume\-\_\-event}()~(U\-S\-B\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S\-A\-C\-L\-R = U\-S\-B\-\_\-\-R\-E\-S\-U\-M\-E\-I\-F\-\_\-bm)}\label{group__udd__xmega__usb__group_gaeafd1cb56aa572af8d01243295d17458}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gaf67be3196d7036613435a91676ad1072}{\#define {\bfseries udd\-\_\-set\-\_\-resume\-\_\-event}()~(U\-S\-B\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S\-A\-S\-E\-T = U\-S\-B\-\_\-\-R\-E\-S\-U\-M\-E\-I\-F\-\_\-bm)}\label{group__udd__xmega__usb__group_gaf67be3196d7036613435a91676ad1072}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga8600551b15689155eb66d7e723c5dde6}{\#define {\bfseries udd\-\_\-enable\-\_\-busevt\-\_\-interrupt}()~(U\-S\-B\-\_\-\-I\-N\-T\-C\-T\-R\-L\-A $|$= U\-S\-B\-\_\-\-B\-U\-S\-E\-V\-I\-E\-\_\-bm)}\label{group__udd__xmega__usb__group_ga8600551b15689155eb66d7e723c5dde6}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gaef343c1d4fcc6dcfa70fd4e278a3f210}{\#define {\bfseries udd\-\_\-disable\-\_\-busevt\-\_\-interrupt}()~(U\-S\-B\-\_\-\-I\-N\-T\-C\-T\-R\-L\-A \&= $\sim$U\-S\-B\-\_\-\-B\-U\-S\-E\-V\-I\-E\-\_\-bm)}\label{group__udd__xmega__usb__group_gaef343c1d4fcc6dcfa70fd4e278a3f210}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gaa10808b5aca104b7ea9aa83757ef3fa7}{\#define {\bfseries udd\-\_\-is\-\_\-setup\-\_\-event}()~(U\-S\-B\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S\-B\-C\-L\-R \& U\-S\-B\-\_\-\-S\-E\-T\-U\-P\-I\-F\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_gaa10808b5aca104b7ea9aa83757ef3fa7}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga37c1f3b1096f163c8df74c6da700b27f}{\#define {\bfseries udd\-\_\-ack\-\_\-setup\-\_\-event}()~(U\-S\-B\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S\-B\-C\-L\-R = U\-S\-B\-\_\-\-S\-E\-T\-U\-P\-I\-F\-\_\-bm)}\label{group__udd__xmega__usb__group_ga37c1f3b1096f163c8df74c6da700b27f}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga9973b54457a96b55f38289f26d114864}{\#define {\bfseries udd\-\_\-set\-\_\-setup\-\_\-event}()~(U\-S\-B\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S\-B\-S\-E\-T = U\-S\-B\-\_\-\-S\-E\-T\-U\-P\-I\-F\-\_\-bm)}\label{group__udd__xmega__usb__group_ga9973b54457a96b55f38289f26d114864}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga6fffe17f2db90bf7c4d8bb2e91462c20}{\#define {\bfseries udd\-\_\-enable\-\_\-setup\-\_\-interrupt}()~(U\-S\-B\-\_\-\-I\-N\-T\-C\-T\-R\-L\-B $|$= U\-S\-B\-\_\-\-S\-E\-T\-U\-P\-I\-E\-\_\-bm)}\label{group__udd__xmega__usb__group_ga6fffe17f2db90bf7c4d8bb2e91462c20}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga0eafda98d773c26cbed5bdea75a3d84f}{\#define {\bfseries udd\-\_\-disable\-\_\-setup\-\_\-interrupt}()~(U\-S\-B\-\_\-\-I\-N\-T\-C\-T\-R\-L\-B \&= $\sim$U\-S\-B\-\_\-\-S\-E\-T\-U\-P\-I\-E\-\_\-bm)}\label{group__udd__xmega__usb__group_ga0eafda98d773c26cbed5bdea75a3d84f}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga03050d605265e69f71a64ac033ae15b8}{\#define {\bfseries udd\-\_\-is\-\_\-tc\-\_\-event}()~(U\-S\-B\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S\-B\-C\-L\-R \& U\-S\-B\-\_\-\-T\-R\-N\-I\-F\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_ga03050d605265e69f71a64ac033ae15b8}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga264546cf9d1bc9eedb4541b910d80e95}{\#define {\bfseries udd\-\_\-ack\-\_\-tc\-\_\-event}()~(U\-S\-B\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S\-B\-C\-L\-R = U\-S\-B\-\_\-\-T\-R\-N\-I\-F\-\_\-bm)}\label{group__udd__xmega__usb__group_ga264546cf9d1bc9eedb4541b910d80e95}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga85eb5bb2e059c439220034993517023b}{\#define {\bfseries udd\-\_\-set\-\_\-tc\-\_\-event}()~(U\-S\-B\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S\-B\-S\-E\-T = U\-S\-B\-\_\-\-T\-R\-N\-I\-F\-\_\-bm)}\label{group__udd__xmega__usb__group_ga85eb5bb2e059c439220034993517023b}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gaa48973d78b4aefb73712d669d7ab9a06}{\#define {\bfseries udd\-\_\-enable\-\_\-tc\-\_\-interrupt}()~(U\-S\-B\-\_\-\-I\-N\-T\-C\-T\-R\-L\-B $|$= U\-S\-B\-\_\-\-T\-R\-N\-I\-E\-\_\-bm)}\label{group__udd__xmega__usb__group_gaa48973d78b4aefb73712d669d7ab9a06}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga98f8847bdcd737e53e3fb35188c8b749}{\#define {\bfseries udd\-\_\-disable\-\_\-tc\-\_\-interrupt}()~(U\-S\-B\-\_\-\-I\-N\-T\-C\-T\-R\-L\-B \&= $\sim$U\-S\-B\-\_\-\-T\-R\-N\-I\-E\-\_\-bm)}\label{group__udd__xmega__usb__group_ga98f8847bdcd737e53e3fb35188c8b749}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gad4bd1a0864df510048f5ab0c73cc113e}{\#define {\bfseries udd\-\_\-is\-\_\-overflow\-\_\-event}()~(U\-S\-B\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S\-A\-S\-E\-T \& U\-S\-B\-\_\-\-O\-V\-F\-I\-F\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_gad4bd1a0864df510048f5ab0c73cc113e}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gad742e99333404f09c5d5d3f2cf7afb32}{\#define {\bfseries udd\-\_\-ack\-\_\-overflow\-\_\-event}()~(U\-S\-B\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S\-A\-C\-L\-R = U\-S\-B\-\_\-\-O\-V\-F\-I\-F\-\_\-bm)}\label{group__udd__xmega__usb__group_gad742e99333404f09c5d5d3f2cf7afb32}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gae6e77b0743a10ffbf8e1c717de4ce299}{\#define {\bfseries udd\-\_\-set\-\_\-overflow\-\_\-event}()~(U\-S\-B\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S\-A\-S\-E\-T = U\-S\-B\-\_\-\-O\-V\-F\-I\-F\-\_\-bm)}\label{group__udd__xmega__usb__group_gae6e77b0743a10ffbf8e1c717de4ce299}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gaa426bbf9dc907992883875a28395db6a}{\#define {\bfseries udd\-\_\-enable\-\_\-overflow\-\_\-interrupt}()~(U\-S\-B\-\_\-\-I\-N\-T\-C\-T\-R\-L\-A $|$= U\-S\-B\-\_\-\-B\-U\-S\-E\-R\-R\-I\-E\-\_\-bm)}\label{group__udd__xmega__usb__group_gaa426bbf9dc907992883875a28395db6a}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gaba2c844631624a73489acd7802974d1d}{\#define {\bfseries udd\-\_\-disable\-\_\-overflow\-\_\-interrupt}()~(U\-S\-B\-\_\-\-I\-N\-T\-C\-T\-R\-L\-A \&= $\sim$U\-S\-B\-\_\-\-B\-U\-S\-E\-R\-R\-I\-E\-\_\-bm)}\label{group__udd__xmega__usb__group_gaba2c844631624a73489acd7802974d1d}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga5d2d7939b308fc9c9201895c42dbc175}{\#define {\bfseries udd\-\_\-is\-\_\-enable\-\_\-overflow\-\_\-interrupt}()~(U\-S\-B\-\_\-\-I\-N\-T\-C\-T\-R\-L\-A\&U\-S\-B\-\_\-\-B\-U\-S\-E\-R\-R\-I\-E\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_ga5d2d7939b308fc9c9201895c42dbc175}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gacc0a3f216212c9777367fd51b3ccc8fc}{\#define {\bfseries udd\-\_\-is\-\_\-underflow\-\_\-event}()~(U\-S\-B\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S\-A\-S\-E\-T \& U\-S\-B\-\_\-\-U\-N\-F\-I\-F\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_gacc0a3f216212c9777367fd51b3ccc8fc}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gaf2cb6444cfae9a388b4563292cc50ef4}{\#define {\bfseries udd\-\_\-ack\-\_\-underflow\-\_\-event}()~(U\-S\-B\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S\-A\-C\-L\-R = U\-S\-B\-\_\-\-U\-N\-F\-I\-F\-\_\-bm)}\label{group__udd__xmega__usb__group_gaf2cb6444cfae9a388b4563292cc50ef4}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gac0b6ba414c3dc39e5554e1a98c05a776}{\#define {\bfseries udd\-\_\-set\-\_\-underflow\-\_\-event}()~(U\-S\-B\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S\-A\-S\-E\-T = U\-S\-B\-\_\-\-U\-N\-F\-I\-F\-\_\-bm)}\label{group__udd__xmega__usb__group_gac0b6ba414c3dc39e5554e1a98c05a776}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga38f9d30defa87c5ceef9ee669960c3be}{\#define {\bfseries udd\-\_\-enable\-\_\-underflow\-\_\-interrupt}()~(U\-S\-B\-\_\-\-I\-N\-T\-C\-T\-R\-L\-A $|$= U\-S\-B\-\_\-\-B\-U\-S\-E\-R\-R\-I\-E\-\_\-bm)}\label{group__udd__xmega__usb__group_ga38f9d30defa87c5ceef9ee669960c3be}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gac2705083518a59b07cb016c5f778a487}{\#define {\bfseries udd\-\_\-disable\-\_\-underflow\-\_\-interrupt}()~(U\-S\-B\-\_\-\-I\-N\-T\-C\-T\-R\-L\-A \&= $\sim$U\-S\-B\-\_\-\-B\-U\-S\-E\-R\-R\-I\-E\-\_\-bm)}\label{group__udd__xmega__usb__group_gac2705083518a59b07cb016c5f778a487}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga30465c69b0462296cdbf5885fb7367c7}{\#define {\bfseries udd\-\_\-is\-\_\-enable\-\_\-underflow\-\_\-interrupt}()~(U\-S\-B\-\_\-\-I\-N\-T\-C\-T\-R\-L\-A\&U\-S\-B\-\_\-\-B\-U\-S\-E\-R\-R\-I\-E\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_ga30465c69b0462296cdbf5885fb7367c7}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga3ce6bf3f1364a3db5adad2d618459b48}{\#define {\bfseries udd\-\_\-is\-\_\-stall\-\_\-event}()~(U\-S\-B\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S\-A\-S\-E\-T \& U\-S\-B\-\_\-\-S\-T\-A\-L\-L\-I\-F\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_ga3ce6bf3f1364a3db5adad2d618459b48}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga5b5dd25a67eefeacf3a18570a8d96a31}{\#define {\bfseries udd\-\_\-ack\-\_\-stall\-\_\-event}()~(U\-S\-B\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S\-A\-C\-L\-R = U\-S\-B\-\_\-\-S\-T\-A\-L\-L\-I\-F\-\_\-bm)}\label{group__udd__xmega__usb__group_ga5b5dd25a67eefeacf3a18570a8d96a31}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga8645203295e1f4b04a3adc0bbe94781a}{\#define {\bfseries udd\-\_\-set\-\_\-stall\-\_\-event}()~(U\-S\-B\-\_\-\-I\-N\-T\-F\-L\-A\-G\-S\-A\-S\-E\-T = U\-S\-B\-\_\-\-S\-T\-A\-L\-L\-I\-F\-\_\-bm)}\label{group__udd__xmega__usb__group_ga8645203295e1f4b04a3adc0bbe94781a}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga4be43672478e21671274893dbfa14155}{\#define {\bfseries udd\-\_\-enable\-\_\-stall\-\_\-interrupt}()~(U\-S\-B\-\_\-\-I\-N\-T\-C\-T\-R\-L\-A $|$= U\-S\-B\-\_\-\-S\-T\-A\-L\-L\-I\-E\-\_\-bm)}\label{group__udd__xmega__usb__group_ga4be43672478e21671274893dbfa14155}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_gaf5c4d213b61e0a2e77a22c0c9599892d}{\#define {\bfseries udd\-\_\-disable\-\_\-stall\-\_\-interrupt}()~(U\-S\-B\-\_\-\-I\-N\-T\-C\-T\-R\-L\-A \&= $\sim$U\-S\-B\-\_\-\-S\-T\-A\-L\-L\-I\-E\-\_\-bm)}\label{group__udd__xmega__usb__group_gaf5c4d213b61e0a2e77a22c0c9599892d}
+
+\item 
+\hypertarget{group__udd__xmega__usb__group_ga86f7d78290f60ab088b29214f2746863}{\#define {\bfseries udd\-\_\-is\-\_\-enable\-\_\-stall\-\_\-interrupt}()~(U\-S\-B\-\_\-\-I\-N\-T\-C\-T\-R\-L\-A\&U\-S\-B\-\_\-\-S\-T\-A\-L\-L\-I\-E\-\_\-bm ? true \-: false)}\label{group__udd__xmega__usb__group_ga86f7d78290f60ab088b29214f2746863}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+U\-S\-B Driver header file for X\-M\-E\-G\-A products including U\-S\-B interface. Copyright (c) 2011-\/2014 Atmel Corporation. All rights reserved.

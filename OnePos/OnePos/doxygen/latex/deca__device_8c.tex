@@ -1,0 +1,892 @@
+\hypertarget{deca__device_8c}{\section{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/driver/deca\-\_\-device.c File Reference}
+\label{deca__device_8c}\index{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/driver/deca\-\_\-device.\-c@{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/driver/deca\-\_\-device.\-c}}
+}
+
+
+Decawave device configuration and control functions.  
+
+
+{\ttfamily \#include $<$assert.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}../include/deca\-\_\-types.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../include/deca\-\_\-param\-\_\-types.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../include/deca\-\_\-regs.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../include/deca\-\_\-device\-\_\-api.\-h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structdwt__local__data__t}{dwt\-\_\-local\-\_\-data\-\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{deca__device_8c_a010589037eade55b18f20b926ba264a7}{\#define {\bfseries F\-O\-R\-C\-E\-\_\-\-S\-Y\-S\-\_\-\-X\-T\-I}~0}\label{deca__device_8c_a010589037eade55b18f20b926ba264a7}
+
+\item 
+\hypertarget{deca__device_8c_ac221d4cf7229596db907b498bc32f3b9}{\#define {\bfseries E\-N\-A\-B\-L\-E\-\_\-\-A\-L\-L\-\_\-\-S\-E\-Q}~1}\label{deca__device_8c_ac221d4cf7229596db907b498bc32f3b9}
+
+\item 
+\hypertarget{deca__device_8c_a97b2504be8a616c03fe6c599556fd65b}{\#define {\bfseries F\-O\-R\-C\-E\-\_\-\-S\-Y\-S\-\_\-\-P\-L\-L}~2}\label{deca__device_8c_a97b2504be8a616c03fe6c599556fd65b}
+
+\item 
+\hypertarget{deca__device_8c_a776a03f15d8b282cf46f8fd06feb4b2f}{\#define {\bfseries R\-E\-A\-D\-\_\-\-A\-C\-C\-\_\-\-O\-N}~7}\label{deca__device_8c_a776a03f15d8b282cf46f8fd06feb4b2f}
+
+\item 
+\hypertarget{deca__device_8c_a7c6e63f591e4cc18c89bc8698f4609ea}{\#define {\bfseries R\-E\-A\-D\-\_\-\-A\-C\-C\-\_\-\-O\-F\-F}~8}\label{deca__device_8c_a7c6e63f591e4cc18c89bc8698f4609ea}
+
+\item 
+\hypertarget{deca__device_8c_ad0980165476f8cd9018b984c6a568fcf}{\#define {\bfseries F\-O\-R\-C\-E\-\_\-\-O\-T\-P\-\_\-\-O\-N}~11}\label{deca__device_8c_ad0980165476f8cd9018b984c6a568fcf}
+
+\item 
+\hypertarget{deca__device_8c_a357b3fe99717e5b53f9ba7bd1784e809}{\#define {\bfseries F\-O\-R\-C\-E\-\_\-\-O\-T\-P\-\_\-\-O\-F\-F}~12}\label{deca__device_8c_a357b3fe99717e5b53f9ba7bd1784e809}
+
+\item 
+\hypertarget{deca__device_8c_a6234c079d27cfada8bd5400f513a7d27}{\#define {\bfseries F\-O\-R\-C\-E\-\_\-\-T\-X\-\_\-\-P\-L\-L}~13}\label{deca__device_8c_a6234c079d27cfada8bd5400f513a7d27}
+
+\item 
+\hypertarget{deca__device_8c_a310c7fa573e2d12b9630503332da7d26}{\#define {\bfseries F\-O\-R\-C\-E\-\_\-\-L\-D\-E}~14}\label{deca__device_8c_a310c7fa573e2d12b9630503332da7d26}
+
+\item 
+\hypertarget{deca__device_8c_a201eb25e5a0058abb5a4433105170f5c}{\#define {\bfseries F\-C\-T\-R\-L\-\_\-\-A\-C\-K\-\_\-\-R\-E\-Q\-\_\-\-M\-A\-S\-K}~0x20}\label{deca__device_8c_a201eb25e5a0058abb5a4433105170f5c}
+
+\item 
+\hypertarget{deca__device_8c_a5f16628ed4764eece5d4da44a95355ab}{\#define {\bfseries F\-C\-T\-R\-L\-\_\-\-L\-E\-N\-\_\-\-M\-A\-X}~2}\label{deca__device_8c_a5f16628ed4764eece5d4da44a95355ab}
+
+\item 
+\hypertarget{deca__device_8c_a101a968eecb54ce0e8d886da091915d7}{\#define {\bfseries L\-D\-O\-T\-U\-N\-E\-\_\-\-A\-D\-D\-R\-E\-S\-S}~(0x04)}\label{deca__device_8c_a101a968eecb54ce0e8d886da091915d7}
+
+\item 
+\hypertarget{deca__device_8c_a20a9c6e55b79ee01f3d04b06ad3bf3c6}{\#define {\bfseries P\-A\-R\-T\-I\-D\-\_\-\-A\-D\-D\-R\-E\-S\-S}~(0x06)}\label{deca__device_8c_a20a9c6e55b79ee01f3d04b06ad3bf3c6}
+
+\item 
+\hypertarget{deca__device_8c_abade61f66f8f908c99196d93e9f9e93a}{\#define {\bfseries L\-O\-T\-I\-D\-\_\-\-A\-D\-D\-R\-E\-S\-S}~(0x07)}\label{deca__device_8c_abade61f66f8f908c99196d93e9f9e93a}
+
+\item 
+\hypertarget{deca__device_8c_a3196c054383e451ebd660242cb7b2b3a}{\#define {\bfseries V\-B\-A\-T\-\_\-\-A\-D\-D\-R\-E\-S\-S}~(0x08)}\label{deca__device_8c_a3196c054383e451ebd660242cb7b2b3a}
+
+\item 
+\hypertarget{deca__device_8c_ac1d7df51dca04440fb8f49d90ef43502}{\#define {\bfseries V\-T\-E\-M\-P\-\_\-\-A\-D\-D\-R\-E\-S\-S}~(0x09)}\label{deca__device_8c_ac1d7df51dca04440fb8f49d90ef43502}
+
+\item 
+\hypertarget{deca__device_8c_a81f8fa4cb2400d5acba5c0211ff98fa6}{\#define {\bfseries X\-T\-R\-I\-M\-\_\-\-A\-D\-D\-R\-E\-S\-S}~(0x1\-E)}\label{deca__device_8c_a81f8fa4cb2400d5acba5c0211ff98fa6}
+
+\item 
+\hypertarget{deca__device_8c_aa38fa01a63d66cf0199d07e381c63dc6}{\#define {\bfseries B20\-\_\-\-S\-I\-G\-N\-\_\-\-E\-X\-T\-E\-N\-D\-\_\-\-T\-E\-S\-T}~(0x00100000\-U\-L)}\label{deca__device_8c_aa38fa01a63d66cf0199d07e381c63dc6}
+
+\item 
+\hypertarget{deca__device_8c_a6106c3a6cf6b369d759aa41293bc9988}{\#define {\bfseries B20\-\_\-\-S\-I\-G\-N\-\_\-\-E\-X\-T\-E\-N\-D\-\_\-\-M\-A\-S\-K}~(0x\-F\-F\-F00000\-U\-L)}\label{deca__device_8c_a6106c3a6cf6b369d759aa41293bc9988}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{deca__device_8c_a36c25489dac7b83ddd1331ccf235d279}{void {\bfseries \-\_\-dwt\-\_\-enableclocks} (int clocks)}\label{deca__device_8c_a36c25489dac7b83ddd1331ccf235d279}
+
+\item 
+\hypertarget{deca__device_8c_a031e6bc47527a11af30c4e66b0dd81ca}{void {\bfseries \-\_\-dwt\-\_\-configlde} (int prf)}\label{deca__device_8c_a031e6bc47527a11af30c4e66b0dd81ca}
+
+\item 
+void \hyperlink{deca__device_8c_ab01d1d1b3cff9a349110611d9ccbd5a5}{\-\_\-dwt\-\_\-loaducodefromrom} (void)
+\begin{DoxyCompactList}\small\item\em load ucode from O\-T\-P M\-E\-M\-O\-R\-Y or R\-O\-M \end{DoxyCompactList}\item 
+\hypertarget{deca__device_8c_a37898d07a755384e63f6b56b40705f5f}{uint32 {\bfseries \-\_\-dwt\-\_\-otpread} (uint32 address)}\label{deca__device_8c_a37898d07a755384e63f6b56b40705f5f}
+
+\item 
+\hypertarget{deca__device_8c_a5623a976649c9a1af2b33660a37677cc}{uint32 {\bfseries \-\_\-dwt\-\_\-otpprogword32} (uint32 data, uint16 address)}\label{deca__device_8c_a5623a976649c9a1af2b33660a37677cc}
+
+\item 
+void \hyperlink{deca__device_8c_a72ae86bde280af3cd6e4e76d85839c8a}{\-\_\-dwt\-\_\-aonarrayupload} (void)
+\begin{DoxyCompactList}\small\item\em This function uploads always on (A\-O\-N) data array and configuration. Thus if this function is used, then \-\_\-dwt\-\_\-aonconfigupload is not necessary. The D\-W1000 will go so S\-L\-E\-E\-P straight after this if the D\-W\-T\-\_\-\-S\-L\-P\-\_\-\-E\-N has been set. \end{DoxyCompactList}\item 
+\hypertarget{deca__device_8c_af9fda7816ecc5c2b638aef66651e194d}{int {\bfseries dwt\-\_\-setlocaldataptr} (unsigned int index)}\label{deca__device_8c_af9fda7816ecc5c2b638aef66651e194d}
+
+\item 
+\hypertarget{deca__device_8c_a07a99b44438cce30af436a30a285b649}{int {\bfseries dwt\-\_\-initialise} (uint16 config)}\label{deca__device_8c_a07a99b44438cce30af436a30a285b649}
+
+\item 
+uint8 \hyperlink{deca__device_8c_a449d68ec69add970bb8ff8d04a6bf48f}{dwt\-\_\-otprevision} (void)
+\begin{DoxyCompactList}\small\item\em This is used to return the read O\-T\-P revision. \end{DoxyCompactList}\item 
+\hypertarget{deca__device_8c_a81a0399390ff5b20243d31798b63298f}{void {\bfseries dwt\-\_\-setfinegraintxseq} (int enable)}\label{deca__device_8c_a81a0399390ff5b20243d31798b63298f}
+
+\item 
+\hypertarget{deca__device_8c_aa5c242cf040fcb492b647e3fd7636368}{void {\bfseries dwt\-\_\-setlnapamode} (int lna, int pa)}\label{deca__device_8c_aa5c242cf040fcb492b647e3fd7636368}
+
+\item 
+\hypertarget{deca__device_8c_ac51bddecb8029a3b80cc3f0c4c14faf1}{void {\bfseries dwt\-\_\-setgpiodirection} (uint32 gpio\-Num, uint32 direction)}\label{deca__device_8c_ac51bddecb8029a3b80cc3f0c4c14faf1}
+
+\item 
+\hypertarget{deca__device_8c_a88c3223bc55d32f99e9d27712533a590}{void {\bfseries dwt\-\_\-setgpiovalue} (uint32 gpio\-Num, uint32 value)}\label{deca__device_8c_a88c3223bc55d32f99e9d27712533a590}
+
+\item 
+uint32 \hyperlink{deca__device_8c_a279dc9c7e7a09a6da533b3922eef0511}{dwt\-\_\-getpartid} (void)
+\begin{DoxyCompactList}\small\item\em This is used to return the read part I\-D of the device. \end{DoxyCompactList}\item 
+uint32 \hyperlink{deca__device_8c_a4da01265ffc166c7011aca10e28ca149}{dwt\-\_\-getlotid} (void)
+\begin{DoxyCompactList}\small\item\em This is used to return the read lot I\-D of the device. \end{DoxyCompactList}\item 
+uint32 \hyperlink{deca__device_8c_a71615163f91308dc3a6525fe9cc43d49}{dwt\-\_\-readdevid} (void)
+\begin{DoxyCompactList}\small\item\em This is used to return the read device type and revision information of the D\-W1000 device (M\-P part is 0x\-D\-E\-C\-A0130) \end{DoxyCompactList}\item 
+\hypertarget{deca__device_8c_a7a15ec7ea20a923a9bed73b21853f7a5}{void {\bfseries dwt\-\_\-configuretxrf} (\hyperlink{structdwt__txconfig__t}{dwt\-\_\-txconfig\-\_\-t} $\ast$config)}\label{deca__device_8c_a7a15ec7ea20a923a9bed73b21853f7a5}
+
+\item 
+\hypertarget{deca__device_8c_ae5cc4d657af6f90a2a5634246e3f0681}{void {\bfseries dwt\-\_\-configure} (\hyperlink{structdwt__config__t}{dwt\-\_\-config\-\_\-t} $\ast$config)}\label{deca__device_8c_ae5cc4d657af6f90a2a5634246e3f0681}
+
+\item 
+\hypertarget{deca__device_8c_aee2624cc9a80e6815b914c13a31b13c4}{void {\bfseries dwt\-\_\-setrxantennadelay} (uint16 rx\-Delay)}\label{deca__device_8c_aee2624cc9a80e6815b914c13a31b13c4}
+
+\item 
+\hypertarget{deca__device_8c_adae40bd196107a112dfccad8221a27c6}{void {\bfseries dwt\-\_\-settxantennadelay} (uint16 tx\-Delay)}\label{deca__device_8c_adae40bd196107a112dfccad8221a27c6}
+
+\item 
+\hypertarget{deca__device_8c_a5fa4fd0ade437467cf22853a671a9c1a}{int {\bfseries dwt\-\_\-writetxdata} (uint16 tx\-Frame\-Length, uint8 $\ast$tx\-Frame\-Bytes, uint16 tx\-Buffer\-Offset)}\label{deca__device_8c_a5fa4fd0ade437467cf22853a671a9c1a}
+
+\item 
+\hypertarget{deca__device_8c_a692ed1400d98590904a421ec193c705a}{void {\bfseries dwt\-\_\-writetxfctrl} (uint16 tx\-Frame\-Length, uint16 tx\-Buffer\-Offset, int ranging)}\label{deca__device_8c_a692ed1400d98590904a421ec193c705a}
+
+\item 
+\hypertarget{deca__device_8c_afcc4767611bb3072654065af44d8505c}{void {\bfseries dwt\-\_\-readrxdata} (uint8 $\ast$buffer, uint16 length, uint16 rx\-Buffer\-Offset)}\label{deca__device_8c_afcc4767611bb3072654065af44d8505c}
+
+\item 
+\hypertarget{deca__device_8c_a1afa7f33044c4855c3846c0ab4d9f6a2}{void {\bfseries dwt\-\_\-readaccdata} (uint8 $\ast$buffer, uint16 len, uint16 acc\-Offset)}\label{deca__device_8c_a1afa7f33044c4855c3846c0ab4d9f6a2}
+
+\item 
+int32 \hyperlink{deca__device_8c_a806800e18c9ece6a48faf92304e1ae66}{dwt\-\_\-readcarrierintegrator} (void)
+\begin{DoxyCompactList}\small\item\em This is used to read the R\-X carrier integrator value (relating to the frequency offset of the T\-X node) \end{DoxyCompactList}\item 
+\hypertarget{deca__device_8c_a653b4bab43c34f766c63d5796f5a97b7}{void {\bfseries dwt\-\_\-readdiagnostics} (\hyperlink{structdwt__rxdiag__t}{dwt\-\_\-rxdiag\-\_\-t} $\ast$diagnostics)}\label{deca__device_8c_a653b4bab43c34f766c63d5796f5a97b7}
+
+\item 
+\hypertarget{deca__device_8c_a53686602fb8ef92c9278f1e07ba49011}{void {\bfseries dwt\-\_\-readtxtimestamp} (uint8 $\ast$timestamp)}\label{deca__device_8c_a53686602fb8ef92c9278f1e07ba49011}
+
+\item 
+uint32 \hyperlink{deca__device_8c_a8f34d07f418ac078e8df76c61ed99361}{dwt\-\_\-readtxtimestamphi32} (void)
+\begin{DoxyCompactList}\small\item\em This is used to read the high 32-\/bits of the T\-X timestamp (adjusted with the programmed antenna delay) \end{DoxyCompactList}\item 
+uint32 \hyperlink{deca__device_8c_a4b44b7567843bfa4de73a70208a8041b}{dwt\-\_\-readtxtimestamplo32} (void)
+\begin{DoxyCompactList}\small\item\em This is used to read the low 32-\/bits of the T\-X timestamp (adjusted with the programmed antenna delay) \end{DoxyCompactList}\item 
+\hypertarget{deca__device_8c_a44aeaad5262b436720af7de5a205b7de}{void {\bfseries dwt\-\_\-readrxtimestamp} (uint8 $\ast$timestamp)}\label{deca__device_8c_a44aeaad5262b436720af7de5a205b7de}
+
+\item 
+uint32 \hyperlink{deca__device_8c_a7f986b481c32f8072661a210d7cecee2}{dwt\-\_\-readrxtimestamphi32} (void)
+\begin{DoxyCompactList}\small\item\em This is used to read the high 32-\/bits of the R\-X timestamp (adjusted with the programmed antenna delay) \end{DoxyCompactList}\item 
+uint32 \hyperlink{deca__device_8c_a635a2e85a8c1c75c7c45eadd844d3bfc}{dwt\-\_\-readrxtimestamplo32} (void)
+\begin{DoxyCompactList}\small\item\em This is used to read the low 32-\/bits of the R\-X timestamp (adjusted with the programmed antenna delay) \end{DoxyCompactList}\item 
+uint32 \hyperlink{deca__device_8c_a9a6512df196d2cc7839fd21293424296}{dwt\-\_\-readsystimestamphi32} (void)
+\begin{DoxyCompactList}\small\item\em This is used to read the high 32-\/bits of the system time. \end{DoxyCompactList}\item 
+\hypertarget{deca__device_8c_ad893179c232ecf40ed8acb99b246e806}{void {\bfseries dwt\-\_\-readsystime} (uint8 $\ast$timestamp)}\label{deca__device_8c_ad893179c232ecf40ed8acb99b246e806}
+
+\item 
+\hypertarget{deca__device_8c_ae2a2277455ab4ce3b8f5b9c6b397202a}{void {\bfseries dwt\-\_\-writetodevice} (uint16 record\-Number, uint16 index, uint32 length, const uint8 $\ast$buffer)}\label{deca__device_8c_ae2a2277455ab4ce3b8f5b9c6b397202a}
+
+\item 
+\hypertarget{deca__device_8c_a566b0fd0e815fcb8bfb1162b9d96a4f8}{void {\bfseries dwt\-\_\-readfromdevice} (uint16 record\-Number, uint16 index, uint32 length, uint8 $\ast$buffer)}\label{deca__device_8c_a566b0fd0e815fcb8bfb1162b9d96a4f8}
+
+\item 
+\hypertarget{deca__device_8c_afc523ef07e91de3b69d41a60d4d3b4d8}{uint32 {\bfseries dwt\-\_\-read32bitoffsetreg} (int reg\-File\-I\-D, int reg\-Offset)}\label{deca__device_8c_afc523ef07e91de3b69d41a60d4d3b4d8}
+
+\item 
+\hypertarget{deca__device_8c_ad05be2265afb31a2b4b39a68d55015c2}{uint16 {\bfseries dwt\-\_\-read16bitoffsetreg} (int reg\-File\-I\-D, int reg\-Offset)}\label{deca__device_8c_ad05be2265afb31a2b4b39a68d55015c2}
+
+\item 
+\hypertarget{deca__device_8c_aac580a2ba5fd7615cffa5748e5f272b0}{uint8 {\bfseries dwt\-\_\-read8bitoffsetreg} (int reg\-File\-I\-D, int reg\-Offset)}\label{deca__device_8c_aac580a2ba5fd7615cffa5748e5f272b0}
+
+\item 
+\hypertarget{deca__device_8c_a8a9292011735a9b8ddb95140acb1b489}{void {\bfseries dwt\-\_\-write8bitoffsetreg} (int reg\-File\-I\-D, int reg\-Offset, uint8 regval)}\label{deca__device_8c_a8a9292011735a9b8ddb95140acb1b489}
+
+\item 
+\hypertarget{deca__device_8c_a05add9cc285fb2ee2c478e5f47ffe473}{void {\bfseries dwt\-\_\-write16bitoffsetreg} (int reg\-File\-I\-D, int reg\-Offset, uint16 regval)}\label{deca__device_8c_a05add9cc285fb2ee2c478e5f47ffe473}
+
+\item 
+\hypertarget{deca__device_8c_a96d6d2d0c9aa557ad70ccc8a4fc96a47}{void {\bfseries dwt\-\_\-write32bitoffsetreg} (int reg\-File\-I\-D, int reg\-Offset, uint32 regval)}\label{deca__device_8c_a96d6d2d0c9aa557ad70ccc8a4fc96a47}
+
+\item 
+\hypertarget{deca__device_8c_a767619f1a1690ec817161838c58d59d9}{void {\bfseries dwt\-\_\-enableframefilter} (uint16 enable)}\label{deca__device_8c_a767619f1a1690ec817161838c58d59d9}
+
+\item 
+\hypertarget{deca__device_8c_adf1cef9c9cca3369173caa63946858cb}{void {\bfseries dwt\-\_\-setpanid} (uint16 pan\-I\-D)}\label{deca__device_8c_adf1cef9c9cca3369173caa63946858cb}
+
+\item 
+\hypertarget{deca__device_8c_a22f83b5f7fded176be4b0526af93ff48}{void {\bfseries dwt\-\_\-setaddress16} (uint16 short\-Address)}\label{deca__device_8c_a22f83b5f7fded176be4b0526af93ff48}
+
+\item 
+\hypertarget{deca__device_8c_acc7fd66b9522ee84bf223818b5205e53}{void {\bfseries dwt\-\_\-seteui} (uint8 $\ast$eui64)}\label{deca__device_8c_acc7fd66b9522ee84bf223818b5205e53}
+
+\item 
+\hypertarget{deca__device_8c_adc969fa8d69383f4ec5f8da40dbda3c2}{void {\bfseries dwt\-\_\-geteui} (uint8 $\ast$eui64)}\label{deca__device_8c_adc969fa8d69383f4ec5f8da40dbda3c2}
+
+\item 
+\hypertarget{deca__device_8c_a4ee02e809454d45fc829e9c7d4c55884}{void {\bfseries dwt\-\_\-otpread} (uint32 address, uint32 $\ast$array, uint8 length)}\label{deca__device_8c_a4ee02e809454d45fc829e9c7d4c55884}
+
+\item 
+\hypertarget{deca__device_8c_acf21cb702ed5a240f1aa2efa18f91af9}{uint32 {\bfseries \-\_\-dwt\-\_\-otpsetmrregs} (int mode)}\label{deca__device_8c_acf21cb702ed5a240f1aa2efa18f91af9}
+
+\item 
+int \hyperlink{deca__device_8c_a50013ca8af97f9884dd79593c7b13710}{dwt\-\_\-otpwriteandverify} (uint32 value, uint16 address)
+\item 
+void \hyperlink{deca__device_8c_a3ba827d1abd05acb8dc36dde30a1f02a}{\-\_\-dwt\-\_\-aonconfigupload} (void)
+\begin{DoxyCompactList}\small\item\em This function uploads always on (A\-O\-N) configuration, as set in the A\-O\-N\-\_\-\-C\-F\-G0\-\_\-\-O\-F\-F\-S\-E\-T register. \end{DoxyCompactList}\item 
+void \hyperlink{deca__device_8c_a417371cd802327a2535444dbbf3588b3}{dwt\-\_\-entersleep} (void)
+\begin{DoxyCompactList}\small\item\em This function puts the device into deep sleep or sleep. dwt\-\_\-configuresleep() should be called first to configure the sleep and on-\/wake/wake-\/up parameters. \end{DoxyCompactList}\item 
+\hypertarget{deca__device_8c_a4e5df7aa58d54bd47d6d585be971a9a8}{void {\bfseries dwt\-\_\-configuresleepcnt} (uint16 sleepcnt)}\label{deca__device_8c_a4e5df7aa58d54bd47d6d585be971a9a8}
+
+\item 
+uint16 \hyperlink{deca__device_8c_ae65961c17c82a18361c575328f357c86}{dwt\-\_\-calibratesleepcnt} (void)
+\begin{DoxyCompactList}\small\item\em calibrates the local oscillator as its frequency can vary between 7 and 13k\-Hz depending on temp and voltage \end{DoxyCompactList}\item 
+\hypertarget{deca__device_8c_a5be2c3541b6b5f684a1fa7bd48e2baac}{void {\bfseries dwt\-\_\-configuresleep} (uint16 mode, uint8 wake)}\label{deca__device_8c_a5be2c3541b6b5f684a1fa7bd48e2baac}
+
+\item 
+void \hyperlink{deca__device_8c_afcdf3884c77becf8c5948844dc0fc464}{dwt\-\_\-entersleepaftertx} (int enable)
+\begin{DoxyCompactList}\small\item\em sets the auto T\-X to sleep bit. This means that after a frame transmission the device will enter deep sleep mode. The dwt\-\_\-configuresleep() function needs to be called before this to configure the on-\/wake settings \end{DoxyCompactList}\item 
+\hypertarget{deca__device_8c_a443a4de48862bc328443a744abcc93a7}{int {\bfseries dwt\-\_\-spicswakeup} (uint8 $\ast$buff, uint16 length)}\label{deca__device_8c_a443a4de48862bc328443a744abcc93a7}
+
+\item 
+\hypertarget{deca__device_8c_afe7823c8312817f644bb3477b2fadff2}{void {\bfseries dwt\-\_\-loadopsettabfromotp} (uint8 ops\-\_\-sel)}\label{deca__device_8c_afe7823c8312817f644bb3477b2fadff2}
+
+\item 
+\hypertarget{deca__device_8c_ac8174986655fe20117216ecbb6e77b64}{void {\bfseries dwt\-\_\-setsmarttxpower} (int enable)}\label{deca__device_8c_ac8174986655fe20117216ecbb6e77b64}
+
+\item 
+\hypertarget{deca__device_8c_a1963cc02fc45ce24d84c14f35158c655}{void {\bfseries dwt\-\_\-enableautoack} (uint8 response\-Delay\-Time)}\label{deca__device_8c_a1963cc02fc45ce24d84c14f35158c655}
+
+\item 
+\hypertarget{deca__device_8c_a16807dbb3e9c10728cd82233f8ae2a46}{void {\bfseries dwt\-\_\-setdblrxbuffmode} (int enable)}\label{deca__device_8c_a16807dbb3e9c10728cd82233f8ae2a46}
+
+\item 
+\hypertarget{deca__device_8c_a8cf2d150d142fa90aff6a720a82a207d}{void {\bfseries dwt\-\_\-setrxaftertxdelay} (uint32 rx\-Delay\-Time)}\label{deca__device_8c_a8cf2d150d142fa90aff6a720a82a207d}
+
+\item 
+\hypertarget{deca__device_8c_a4bd5030efd31e3cfc74a4ee916595f03}{void {\bfseries dwt\-\_\-setcallbacks} (dwt\-\_\-cb\-\_\-t cb\-Tx\-Done, dwt\-\_\-cb\-\_\-t cb\-Rx\-Ok, dwt\-\_\-cb\-\_\-t cb\-Rx\-To, dwt\-\_\-cb\-\_\-t cb\-Rx\-Err)}\label{deca__device_8c_a4bd5030efd31e3cfc74a4ee916595f03}
+
+\item 
+uint8 \hyperlink{deca__device_8c_ac679259177f11907876999e5a2d60ca7}{dwt\-\_\-checkirq} (void)
+\begin{DoxyCompactList}\small\item\em This function checks if the I\-R\-Q line is active -\/ this is used instead of interrupt handler. \end{DoxyCompactList}\item 
+void \hyperlink{deca__device_8c_af3dfaa11c37aa4b6407adf6bd644049c}{dwt\-\_\-isr} (void)
+\begin{DoxyCompactList}\small\item\em This is the D\-W1000's general Interrupt Service Routine. It will process/report the following events\-: \end{DoxyCompactList}\item 
+\hypertarget{deca__device_8c_ab46fe6fb51a5b598d054ccf39407b45d}{void {\bfseries dwt\-\_\-lowpowerlistenisr} (void)}\label{deca__device_8c_ab46fe6fb51a5b598d054ccf39407b45d}
+
+\item 
+\hypertarget{deca__device_8c_a71824bebc701ade822aabe2a36a94250}{void {\bfseries dwt\-\_\-setleds} (uint8 mode)}\label{deca__device_8c_a71824bebc701ade822aabe2a36a94250}
+
+\item 
+void \hyperlink{deca__device_8c_a76c7f5a4081051ff10a4a56543463bf9}{\-\_\-dwt\-\_\-disablesequencing} (void)
+\begin{DoxyCompactList}\small\item\em This function disables the T\-X blocks sequencing, it disables P\-M\-S\-C control of R\-F blocks, system clock is also set to X\-T\-A\-L. \end{DoxyCompactList}\item 
+\hypertarget{deca__device_8c_a229985f938318965d4444b75bf9462e2}{void {\bfseries dwt\-\_\-setdelayedtrxtime} (uint32 starttime)}\label{deca__device_8c_a229985f938318965d4444b75bf9462e2}
+
+\item 
+\hypertarget{deca__device_8c_a20fc28809096d225da061391dc36a36c}{int {\bfseries dwt\-\_\-starttx} (uint8 mode)}\label{deca__device_8c_a20fc28809096d225da061391dc36a36c}
+
+\item 
+void \hyperlink{deca__device_8c_a9a7d02a4dcc1a3b8d787b43dc70c50c2}{dwt\-\_\-forcetrxoff} (void)
+\begin{DoxyCompactList}\small\item\em This is used to turn off the transceiver. \end{DoxyCompactList}\item 
+void \hyperlink{deca__device_8c_adf96d50819a30315bf809595af4b92ce}{dwt\-\_\-syncrxbufptrs} (void)
+\begin{DoxyCompactList}\small\item\em this function synchronizes rx buffer pointers need to make sure that the host/\-I\-C buffer pointers are aligned before starting R\-X \end{DoxyCompactList}\item 
+\hypertarget{deca__device_8c_aee8df9a03a45cf74edd3487943ccf8c2}{void {\bfseries dwt\-\_\-setsniffmode} (int enable, uint8 time\-On, uint8 time\-Off)}\label{deca__device_8c_aee8df9a03a45cf74edd3487943ccf8c2}
+
+\item 
+\hypertarget{deca__device_8c_a72076f1a9919ef35672eabce5a23cae4}{void {\bfseries dwt\-\_\-setlowpowerlistening} (int enable)}\label{deca__device_8c_a72076f1a9919ef35672eabce5a23cae4}
+
+\item 
+\hypertarget{deca__device_8c_ac8b8cfd4518d7dd5dfb74a5d346a2531}{void {\bfseries dwt\-\_\-setsnoozetime} (uint8 snooze\-\_\-time)}\label{deca__device_8c_ac8b8cfd4518d7dd5dfb74a5d346a2531}
+
+\item 
+\hypertarget{deca__device_8c_ab67c3c7785290971b47204e4f784c80f}{int {\bfseries dwt\-\_\-rxenable} (int mode)}\label{deca__device_8c_ab67c3c7785290971b47204e4f784c80f}
+
+\item 
+\hypertarget{deca__device_8c_ad4f44358a39d514e1d6a83e519f7cab6}{void {\bfseries dwt\-\_\-setrxtimeout} (uint16 time)}\label{deca__device_8c_ad4f44358a39d514e1d6a83e519f7cab6}
+
+\item 
+\hypertarget{deca__device_8c_a73304dc6734f8875546721da605a0fd3}{void {\bfseries dwt\-\_\-setpreambledetecttimeout} (uint16 timeout)}\label{deca__device_8c_a73304dc6734f8875546721da605a0fd3}
+
+\item 
+\hypertarget{deca__device_8c_aa546722e6f81158e33ddd255c5658b4d}{void {\bfseries dwt\-\_\-setinterrupt} (uint32 bitmask, uint8 enable)}\label{deca__device_8c_aa546722e6f81158e33ddd255c5658b4d}
+
+\item 
+\hypertarget{deca__device_8c_ae44706401ccd1e20173d59b1c1e4cfca}{void {\bfseries dwt\-\_\-configeventcounters} (int enable)}\label{deca__device_8c_ae44706401ccd1e20173d59b1c1e4cfca}
+
+\item 
+\hypertarget{deca__device_8c_a11f462ab243c702b3195eb09311f9c59}{void {\bfseries dwt\-\_\-readeventcounters} (\hyperlink{structdwt__deviceentcnts__t}{dwt\-\_\-deviceentcnts\-\_\-t} $\ast$counters)}\label{deca__device_8c_a11f462ab243c702b3195eb09311f9c59}
+
+\item 
+void \hyperlink{deca__device_8c_a022a50ff2324931bc307843cf9892f55}{dwt\-\_\-rxreset} (void)
+\begin{DoxyCompactList}\small\item\em this function resets the receiver of the D\-W1000 \end{DoxyCompactList}\item 
+void \hyperlink{deca__device_8c_a7c9d32099005e42186dc78e7c7d0f4e7}{dwt\-\_\-softreset} (void)
+\begin{DoxyCompactList}\small\item\em this function resets the D\-W1000 \end{DoxyCompactList}\item 
+\hypertarget{deca__device_8c_a2f16202d8de9de6599b36c090222a9e7}{void {\bfseries dwt\-\_\-setxtaltrim} (uint8 value)}\label{deca__device_8c_a2f16202d8de9de6599b36c090222a9e7}
+
+\item 
+uint8 \hyperlink{deca__device_8c_a5ebd84296b31726f9f1d1cf5a3a39853}{dwt\-\_\-getinitxtaltrim} (void)
+\begin{DoxyCompactList}\small\item\em This function returns the value of X\-T\-A\-L trim that has been applied during initialisation (dwt\-\_\-init). This can be either the value read in O\-T\-P memory or a default value. \end{DoxyCompactList}\item 
+\hypertarget{deca__device_8c_a63b34b93d2c3f4935ad21440e159ce7d}{void {\bfseries dwt\-\_\-configcwmode} (uint8 chan)}\label{deca__device_8c_a63b34b93d2c3f4935ad21440e159ce7d}
+
+\item 
+\hypertarget{deca__device_8c_a9401b5091d021c64738391d578e42de4}{void {\bfseries dwt\-\_\-configcontinuousframemode} (uint32 framerepetitionrate)}\label{deca__device_8c_a9401b5091d021c64738391d578e42de4}
+
+\item 
+\hypertarget{deca__device_8c_a2e375cf05af5e71b545ed035c48a25e6}{uint16 {\bfseries dwt\-\_\-readtempvbat} (uint8 fast\-S\-P\-I)}\label{deca__device_8c_a2e375cf05af5e71b545ed035c48a25e6}
+
+\item 
+uint8 \hyperlink{deca__device_8c_a3e25788832c76103945f86c003efe701}{dwt\-\_\-readwakeuptemp} (void)
+\begin{DoxyCompactList}\small\item\em this function reads the temperature of the D\-W1000 that was sampled on waking from Sleep/\-Deepsleep. They are not current values, but read on last wakeup if D\-W\-T\-\_\-\-T\-A\-N\-D\-V bit is set in mode parameter of dwt\-\_\-configuresleep \end{DoxyCompactList}\item 
+uint8 \hyperlink{deca__device_8c_a32943bde01402954e5f378e25b009baa}{dwt\-\_\-readwakeupvbat} (void)
+\begin{DoxyCompactList}\small\item\em this function reads the battery voltage of the D\-W1000 that was sampled on waking from Sleep/\-Deepsleep. They are not current values, but read on last wakeup if D\-W\-T\-\_\-\-T\-A\-N\-D\-V bit is set in mode parameter of dwt\-\_\-configuresleep \end{DoxyCompactList}\item 
+\hypertarget{deca__device_8c_aa78da8fb250935be99b2205705c69bcc}{uint32 {\bfseries dwt\-\_\-calcbandwidthtempadj} (uint16 target\-\_\-count)}\label{deca__device_8c_aa78da8fb250935be99b2205705c69bcc}
+
+\item 
+\hypertarget{deca__device_8c_ad4e8113e83996b44a25deef51999f410}{uint32 {\bfseries \-\_\-dwt\-\_\-computetxpowersetting} (uint32 ref\-\_\-powerreg, int32 power\-\_\-adj)}\label{deca__device_8c_ad4e8113e83996b44a25deef51999f410}
+
+\item 
+\hypertarget{deca__device_8c_a89f805f666e166265419e69e408760db}{uint32 {\bfseries dwt\-\_\-calcpowertempadj} (uint8 channel, uint32 ref\-\_\-powerreg, double curr\-\_\-temp, double ref\-\_\-temp)}\label{deca__device_8c_a89f805f666e166265419e69e408760db}
+
+\item 
+\hypertarget{deca__device_8c_acc5a1d5d97a20d24ca8cf1f101643208}{uint16 {\bfseries dwt\-\_\-calcpgcount} (uint8 pgdly)}\label{deca__device_8c_acc5a1d5d97a20d24ca8cf1f101643208}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Decawave device configuration and control functions. 
+
+
+
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+Copyright 2013 (c) Decawave Ltd, Dublin, Ireland.
+
+All rights reserved. 
+
+\subsection{Function Documentation}
+\hypertarget{deca__device_8c_a72ae86bde280af3cd6e4e76d85839c8a}{\index{deca\-\_\-device.\-c@{deca\-\_\-device.\-c}!\-\_\-dwt\-\_\-aonarrayupload@{\-\_\-dwt\-\_\-aonarrayupload}}
+\index{\-\_\-dwt\-\_\-aonarrayupload@{\-\_\-dwt\-\_\-aonarrayupload}!deca_device.c@{deca\-\_\-device.\-c}}
+\subsubsection[{\-\_\-dwt\-\_\-aonarrayupload}]{\setlength{\rightskip}{0pt plus 5cm}void \-\_\-dwt\-\_\-aonarrayupload (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{deca__device_8c_a72ae86bde280af3cd6e4e76d85839c8a}
+
+
+This function uploads always on (A\-O\-N) data array and configuration. Thus if this function is used, then \-\_\-dwt\-\_\-aonconfigupload is not necessary. The D\-W1000 will go so S\-L\-E\-E\-P straight after this if the D\-W\-T\-\_\-\-S\-L\-P\-\_\-\-E\-N has been set. 
+
+
+
+
+
+input parameters
+
+output parameters
+
+no return value \hypertarget{deca__device_8c_a3ba827d1abd05acb8dc36dde30a1f02a}{\index{deca\-\_\-device.\-c@{deca\-\_\-device.\-c}!\-\_\-dwt\-\_\-aonconfigupload@{\-\_\-dwt\-\_\-aonconfigupload}}
+\index{\-\_\-dwt\-\_\-aonconfigupload@{\-\_\-dwt\-\_\-aonconfigupload}!deca_device.c@{deca\-\_\-device.\-c}}
+\subsubsection[{\-\_\-dwt\-\_\-aonconfigupload}]{\setlength{\rightskip}{0pt plus 5cm}\-\_\-dwt\-\_\-aonconfigupload (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{deca__device_8c_a3ba827d1abd05acb8dc36dde30a1f02a}
+
+
+This function uploads always on (A\-O\-N) configuration, as set in the A\-O\-N\-\_\-\-C\-F\-G0\-\_\-\-O\-F\-F\-S\-E\-T register. 
+
+
+
+
+
+input parameters
+
+output parameters
+
+no return value \hypertarget{deca__device_8c_a76c7f5a4081051ff10a4a56543463bf9}{\index{deca\-\_\-device.\-c@{deca\-\_\-device.\-c}!\-\_\-dwt\-\_\-disablesequencing@{\-\_\-dwt\-\_\-disablesequencing}}
+\index{\-\_\-dwt\-\_\-disablesequencing@{\-\_\-dwt\-\_\-disablesequencing}!deca_device.c@{deca\-\_\-device.\-c}}
+\subsubsection[{\-\_\-dwt\-\_\-disablesequencing}]{\setlength{\rightskip}{0pt plus 5cm}\-\_\-dwt\-\_\-disablesequencing (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{deca__device_8c_a76c7f5a4081051ff10a4a56543463bf9}
+
+
+This function disables the T\-X blocks sequencing, it disables P\-M\-S\-C control of R\-F blocks, system clock is also set to X\-T\-A\-L. 
+
+
+
+
+
+input parameters none
+
+output parameters none
+
+no return value \hypertarget{deca__device_8c_ab01d1d1b3cff9a349110611d9ccbd5a5}{\index{deca\-\_\-device.\-c@{deca\-\_\-device.\-c}!\-\_\-dwt\-\_\-loaducodefromrom@{\-\_\-dwt\-\_\-loaducodefromrom}}
+\index{\-\_\-dwt\-\_\-loaducodefromrom@{\-\_\-dwt\-\_\-loaducodefromrom}!deca_device.c@{deca\-\_\-device.\-c}}
+\subsubsection[{\-\_\-dwt\-\_\-loaducodefromrom}]{\setlength{\rightskip}{0pt plus 5cm}void \-\_\-dwt\-\_\-loaducodefromrom (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{deca__device_8c_ab01d1d1b3cff9a349110611d9ccbd5a5}
+
+
+load ucode from O\-T\-P M\-E\-M\-O\-R\-Y or R\-O\-M 
+
+
+
+
+
+input parameters
+
+output parameters
+
+no return value \hypertarget{deca__device_8c_ae65961c17c82a18361c575328f357c86}{\index{deca\-\_\-device.\-c@{deca\-\_\-device.\-c}!dwt\-\_\-calibratesleepcnt@{dwt\-\_\-calibratesleepcnt}}
+\index{dwt\-\_\-calibratesleepcnt@{dwt\-\_\-calibratesleepcnt}!deca_device.c@{deca\-\_\-device.\-c}}
+\subsubsection[{dwt\-\_\-calibratesleepcnt}]{\setlength{\rightskip}{0pt plus 5cm}dwt\-\_\-calibratesleepcnt (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{deca__device_8c_ae65961c17c82a18361c575328f357c86}
+
+
+calibrates the local oscillator as its frequency can vary between 7 and 13k\-Hz depending on temp and voltage 
+
+
+
+
+
+N\-O\-T\-E\-: this function needs to be run before dwt\-\_\-configuresleepcnt, so that we know what the counter units are
+
+input parameters
+
+output parameters
+
+returns the number of X\-T\-A\-L/2 cycles per low-\/power oscillator cycle. L\-P O\-S\-C frequency = 19.\-2 M\-Hz/return value \hypertarget{deca__device_8c_ac679259177f11907876999e5a2d60ca7}{\index{deca\-\_\-device.\-c@{deca\-\_\-device.\-c}!dwt\-\_\-checkirq@{dwt\-\_\-checkirq}}
+\index{dwt\-\_\-checkirq@{dwt\-\_\-checkirq}!deca_device.c@{deca\-\_\-device.\-c}}
+\subsubsection[{dwt\-\_\-checkirq}]{\setlength{\rightskip}{0pt plus 5cm}dwt\-\_\-checkirq (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{deca__device_8c_ac679259177f11907876999e5a2d60ca7}
+
+
+This function checks if the I\-R\-Q line is active -\/ this is used instead of interrupt handler. 
+
+
+
+
+
+input parameters
+
+output parameters
+
+return value is 1 if the I\-R\-Q\-S bit is set and 0 otherwise \hypertarget{deca__device_8c_a417371cd802327a2535444dbbf3588b3}{\index{deca\-\_\-device.\-c@{deca\-\_\-device.\-c}!dwt\-\_\-entersleep@{dwt\-\_\-entersleep}}
+\index{dwt\-\_\-entersleep@{dwt\-\_\-entersleep}!deca_device.c@{deca\-\_\-device.\-c}}
+\subsubsection[{dwt\-\_\-entersleep}]{\setlength{\rightskip}{0pt plus 5cm}dwt\-\_\-entersleep (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{deca__device_8c_a417371cd802327a2535444dbbf3588b3}
+
+
+This function puts the device into deep sleep or sleep. dwt\-\_\-configuresleep() should be called first to configure the sleep and on-\/wake/wake-\/up parameters. 
+
+
+
+
+
+input parameters
+
+output parameters
+
+no return value \hypertarget{deca__device_8c_afcdf3884c77becf8c5948844dc0fc464}{\index{deca\-\_\-device.\-c@{deca\-\_\-device.\-c}!dwt\-\_\-entersleepaftertx@{dwt\-\_\-entersleepaftertx}}
+\index{dwt\-\_\-entersleepaftertx@{dwt\-\_\-entersleepaftertx}!deca_device.c@{deca\-\_\-device.\-c}}
+\subsubsection[{dwt\-\_\-entersleepaftertx}]{\setlength{\rightskip}{0pt plus 5cm}dwt\-\_\-entersleepaftertx (
+\begin{DoxyParamCaption}
+\item[{int}]{enable}
+\end{DoxyParamCaption}
+)}}\label{deca__device_8c_afcdf3884c77becf8c5948844dc0fc464}
+
+
+sets the auto T\-X to sleep bit. This means that after a frame transmission the device will enter deep sleep mode. The dwt\-\_\-configuresleep() function needs to be called before this to configure the on-\/wake settings 
+
+
+
+
+
+N\-O\-T\-E\-: the I\-R\-Q line has to be low/inactive (i.\-e. no pending events)
+
+input parameters 
+\begin{DoxyParams}{Parameters}
+{\em enable} & -\/ 1 to configure the device to enter deep sleep after T\-X, 0 -\/ disables the configuration\\
+\hline
+\end{DoxyParams}
+output parameters
+
+no return value \hypertarget{deca__device_8c_a9a7d02a4dcc1a3b8d787b43dc70c50c2}{\index{deca\-\_\-device.\-c@{deca\-\_\-device.\-c}!dwt\-\_\-forcetrxoff@{dwt\-\_\-forcetrxoff}}
+\index{dwt\-\_\-forcetrxoff@{dwt\-\_\-forcetrxoff}!deca_device.c@{deca\-\_\-device.\-c}}
+\subsubsection[{dwt\-\_\-forcetrxoff}]{\setlength{\rightskip}{0pt plus 5cm}dwt\-\_\-forcetrxoff (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{deca__device_8c_a9a7d02a4dcc1a3b8d787b43dc70c50c2}
+
+
+This is used to turn off the transceiver. 
+
+
+
+
+
+input parameters
+
+output parameters
+
+no return value \hypertarget{deca__device_8c_a5ebd84296b31726f9f1d1cf5a3a39853}{\index{deca\-\_\-device.\-c@{deca\-\_\-device.\-c}!dwt\-\_\-getinitxtaltrim@{dwt\-\_\-getinitxtaltrim}}
+\index{dwt\-\_\-getinitxtaltrim@{dwt\-\_\-getinitxtaltrim}!deca_device.c@{deca\-\_\-device.\-c}}
+\subsubsection[{dwt\-\_\-getinitxtaltrim}]{\setlength{\rightskip}{0pt plus 5cm}dwt\-\_\-getinitxtaltrim (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{deca__device_8c_a5ebd84296b31726f9f1d1cf5a3a39853}
+
+
+This function returns the value of X\-T\-A\-L trim that has been applied during initialisation (dwt\-\_\-init). This can be either the value read in O\-T\-P memory or a default value. 
+
+
+
+
+
+N\-O\-T\-E\-: The value returned by this function is the initial value only! It is not updated on dwt\-\_\-setxtaltrim calls.
+
+input parameters
+
+output parameters
+
+returns the X\-T\-A\-L trim value set upon initialisation \hypertarget{deca__device_8c_a4da01265ffc166c7011aca10e28ca149}{\index{deca\-\_\-device.\-c@{deca\-\_\-device.\-c}!dwt\-\_\-getlotid@{dwt\-\_\-getlotid}}
+\index{dwt\-\_\-getlotid@{dwt\-\_\-getlotid}!deca_device.c@{deca\-\_\-device.\-c}}
+\subsubsection[{dwt\-\_\-getlotid}]{\setlength{\rightskip}{0pt plus 5cm}dwt\-\_\-getlotid (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{deca__device_8c_a4da01265ffc166c7011aca10e28ca149}
+
+
+This is used to return the read lot I\-D of the device. 
+
+
+
+
+
+N\-O\-T\-E\-: dwt\-\_\-initialise() must be called prior to this function so that it can return a relevant value.
+
+input parameters
+
+output parameters
+
+returns the 32 bit lot I\-D value as programmed in the factory \hypertarget{deca__device_8c_a279dc9c7e7a09a6da533b3922eef0511}{\index{deca\-\_\-device.\-c@{deca\-\_\-device.\-c}!dwt\-\_\-getpartid@{dwt\-\_\-getpartid}}
+\index{dwt\-\_\-getpartid@{dwt\-\_\-getpartid}!deca_device.c@{deca\-\_\-device.\-c}}
+\subsubsection[{dwt\-\_\-getpartid}]{\setlength{\rightskip}{0pt plus 5cm}dwt\-\_\-getpartid (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{deca__device_8c_a279dc9c7e7a09a6da533b3922eef0511}
+
+
+This is used to return the read part I\-D of the device. 
+
+
+
+
+
+N\-O\-T\-E\-: dwt\-\_\-initialise() must be called prior to this function so that it can return a relevant value.
+
+input parameters
+
+output parameters
+
+returns the 32 bit part I\-D value as programmed in the factory \hypertarget{deca__device_8c_af3dfaa11c37aa4b6407adf6bd644049c}{\index{deca\-\_\-device.\-c@{deca\-\_\-device.\-c}!dwt\-\_\-isr@{dwt\-\_\-isr}}
+\index{dwt\-\_\-isr@{dwt\-\_\-isr}!deca_device.c@{deca\-\_\-device.\-c}}
+\subsubsection[{dwt\-\_\-isr}]{\setlength{\rightskip}{0pt plus 5cm}dwt\-\_\-isr (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{deca__device_8c_af3dfaa11c37aa4b6407adf6bd644049c}
+
+
+This is the D\-W1000's general Interrupt Service Routine. It will process/report the following events\-: 
+
+
+
+
+
+\begin{DoxyVerb}     - RXFCG (through cbRxOk callback)
+     - TXFRS (through cbTxDone callback)
+     - RXRFTO/RXPTO (through cbRxTo callback)
+     - RXPHE/RXFCE/RXRFSL/RXSFDTO/AFFREJ/LDEERR (through cbRxTo cbRxErr)
+   For all events, corresponding interrupts are cleared and necessary resets are performed. In addition, in the RXFCG case,
+   received frame information and frame control are read before calling the callback. If double buffering is activated, it
+   will also toggle between reception buffers once the reception callback processing has ended.
+
+   /!\ This version of the ISR supports double buffering but does not support automatic RX re-enabling!
+\end{DoxyVerb}
+
+
+N\-O\-T\-E\-: In P\-C based system using (Cheetah or A\-R\-M) U\-S\-B to S\-P\-I converter there can be no interrupts, however we still need something to take the place of it and operate in a polled way. In an embedded system this function should be configured to be triggered on any of the interrupts described above.
+
+input parameters
+
+output parameters
+
+no return value \hypertarget{deca__device_8c_a449d68ec69add970bb8ff8d04a6bf48f}{\index{deca\-\_\-device.\-c@{deca\-\_\-device.\-c}!dwt\-\_\-otprevision@{dwt\-\_\-otprevision}}
+\index{dwt\-\_\-otprevision@{dwt\-\_\-otprevision}!deca_device.c@{deca\-\_\-device.\-c}}
+\subsubsection[{dwt\-\_\-otprevision}]{\setlength{\rightskip}{0pt plus 5cm}dwt\-\_\-otprevision (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{deca__device_8c_a449d68ec69add970bb8ff8d04a6bf48f}
+
+
+This is used to return the read O\-T\-P revision. 
+
+
+
+
+
+N\-O\-T\-E\-: dwt\-\_\-initialise() must be called prior to this function so that it can return a relevant value.
+
+input parameters
+
+output parameters
+
+returns the read O\-T\-P revision value \hypertarget{deca__device_8c_a50013ca8af97f9884dd79593c7b13710}{\index{deca\-\_\-device.\-c@{deca\-\_\-device.\-c}!dwt\-\_\-otpwriteandverify@{dwt\-\_\-otpwriteandverify}}
+\index{dwt\-\_\-otpwriteandverify@{dwt\-\_\-otpwriteandverify}!deca_device.c@{deca\-\_\-device.\-c}}
+\subsubsection[{dwt\-\_\-otpwriteandverify}]{\setlength{\rightskip}{0pt plus 5cm}int dwt\-\_\-otpwriteandverify (
+\begin{DoxyParamCaption}
+\item[{uint32}]{value, }
+\item[{uint16}]{address}
+\end{DoxyParamCaption}
+)}}\label{deca__device_8c_a50013ca8af97f9884dd79593c7b13710}
+!!!!!!!!!!!!! N\-O\-T\-E !!!!!!!!!!!!!!!!!!!!! \hypertarget{deca__device_8c_a806800e18c9ece6a48faf92304e1ae66}{\index{deca\-\_\-device.\-c@{deca\-\_\-device.\-c}!dwt\-\_\-readcarrierintegrator@{dwt\-\_\-readcarrierintegrator}}
+\index{dwt\-\_\-readcarrierintegrator@{dwt\-\_\-readcarrierintegrator}!deca_device.c@{deca\-\_\-device.\-c}}
+\subsubsection[{dwt\-\_\-readcarrierintegrator}]{\setlength{\rightskip}{0pt plus 5cm}dwt\-\_\-readcarrierintegrator (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{deca__device_8c_a806800e18c9ece6a48faf92304e1ae66}
+
+
+This is used to read the R\-X carrier integrator value (relating to the frequency offset of the T\-X node) 
+
+
+
+
+
+N\-O\-T\-E\-: This is a 21-\/bit signed quantity, the function sign extends the most significant bit, which is bit \#20 (numbering from bit zero) to return a 32-\/bit signed integer value.
+
+input parameters -\/ N\-O\-N\-E
+
+return value -\/ the (int32) signed carrier integrator value. A positive value means the local R\-X clock is running faster than the remote T\-X device.
+
+
+
+
+
+input parameters -\/ N\-O\-N\-E
+
+return value -\/ the (int32) signed carrier integrator value. A positive value means the local R\-X clock is running faster than the remote T\-X device. \hypertarget{deca__device_8c_a71615163f91308dc3a6525fe9cc43d49}{\index{deca\-\_\-device.\-c@{deca\-\_\-device.\-c}!dwt\-\_\-readdevid@{dwt\-\_\-readdevid}}
+\index{dwt\-\_\-readdevid@{dwt\-\_\-readdevid}!deca_device.c@{deca\-\_\-device.\-c}}
+\subsubsection[{dwt\-\_\-readdevid}]{\setlength{\rightskip}{0pt plus 5cm}dwt\-\_\-readdevid (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{deca__device_8c_a71615163f91308dc3a6525fe9cc43d49}
+
+
+This is used to return the read device type and revision information of the D\-W1000 device (M\-P part is 0x\-D\-E\-C\-A0130) 
+
+
+
+
+
+input parameters
+
+output parameters
+
+returns the read value which for D\-W1000 is 0x\-D\-E\-C\-A0130 \hypertarget{deca__device_8c_a7f986b481c32f8072661a210d7cecee2}{\index{deca\-\_\-device.\-c@{deca\-\_\-device.\-c}!dwt\-\_\-readrxtimestamphi32@{dwt\-\_\-readrxtimestamphi32}}
+\index{dwt\-\_\-readrxtimestamphi32@{dwt\-\_\-readrxtimestamphi32}!deca_device.c@{deca\-\_\-device.\-c}}
+\subsubsection[{dwt\-\_\-readrxtimestamphi32}]{\setlength{\rightskip}{0pt plus 5cm}dwt\-\_\-readrxtimestamphi32 (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{deca__device_8c_a7f986b481c32f8072661a210d7cecee2}
+
+
+This is used to read the high 32-\/bits of the R\-X timestamp (adjusted with the programmed antenna delay) 
+
+
+
+
+
+input parameters
+
+output parameters
+
+returns high 32-\/bits of R\-X timestamp \hypertarget{deca__device_8c_a635a2e85a8c1c75c7c45eadd844d3bfc}{\index{deca\-\_\-device.\-c@{deca\-\_\-device.\-c}!dwt\-\_\-readrxtimestamplo32@{dwt\-\_\-readrxtimestamplo32}}
+\index{dwt\-\_\-readrxtimestamplo32@{dwt\-\_\-readrxtimestamplo32}!deca_device.c@{deca\-\_\-device.\-c}}
+\subsubsection[{dwt\-\_\-readrxtimestamplo32}]{\setlength{\rightskip}{0pt plus 5cm}dwt\-\_\-readrxtimestamplo32 (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{deca__device_8c_a635a2e85a8c1c75c7c45eadd844d3bfc}
+
+
+This is used to read the low 32-\/bits of the R\-X timestamp (adjusted with the programmed antenna delay) 
+
+
+
+
+
+input parameters
+
+output parameters
+
+returns low 32-\/bits of R\-X timestamp \hypertarget{deca__device_8c_a9a6512df196d2cc7839fd21293424296}{\index{deca\-\_\-device.\-c@{deca\-\_\-device.\-c}!dwt\-\_\-readsystimestamphi32@{dwt\-\_\-readsystimestamphi32}}
+\index{dwt\-\_\-readsystimestamphi32@{dwt\-\_\-readsystimestamphi32}!deca_device.c@{deca\-\_\-device.\-c}}
+\subsubsection[{dwt\-\_\-readsystimestamphi32}]{\setlength{\rightskip}{0pt plus 5cm}dwt\-\_\-readsystimestamphi32 (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{deca__device_8c_a9a6512df196d2cc7839fd21293424296}
+
+
+This is used to read the high 32-\/bits of the system time. 
+
+
+
+
+
+input parameters
+
+output parameters
+
+returns high 32-\/bits of system time timestamp \hypertarget{deca__device_8c_a8f34d07f418ac078e8df76c61ed99361}{\index{deca\-\_\-device.\-c@{deca\-\_\-device.\-c}!dwt\-\_\-readtxtimestamphi32@{dwt\-\_\-readtxtimestamphi32}}
+\index{dwt\-\_\-readtxtimestamphi32@{dwt\-\_\-readtxtimestamphi32}!deca_device.c@{deca\-\_\-device.\-c}}
+\subsubsection[{dwt\-\_\-readtxtimestamphi32}]{\setlength{\rightskip}{0pt plus 5cm}dwt\-\_\-readtxtimestamphi32 (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{deca__device_8c_a8f34d07f418ac078e8df76c61ed99361}
+
+
+This is used to read the high 32-\/bits of the T\-X timestamp (adjusted with the programmed antenna delay) 
+
+
+
+
+
+input parameters
+
+output parameters
+
+returns high 32-\/bits of T\-X timestamp \hypertarget{deca__device_8c_a4b44b7567843bfa4de73a70208a8041b}{\index{deca\-\_\-device.\-c@{deca\-\_\-device.\-c}!dwt\-\_\-readtxtimestamplo32@{dwt\-\_\-readtxtimestamplo32}}
+\index{dwt\-\_\-readtxtimestamplo32@{dwt\-\_\-readtxtimestamplo32}!deca_device.c@{deca\-\_\-device.\-c}}
+\subsubsection[{dwt\-\_\-readtxtimestamplo32}]{\setlength{\rightskip}{0pt plus 5cm}dwt\-\_\-readtxtimestamplo32 (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{deca__device_8c_a4b44b7567843bfa4de73a70208a8041b}
+
+
+This is used to read the low 32-\/bits of the T\-X timestamp (adjusted with the programmed antenna delay) 
+
+
+
+
+
+input parameters
+
+output parameters
+
+returns low 32-\/bits of T\-X timestamp \hypertarget{deca__device_8c_a3e25788832c76103945f86c003efe701}{\index{deca\-\_\-device.\-c@{deca\-\_\-device.\-c}!dwt\-\_\-readwakeuptemp@{dwt\-\_\-readwakeuptemp}}
+\index{dwt\-\_\-readwakeuptemp@{dwt\-\_\-readwakeuptemp}!deca_device.c@{deca\-\_\-device.\-c}}
+\subsubsection[{dwt\-\_\-readwakeuptemp}]{\setlength{\rightskip}{0pt plus 5cm}dwt\-\_\-readwakeuptemp (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{deca__device_8c_a3e25788832c76103945f86c003efe701}
+
+
+this function reads the temperature of the D\-W1000 that was sampled on waking from Sleep/\-Deepsleep. They are not current values, but read on last wakeup if D\-W\-T\-\_\-\-T\-A\-N\-D\-V bit is set in mode parameter of dwt\-\_\-configuresleep 
+
+
+
+
+
+input parameters\-:
+
+output parameters\-:
+
+returns\-: 8-\/bit raw temperature sensor value \hypertarget{deca__device_8c_a32943bde01402954e5f378e25b009baa}{\index{deca\-\_\-device.\-c@{deca\-\_\-device.\-c}!dwt\-\_\-readwakeupvbat@{dwt\-\_\-readwakeupvbat}}
+\index{dwt\-\_\-readwakeupvbat@{dwt\-\_\-readwakeupvbat}!deca_device.c@{deca\-\_\-device.\-c}}
+\subsubsection[{dwt\-\_\-readwakeupvbat}]{\setlength{\rightskip}{0pt plus 5cm}dwt\-\_\-readwakeupvbat (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{deca__device_8c_a32943bde01402954e5f378e25b009baa}
+
+
+this function reads the battery voltage of the D\-W1000 that was sampled on waking from Sleep/\-Deepsleep. They are not current values, but read on last wakeup if D\-W\-T\-\_\-\-T\-A\-N\-D\-V bit is set in mode parameter of dwt\-\_\-configuresleep 
+
+
+
+
+
+input parameters\-:
+
+output parameters\-:
+
+returns\-: 8-\/bit raw battery voltage sensor value \hypertarget{deca__device_8c_a022a50ff2324931bc307843cf9892f55}{\index{deca\-\_\-device.\-c@{deca\-\_\-device.\-c}!dwt\-\_\-rxreset@{dwt\-\_\-rxreset}}
+\index{dwt\-\_\-rxreset@{dwt\-\_\-rxreset}!deca_device.c@{deca\-\_\-device.\-c}}
+\subsubsection[{dwt\-\_\-rxreset}]{\setlength{\rightskip}{0pt plus 5cm}dwt\-\_\-rxreset (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{deca__device_8c_a022a50ff2324931bc307843cf9892f55}
+
+
+this function resets the receiver of the D\-W1000 
+
+
+
+
+
+input parameters\-:
+
+output parameters
+
+no return value \hypertarget{deca__device_8c_a7c9d32099005e42186dc78e7c7d0f4e7}{\index{deca\-\_\-device.\-c@{deca\-\_\-device.\-c}!dwt\-\_\-softreset@{dwt\-\_\-softreset}}
+\index{dwt\-\_\-softreset@{dwt\-\_\-softreset}!deca_device.c@{deca\-\_\-device.\-c}}
+\subsubsection[{dwt\-\_\-softreset}]{\setlength{\rightskip}{0pt plus 5cm}dwt\-\_\-softreset (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{deca__device_8c_a7c9d32099005e42186dc78e7c7d0f4e7}
+
+
+this function resets the D\-W1000 
+
+
+
+
+
+input parameters\-:
+
+output parameters
+
+no return value \hypertarget{deca__device_8c_adf96d50819a30315bf809595af4b92ce}{\index{deca\-\_\-device.\-c@{deca\-\_\-device.\-c}!dwt\-\_\-syncrxbufptrs@{dwt\-\_\-syncrxbufptrs}}
+\index{dwt\-\_\-syncrxbufptrs@{dwt\-\_\-syncrxbufptrs}!deca_device.c@{deca\-\_\-device.\-c}}
+\subsubsection[{dwt\-\_\-syncrxbufptrs}]{\setlength{\rightskip}{0pt plus 5cm}dwt\-\_\-syncrxbufptrs (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{deca__device_8c_adf96d50819a30315bf809595af4b92ce}
+
+
+this function synchronizes rx buffer pointers need to make sure that the host/\-I\-C buffer pointers are aligned before starting R\-X 
+
+
+
+
+
+input parameters\-:
+
+output parameters
+
+no return value 

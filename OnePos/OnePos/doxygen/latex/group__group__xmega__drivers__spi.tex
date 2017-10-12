@@ -1,0 +1,69 @@
+\hypertarget{group__group__xmega__drivers__spi}{\section{S\-P\-I -\/ Serial Peripheral Interface}
+\label{group__group__xmega__drivers__spi}\index{S\-P\-I -\/ Serial Peripheral Interface@{S\-P\-I -\/ Serial Peripheral Interface}}
+}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int8\-\_\-t \hyperlink{group__group__xmega__drivers__spi_ga5976c8907316cbdfef2ef8b227cc3acd}{spi\-\_\-xmega\-\_\-set\-\_\-baud\-\_\-div} (S\-P\-I\-\_\-t $\ast$spi, uint32\-\_\-t baudrate, uint32\-\_\-t clkper\-\_\-hz)
+\begin{DoxyCompactList}\small\item\em Calculates the S\-P\-I baudrate divider. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support}
+
+Driver for the Serial Peripheral Interface (S\-P\-I). Provides functions for configuring and using the S\-P\-I. 
+
+\subsection{Function Documentation}
+\hypertarget{group__group__xmega__drivers__spi_ga5976c8907316cbdfef2ef8b227cc3acd}{\index{S\-P\-I -\/ Serial Peripheral Interface@{S\-P\-I -\/ Serial Peripheral Interface}!spi\-\_\-xmega\-\_\-set\-\_\-baud\-\_\-div@{spi\-\_\-xmega\-\_\-set\-\_\-baud\-\_\-div}}
+\index{spi\-\_\-xmega\-\_\-set\-\_\-baud\-\_\-div@{spi\-\_\-xmega\-\_\-set\-\_\-baud\-\_\-div}!SPI - Serial Peripheral Interface@{S\-P\-I -\/ Serial Peripheral Interface}}
+\subsubsection[{spi\-\_\-xmega\-\_\-set\-\_\-baud\-\_\-div}]{\setlength{\rightskip}{0pt plus 5cm}int8\-\_\-t spi\-\_\-xmega\-\_\-set\-\_\-baud\-\_\-div (
+\begin{DoxyParamCaption}
+\item[{S\-P\-I\-\_\-t $\ast$}]{spi, }
+\item[{uint32\-\_\-t}]{baudrate, }
+\item[{uint32\-\_\-t}]{clkper\-\_\-hz}
+\end{DoxyParamCaption}
+)}}\label{group__group__xmega__drivers__spi_ga5976c8907316cbdfef2ef8b227cc3acd}
+
+
+Calculates the S\-P\-I baudrate divider. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em baudrate} & The expected baudrate on the S\-P\-I. \\
+\hline
+{\em clkper\-\_\-hz} & S\-P\-I module input clock frequency (Peripheral clock, Hz). \\
+\hline
+{\em spi} & The S\-P\-I module address\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Divider or error code. 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em $>$=0} & Success. \\
+\hline
+{\em $<$0} & Error.\\
+\hline
+\end{DoxyRetVals}
+Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support}
+
+
+\begin{DoxyParams}{Parameters}
+{\em baudrate} & The expected baudrate on the S\-P\-I. \\
+\hline
+{\em clkper\-\_\-hz} & S\-P\-I module input clock frequency (Peripheral clock, Hz). \\
+\hline
+{\em spi} & The S\-P\-I module address\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status of operation. 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em $>$=0} & Success. \\
+\hline
+{\em $<$0} & Error. \\
+\hline
+\end{DoxyRetVals}

@@ -1,0 +1,210 @@
+\hypertarget{group__udi__cdc__group__single__desc}{\section{U\-S\-B device descriptors for a single interface}
+\label{group__udi__cdc__group__single__desc}\index{U\-S\-B device descriptors for a single interface@{U\-S\-B device descriptors for a single interface}}
+}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structudc__desc__t}{udc\-\_\-desc\-\_\-t}
+\begin{DoxyCompactList}\small\item\em Structure for U\-S\-B Device Configuration Descriptor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga67d99007f1886e516e6705e19c38b541}{\#define \hyperlink{group__udi__cdc__group__single__desc_ga67d99007f1886e516e6705e19c38b541}{U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-E\-P\-\_\-\-C\-T\-R\-L\-\_\-\-S\-I\-Z\-E}~64}\label{group__udi__cdc__group__single__desc_ga67d99007f1886e516e6705e19c38b541}
+
+\begin{DoxyCompactList}\small\item\em Control endpoint size (Endpoint 0) \end{DoxyCompactList}\item 
+\hypertarget{group__udi__cdc__group__single__desc_gad079423a5116ebac5e26628447e0d0c1}{\#define \hyperlink{group__udi__cdc__group__single__desc_gad079423a5116ebac5e26628447e0d0c1}{U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-N\-B\-\_\-\-I\-N\-T\-E\-R\-F\-A\-C\-E}~(2$\ast$\hyperlink{conf__usb_8h_aecfe45ce8d46d80442a7d66111ac7c4e}{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-N\-B})}\label{group__udi__cdc__group__single__desc_gad079423a5116ebac5e26628447e0d0c1}
+
+\begin{DoxyCompactList}\small\item\em Two interfaces for a C\-D\-C device. \end{DoxyCompactList}\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga6bc3df68ee1deeb69cebfdfef7f8b685}{\#define {\bfseries U\-S\-B\-\_\-\-V\-E\-R\-S\-I\-O\-N}~\hyperlink{group__usb__protocol__group_ga9bccec980a4f41a481b389b4f0c9c690}{U\-S\-B\-\_\-\-V2\-\_\-0}}\label{group__udi__cdc__group__single__desc_ga6bc3df68ee1deeb69cebfdfef7f8b685}
+
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga9b0e293c7d3236bf90c42d808c2bc1ab}{C\-O\-M\-P\-I\-L\-E\-R\-\_\-\-W\-O\-R\-D\-\_\-\-A\-L\-I\-G\-N\-E\-D \\*
+\hyperlink{group__udc__desc__group_gae086959cec07a2e71ab069e25a51764f}{U\-D\-C\-\_\-\-D\-E\-S\-C\-\_\-\-S\-T\-O\-R\-A\-G\-E} \\*
+\hyperlink{structusb__dev__desc__t}{usb\-\_\-dev\-\_\-desc\-\_\-t} \hyperlink{group__udi__cdc__group__single__desc_ga9b0e293c7d3236bf90c42d808c2bc1ab}{udc\-\_\-device\-\_\-desc}}\label{group__udi__cdc__group__single__desc_ga9b0e293c7d3236bf90c42d808c2bc1ab}
+
+\begin{DoxyCompactList}\small\item\em U\-S\-B Device Descriptor. \end{DoxyCompactList}\item 
+C\-O\-M\-P\-I\-L\-E\-R\-\_\-\-W\-O\-R\-D\-\_\-\-A\-L\-I\-G\-N\-E\-D \\*
+\hyperlink{group__udc__desc__group_gae086959cec07a2e71ab069e25a51764f}{U\-D\-C\-\_\-\-D\-E\-S\-C\-\_\-\-S\-T\-O\-R\-A\-G\-E} \hyperlink{structudc__desc__t}{udc\-\_\-desc\-\_\-t} \hyperlink{group__udi__cdc__group__single__desc_ga694cd2202d59a342c2ed2e50f427a932}{udc\-\_\-desc\-\_\-fs}
+\begin{DoxyCompactList}\small\item\em U\-S\-B Device Configuration Descriptor filled for full and high speed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Default endpoint configuration}
+\label{_amgrpfeefcd6a14e97a2b99456a3d0ac882cb}%
+ The U\-S\-B\-B, U\-D\-P, U\-D\-P\-H\-S and U\-O\-T\-G\-H\-S interfaces can support up to 2 C\-D\-C interfaces. \begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga5aa2ea29be14f30efe861f8fb2b57041}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-I\-N\-\_\-0}~(1 $|$ \hyperlink{group__usb__protocol__group_gaae8411e95f26738326bc25a0161dde99}{U\-S\-B\-\_\-\-E\-P\-\_\-\-D\-I\-R\-\_\-\-I\-N})}\label{group__udi__cdc__group__single__desc_ga5aa2ea29be14f30efe861f8fb2b57041}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga58651b4198deb73eb64002ffdb268add}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-O\-U\-T\-\_\-0}~(2 $|$ \hyperlink{group__usb__protocol__group_ga0510b0a04d9cef144e4d9793310abccf}{U\-S\-B\-\_\-\-E\-P\-\_\-\-D\-I\-R\-\_\-\-O\-U\-T})}\label{group__udi__cdc__group__single__desc_ga58651b4198deb73eb64002ffdb268add}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga578e3200ca7fb6ef694e465e04653572}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-C\-O\-M\-M\-\_\-\-E\-P\-\_\-0}~(3 $|$ \hyperlink{group__usb__protocol__group_gaae8411e95f26738326bc25a0161dde99}{U\-S\-B\-\_\-\-E\-P\-\_\-\-D\-I\-R\-\_\-\-I\-N})}\label{group__udi__cdc__group__single__desc_ga578e3200ca7fb6ef694e465e04653572}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga0386772c35ae2b7dd579fdae90e3ede4}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-I\-N\-\_\-1}~(4 $|$ \hyperlink{group__usb__protocol__group_gaae8411e95f26738326bc25a0161dde99}{U\-S\-B\-\_\-\-E\-P\-\_\-\-D\-I\-R\-\_\-\-I\-N})}\label{group__udi__cdc__group__single__desc_ga0386772c35ae2b7dd579fdae90e3ede4}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga94ee4c3472eae7ca401adc2f234d4b3d}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-E\-P\-\_\-\-O\-U\-T\-\_\-1}~(5 $|$ \hyperlink{group__usb__protocol__group_ga0510b0a04d9cef144e4d9793310abccf}{U\-S\-B\-\_\-\-E\-P\-\_\-\-D\-I\-R\-\_\-\-O\-U\-T})}\label{group__udi__cdc__group__single__desc_ga94ee4c3472eae7ca401adc2f234d4b3d}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_gac55b3eaf95ce09b4440799c952e3f803}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-C\-O\-M\-M\-\_\-\-E\-P\-\_\-1}~(6 $|$ \hyperlink{group__usb__protocol__group_gaae8411e95f26738326bc25a0161dde99}{U\-S\-B\-\_\-\-E\-P\-\_\-\-D\-I\-R\-\_\-\-I\-N})}\label{group__udi__cdc__group__single__desc_gac55b3eaf95ce09b4440799c952e3f803}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga94a9c8812ccfd31f8b0398b666c54453}{\#define \hyperlink{group__udi__cdc__group__single__desc_ga94a9c8812ccfd31f8b0398b666c54453}{U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-M\-A\-X\-\_\-\-E\-P}~(3$\ast$\hyperlink{conf__usb_8h_aecfe45ce8d46d80442a7d66111ac7c4e}{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-P\-O\-R\-T\-\_\-\-N\-B})}\label{group__udi__cdc__group__single__desc_ga94a9c8812ccfd31f8b0398b666c54453}
+
+\begin{DoxyCompactList}\small\item\em 3 endpoints used per C\-D\-C interface \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Default Interface numbers}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_gaa72bb6864eae7093300538949bf5d2cf}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-C\-O\-M\-M\-\_\-\-I\-F\-A\-C\-E\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-0}~0}\label{group__udi__cdc__group__single__desc_gaa72bb6864eae7093300538949bf5d2cf}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga4900aae039b50c8b0304fb72bce2f08f}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-I\-F\-A\-C\-E\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-0}~1}\label{group__udi__cdc__group__single__desc_ga4900aae039b50c8b0304fb72bce2f08f}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga73aa3a846dcb14fe0db7d24537e17968}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-C\-O\-M\-M\-\_\-\-I\-F\-A\-C\-E\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-1}~2}\label{group__udi__cdc__group__single__desc_ga73aa3a846dcb14fe0db7d24537e17968}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_gace227616da1eec96b10427427336ae9d}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-I\-F\-A\-C\-E\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-1}~3}\label{group__udi__cdc__group__single__desc_gace227616da1eec96b10427427336ae9d}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga51746df1068a46e8f8380d4d9637de7d}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-C\-O\-M\-M\-\_\-\-I\-F\-A\-C\-E\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-2}~4}\label{group__udi__cdc__group__single__desc_ga51746df1068a46e8f8380d4d9637de7d}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_gaf2332783751108d3a7196331d422d648}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-I\-F\-A\-C\-E\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-2}~5}\label{group__udi__cdc__group__single__desc_gaf2332783751108d3a7196331d422d648}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_gafcba0da585d8286250a25bb60d5fe2a0}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-C\-O\-M\-M\-\_\-\-I\-F\-A\-C\-E\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-3}~6}\label{group__udi__cdc__group__single__desc_gafcba0da585d8286250a25bb60d5fe2a0}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga025950aeedd93d7d00cc1754be5cf183}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-I\-F\-A\-C\-E\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-3}~7}\label{group__udi__cdc__group__single__desc_ga025950aeedd93d7d00cc1754be5cf183}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga8e135589db6eac98726ce02518bd2340}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-C\-O\-M\-M\-\_\-\-I\-F\-A\-C\-E\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-4}~8}\label{group__udi__cdc__group__single__desc_ga8e135589db6eac98726ce02518bd2340}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga0c3771d822965dddc9eef292f39ff347}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-I\-F\-A\-C\-E\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-4}~9}\label{group__udi__cdc__group__single__desc_ga0c3771d822965dddc9eef292f39ff347}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga040c811af32af103f96af72f55922259}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-C\-O\-M\-M\-\_\-\-I\-F\-A\-C\-E\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-5}~10}\label{group__udi__cdc__group__single__desc_ga040c811af32af103f96af72f55922259}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_gac99be51d82291d00c0188a6d05a6cc02}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-I\-F\-A\-C\-E\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-5}~11}\label{group__udi__cdc__group__single__desc_gac99be51d82291d00c0188a6d05a6cc02}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga7a7487e51450e9923a2ea3bf884a3039}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-C\-O\-M\-M\-\_\-\-I\-F\-A\-C\-E\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-6}~12}\label{group__udi__cdc__group__single__desc_ga7a7487e51450e9923a2ea3bf884a3039}
+
+\item 
+\hypertarget{group__udi__cdc__group__single__desc_ga0d859a246f282ed4f61692066d9a9a9d}{\#define {\bfseries U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-A\-T\-A\-\_\-\-I\-F\-A\-C\-E\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-6}~13}\label{group__udi__cdc__group__single__desc_ga0d859a246f282ed4f61692066d9a9a9d}
+
+\end{DoxyCompactItemize}
+\subsection*{U\-D\-C structures which content all U\-S\-B Device definitions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group__udc__desc__group_gae086959cec07a2e71ab069e25a51764f}{U\-D\-C\-\_\-\-D\-E\-S\-C\-\_\-\-S\-T\-O\-R\-A\-G\-E} \hyperlink{structudi__api__t}{udi\-\_\-api\-\_\-t} $\ast$ \hyperlink{group__udi__cdc__group__single__desc_ga5356b021bc068e4b564577e38b44ba0e}{udi\-\_\-apis} \mbox{[}\hyperlink{group__udi__cdc__group__single__desc_gad079423a5116ebac5e26628447e0d0c1}{U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-N\-B\-\_\-\-I\-N\-T\-E\-R\-F\-A\-C\-E}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Associate an U\-D\-I for each U\-S\-B interface. \end{DoxyCompactList}\item 
+\hyperlink{group__udc__desc__group_gae086959cec07a2e71ab069e25a51764f}{U\-D\-C\-\_\-\-D\-E\-S\-C\-\_\-\-S\-T\-O\-R\-A\-G\-E} \hyperlink{structudc__config__speed__t}{udc\-\_\-config\-\_\-speed\-\_\-t} \hyperlink{group__udi__cdc__group__single__desc_ga5db6d631eea81d0c57ac6fde3a4963a1}{udc\-\_\-config\-\_\-fs} \mbox{[}1\mbox{]}
+\begin{DoxyCompactList}\small\item\em Add U\-D\-I with U\-S\-B Descriptors F\-S \& H\-S. \end{DoxyCompactList}\item 
+\hyperlink{group__udc__desc__group_gae086959cec07a2e71ab069e25a51764f}{U\-D\-C\-\_\-\-D\-E\-S\-C\-\_\-\-S\-T\-O\-R\-A\-G\-E} \hyperlink{structudc__config__t}{udc\-\_\-config\-\_\-t} \hyperlink{group__udi__cdc__group__single__desc_ga40ae5a61fbfa7e289136b2f9fd190217}{udc\-\_\-config}
+\begin{DoxyCompactList}\small\item\em Add all information about U\-S\-B Device in global structure for U\-D\-C. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support}
+
+The following structures provide the U\-S\-B device descriptors required for U\-S\-B Device with a single interface C\-D\-C.
+
+It is ready to use and do not require more definition. 
+
+\subsection{Variable Documentation}
+\hypertarget{group__udi__cdc__group__single__desc_ga40ae5a61fbfa7e289136b2f9fd190217}{\index{U\-S\-B device descriptors for a single interface@{U\-S\-B device descriptors for a single interface}!udc\-\_\-config@{udc\-\_\-config}}
+\index{udc\-\_\-config@{udc\-\_\-config}!USB device descriptors for a single interface@{U\-S\-B device descriptors for a single interface}}
+\subsubsection[{udc\-\_\-config}]{\setlength{\rightskip}{0pt plus 5cm}{\bf U\-D\-C\-\_\-\-D\-E\-S\-C\-\_\-\-S\-T\-O\-R\-A\-G\-E} {\bf udc\-\_\-config\-\_\-t} udc\-\_\-config}}\label{group__udi__cdc__group__single__desc_ga40ae5a61fbfa7e289136b2f9fd190217}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+ \{
+        .confdev\_lsfs = &\hyperlink{group__udi__cdc__group__single__desc_ga9b0e293c7d3236bf90c42d808c2bc1ab}{udc\_device\_desc},
+        .conf\_lsfs = \hyperlink{group__udi__cdc__group__single__desc_ga5db6d631eea81d0c57ac6fde3a4963a1}{udc\_config\_fs},
+
+
+
+
+
+
+
+
+        .conf\_bos = NULL,
+
+\}
+\end{DoxyCode}
+
+
+Add all information about U\-S\-B Device in global structure for U\-D\-C. 
+
+Global variables of U\-S\-B Device Descriptor and U\-D\-I links. \hypertarget{group__udi__cdc__group__single__desc_ga5db6d631eea81d0c57ac6fde3a4963a1}{\index{U\-S\-B device descriptors for a single interface@{U\-S\-B device descriptors for a single interface}!udc\-\_\-config\-\_\-fs@{udc\-\_\-config\-\_\-fs}}
+\index{udc\-\_\-config\-\_\-fs@{udc\-\_\-config\-\_\-fs}!USB device descriptors for a single interface@{U\-S\-B device descriptors for a single interface}}
+\subsubsection[{udc\-\_\-config\-\_\-fs}]{\setlength{\rightskip}{0pt plus 5cm}{\bf U\-D\-C\-\_\-\-D\-E\-S\-C\-\_\-\-S\-T\-O\-R\-A\-G\-E} {\bf udc\-\_\-config\-\_\-speed\-\_\-t} udc\-\_\-config\-\_\-fs\mbox{[}1\mbox{]}}}\label{group__udi__cdc__group__single__desc_ga5db6d631eea81d0c57ac6fde3a4963a1}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+ \{ \{
+        .desc          = (\hyperlink{structusb__conf__desc__t}{usb\_conf\_desc\_t} \hyperlink{group__udc__desc__group_gae086959cec07a2e71ab069e25a51764f}{UDC\_DESC\_STORAGE}
+      *)&\hyperlink{group__udi__cdc__group__single__desc_ga694cd2202d59a342c2ed2e50f427a932}{udc\_desc\_fs},
+        .\hyperlink{group__udi__cdc__group__single__desc_ga5356b021bc068e4b564577e38b44ba0e}{udi\_apis} = \hyperlink{group__udi__cdc__group__single__desc_ga5356b021bc068e4b564577e38b44ba0e}{udi\_apis},
+\}\}
+\end{DoxyCode}
+
+
+Add U\-D\-I with U\-S\-B Descriptors F\-S \& H\-S. 
+
+\hypertarget{group__udi__cdc__group__single__desc_ga694cd2202d59a342c2ed2e50f427a932}{\index{U\-S\-B device descriptors for a single interface@{U\-S\-B device descriptors for a single interface}!udc\-\_\-desc\-\_\-fs@{udc\-\_\-desc\-\_\-fs}}
+\index{udc\-\_\-desc\-\_\-fs@{udc\-\_\-desc\-\_\-fs}!USB device descriptors for a single interface@{U\-S\-B device descriptors for a single interface}}
+\subsubsection[{udc\-\_\-desc\-\_\-fs}]{\setlength{\rightskip}{0pt plus 5cm}C\-O\-M\-P\-I\-L\-E\-R\-\_\-\-W\-O\-R\-D\-\_\-\-A\-L\-I\-G\-N\-E\-D {\bf U\-D\-C\-\_\-\-D\-E\-S\-C\-\_\-\-S\-T\-O\-R\-A\-G\-E} {\bf udc\-\_\-desc\-\_\-t} udc\-\_\-desc\-\_\-fs}}\label{group__udi__cdc__group__single__desc_ga694cd2202d59a342c2ed2e50f427a932}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+ \{
+        .conf.bLength              = \textcolor{keyword}{sizeof}(\hyperlink{structusb__conf__desc__t}{usb\_conf\_desc\_t}),
+        .conf.bDescriptorType      = USB\_DT\_CONFIGURATION,
+        .conf.wTotalLength         = LE16(\textcolor{keyword}{sizeof}(\hyperlink{structudc__desc__t}{udc\_desc\_t})),
+        .conf.bNumInterfaces       = \hyperlink{group__udi__cdc__group__single__desc_gad079423a5116ebac5e26628447e0d0c1}{USB\_DEVICE\_NB\_INTERFACE}
+      ,
+        .conf.bConfigurationValue  = 1,
+        .conf.iConfiguration       = 0,
+        .conf.bmAttributes         = \hyperlink{group__usb__protocol__group_gac7063e965def0eaeb4d45a6f9048dc53}{USB\_CONFIG\_ATTR\_MUST\_SET}
+       | USB\_DEVICE\_ATTR,
+        .conf.bMaxPower            = \hyperlink{group__usb__protocol__group_ga55d9db758a4f408eebf4b26c6001ac9b}{USB\_CONFIG\_MAX\_POWER}(
+      USB\_DEVICE\_POWER),
+
+        .udi\_cdc\_comm\_0            = UDI\_CDC\_COMM\_DESC\_0,
+        .udi\_cdc\_data\_0            = UDI\_CDC\_DATA\_DESC\_0\_FS,
+
+
+
+
+
+
+
+
+\}
+\end{DoxyCode}
+
+
+U\-S\-B Device Configuration Descriptor filled for full and high speed. 
+
+\hypertarget{group__udi__cdc__group__single__desc_ga5356b021bc068e4b564577e38b44ba0e}{\index{U\-S\-B device descriptors for a single interface@{U\-S\-B device descriptors for a single interface}!udi\-\_\-apis@{udi\-\_\-apis}}
+\index{udi\-\_\-apis@{udi\-\_\-apis}!USB device descriptors for a single interface@{U\-S\-B device descriptors for a single interface}}
+\subsubsection[{udi\-\_\-apis}]{\setlength{\rightskip}{0pt plus 5cm}{\bf U\-D\-C\-\_\-\-D\-E\-S\-C\-\_\-\-S\-T\-O\-R\-A\-G\-E} {\bf udi\-\_\-api\-\_\-t}$\ast$ udi\-\_\-apis\mbox{[}{\bf U\-S\-B\-\_\-\-D\-E\-V\-I\-C\-E\-\_\-\-N\-B\-\_\-\-I\-N\-T\-E\-R\-F\-A\-C\-E}\mbox{]}}}\label{group__udi__cdc__group__single__desc_ga5356b021bc068e4b564577e38b44ba0e}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+ \{
+\textcolor{preprocessor}{#define UDI\_CDC\_API(index, unused) }
+\textcolor{preprocessor}{}
+
+
+
+\}
+\end{DoxyCode}
+
+
+Associate an U\-D\-I for each U\-S\-B interface. 
+

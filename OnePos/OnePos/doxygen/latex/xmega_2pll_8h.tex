@@ -1,0 +1,50 @@
+\hypertarget{xmega_2pll_8h}{\section{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/clock/xmega/pll.h File Reference}
+\label{xmega_2pll_8h}\index{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/clock/xmega/pll.\-h@{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/\-A\-S\-F/common/services/clock/xmega/pll.\-h}}
+}
+
+
+Chip-\/specific P\-L\-L management functions.  
+
+
+{\ttfamily \#include $<$compiler.\-h$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structpll__config}{pll\-\_\-config}
+\begin{DoxyCompactList}\small\item\em Hardware-\/specific representation of P\-L\-L configuration. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{Indent}{\bf Chip-\/specific P\-L\-L characteristics}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__pll__group_ga23ebd75638f609ce613b82e773ea48a5}{\#define \hyperlink{group__pll__group_ga23ebd75638f609ce613b82e773ea48a5}{N\-R\-\_\-\-P\-L\-L\-S}~1}\label{group__pll__group_ga23ebd75638f609ce613b82e773ea48a5}
+
+\begin{DoxyCompactList}\small\item\em Number of on-\/chip P\-L\-Ls. \end{DoxyCompactList}\item 
+\hypertarget{group__pll__group_ga58acd4425beaa32dad5ccffa073cb0a5}{\#define \hyperlink{group__pll__group_ga58acd4425beaa32dad5ccffa073cb0a5}{P\-L\-L\-\_\-\-M\-I\-N\-\_\-\-H\-Z}~10000000\-U\-L}\label{group__pll__group_ga58acd4425beaa32dad5ccffa073cb0a5}
+
+\begin{DoxyCompactList}\small\item\em Minimum frequency that the P\-L\-L can generate. \end{DoxyCompactList}\item 
+\hypertarget{group__pll__group_gaeced77fb7ec635ab33085a71a0c15227}{\#define \hyperlink{group__pll__group_gaeced77fb7ec635ab33085a71a0c15227}{P\-L\-L\-\_\-\-M\-A\-X\-\_\-\-H\-Z}~200000000\-U\-L}\label{group__pll__group_gaeced77fb7ec635ab33085a71a0c15227}
+
+\begin{DoxyCompactList}\small\item\em Maximum frequency that the P\-L\-L can generate. \end{DoxyCompactList}\item 
+\hypertarget{group__pll__group_gae74457d5b4073fdb82cb6b9f3d8b76e2}{\#define \hyperlink{group__pll__group_gae74457d5b4073fdb82cb6b9f3d8b76e2}{P\-L\-L\-\_\-\-N\-R\-\_\-\-O\-P\-T\-I\-O\-N\-S}~0}\label{group__pll__group_gae74457d5b4073fdb82cb6b9f3d8b76e2}
+
+\begin{DoxyCompactList}\small\item\em Number of P\-L\-L option bits. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{group__pll__group_gacfb06d8fc0ffbe934077438884ae697f}{pll\-\_\-source} \{ \hyperlink{group__pll__group_ggacfb06d8fc0ffbe934077438884ae697fa8d6c5d7cba070c0062c7495fb7dd820e}{P\-L\-L\-\_\-\-S\-R\-C\-\_\-\-R\-C2\-M\-H\-Z} =  O\-S\-C\-\_\-\-P\-L\-L\-S\-R\-C\-\_\-\-R\-C2\-M\-\_\-gc, 
+\hyperlink{group__pll__group_ggacfb06d8fc0ffbe934077438884ae697fae1691a76378e7695a0fbe0ad799d9f2f}{P\-L\-L\-\_\-\-S\-R\-C\-\_\-\-R\-C32\-M\-H\-Z} =  O\-S\-C\-\_\-\-P\-L\-L\-S\-R\-C\-\_\-\-R\-C32\-M\-\_\-gc, 
+\hyperlink{group__pll__group_ggacfb06d8fc0ffbe934077438884ae697faa1f35e8d0a200dc3ba94d97a13bf5bfa}{P\-L\-L\-\_\-\-S\-R\-C\-\_\-\-X\-O\-S\-C} =  O\-S\-C\-\_\-\-P\-L\-L\-S\-R\-C\-\_\-\-X\-O\-S\-C\-\_\-gc
+ \}
+\begin{DoxyCompactList}\small\item\em P\-L\-L clock source. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{P\-L\-L configuration}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group__pll__group_ga16c8db5e3f1a2c759a88371120579c4d}{pll\-\_\-get\-\_\-default\-\_\-rate}(pll\-\_\-id)
+\begin{DoxyCompactList}\small\item\em Get the default rate in Hz of {\itshape pll\-\_\-id}. \end{DoxyCompactList}\item 
+\#define \hyperlink{group__pll__group_ga2b9ba9ce6a7290303f6e8d41191fd0d8}{pll\-\_\-config\-\_\-defaults}(cfg, pll\-\_\-id)
+\begin{DoxyCompactList}\small\item\em Initialize P\-L\-L configuration using default parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Chip-\/specific P\-L\-L management functions. Copyright (c) 2010-\/2014 Atmel Corporation. All rights reserved.

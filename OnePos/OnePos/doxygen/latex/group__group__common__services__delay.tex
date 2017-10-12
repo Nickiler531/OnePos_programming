@@ -1,0 +1,101 @@
+\hypertarget{group__group__common__services__delay}{\section{Busy-\/\-Wait Delay Routines}
+\label{group__group__common__services__delay}\index{Busy-\/\-Wait Delay Routines@{Busy-\/\-Wait Delay Routines}}
+}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group__group__common__services__delay_ga43bafb28b29491ec7f871319b5a3b2f8}{F\-\_\-\-C\-P\-U}~sysclk\-\_\-get\-\_\-cpu\-\_\-hz()
+\begin{DoxyCompactList}\small\item\em M\-C\-U Clock Frequency (Hertz) \end{DoxyCompactList}\item 
+\#define \hyperlink{group__group__common__services__delay_ga62d461b94db6352d8ed8442d62ea39fb}{delay\-\_\-init}(fcpu\-\_\-hz)
+\begin{DoxyCompactList}\small\item\em Initialize the delay driver. \end{DoxyCompactList}\item 
+\#define \hyperlink{group__group__common__services__delay_gafdccadc6c16847907b3252cdef83e8b0}{delay\-\_\-s}(delay)~\hyperlink{cycle__counter_8h_a2b733c4de847b6d4e6d5ba466f21da52}{cpu\-\_\-delay\-\_\-ms}(1000 $\ast$ delay, \hyperlink{group__group__common__services__delay_ga43bafb28b29491ec7f871319b5a3b2f8}{F\-\_\-\-C\-P\-U})
+\begin{DoxyCompactList}\small\item\em Delay in seconds. \end{DoxyCompactList}\item 
+\#define \hyperlink{group__group__common__services__delay_gad917a5d772ddbd99ad97a1c999ce40d4}{delay\-\_\-ms}(delay)~\hyperlink{cycle__counter_8h_a2b733c4de847b6d4e6d5ba466f21da52}{cpu\-\_\-delay\-\_\-ms}(delay, \hyperlink{group__group__common__services__delay_ga43bafb28b29491ec7f871319b5a3b2f8}{F\-\_\-\-C\-P\-U})
+\begin{DoxyCompactList}\small\item\em Delay in milliseconds. \end{DoxyCompactList}\item 
+\#define \hyperlink{group__group__common__services__delay_gaf9a0c0e0f880d818a4c2c3ea9fe8cba1}{delay\-\_\-us}(delay)~\hyperlink{cycle__counter_8h_a1f5289578e4f08b99cfca749dcaca964}{cpu\-\_\-delay\-\_\-us}(delay, \hyperlink{group__group__common__services__delay_ga43bafb28b29491ec7f871319b5a3b2f8}{F\-\_\-\-C\-P\-U})
+\begin{DoxyCompactList}\small\item\em Delay in microseconds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support}
+
+This module provides simple loop-\/based delay routines for those applications requiring a brief wait during execution. Common A\-P\-I for U\-C3, X\-M\-E\-G\-A, and A\-V\-R M\-E\-G\-A. 
+
+\subsection{Macro Definition Documentation}
+\hypertarget{group__group__common__services__delay_ga62d461b94db6352d8ed8442d62ea39fb}{\index{Busy-\/\-Wait Delay Routines@{Busy-\/\-Wait Delay Routines}!delay\-\_\-init@{delay\-\_\-init}}
+\index{delay\-\_\-init@{delay\-\_\-init}!Busy-Wait Delay Routines@{Busy-\/\-Wait Delay Routines}}
+\subsubsection[{delay\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}\#define delay\-\_\-init(
+\begin{DoxyParamCaption}
+\item[{}]{fcpu\-\_\-hz}
+\end{DoxyParamCaption}
+)}}\label{group__group__common__services__delay_ga62d461b94db6352d8ed8442d62ea39fb}
+
+
+Initialize the delay driver. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fcpu\-\_\-hz} & C\-P\-U frequency in Hz\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000002}{Deprecated}]This function is provided for compatibility with A\-S\-F applications that may not have been updated to configure the system clock via the common clock service; e.\-g. \hyperlink{group__sysclk__group_ga242399e48a97739c88b4d0c00f6101de}{sysclk\-\_\-init()} and a configuration header file are used to configure clocks.\end{DoxyRefDesc}
+
+
+The functions in this module call sysclk\-\_\-get\-\_\-cpu\-\_\-hz() function to obtain the system clock frequency. \hypertarget{group__group__common__services__delay_gad917a5d772ddbd99ad97a1c999ce40d4}{\index{Busy-\/\-Wait Delay Routines@{Busy-\/\-Wait Delay Routines}!delay\-\_\-ms@{delay\-\_\-ms}}
+\index{delay\-\_\-ms@{delay\-\_\-ms}!Busy-Wait Delay Routines@{Busy-\/\-Wait Delay Routines}}
+\subsubsection[{delay\-\_\-ms}]{\setlength{\rightskip}{0pt plus 5cm}\#define delay\-\_\-ms(
+\begin{DoxyParamCaption}
+\item[{}]{delay}
+\end{DoxyParamCaption}
+)~{\bf cpu\-\_\-delay\-\_\-ms}(delay, {\bf F\-\_\-\-C\-P\-U})}}\label{group__group__common__services__delay_gad917a5d772ddbd99ad97a1c999ce40d4}
+
+
+Delay in milliseconds. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delay} & Delay in milliseconds \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__group__common__services__delay_gafdccadc6c16847907b3252cdef83e8b0}{\index{Busy-\/\-Wait Delay Routines@{Busy-\/\-Wait Delay Routines}!delay\-\_\-s@{delay\-\_\-s}}
+\index{delay\-\_\-s@{delay\-\_\-s}!Busy-Wait Delay Routines@{Busy-\/\-Wait Delay Routines}}
+\subsubsection[{delay\-\_\-s}]{\setlength{\rightskip}{0pt plus 5cm}\#define delay\-\_\-s(
+\begin{DoxyParamCaption}
+\item[{}]{delay}
+\end{DoxyParamCaption}
+)~{\bf cpu\-\_\-delay\-\_\-ms}(1000 $\ast$ delay, {\bf F\-\_\-\-C\-P\-U})}}\label{group__group__common__services__delay_gafdccadc6c16847907b3252cdef83e8b0}
+
+
+Delay in seconds. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delay} & Delay in seconds \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__group__common__services__delay_gaf9a0c0e0f880d818a4c2c3ea9fe8cba1}{\index{Busy-\/\-Wait Delay Routines@{Busy-\/\-Wait Delay Routines}!delay\-\_\-us@{delay\-\_\-us}}
+\index{delay\-\_\-us@{delay\-\_\-us}!Busy-Wait Delay Routines@{Busy-\/\-Wait Delay Routines}}
+\subsubsection[{delay\-\_\-us}]{\setlength{\rightskip}{0pt plus 5cm}\#define delay\-\_\-us(
+\begin{DoxyParamCaption}
+\item[{}]{delay}
+\end{DoxyParamCaption}
+)~{\bf cpu\-\_\-delay\-\_\-us}(delay, {\bf F\-\_\-\-C\-P\-U})}}\label{group__group__common__services__delay_gaf9a0c0e0f880d818a4c2c3ea9fe8cba1}
+
+
+Delay in microseconds. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delay} & Delay in microseconds \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__group__common__services__delay_ga43bafb28b29491ec7f871319b5a3b2f8}{\index{Busy-\/\-Wait Delay Routines@{Busy-\/\-Wait Delay Routines}!F\-\_\-\-C\-P\-U@{F\-\_\-\-C\-P\-U}}
+\index{F\-\_\-\-C\-P\-U@{F\-\_\-\-C\-P\-U}!Busy-Wait Delay Routines@{Busy-\/\-Wait Delay Routines}}
+\subsubsection[{F\-\_\-\-C\-P\-U}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-\_\-\-C\-P\-U~sysclk\-\_\-get\-\_\-cpu\-\_\-hz()}}\label{group__group__common__services__delay_ga43bafb28b29491ec7f871319b5a3b2f8}
+
+
+M\-C\-U Clock Frequency (Hertz) 
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000001}{Deprecated}]The \hyperlink{group__group__common__services__delay_ga43bafb28b29491ec7f871319b5a3b2f8}{F\-\_\-\-C\-P\-U} configuration constant is used for compatibility with the \hyperlink{group__group__common__services__delay}{Busy-\/\-Wait Delay Routines} routines. The common loop-\/based delay routines are designed to use the \hyperlink{group__clk__group}{Clock Management} modules while anticipating support for legacy applications assuming a statically defined clock frequency. Applications using a statically configured M\-C\-U clock frequency can define \hyperlink{group__group__common__services__delay_ga43bafb28b29491ec7f871319b5a3b2f8}{F\-\_\-\-C\-P\-U} (Hertz), in which case the common delay routines will use this value rather than calling sysclk\-\_\-get\-\_\-cpu\-\_\-hz() to get the current M\-C\-U clock frequency. \end{DoxyRefDesc}

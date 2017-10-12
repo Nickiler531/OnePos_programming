@@ -1,0 +1,191 @@
+This is the quick start guide for the \hyperlink{group__nvm__group}{N\-V\-M Driver}, with step-\/by-\/step instructions on how to configure and use the driver for specific use cases.
+
+The section described below can be compiled into e.\-g. the main application loop or any other function that will need to interface non-\/volatile memory.\hypertarget{xmega_nvm_quickstart_xmega_nvm_quickstart_basic}{}\section{Basic usage of the N\-V\-M driver}\label{xmega_nvm_quickstart_xmega_nvm_quickstart_basic}
+This section will present three use cases of the N\-V\-M driver. The first will write a page to E\-E\-P\-R\-O\-M and verify that it has been written, the second will access the B\-O\-D-\/level fuse to verify that the level is correctly set, and the third will read a chunk from the user signature row.\hypertarget{xmega_nvm_quickstart_xmega_nvm_quickstart_eeprom_case}{}\section{Use case 1\-: E\-E\-P\-R\-O\-M}\label{xmega_nvm_quickstart_xmega_nvm_quickstart_eeprom_case}
+The N\-V\-M driver has functions for interfacing many types of non-\/volatile memory, including flash, E\-E\-P\-R\-O\-M, fuses and lock bits. The example code below will write a page to the internal E\-E\-P\-R\-O\-M, and read it back to verify, using memory mapped I/\-O.\hypertarget{xmega_nvm_quickstart_xmega_nvm_quickstart_eeprom_case_setup_steps}{}\section{Setup steps}\label{xmega_nvm_quickstart_xmega_nvm_quickstart_eeprom_case_setup_steps}
+There are no setup steps required for this use case.\hypertarget{xmega_nvm_quickstart_nvm_quickstart_eeprom_case_example_code}{}\subsection{Example code}\label{xmega_nvm_quickstart_nvm_quickstart_eeprom_case_example_code}
+
+\begin{DoxyCode}
+\textcolor{preprocessor}{         #define EXAMPLE\_PAGE 2}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define EXAMPLE\_ADDR EXAMPLE\_PAGE * EEPROM\_PAGE\_SIZE}
+\textcolor{preprocessor}{}
+         uint8\_t write\_page[EEPROM\_PAGE\_SIZE];
+         uint8\_t read\_page[EEPROM\_PAGE\_SIZE];
+
+         fill\_page\_with\_known\_data(write\_page);
+         fill\_page\_with\_zeroes(read\_page);
+
+         \hyperlink{group__nvm__eeprom__group_ga02f10adbf959b8525bbaf777ad6e43b6}{nvm\_eeprom\_load\_page\_to\_buffer}(
+      write\_page);
+         \hyperlink{group__nvm__eeprom__group_ga6f939f98287b320d39418ed72ba8cfe1}{nvm\_eeprom\_atomic\_write\_page}(EXAMPLE\_PAGE)
+      ;
+
+         \hyperlink{group__nvm__eeprom__group_ga723a1c1ef60ffb4d220f28c99e6c3014}{nvm\_eeprom\_read\_buffer}(EXAMPLE\_ADDR,
+                 read\_page, EEPROM\_PAGE\_SIZE);
+
+         check\_if\_pages\_are\_equal(write\_page, read\_page);
+\end{DoxyCode}
+\hypertarget{xmega_nvm_quickstart_nvm_quickstart_eeprom_case_workflow}{}\subsection{Workflow}\label{xmega_nvm_quickstart_nvm_quickstart_eeprom_case_workflow}
+
+\begin{DoxyEnumerate}
+\item We define where we would like to store our data, and we arbitrarily choose page 2 of E\-E\-P\-R\-O\-M\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+\textcolor{preprocessor}{        #define EXAMPLE\_PAGE 2}
+\textcolor{preprocessor}{        #define EXAMPLE\_ADDR EXAMPLE\_PAGE * EEPROM\_PAGE\_SIZE}
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Define two tables, one which contains the data which we will write, and one which we will read the data into\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+        uint8\_t write\_page[EEPROM\_PAGE\_SIZE];
+        uint8\_t read\_page[EEPROM\_PAGE\_SIZE];
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Fill the tables with our data, and zero out the read table\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+        fill\_page\_with\_known\_data(write\_page);
+        fill\_page\_with\_zeroes(read\_page);
+\end{DoxyCode}
+
+\item \begin{DoxyNote}{Note}
+These functions are undeclared, you should replace them with your own appropriate functions.
+\end{DoxyNote}
+
+\end{DoxyItemize}
+\item We load our page into a temporary E\-E\-P\-R\-O\-M page buffer\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+        \hyperlink{group__nvm__eeprom__group_ga02f10adbf959b8525bbaf777ad6e43b6}{nvm\_eeprom\_load\_page\_to\_buffer}(write\_page
+      );
+\end{DoxyCode}
+
+\item \begin{DoxyAttention}{Attention}
+The function used above will not work if memory mapping is enabled.
+\end{DoxyAttention}
+
+\end{DoxyItemize}
+\item Do an atomic write of the page from buffer into the specified page\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+        \hyperlink{group__nvm__eeprom__group_ga6f939f98287b320d39418ed72ba8cfe1}{nvm\_eeprom\_atomic\_write\_page}(EXAMPLE\_PAGE);
+\end{DoxyCode}
+
+\item \begin{DoxyNote}{Note}
+The function \hyperlink{group__nvm__eeprom__group_ga6f939f98287b320d39418ed72ba8cfe1}{nvm\-\_\-eeprom\-\_\-atomic\-\_\-write\-\_\-page()} erases the page before writing the new one. For non-\/atomic (split) writing without deleting, see \hyperlink{group__nvm__eeprom__group_gae8b5ca90e2d370109bed6e6adc8d9307}{nvm\-\_\-eeprom\-\_\-split\-\_\-write\-\_\-page()}
+\end{DoxyNote}
+
+\end{DoxyItemize}
+\item Read the page back into our read\-\_\-page\mbox{[}\mbox{]} table\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+        \hyperlink{group__nvm__eeprom__group_ga723a1c1ef60ffb4d220f28c99e6c3014}{nvm\_eeprom\_read\_buffer}(EXAMPLE\_ADDR,
+                read\_page, EEPROM\_PAGE\_SIZE);
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Verify that the page is equal to the one that was written earlier\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+        check\_if\_pages\_are\_equal(write\_page, read\_page);
+\end{DoxyCode}
+
+\item \begin{DoxyNote}{Note}
+This function is not declared, you should replace it with your own appropriate function.
+\end{DoxyNote}
+
+\end{DoxyItemize}
+\end{DoxyEnumerate}\hypertarget{xmega_nvm_quickstart_xmega_nvm_quickstart_fuse_case}{}\section{Use case 2\-: Fuses}\label{xmega_nvm_quickstart_xmega_nvm_quickstart_fuse_case}
+The N\-V\-M driver has functions for reading fuses. See \hyperlink{group__nvm__fuse__lock__group}{N\-V\-M driver fuse and lock bits handling}.
+
+We would like to check whether the Brown-\/out Detection level is set to 2.\-1\-V. This is set by programming the fuses when the chip is connected to a suitable programmer. The fuse is a part of F\-U\-S\-E\-B\-Y\-T\-E5. If the B\-O\-D\-L\-V\-L is correct, we turn on L\-E\-D0.\hypertarget{xmega_nvm_quickstart_xmega_nvm_quickstart_fuse_case_setup_steps}{}\section{Setup steps}\label{xmega_nvm_quickstart_xmega_nvm_quickstart_fuse_case_setup_steps}
+There are no setup steps required for this use case.\hypertarget{xmega_nvm_quickstart_nvm_quickstart_fuse_case_example_code}{}\subsection{Example code}\label{xmega_nvm_quickstart_nvm_quickstart_fuse_case_example_code}
+
+\begin{DoxyCode}
+         uint8\_t fuse\_value;
+         fuse\_value = \hyperlink{group__nvm__fuse__lock__group_ga7f38ae8b811b4b6c7a209e37cfe1b03d}{nvm\_fuses\_read}(FUSEBYTE5);
+
+         \textcolor{keywordflow}{if} ((fuse\_value & NVM\_FUSES\_BODLVL\_gm) == BODLVL\_2V1\_gc) \{
+             gpio\_set\_pin\_low(LED0\_GPIO);
+         \}
+\end{DoxyCode}
+\hypertarget{xmega_nvm_quickstart_nvm_quickstart_fuse_case_workflow}{}\subsection{Workflow}\label{xmega_nvm_quickstart_nvm_quickstart_fuse_case_workflow}
+
+\begin{DoxyEnumerate}
+\item Create a variable to store the fuse contents\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+        uint8\_t fuse\_value;
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item The fuse value we are interested in, B\-O\-D\-L\-V\-L, is stored in F\-U\-S\-E\-B\-Y\-T\-E5. We call the function \hyperlink{group__nvm__fuse__lock__group_ga7f38ae8b811b4b6c7a209e37cfe1b03d}{nvm\-\_\-fuses\-\_\-read()} to read the fuse into our variable\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+        fuse\_value = \hyperlink{group__nvm__fuse__lock__group_ga7f38ae8b811b4b6c7a209e37cfe1b03d}{nvm\_fuses\_read}(FUSEBYTE5);
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item This ends the reading portion, but we would like to see whether the B\-O\-D-\/level is correct, and if it is, light up an L\-E\-D\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+        \textcolor{keywordflow}{if} ((fuse\_value & NVM\_FUSES\_BODLVL\_gm) == BODLVL\_2V1\_gc) \{
+            gpio\_set\_pin\_low(LED0\_GPIO);
+        \}
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\end{DoxyEnumerate}\hypertarget{xmega_nvm_quickstart_xmega_nvm_quickstart_signature_case}{}\section{Use case 3\-: Signature row}\label{xmega_nvm_quickstart_xmega_nvm_quickstart_signature_case}
+The N\-V\-M driver has functions for reading the signature row of the device. Here we will simply read 16 bytes from the user signature row, assuming we need what is stored there.\hypertarget{xmega_nvm_quickstart_xmega_nvm_quickstart_signature_row_setup_steps}{}\section{Setup steps}\label{xmega_nvm_quickstart_xmega_nvm_quickstart_signature_row_setup_steps}
+There are no setup steps required for this use case.\hypertarget{xmega_nvm_quickstart_xmega_nvm_quickstart_signature_row_example_code}{}\subsection{Example code}\label{xmega_nvm_quickstart_xmega_nvm_quickstart_signature_row_example_code}
+
+\begin{DoxyCode}
+\textcolor{preprocessor}{         #define START\_ADDR 0x10}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define DATA\_LENGTH 16}
+\textcolor{preprocessor}{}
+         uint8\_t values[LENGTH];
+         uint8\_t i;
+
+         \textcolor{keywordflow}{for} (i = 0; i < DATA\_LENGTH; i++) \{
+             values[i] = nvm\_read\_user\_signature\_row(START\_ADDR + i);
+         \}
+\end{DoxyCode}
+\hypertarget{xmega_nvm_quickstart_nvm_quickstart_signature_case_workflow}{}\subsection{Workflow}\label{xmega_nvm_quickstart_nvm_quickstart_signature_case_workflow}
+
+\begin{DoxyEnumerate}
+\item Define starting address and length of data segment, and create variables needed to store and process the data\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+\textcolor{preprocessor}{               #define START\_ADDR 0x10}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{               #define DATA\_LENGTH 16}
+\textcolor{preprocessor}{}
+               uint8\_t values[LENGTH];
+               uint8\_t i;
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Iterate through the user signature row, and store our desired data\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+        \textcolor{keywordflow}{for} (i = 0; i < DATA\_LENGTH; i++) \{
+            values[i] = nvm\_read\_user\_signature\_row(START\_ADDR + i);
+        \}
+\end{DoxyCode}
+ 
+\end{DoxyItemize}
+\end{DoxyEnumerate}

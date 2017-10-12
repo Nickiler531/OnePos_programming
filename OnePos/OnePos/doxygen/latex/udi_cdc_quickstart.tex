@@ -1,0 +1,619 @@
+This is the quick start guide for the \hyperlink{group__udi__cdc__group}{U\-S\-B device interface C\-D\-C module (U\-D\-I C\-D\-C)} with step-\/by-\/step instructions on how to configure and use the modules in a selection of use cases.
+
+The use cases contain several code fragments. The code fragments in the steps for setup can be copied into a custom initialization function, while the steps for usage can be copied into, e.\-g., the main application function.\hypertarget{udi_cdc_quickstart_udi_cdc_basic_use_case}{}\section{Basic use case}\label{udi_cdc_quickstart_udi_cdc_basic_use_case}
+In this basic use case, the \char`\"{}\-U\-S\-B C\-D\-C (\-Single Interface Device)\char`\"{} module is used with only one communication port. The \char`\"{}\-U\-S\-B C\-D\-C (\-Composite Device)\char`\"{} module usage is described in \hyperlink{udi_cdc_quickstart_udi_cdc_use_cases}{Advanced use cases}.\hypertarget{udi_cdc_quickstart_udi_cdc_basic_use_case_setup}{}\section{Setup steps}\label{udi_cdc_quickstart_udi_cdc_basic_use_case_setup}
+\hypertarget{udi_cdc_quickstart_udi_cdc_basic_use_case_setup_prereq}{}\subsection{Prerequisites}\label{udi_cdc_quickstart_udi_cdc_basic_use_case_setup_prereq}
+Common prerequisites for all U\-S\-B devices.
+
+This module is based on U\-S\-B device stack full interrupt driven, and supporting \hyperlink{group__sleepmgr__group}{Sleep manager} sleepmgr. For A\-V\-R and S\-A\-M3/4 devices the \hyperlink{group__clk__group}{Clock Management} clock services is supported. For S\-A\-M\-D devices the asfdoc\-\_\-sam0\-\_\-system\-\_\-clock\-\_\-group clock driver is supported.
+
+The following procedure must be executed to setup the project correctly\-:
+\begin{DoxyItemize}
+\item Specify the clock configuration\-:
+\begin{DoxyItemize}
+\item X\-M\-E\-G\-A U\-S\-B devices need 48\-M\-Hz clock input.\par
+ X\-M\-E\-G\-A U\-S\-B devices need C\-P\-U frequency higher than 12\-M\-Hz.\par
+ You can use either an internal R\-C48\-M\-Hz auto calibrated by Start of Frames or an external O\-S\-C.
+\item U\-C3 and S\-A\-M3/4 devices without U\-S\-B high speed support need 48\-M\-Hz clock input.\par
+ You must use a P\-L\-L and an external O\-S\-C.
+\item U\-C3 and S\-A\-M3/4 devices with U\-S\-B high speed support need 12\-M\-Hz clock input.\par
+ You must use an external O\-S\-C.
+\item U\-C3 devices with U\-S\-B\-C hardware need C\-P\-U frequency higher than 25\-M\-Hz.
+\item S\-A\-M\-D devices without U\-S\-B high speed support need 48\-M\-Hz clock input.\par
+ You should use D\-F\-L\-L with U\-S\-B\-C\-R\-M.
+\end{DoxyItemize}
+\item In \hyperlink{conf__board_8h}{conf\-\_\-board.\-h}, the define C\-O\-N\-F\-\_\-\-B\-O\-A\-R\-D\-\_\-\-U\-S\-B\-\_\-\-P\-O\-R\-T must be added to enable U\-S\-B lines. (Not mandatory for all boards)
+\item Enable interrupts
+\item Initialize the clock service
+\end{DoxyItemize}
+
+The usage of \hyperlink{group__sleepmgr__group}{Sleep manager} sleepmgr service is optional, but recommended to reduce power consumption\-:
+\begin{DoxyItemize}
+\item Initialize the sleep manager service
+\item Activate sleep mode when the application is in I\-D\-L\-E state
+\end{DoxyItemize}
+
+\hyperlink{udc_conf_clock}{conf\-\_\-clock.\-h examples with U\-S\-B support}.
+
+for A\-V\-R and S\-A\-M3/4 devices, add to the initialization code\-: 
+\begin{DoxyCode}
+        \hyperlink{group__sysclk__group_ga242399e48a97739c88b4d0c00f6101de}{sysclk\_init}();
+        irq\_initialize\_vectors();
+        \hyperlink{group__interrupt__group_gae4922a4bd8ba4150211fbc7f2302403c}{cpu\_irq\_enable}();
+        \hyperlink{group__group__common__boards_ga916f2adc2080b4fe88034086d107a8dc}{board\_init}();
+        sleepmgr\_init(); \textcolor{comment}{// Optional}
+\end{DoxyCode}
+
+
+For S\-A\-M\-D devices, add to the initialization code\-: 
+\begin{DoxyCode}
+        system\_init();
+        irq\_initialize\_vectors();
+        \hyperlink{group__interrupt__group_gae4922a4bd8ba4150211fbc7f2302403c}{cpu\_irq\_enable}();
+        sleepmgr\_init(); \textcolor{comment}{// Optional}
+\end{DoxyCode}
+ Add to the main I\-D\-L\-E loop\-: 
+\begin{DoxyCode}
+        sleepmgr\_enter\_sleep(); \textcolor{comment}{// Optional}
+\end{DoxyCode}
+  \hypertarget{udi_cdc_quickstart_udi_cdc_basic_use_case_setup_code}{}\subsection{Example code}\label{udi_cdc_quickstart_udi_cdc_basic_use_case_setup_code}
+Common example code for all U\-S\-B devices.
+
+Content of \hyperlink{conf__usb_8h}{conf\-\_\-usb.\-h}\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{        #define USB\_DEVICE\_VENDOR\_ID 0x03EB}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define USB\_DEVICE\_PRODUCT\_ID 0xXXXX}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define USB\_DEVICE\_MAJOR\_VERSION 1}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define USB\_DEVICE\_MINOR\_VERSION 0}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define USB\_DEVICE\_POWER 100}
+\textcolor{preprocessor}{        #define USB\_DEVICE\_ATTR USB\_CONFIG\_ATTR\_BUS\_POWERED}
+\end{DoxyCode}
+
+
+Add to application C-\/file\-: 
+\begin{DoxyCode}
+        \textcolor{keywordtype}{void} usb\_init(\textcolor{keywordtype}{void})
+        \{
+          \hyperlink{group__udc__group__interne_gadf4e193509cd03ab6333d62629ea51e7}{udc\_start}();
+        \}
+\end{DoxyCode}
+  \hypertarget{udi_cdc_quickstart_udi_cdc_basic_use_case_setup_flow}{}\subsection{Workflow}\label{udi_cdc_quickstart_udi_cdc_basic_use_case_setup_flow}
+Common workflow for all U\-S\-B devices.
+
+
+\begin{DoxyEnumerate}
+\item Ensure that \hyperlink{conf__usb_8h}{conf\-\_\-usb.\-h} is available and contains the following configuration which is the main U\-S\-B device configuration\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ \textcolor{comment}{// Vendor ID provided by USB org (ATMEL 0x03EB)}
+\textcolor{preprocessor}{        #define USB\_DEVICE\_VENDOR\_ID 0x03EB // Type Word}
+\textcolor{preprocessor}{}        \textcolor{comment}{// Product ID (Atmel PID referenced in usb\_atmel.h)}
+\textcolor{preprocessor}{        #define USB\_DEVICE\_PRODUCT\_ID 0xXXXX // Type Word}
+\textcolor{preprocessor}{}        \textcolor{comment}{// Major version of the device}
+\textcolor{preprocessor}{        #define USB\_DEVICE\_MAJOR\_VERSION 1 // Type Byte}
+\textcolor{preprocessor}{}        \textcolor{comment}{// Minor version of the device}
+\textcolor{preprocessor}{        #define USB\_DEVICE\_MINOR\_VERSION 0 // Type Byte}
+\textcolor{preprocessor}{}        \textcolor{comment}{// Maximum device power (mA)}
+\textcolor{preprocessor}{        #define USB\_DEVICE\_POWER 100 // Type 9-bits}
+\textcolor{preprocessor}{}        \textcolor{comment}{// USB attributes to enable features}
+\textcolor{preprocessor}{        #define USB\_DEVICE\_ATTR USB\_CONFIG\_ATTR\_BUS\_POWERED // Flags }
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Call the U\-S\-B device stack start function to enable stack and start U\-S\-B\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ \hyperlink{group__udc__group__interne_gadf4e193509cd03ab6333d62629ea51e7}{udc\_start}(); 
+\end{DoxyCode}
+ \begin{DoxyNote}{Note}
+In case of U\-S\-B dual roles (Device and Host) managed through U\-S\-B O\-T\-G connector (U\-S\-B I\-D pin), the call of \hyperlink{group__udc__group__interne_gadf4e193509cd03ab6333d62629ea51e7}{udc\-\_\-start()} must be removed and replaced by uhc\-\_\-start(). Se\-Refer to \char`\"{}\-A\-V\-R4950 section 6.\-1 Dual roles\char`\"{} for further information about dual roles. 
+\end{DoxyNote}
+
+\end{DoxyItemize}
+\end{DoxyEnumerate}\hypertarget{udi_cdc_quickstart_udi_cdc_basic_use_case_usage}{}\section{Usage steps}\label{udi_cdc_quickstart_udi_cdc_basic_use_case_usage}
+\hypertarget{udi_cdc_quickstart_udi_cdc_basic_use_case_usage_code}{}\subsection{Example code}\label{udi_cdc_quickstart_udi_cdc_basic_use_case_usage_code}
+Content of \hyperlink{conf__usb_8h}{conf\-\_\-usb.\-h}\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{         #define UDI\_CDC\_ENABLE\_EXT(port) my\_callback\_cdc\_enable()}
+\textcolor{preprocessor}{}         \textcolor{keyword}{extern} \textcolor{keywordtype}{bool} my\_callback\_cdc\_enable(\textcolor{keywordtype}{void});
+\textcolor{preprocessor}{         #define UDI\_CDC\_DISABLE\_EXT(port) my\_callback\_cdc\_disable()}
+\textcolor{preprocessor}{}         \textcolor{keyword}{extern} \textcolor{keywordtype}{void} my\_callback\_cdc\_disable(\textcolor{keywordtype}{void});
+\textcolor{preprocessor}{         #define  UDI\_CDC\_LOW\_RATE}
+\textcolor{preprocessor}{}
+\textcolor{preprocessor}{         #define  UDI\_CDC\_DEFAULT\_RATE             115200}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define  UDI\_CDC\_DEFAULT\_STOPBITS         CDC\_STOP\_BITS\_1}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define  UDI\_CDC\_DEFAULT\_PARITY           CDC\_PAR\_NONE}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define  UDI\_CDC\_DEFAULT\_DATABITS         8}
+\textcolor{preprocessor}{}
+\textcolor{preprocessor}{         #include "\hyperlink{udi__cdc__conf_8h}{udi\_cdc\_conf.h}"} \textcolor{comment}{// At the end of conf\_usb.h
+       file}
+\end{DoxyCode}
+
+
+Add to application C-\/file\-: 
+\begin{DoxyCode}
+         \textcolor{keyword}{static} \textcolor{keywordtype}{bool} my\_flag\_autorize\_cdc\_transfert = \textcolor{keyword}{false};
+         \textcolor{keywordtype}{bool} my\_callback\_cdc\_enable(\textcolor{keywordtype}{void})
+         \{
+            my\_flag\_autorize\_cdc\_transfert = \textcolor{keyword}{true};
+            \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+         \}
+         \textcolor{keywordtype}{void} my\_callback\_cdc\_disable(\textcolor{keywordtype}{void})
+         \{
+            my\_flag\_autorize\_cdc\_transfert = \textcolor{keyword}{false};
+         \}
+
+         \textcolor{keywordtype}{void} task(\textcolor{keywordtype}{void})
+         \{
+            \textcolor{keywordflow}{if} (my\_flag\_autorize\_cdc\_transfert) \{
+                \hyperlink{group__udi__cdc__group_ga8faae3fcf4911017c0fcf0aa127179f6}{udi\_cdc\_putc}(\textcolor{charliteral}{'A'});
+                \hyperlink{group__udi__cdc__group_ga202f3fd7b153f6e1a41601735e0febb6}{udi\_cdc\_getc}();
+            \}
+         \}
+\end{DoxyCode}
+\hypertarget{udi_cdc_quickstart_udi_cdc_basic_use_case_setup_flow}{}\subsection{Workflow}\label{udi_cdc_quickstart_udi_cdc_basic_use_case_setup_flow}
+
+\begin{DoxyEnumerate}
+\item Ensure that \hyperlink{conf__usb_8h}{conf\-\_\-usb.\-h} is available and contains the following configuration which is the U\-S\-B device C\-D\-C configuration\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+\textcolor{preprocessor}{ #define USB\_DEVICE\_SERIAL\_NAME  "12...EF" // Disk SN for CDC }
+\end{DoxyCode}
+ \begin{DoxyNote}{Note}
+The U\-S\-B serial number is mandatory when a C\-D\-C interface is used.
+\end{DoxyNote}
+
+\item 
+\begin{DoxyCode}
+\textcolor{preprocessor}{ #define UDI\_CDC\_ENABLE\_EXT(port) my\_callback\_cdc\_enable()}
+\textcolor{preprocessor}{         extern bool my\_callback\_cdc\_enable(void); }
+\end{DoxyCode}
+ \begin{DoxyNote}{Note}
+After the device enumeration (detecting and identifying U\-S\-B devices), the U\-S\-B host starts the device configuration. When the U\-S\-B C\-D\-C interface from the device is accepted by the host, the U\-S\-B host enables this interface and the \hyperlink{conf__usb_8h_a92db3a8270e5011f3154275000f8cb7d}{U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-E\-N\-A\-B\-L\-E\-\_\-\-E\-X\-T()} callback function is called and return true. Thus, when this event is received, the data transfer on C\-D\-C interface are authorized.
+\end{DoxyNote}
+
+\item 
+\begin{DoxyCode}
+\textcolor{preprocessor}{ #define UDI\_CDC\_DISABLE\_EXT(port) my\_callback\_cdc\_disable()}
+\textcolor{preprocessor}{         extern void my\_callback\_cdc\_disable(void); }
+\end{DoxyCode}
+ \begin{DoxyNote}{Note}
+When the U\-S\-B device is unplugged or is reset by the U\-S\-B host, the U\-S\-B interface is disabled and the U\-D\-I\-\_\-\-C\-D\-C\-\_\-\-D\-I\-S\-A\-B\-L\-E\-\_\-\-E\-X\-T() callback function is called. Thus, the data transfer must be stopped on C\-D\-C interface.
+\end{DoxyNote}
+
+\item 
+\begin{DoxyCode}
+\textcolor{preprocessor}{ #define  UDI\_CDC\_LOW\_RATE }
+\end{DoxyCode}
+ \begin{DoxyNote}{Note}
+Define it when the transfer C\-D\-C Device to Host is a low rate ($<$512000 bauds) to reduce C\-D\-C buffers size.
+\end{DoxyNote}
+
+\item 
+\begin{DoxyCode}
+\textcolor{preprocessor}{ #define  UDI\_CDC\_DEFAULT\_RATE             115200}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define  UDI\_CDC\_DEFAULT\_STOPBITS         CDC\_STOP\_BITS\_1}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define  UDI\_CDC\_DEFAULT\_PARITY           CDC\_PAR\_NONE}
+\textcolor{preprocessor}{        #define  UDI\_CDC\_DEFAULT\_DATABITS         8 }
+\end{DoxyCode}
+ \begin{DoxyNote}{Note}
+Default configuration of communication port at startup.
+\end{DoxyNote}
+
+\end{DoxyItemize}
+\item Send or wait data on C\-D\-C line\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ \textcolor{comment}{// Waits and gets a value on CDC line}
+        \textcolor{keywordtype}{int} \hyperlink{group__udi__cdc__group_ga202f3fd7b153f6e1a41601735e0febb6}{udi\_cdc\_getc}(\textcolor{keywordtype}{void});
+        \textcolor{comment}{// Reads a RAM buffer on CDC line}
+        iram\_size\_t \hyperlink{group__udi__cdc__group_gaf100ac6cd39574749c54d203b5d7835b}{udi\_cdc\_read\_buf}(\textcolor{keywordtype}{int}* buf, iram\_size\_t size
+      );
+        \textcolor{comment}{// Puts a byte on CDC line}
+        \textcolor{keywordtype}{int} \hyperlink{group__udi__cdc__group_ga8faae3fcf4911017c0fcf0aa127179f6}{udi\_cdc\_putc}(\textcolor{keywordtype}{int} value);
+        \textcolor{comment}{// Writes a RAM buffer on CDC line}
+        iram\_size\_t \hyperlink{group__udi__cdc__group_ga705496169ff423f3e3d3b5ff882d3f9b}{udi\_cdc\_write\_buf}(\textcolor{keyword}{const} \textcolor{keywordtype}{int}* buf, 
+      iram\_size\_t size); 
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\end{DoxyEnumerate}\hypertarget{udi_cdc_quickstart_udi_cdc_use_cases}{}\section{Advanced use cases}\label{udi_cdc_quickstart_udi_cdc_use_cases}
+For more advanced use of the U\-D\-I C\-D\-C module, see the following use cases\-:
+\begin{DoxyItemize}
+\item \hyperlink{udi_cdc_use_case_composite}{C\-D\-C in a composite device}
+\item \hyperlink{udc_use_case_1}{Change U\-S\-B speed}
+\item \hyperlink{udc_use_case_2}{Use U\-S\-B strings}
+\item \hyperlink{udc_use_case_3}{Use U\-S\-B remote wakeup feature}
+\item udc\-\_\-use\-\_\-case\-\_\-4
+\item \hyperlink{udc_use_case_5}{Bus power application recommendations}
+\item \hyperlink{udc_use_case_6}{U\-S\-B dynamic serial number} 
+\end{DoxyItemize}\hypertarget{udi_cdc_use_case_composite}{}\section{C\-D\-C in a composite device}\label{udi_cdc_use_case_composite}
+A U\-S\-B Composite Device is a U\-S\-B Device which uses more than one U\-S\-B class. In this use case, the \char`\"{}\-U\-S\-B C\-D\-C (\-Composite Device)\char`\"{} module is used to create a U\-S\-B composite device. Thus, this U\-S\-B module can be associated with another \char`\"{}\-Composite Device\char`\"{} module, like \char`\"{}\-U\-S\-B H\-I\-D Mouse (\-Composite Device)\char`\"{}.
+
+Also, you can refer to application note \href{http://www.atmel.com/dyn/resources/prod_documents/doc8445.pdf}{\tt A\-V\-R4902 A\-S\-F -\/ U\-S\-B Composite Device}.\hypertarget{udi_cdc_use_case_composite_udi_cdc_use_case_composite_setup}{}\subsection{Setup steps}\label{udi_cdc_use_case_composite_udi_cdc_use_case_composite_setup}
+For the setup code of this use case to work, the \hyperlink{udi_cdc_quickstart_udi_cdc_basic_use_case}{basic use case} must be followed.\hypertarget{udi_cdc_use_case_composite_udi_cdc_use_case_composite_usage}{}\subsection{Usage steps}\label{udi_cdc_use_case_composite_udi_cdc_use_case_composite_usage}
+\hypertarget{udi_cdc_use_case_composite_udi_cdc_use_case_composite_usage_code}{}\subsubsection{Example code}\label{udi_cdc_use_case_composite_udi_cdc_use_case_composite_usage_code}
+Content of \hyperlink{conf__usb_8h}{conf\-\_\-usb.\-h}\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{         #define USB\_DEVICE\_EP\_CTRL\_SIZE  64}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define USB\_DEVICE\_NB\_INTERFACE (X+2)}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define USB\_DEVICE\_MAX\_EP (X+3)}
+\textcolor{preprocessor}{}
+\textcolor{preprocessor}{         #define  UDI\_CDC\_DATA\_EP\_IN\_0          (1 | USB\_EP\_DIR\_IN)  // TX}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define  UDI\_CDC\_DATA\_EP\_OUT\_0         (2 | USB\_EP\_DIR\_OUT) // RX}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define  UDI\_CDC\_COMM\_EP\_0             (3 | USB\_EP\_DIR\_IN)  // Notify
+       endpoint}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define  UDI\_CDC\_COMM\_IFACE\_NUMBER\_0   X+0}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define  UDI\_CDC\_DATA\_IFACE\_NUMBER\_0   X+1}
+\textcolor{preprocessor}{}
+\textcolor{preprocessor}{         #define UDI\_COMPOSITE\_DESC\_T \(\backslash\)}
+\textcolor{preprocessor}{            usb\_iad\_desc\_t udi\_cdc\_iad; \(\backslash\)}
+\textcolor{preprocessor}{            udi\_cdc\_comm\_desc\_t udi\_cdc\_comm; \(\backslash\)}
+\textcolor{preprocessor}{            udi\_cdc\_data\_desc\_t udi\_cdc\_data; \(\backslash\)}
+\textcolor{preprocessor}{            ...}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define UDI\_COMPOSITE\_DESC\_FS \(\backslash\)}
+\textcolor{preprocessor}{            .udi\_cdc\_iad               = UDI\_CDC\_IAD\_DESC\_0, \(\backslash\)}
+\textcolor{preprocessor}{            .udi\_cdc\_comm              = UDI\_CDC\_COMM\_DESC\_0, \(\backslash\)}
+\textcolor{preprocessor}{            .udi\_cdc\_data              = UDI\_CDC\_DATA\_DESC\_0\_FS, \(\backslash\)}
+\textcolor{preprocessor}{            ...}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define UDI\_COMPOSITE\_DESC\_HS \(\backslash\)}
+\textcolor{preprocessor}{            .udi\_cdc\_iad               = UDI\_CDC\_IAD\_DESC\_0, \(\backslash\)}
+\textcolor{preprocessor}{            .udi\_cdc\_comm              = UDI\_CDC\_COMM\_DESC\_0, \(\backslash\)}
+\textcolor{preprocessor}{            .udi\_cdc\_data              = UDI\_CDC\_DATA\_DESC\_0\_HS, \(\backslash\)}
+\textcolor{preprocessor}{            ...}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define UDI\_COMPOSITE\_API \(\backslash\)}
+\textcolor{preprocessor}{            &udi\_api\_cdc\_comm,       \(\backslash\)}
+\textcolor{preprocessor}{            &udi\_api\_cdc\_data,       \(\backslash\)}
+\textcolor{preprocessor}{            ...}
+\end{DoxyCode}
+\hypertarget{udi_cdc_use_case_composite_udi_cdc_use_case_composite_usage_flow}{}\subsubsection{Workflow}\label{udi_cdc_use_case_composite_udi_cdc_use_case_composite_usage_flow}
+
+\begin{DoxyEnumerate}
+\item Ensure that \hyperlink{conf__usb_8h}{conf\-\_\-usb.\-h} is available and contains the following parameters required for a U\-S\-B composite device configuration\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ \textcolor{comment}{// Endpoint control size, This must be:}
+        \textcolor{comment}{// - 8, 16, 32 or 64 for full speed device (8 is recommended to save
+       RAM)}
+        \textcolor{comment}{// - 64 for a high speed device}
+\textcolor{preprocessor}{        #define USB\_DEVICE\_EP\_CTRL\_SIZE  64}
+\textcolor{preprocessor}{}        \textcolor{comment}{// Total Number of interfaces on this USB device.}
+        \textcolor{comment}{// Add 2 for CDC.}
+\textcolor{preprocessor}{        #define USB\_DEVICE\_NB\_INTERFACE (X+2)}
+\textcolor{preprocessor}{}        \textcolor{comment}{// Total number of endpoints on this USB device.}
+        \textcolor{comment}{// This must include each endpoint for each interface.}
+        \textcolor{comment}{// Add 3 for CDC.}
+\textcolor{preprocessor}{        #define USB\_DEVICE\_MAX\_EP (X+3) }
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Ensure that \hyperlink{conf__usb_8h}{conf\-\_\-usb.\-h} contains the description of composite device\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ \textcolor{comment}{// The endpoint numbers chosen by you for the CDC.}
+        \textcolor{comment}{// The endpoint numbers starting from 1.}
+\textcolor{preprocessor}{        #define  UDI\_CDC\_DATA\_EP\_IN\_0            (1 | USB\_EP\_DIR\_IN)  // TX}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define  UDI\_CDC\_DATA\_EP\_OUT\_0           (2 | USB\_EP\_DIR\_OUT) // RX}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define  UDI\_CDC\_COMM\_EP\_0               (3 | USB\_EP\_DIR\_IN)  // Notify
+       endpoint}
+\textcolor{preprocessor}{}        \textcolor{comment}{// The interface index of an interface starting from 0}
+\textcolor{preprocessor}{        #define  UDI\_CDC\_COMM\_IFACE\_NUMBER\_0     X+0}
+\textcolor{preprocessor}{        #define  UDI\_CDC\_DATA\_IFACE\_NUMBER\_0     X+1 }
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Ensure that \hyperlink{conf__usb_8h}{conf\-\_\-usb.\-h} contains the following parameters required for a U\-S\-B composite device configuration\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ \textcolor{comment}{// USB Interfaces descriptor structure}
+\textcolor{preprocessor}{        #define UDI\_COMPOSITE\_DESC\_T \(\backslash\)}
+\textcolor{preprocessor}{           ...}
+\textcolor{preprocessor}{}           \hyperlink{structusb__iad__desc__t}{usb\_iad\_desc\_t} udi\_cdc\_iad; \hyperlink{structudi__cdc__comm__desc__t}{\(\backslash\)}
+\hyperlink{structudi__cdc__comm__desc__t}{           udi\_cdc\_comm\_desc\_t} udi\_cdc\_comm; \hyperlink{structudi__cdc__data__desc__t}{\(\backslash\)}
+\hyperlink{structudi__cdc__data__desc__t}{           udi\_cdc\_data\_desc\_t} udi\_cdc\_data; \(\backslash\)
+           ...
+        \textcolor{comment}{// USB Interfaces descriptor value for Full Speed}
+\textcolor{preprocessor}{        #define UDI\_COMPOSITE\_DESC\_FS \(\backslash\)}
+\textcolor{preprocessor}{           ...}
+\textcolor{preprocessor}{}           .udi\_cdc\_iad               = UDI\_CDC\_IAD\_DESC\_0, \(\backslash\)
+           .udi\_cdc\_comm              = UDI\_CDC\_COMM\_DESC\_0, \(\backslash\)
+           .udi\_cdc\_data              = UDI\_CDC\_DATA\_DESC\_0\_FS, \(\backslash\)
+           ...
+        \textcolor{comment}{// USB Interfaces descriptor value for High Speed}
+\textcolor{preprocessor}{        #define UDI\_COMPOSITE\_DESC\_HS \(\backslash\)}
+\textcolor{preprocessor}{           ...}
+\textcolor{preprocessor}{}           .udi\_cdc\_iad               = UDI\_CDC\_IAD\_DESC\_0, \(\backslash\)
+           .udi\_cdc\_comm              = UDI\_CDC\_COMM\_DESC\_0, \(\backslash\)
+           .udi\_cdc\_data              = UDI\_CDC\_DATA\_DESC\_0\_HS, \(\backslash\)
+           ...
+        \textcolor{comment}{// USB Interface APIs}
+\textcolor{preprocessor}{        #define UDI\_COMPOSITE\_API \(\backslash\)}
+\textcolor{preprocessor}{           ...}
+\textcolor{preprocessor}{}           &\hyperlink{group__udi__cdc__group__udc_gad7b0a90350a1f1a7c62fab1a749bf687}{udi\_api\_cdc\_comm},       \(\backslash\)
+           &udi\_api\_cdc\_data,       \(\backslash\)
+           ... 
+\end{DoxyCode}
+
+\item \begin{DoxyNote}{Note}
+The descriptors order given in the four lists above must be the same as the order defined by all interface indexes. The interface index orders are defined through U\-D\-I\-\_\-\-X\-\_\-\-I\-F\-A\-C\-E\-\_\-\-N\-U\-M\-B\-E\-R defines.\par
+ Also, the C\-D\-C requires a U\-S\-B Interface Association Descriptor (I\-A\-D) for composite device. 
+\end{DoxyNote}
+
+\end{DoxyItemize}
+\end{DoxyEnumerate}\hypertarget{udc_use_case_1}{}\section{Change U\-S\-B speed}\label{udc_use_case_1}
+In this use case, the U\-S\-B device is used with different U\-S\-B speeds.\hypertarget{udc_use_case_1_udc_use_case_1_setup}{}\subsection{Setup steps}\label{udc_use_case_1_udc_use_case_1_setup}
+Prior to implement this use case, be sure to have already apply the U\-D\-I module \char`\"{}basic use case\char`\"{}.\hypertarget{udc_use_case_1_udc_use_case_1_usage}{}\subsection{Usage steps}\label{udc_use_case_1_udc_use_case_1_usage}
+\hypertarget{udc_use_case_1_udc_use_case_1_usage_code}{}\subsubsection{Example code}\label{udc_use_case_1_udc_use_case_1_usage_code}
+Content of \hyperlink{conf__usb_8h}{conf\-\_\-usb.\-h}\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{         #if // Low speed}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{         #define USB\_DEVICE\_LOW\_SPEED}
+\textcolor{preprocessor}{}         \textcolor{comment}{// #define USB\_DEVICE\_HS\_SUPPORT}
+
+\textcolor{preprocessor}{         #elif // Full speed}
+\textcolor{preprocessor}{}         \textcolor{comment}{// #define USB\_DEVICE\_LOW\_SPEED}
+         \textcolor{comment}{// #define USB\_DEVICE\_HS\_SUPPORT}
+
+\textcolor{preprocessor}{         #elif // High speed}
+\textcolor{preprocessor}{}         \textcolor{comment}{// #define USB\_DEVICE\_LOW\_SPEED}
+\textcolor{preprocessor}{         #define USB\_DEVICE\_HS\_SUPPORT}
+\textcolor{preprocessor}{}
+\textcolor{preprocessor}{         #endif}
+\end{DoxyCode}
+\hypertarget{udc_use_case_1_udc_use_case_1_usage_flow}{}\subsubsection{Workflow}\label{udc_use_case_1_udc_use_case_1_usage_flow}
+
+\begin{DoxyEnumerate}
+\item Ensure that \hyperlink{conf__usb_8h}{conf\-\_\-usb.\-h} is available and contains the following parameters required for a U\-S\-B device low speed (1.\-5\-Mbit/s)\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+\textcolor{preprocessor}{ #define USB\_DEVICE\_LOW\_SPEED}
+\textcolor{preprocessor}{         //#define  USB\_DEVICE\_HS\_SUPPORT }
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Ensure that \hyperlink{conf__usb_8h}{conf\-\_\-usb.\-h} contains the following parameters required for a U\-S\-B device full speed (12\-Mbit/s)\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ \textcolor{comment}{//#define USB\_DEVICE\_LOW\_SPEED}
+         \textcolor{comment}{//#define  USB\_DEVICE\_HS\_SUPPORT }
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Ensure that \hyperlink{conf__usb_8h}{conf\-\_\-usb.\-h} contains the following parameters required for a U\-S\-B device high speed (480\-Mbit/s)\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ \textcolor{comment}{//#define USB\_DEVICE\_LOW\_SPEED}
+\textcolor{preprocessor}{         #define  USB\_DEVICE\_HS\_SUPPORT }
+\end{DoxyCode}
+ 
+\end{DoxyItemize}
+\end{DoxyEnumerate}\hypertarget{udc_use_case_2}{}\section{Use U\-S\-B strings}\label{udc_use_case_2}
+In this use case, the usual U\-S\-B strings is added in the U\-S\-B device.\hypertarget{udc_use_case_2_udc_use_case_2_setup}{}\subsection{Setup steps}\label{udc_use_case_2_udc_use_case_2_setup}
+Prior to implement this use case, be sure to have already apply the U\-D\-I module \char`\"{}basic use case\char`\"{}.\hypertarget{udc_use_case_2_udc_use_case_2_usage}{}\subsection{Usage steps}\label{udc_use_case_2_udc_use_case_2_usage}
+\hypertarget{udc_use_case_2_udc_use_case_2_usage_code}{}\subsubsection{Example code}\label{udc_use_case_2_udc_use_case_2_usage_code}
+Content of \hyperlink{conf__usb_8h}{conf\-\_\-usb.\-h}\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{        #define  USB\_DEVICE\_MANUFACTURE\_NAME      "Manufacture name"}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define  USB\_DEVICE\_PRODUCT\_NAME          "Product name"}
+\textcolor{preprocessor}{        #define  USB\_DEVICE\_SERIAL\_NAME           "12...EF"}
+\end{DoxyCode}
+\hypertarget{udc_use_case_2_udc_use_case_2_usage_flow}{}\subsubsection{Workflow}\label{udc_use_case_2_udc_use_case_2_usage_flow}
+
+\begin{DoxyEnumerate}
+\item Ensure that \hyperlink{conf__usb_8h}{conf\-\_\-usb.\-h} is available and contains the following parameters required to enable different U\-S\-B strings\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ \textcolor{comment}{// Static ASCII name for the manufacture}
+\textcolor{preprocessor}{        #define  USB\_DEVICE\_MANUFACTURE\_NAME "Manufacture name" }
+\end{DoxyCode}
+
+\item 
+\begin{DoxyCode}
+ \textcolor{comment}{// Static ASCII name for the product}
+\textcolor{preprocessor}{        #define  USB\_DEVICE\_PRODUCT\_NAME "Product name" }
+\end{DoxyCode}
+
+\item 
+\begin{DoxyCode}
+ \textcolor{comment}{// Static ASCII name to enable and set a serial number}
+\textcolor{preprocessor}{        #define  USB\_DEVICE\_SERIAL\_NAME "12...EF" }
+\end{DoxyCode}
+ 
+\end{DoxyItemize}
+\end{DoxyEnumerate}\hypertarget{udc_use_case_3}{}\section{Use U\-S\-B remote wakeup feature}\label{udc_use_case_3}
+In this use case, the U\-S\-B remote wakeup feature is enabled.\hypertarget{udc_use_case_3_udc_use_case_3_setup}{}\subsection{Setup steps}\label{udc_use_case_3_udc_use_case_3_setup}
+Prior to implement this use case, be sure to have already apply the U\-D\-I module \char`\"{}basic use case\char`\"{}.\hypertarget{udc_use_case_3_udc_use_case_3_usage}{}\subsection{Usage steps}\label{udc_use_case_3_udc_use_case_3_usage}
+\hypertarget{udc_use_case_3_udc_use_case_3_usage_code}{}\subsubsection{Example code}\label{udc_use_case_3_udc_use_case_3_usage_code}
+Content of \hyperlink{conf__usb_8h}{conf\-\_\-usb.\-h}\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{        #define  USB\_DEVICE\_ATTR \(\backslash\)}
+\textcolor{preprocessor}{          (USB\_CONFIG\_ATTR\_REMOTE\_WAKEUP | USB\_CONFIG\_ATTR\_...\_POWERED)}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define UDC\_REMOTEWAKEUP\_ENABLE() my\_callback\_remotewakeup\_enable()}
+\textcolor{preprocessor}{}        \textcolor{keyword}{extern} \textcolor{keywordtype}{void} my\_callback\_remotewakeup\_enable(\textcolor{keywordtype}{void});
+\textcolor{preprocessor}{        #define UDC\_REMOTEWAKEUP\_DISABLE() my\_callback\_remotewakeup\_disable()}
+\textcolor{preprocessor}{        extern void my\_callback\_remotewakeup\_disable(void);}
+\end{DoxyCode}
+
+
+Add to application C-\/file\-: 
+\begin{DoxyCode}
+         \textcolor{keywordtype}{void} my\_callback\_remotewakeup\_enable(\textcolor{keywordtype}{void})
+         \{
+            \textcolor{comment}{// Enable application wakeup events (e.g. enable GPIO interrupt)}
+         \}
+         \textcolor{keywordtype}{void} my\_callback\_remotewakeup\_disable(\textcolor{keywordtype}{void})
+         \{
+            \textcolor{comment}{// Disable application wakeup events (e.g. disable GPIO interrupt)}
+         \}
+
+         \textcolor{keywordtype}{void} my\_interrupt\_event(\textcolor{keywordtype}{void})
+         \{
+            udc\_remotewakeup();
+         \}
+\end{DoxyCode}
+\hypertarget{udc_use_case_3_udc_use_case_3_usage_flow}{}\subsubsection{Workflow}\label{udc_use_case_3_udc_use_case_3_usage_flow}
+
+\begin{DoxyEnumerate}
+\item Ensure that \hyperlink{conf__usb_8h}{conf\-\_\-usb.\-h} is available and contains the following parameters required to enable remote wakeup feature\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ \textcolor{comment}{// Authorizes the remote wakeup feature}
+\textcolor{preprocessor}{             #define  USB\_DEVICE\_ATTR (USB\_CONFIG\_ATTR\_REMOTE\_WAKEUP |
+       USB\_CONFIG\_ATTR\_...\_POWERED) }
+\end{DoxyCode}
+
+\item 
+\begin{DoxyCode}
+ \textcolor{comment}{// Define callback called when the host enables the remotewakeup feature}
+\textcolor{preprocessor}{        #define UDC\_REMOTEWAKEUP\_ENABLE() my\_callback\_remotewakeup\_enable()}
+\textcolor{preprocessor}{        extern void my\_callback\_remotewakeup\_enable(void); }
+\end{DoxyCode}
+
+\item 
+\begin{DoxyCode}
+ \textcolor{comment}{// Define callback called when the host disables the remotewakeup feature}
+\textcolor{preprocessor}{        #define UDC\_REMOTEWAKEUP\_DISABLE() my\_callback\_remotewakeup\_disable()}
+\textcolor{preprocessor}{        extern void my\_callback\_remotewakeup\_disable(void); }
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Send a remote wakeup (U\-S\-B upstream)\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ udc\_remotewakeup(); 
+\end{DoxyCode}
+ 
+\end{DoxyItemize}
+\end{DoxyEnumerate}\hypertarget{udc_use_case_5}{}\section{Bus power application recommendations}\label{udc_use_case_5}
+In this use case, the U\-S\-B device B\-U\-S power feature is enabled. This feature requires a correct power consumption management.\hypertarget{udc_use_case_5_udc_use_case_5_setup}{}\subsection{Setup steps}\label{udc_use_case_5_udc_use_case_5_setup}
+Prior to implement this use case, be sure to have already apply the U\-D\-I module \char`\"{}basic use case\char`\"{}.\hypertarget{udc_use_case_5_udc_use_case_5_usage}{}\subsection{Usage steps}\label{udc_use_case_5_udc_use_case_5_usage}
+\hypertarget{udc_use_case_5_udc_use_case_5_usage_code}{}\subsubsection{Example code}\label{udc_use_case_5_udc_use_case_5_usage_code}
+Content of \hyperlink{conf__usb_8h}{conf\-\_\-usb.\-h}\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{        #define  USB\_DEVICE\_ATTR (USB\_CONFIG\_ATTR\_BUS\_POWERED)}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define  UDC\_SUSPEND\_EVENT()         user\_callback\_suspend\_action()}
+\textcolor{preprocessor}{}        \textcolor{keyword}{extern} \textcolor{keywordtype}{void} user\_callback\_suspend\_action(\textcolor{keywordtype}{void})
+        \textcolor{preprocessor}{#define  UDC\_RESUME\_EVENT()          user\_callback\_resume\_action()}
+\textcolor{preprocessor}{        extern void user\_callback\_resume\_action(void)}
+\end{DoxyCode}
+
+
+Add to application C-\/file\-: 
+\begin{DoxyCode}
+        \textcolor{keywordtype}{void} user\_callback\_suspend\_action(\textcolor{keywordtype}{void})
+        \{
+           \textcolor{comment}{// Disable hardware component to reduce power consumption}
+        \}
+        \textcolor{keywordtype}{void} user\_callback\_resume\_action(\textcolor{keywordtype}{void})
+        \{
+           \textcolor{comment}{// Re-enable hardware component}
+        \}
+\end{DoxyCode}
+\hypertarget{udc_use_case_5_udc_use_case_5_usage_flow}{}\subsubsection{Workflow}\label{udc_use_case_5_udc_use_case_5_usage_flow}
+
+\begin{DoxyEnumerate}
+\item Ensure that \hyperlink{conf__usb_8h}{conf\-\_\-usb.\-h} is available and contains the following parameters\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ \textcolor{comment}{// Authorizes the BUS power feature}
+\textcolor{preprocessor}{        #define  USB\_DEVICE\_ATTR (USB\_CONFIG\_ATTR\_BUS\_POWERED) }
+\end{DoxyCode}
+
+\item 
+\begin{DoxyCode}
+ \textcolor{comment}{// Define callback called when the host suspend the USB line}
+\textcolor{preprocessor}{        #define UDC\_SUSPEND\_EVENT() user\_callback\_suspend\_action()}
+\textcolor{preprocessor}{        extern void user\_callback\_suspend\_action(void); }
+\end{DoxyCode}
+
+\item 
+\begin{DoxyCode}
+ \textcolor{comment}{// Define callback called when the host or device resume the USB line}
+\textcolor{preprocessor}{        #define UDC\_RESUME\_EVENT() user\_callback\_resume\_action()}
+\textcolor{preprocessor}{        extern void user\_callback\_resume\_action(void); }
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Reduce power consumption in suspend mode (max. 2.\-5m\-A on Vbus)\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+ \textcolor{keywordtype}{void} user\_callback\_suspend\_action(\textcolor{keywordtype}{void})
+        \{
+        turn\_off\_components();
+        \} 
+\end{DoxyCode}
+ 
+\end{DoxyItemize}
+\end{DoxyEnumerate}\hypertarget{udc_use_case_6}{}\section{U\-S\-B dynamic serial number}\label{udc_use_case_6}
+In this use case, the U\-S\-B serial strings is dynamic. For a static serial string refer to \hyperlink{udc_use_case_2}{Use U\-S\-B strings}.\hypertarget{udc_use_case_6_udc_use_case_6_setup}{}\subsection{Setup steps}\label{udc_use_case_6_udc_use_case_6_setup}
+Prior to implement this use case, be sure to have already apply the U\-D\-I module \char`\"{}basic use case\char`\"{}.\hypertarget{udc_use_case_6_udc_use_case_6_usage}{}\subsection{Usage steps}\label{udc_use_case_6_udc_use_case_6_usage}
+\hypertarget{udc_use_case_6_udc_use_case_6_usage_code}{}\subsubsection{Example code}\label{udc_use_case_6_udc_use_case_6_usage_code}
+Content of \hyperlink{conf__usb_8h}{conf\-\_\-usb.\-h}\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{        #define  USB\_DEVICE\_SERIAL\_NAME}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define  USB\_DEVICE\_GET\_SERIAL\_NAME\_POINTER serial\_number}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define  USB\_DEVICE\_GET\_SERIAL\_NAME\_LENGTH  12}
+\textcolor{preprocessor}{        extern uint8\_t serial\_number[];}
+\end{DoxyCode}
+
+
+Add to application C-\/file\-: 
+\begin{DoxyCode}
+         uint8\_t serial\_number[USB\_DEVICE\_GET\_SERIAL\_NAME\_LENGTH];
+
+         \textcolor{keywordtype}{void} init\_build\_usb\_serial\_number(\textcolor{keywordtype}{void})
+         \{
+         serial\_number[0] = \textcolor{charliteral}{'A'};
+         serial\_number[1] = \textcolor{charliteral}{'B'};
+         ...
+         serial\_number[USB\_DEVICE\_GET\_SERIAL\_NAME\_LENGTH-1] = \textcolor{charliteral}{'C'};
+         \} 
+\end{DoxyCode}
+\hypertarget{udc_use_case_6_udc_use_case_6_usage_flow}{}\subsubsection{Workflow}\label{udc_use_case_6_udc_use_case_6_usage_flow}
+
+\begin{DoxyEnumerate}
+\item Ensure that \hyperlink{conf__usb_8h}{conf\-\_\-usb.\-h} is available and contains the following parameters required to enable a U\-S\-B serial number strings dynamically\-:
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+\textcolor{preprocessor}{ #define  USB\_DEVICE\_SERIAL\_NAME // Define this empty}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define  USB\_DEVICE\_GET\_SERIAL\_NAME\_POINTER serial\_number // Give
+       serial array pointer}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{        #define  USB\_DEVICE\_GET\_SERIAL\_NAME\_LENGTH  12 // Give size of serial
+       array}
+\textcolor{preprocessor}{        extern uint8\_t serial\_number[]; // Declare external serial array }
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\item Before start U\-S\-B stack, initialize the serial array
+\begin{DoxyItemize}
+\item 
+\begin{DoxyCode}
+         uint8\_t serial\_number[USB\_DEVICE\_GET\_SERIAL\_NAME\_LENGTH];
+
+         \textcolor{keywordtype}{void} init\_build\_usb\_serial\_number(\textcolor{keywordtype}{void})
+         \{
+         serial\_number[0] = \textcolor{charliteral}{'A'};
+         serial\_number[1] = \textcolor{charliteral}{'B'};
+         ...
+         serial\_number[USB\_DEVICE\_GET\_SERIAL\_NAME\_LENGTH-1] = \textcolor{charliteral}{'C'};
+         \} 
+\end{DoxyCode}
+ 
+\end{DoxyItemize}
+\end{DoxyEnumerate}

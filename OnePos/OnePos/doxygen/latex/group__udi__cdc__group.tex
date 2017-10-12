@@ -1,0 +1,501 @@
+\hypertarget{group__udi__cdc__group}{\section{U\-S\-B Device Interface (U\-D\-I) for Communication Class Device (C\-D\-C)}
+\label{group__udi__cdc__group}\index{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}}
+}
+\subsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group__udi__cdc__group__udc}{Interface with U\-S\-B Device Core (\-U\-D\-C)}
+\item 
+\hyperlink{group__udi__cdc__group__internal}{Implementation of U\-D\-I C\-D\-C}
+\item 
+\hyperlink{group__udi__cdc__group__desc}{U\-S\-B interface descriptors}
+\end{DoxyCompactItemize}
+\subsection*{Interface for application with single C\-D\-C interface support}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{group__udi__cdc__group_ga5507164c7c4ff2c9b94af48229dc0c3c}{udi\-\_\-cdc\-\_\-ctrl\-\_\-signal\-\_\-dcd} (\hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} b\-\_\-set)
+\begin{DoxyCompactList}\small\item\em Notify a state change of D\-C\-D signal. \end{DoxyCompactList}\item 
+void \hyperlink{group__udi__cdc__group_ga6b34b223f6c03cd35fc16d29cb9cfb78}{udi\-\_\-cdc\-\_\-ctrl\-\_\-signal\-\_\-dsr} (\hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} b\-\_\-set)
+\begin{DoxyCompactList}\small\item\em Notify a state change of D\-S\-R signal. \end{DoxyCompactList}\item 
+\hypertarget{group__udi__cdc__group_gaf62c55c329d7e7ff3913274b124e54aa}{void \hyperlink{group__udi__cdc__group_gaf62c55c329d7e7ff3913274b124e54aa}{udi\-\_\-cdc\-\_\-signal\-\_\-framing\-\_\-error} (void)}\label{group__udi__cdc__group_gaf62c55c329d7e7ff3913274b124e54aa}
+
+\begin{DoxyCompactList}\small\item\em Notify a framing error. \end{DoxyCompactList}\item 
+\hypertarget{group__udi__cdc__group_gab6dd1be8afa57a1bece870338bdc5f74}{void \hyperlink{group__udi__cdc__group_gab6dd1be8afa57a1bece870338bdc5f74}{udi\-\_\-cdc\-\_\-signal\-\_\-parity\-\_\-error} (void)}\label{group__udi__cdc__group_gab6dd1be8afa57a1bece870338bdc5f74}
+
+\begin{DoxyCompactList}\small\item\em Notify a parity error. \end{DoxyCompactList}\item 
+\hypertarget{group__udi__cdc__group_ga7730a564c9cb117af611958500a4fa7f}{void \hyperlink{group__udi__cdc__group_ga7730a564c9cb117af611958500a4fa7f}{udi\-\_\-cdc\-\_\-signal\-\_\-overrun} (void)}\label{group__udi__cdc__group_ga7730a564c9cb117af611958500a4fa7f}
+
+\begin{DoxyCompactList}\small\item\em Notify a overrun. \end{DoxyCompactList}\item 
+iram\-\_\-size\-\_\-t \hyperlink{group__udi__cdc__group_ga64d9a6a6c3404b2d7362ced2d36fe7b0}{udi\-\_\-cdc\-\_\-get\-\_\-nb\-\_\-received\-\_\-data} (void)
+\begin{DoxyCompactList}\small\item\em Gets the number of byte received. \end{DoxyCompactList}\item 
+\hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{group__udi__cdc__group_gab5beb4e918e089e0eacf20dba1df73ea}{udi\-\_\-cdc\-\_\-is\-\_\-rx\-\_\-ready} (void)
+\begin{DoxyCompactList}\small\item\em This function checks if a character has been received on the C\-D\-C line. \end{DoxyCompactList}\item 
+int \hyperlink{group__udi__cdc__group_ga202f3fd7b153f6e1a41601735e0febb6}{udi\-\_\-cdc\-\_\-getc} (void)
+\begin{DoxyCompactList}\small\item\em Waits and gets a value on C\-D\-C line. \end{DoxyCompactList}\item 
+iram\-\_\-size\-\_\-t \hyperlink{group__udi__cdc__group_gaf100ac6cd39574749c54d203b5d7835b}{udi\-\_\-cdc\-\_\-read\-\_\-buf} (void $\ast$buf, iram\-\_\-size\-\_\-t size)
+\begin{DoxyCompactList}\small\item\em Reads a R\-A\-M buffer on C\-D\-C line. \end{DoxyCompactList}\item 
+iram\-\_\-size\-\_\-t \hyperlink{group__udi__cdc__group_gac3e2670ee5ace77796c948702c295c2b}{udi\-\_\-cdc\-\_\-get\-\_\-free\-\_\-tx\-\_\-buffer} (void)
+\begin{DoxyCompactList}\small\item\em Gets the number of free byte in T\-X buffer. \end{DoxyCompactList}\item 
+\hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{group__udi__cdc__group_ga7d0d458a5731da95dd05f30714c42dde}{udi\-\_\-cdc\-\_\-is\-\_\-tx\-\_\-ready} (void)
+\begin{DoxyCompactList}\small\item\em This function checks if a new character sent is possible The type int is used to support scanf redirection from compiler L\-I\-B. \end{DoxyCompactList}\item 
+int \hyperlink{group__udi__cdc__group_ga8faae3fcf4911017c0fcf0aa127179f6}{udi\-\_\-cdc\-\_\-putc} (int value)
+\begin{DoxyCompactList}\small\item\em Puts a byte on C\-D\-C line The type int is used to support printf redirection from compiler L\-I\-B. \end{DoxyCompactList}\item 
+iram\-\_\-size\-\_\-t \hyperlink{group__udi__cdc__group_ga705496169ff423f3e3d3b5ff882d3f9b}{udi\-\_\-cdc\-\_\-write\-\_\-buf} (const void $\ast$buf, iram\-\_\-size\-\_\-t size)
+\begin{DoxyCompactList}\small\item\em Writes a R\-A\-M buffer on C\-D\-C line. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Interface for application with multi C\-D\-C interfaces support}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{group__udi__cdc__group_ga15a1ee3d8fde1f2687b9ffb93cfa16b4}{udi\-\_\-cdc\-\_\-multi\-\_\-ctrl\-\_\-signal\-\_\-dcd} (uint8\-\_\-t port, \hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} b\-\_\-set)
+\begin{DoxyCompactList}\small\item\em Notify a state change of D\-C\-D signal. \end{DoxyCompactList}\item 
+void \hyperlink{group__udi__cdc__group_ga5b9248dde2e26a04bf1915da8531ed4f}{udi\-\_\-cdc\-\_\-multi\-\_\-ctrl\-\_\-signal\-\_\-dsr} (uint8\-\_\-t port, \hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} b\-\_\-set)
+\begin{DoxyCompactList}\small\item\em Notify a state change of D\-S\-R signal. \end{DoxyCompactList}\item 
+void \hyperlink{group__udi__cdc__group_gaeb3ad676fa423d7be61886397c5b5954}{udi\-\_\-cdc\-\_\-multi\-\_\-signal\-\_\-framing\-\_\-error} (uint8\-\_\-t port)
+\begin{DoxyCompactList}\small\item\em Notify a framing error. \end{DoxyCompactList}\item 
+void \hyperlink{group__udi__cdc__group_ga7c6d996cf1697fdcbb0e6dfae3de701d}{udi\-\_\-cdc\-\_\-multi\-\_\-signal\-\_\-parity\-\_\-error} (uint8\-\_\-t port)
+\begin{DoxyCompactList}\small\item\em Notify a parity error. \end{DoxyCompactList}\item 
+void \hyperlink{group__udi__cdc__group_ga79edbdac74537196ef0afd4263a7e9cc}{udi\-\_\-cdc\-\_\-multi\-\_\-signal\-\_\-overrun} (uint8\-\_\-t port)
+\begin{DoxyCompactList}\small\item\em Notify a overrun. \end{DoxyCompactList}\item 
+iram\-\_\-size\-\_\-t \hyperlink{group__udi__cdc__group_ga733e450aa820ee812aac0ba101886afe}{udi\-\_\-cdc\-\_\-multi\-\_\-get\-\_\-nb\-\_\-received\-\_\-data} (uint8\-\_\-t port)
+\begin{DoxyCompactList}\small\item\em Gets the number of byte received. \end{DoxyCompactList}\item 
+\hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{group__udi__cdc__group_ga1eea169426a593cb41125a2d0745bdd3}{udi\-\_\-cdc\-\_\-multi\-\_\-is\-\_\-rx\-\_\-ready} (uint8\-\_\-t port)
+\begin{DoxyCompactList}\small\item\em This function checks if a character has been received on the C\-D\-C line. \end{DoxyCompactList}\item 
+int \hyperlink{group__udi__cdc__group_ga89406b73cd57b6ac589b3663d97abd9e}{udi\-\_\-cdc\-\_\-multi\-\_\-getc} (uint8\-\_\-t port)
+\begin{DoxyCompactList}\small\item\em Waits and gets a value on C\-D\-C line. \end{DoxyCompactList}\item 
+iram\-\_\-size\-\_\-t \hyperlink{group__udi__cdc__group_gae7f98639f63b0f9413f64235a0dcdbf4}{udi\-\_\-cdc\-\_\-multi\-\_\-read\-\_\-buf} (uint8\-\_\-t port, void $\ast$buf, iram\-\_\-size\-\_\-t size)
+\begin{DoxyCompactList}\small\item\em Reads a R\-A\-M buffer on C\-D\-C line. \end{DoxyCompactList}\item 
+iram\-\_\-size\-\_\-t \hyperlink{group__udi__cdc__group_ga729e06f59cf4288e5a64ca291e9fe620}{udi\-\_\-cdc\-\_\-multi\-\_\-get\-\_\-free\-\_\-tx\-\_\-buffer} (uint8\-\_\-t port)
+\begin{DoxyCompactList}\small\item\em Gets the number of free byte in T\-X buffer. \end{DoxyCompactList}\item 
+\hyperlink{group__group__xmega__utils_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{group__udi__cdc__group_ga6228a9513a17dbd90d03b0dcba64bd15}{udi\-\_\-cdc\-\_\-multi\-\_\-is\-\_\-tx\-\_\-ready} (uint8\-\_\-t port)
+\begin{DoxyCompactList}\small\item\em This function checks if a new character sent is possible The type int is used to support scanf redirection from compiler L\-I\-B. \end{DoxyCompactList}\item 
+int \hyperlink{group__udi__cdc__group_gaf6c7f0d68af6d00d2aa83d4dfc126f59}{udi\-\_\-cdc\-\_\-multi\-\_\-putc} (uint8\-\_\-t port, int value)
+\begin{DoxyCompactList}\small\item\em Puts a byte on C\-D\-C line The type int is used to support printf redirection from compiler L\-I\-B. \end{DoxyCompactList}\item 
+iram\-\_\-size\-\_\-t \hyperlink{group__udi__cdc__group_gae74f9c89ca08f6c1cbb263bc529a3c3c}{udi\-\_\-cdc\-\_\-multi\-\_\-write\-\_\-buf} (uint8\-\_\-t port, const void $\ast$buf, iram\-\_\-size\-\_\-t size)
+\begin{DoxyCompactList}\small\item\em Writes a R\-A\-M buffer on C\-D\-C line. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Common A\-P\-Is used by high level application to use this U\-S\-B class.
+
+These routines are used to transfer and control data to/from U\-S\-B C\-D\-C endpoint.
+
+See \hyperlink{udi_cdc_quickstart}{Quick start guide for U\-S\-B device Communication Class Device module (U\-D\-I C\-D\-C)}. 
+
+\subsection{Function Documentation}
+\hypertarget{group__udi__cdc__group_ga5507164c7c4ff2c9b94af48229dc0c3c}{\index{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}!udi\-\_\-cdc\-\_\-ctrl\-\_\-signal\-\_\-dcd@{udi\-\_\-cdc\-\_\-ctrl\-\_\-signal\-\_\-dcd}}
+\index{udi\-\_\-cdc\-\_\-ctrl\-\_\-signal\-\_\-dcd@{udi\-\_\-cdc\-\_\-ctrl\-\_\-signal\-\_\-dcd}!USB Device Interface (UDI) for Communication Class Device (CDC)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}}
+\subsubsection[{udi\-\_\-cdc\-\_\-ctrl\-\_\-signal\-\_\-dcd}]{\setlength{\rightskip}{0pt plus 5cm}void udi\-\_\-cdc\-\_\-ctrl\-\_\-signal\-\_\-dcd (
+\begin{DoxyParamCaption}
+\item[{{\bf bool}}]{b\-\_\-set}
+\end{DoxyParamCaption}
+)}}\label{group__udi__cdc__group_ga5507164c7c4ff2c9b94af48229dc0c3c}
+
+
+Notify a state change of D\-C\-D signal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b\-\_\-set} & D\-C\-D is enabled if true, else disabled \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__udi__cdc__group_ga6b34b223f6c03cd35fc16d29cb9cfb78}{\index{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}!udi\-\_\-cdc\-\_\-ctrl\-\_\-signal\-\_\-dsr@{udi\-\_\-cdc\-\_\-ctrl\-\_\-signal\-\_\-dsr}}
+\index{udi\-\_\-cdc\-\_\-ctrl\-\_\-signal\-\_\-dsr@{udi\-\_\-cdc\-\_\-ctrl\-\_\-signal\-\_\-dsr}!USB Device Interface (UDI) for Communication Class Device (CDC)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}}
+\subsubsection[{udi\-\_\-cdc\-\_\-ctrl\-\_\-signal\-\_\-dsr}]{\setlength{\rightskip}{0pt plus 5cm}void udi\-\_\-cdc\-\_\-ctrl\-\_\-signal\-\_\-dsr (
+\begin{DoxyParamCaption}
+\item[{{\bf bool}}]{b\-\_\-set}
+\end{DoxyParamCaption}
+)}}\label{group__udi__cdc__group_ga6b34b223f6c03cd35fc16d29cb9cfb78}
+
+
+Notify a state change of D\-S\-R signal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b\-\_\-set} & D\-S\-R is enabled if true, else disabled \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__udi__cdc__group_gac3e2670ee5ace77796c948702c295c2b}{\index{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}!udi\-\_\-cdc\-\_\-get\-\_\-free\-\_\-tx\-\_\-buffer@{udi\-\_\-cdc\-\_\-get\-\_\-free\-\_\-tx\-\_\-buffer}}
+\index{udi\-\_\-cdc\-\_\-get\-\_\-free\-\_\-tx\-\_\-buffer@{udi\-\_\-cdc\-\_\-get\-\_\-free\-\_\-tx\-\_\-buffer}!USB Device Interface (UDI) for Communication Class Device (CDC)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}}
+\subsubsection[{udi\-\_\-cdc\-\_\-get\-\_\-free\-\_\-tx\-\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}iram\-\_\-size\-\_\-t udi\-\_\-cdc\-\_\-get\-\_\-free\-\_\-tx\-\_\-buffer (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{group__udi__cdc__group_gac3e2670ee5ace77796c948702c295c2b}
+
+
+Gets the number of free byte in T\-X buffer. 
+
+\begin{DoxyReturn}{Returns}
+the number of free byte in T\-X buffer 
+\end{DoxyReturn}
+\hypertarget{group__udi__cdc__group_ga64d9a6a6c3404b2d7362ced2d36fe7b0}{\index{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}!udi\-\_\-cdc\-\_\-get\-\_\-nb\-\_\-received\-\_\-data@{udi\-\_\-cdc\-\_\-get\-\_\-nb\-\_\-received\-\_\-data}}
+\index{udi\-\_\-cdc\-\_\-get\-\_\-nb\-\_\-received\-\_\-data@{udi\-\_\-cdc\-\_\-get\-\_\-nb\-\_\-received\-\_\-data}!USB Device Interface (UDI) for Communication Class Device (CDC)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}}
+\subsubsection[{udi\-\_\-cdc\-\_\-get\-\_\-nb\-\_\-received\-\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}iram\-\_\-size\-\_\-t udi\-\_\-cdc\-\_\-get\-\_\-nb\-\_\-received\-\_\-data (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{group__udi__cdc__group_ga64d9a6a6c3404b2d7362ced2d36fe7b0}
+
+
+Gets the number of byte received. 
+
+\begin{DoxyReturn}{Returns}
+the number of data available 
+\end{DoxyReturn}
+\hypertarget{group__udi__cdc__group_ga202f3fd7b153f6e1a41601735e0febb6}{\index{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}!udi\-\_\-cdc\-\_\-getc@{udi\-\_\-cdc\-\_\-getc}}
+\index{udi\-\_\-cdc\-\_\-getc@{udi\-\_\-cdc\-\_\-getc}!USB Device Interface (UDI) for Communication Class Device (CDC)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}}
+\subsubsection[{udi\-\_\-cdc\-\_\-getc}]{\setlength{\rightskip}{0pt plus 5cm}int udi\-\_\-cdc\-\_\-getc (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{group__udi__cdc__group_ga202f3fd7b153f6e1a41601735e0febb6}
+
+
+Waits and gets a value on C\-D\-C line. 
+
+\begin{DoxyReturn}{Returns}
+value read on C\-D\-C line 
+\end{DoxyReturn}
+\hypertarget{group__udi__cdc__group_gab5beb4e918e089e0eacf20dba1df73ea}{\index{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}!udi\-\_\-cdc\-\_\-is\-\_\-rx\-\_\-ready@{udi\-\_\-cdc\-\_\-is\-\_\-rx\-\_\-ready}}
+\index{udi\-\_\-cdc\-\_\-is\-\_\-rx\-\_\-ready@{udi\-\_\-cdc\-\_\-is\-\_\-rx\-\_\-ready}!USB Device Interface (UDI) for Communication Class Device (CDC)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}}
+\subsubsection[{udi\-\_\-cdc\-\_\-is\-\_\-rx\-\_\-ready}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bool} udi\-\_\-cdc\-\_\-is\-\_\-rx\-\_\-ready (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{group__udi__cdc__group_gab5beb4e918e089e0eacf20dba1df73ea}
+
+
+This function checks if a character has been received on the C\-D\-C line. 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily 1} if a byte is ready to be read. 
+\end{DoxyReturn}
+\hypertarget{group__udi__cdc__group_ga7d0d458a5731da95dd05f30714c42dde}{\index{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}!udi\-\_\-cdc\-\_\-is\-\_\-tx\-\_\-ready@{udi\-\_\-cdc\-\_\-is\-\_\-tx\-\_\-ready}}
+\index{udi\-\_\-cdc\-\_\-is\-\_\-tx\-\_\-ready@{udi\-\_\-cdc\-\_\-is\-\_\-tx\-\_\-ready}!USB Device Interface (UDI) for Communication Class Device (CDC)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}}
+\subsubsection[{udi\-\_\-cdc\-\_\-is\-\_\-tx\-\_\-ready}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bool} udi\-\_\-cdc\-\_\-is\-\_\-tx\-\_\-ready (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{group__udi__cdc__group_ga7d0d458a5731da95dd05f30714c42dde}
+
+
+This function checks if a new character sent is possible The type int is used to support scanf redirection from compiler L\-I\-B. 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily 1} if a new character can be sent 
+\end{DoxyReturn}
+\hypertarget{group__udi__cdc__group_ga15a1ee3d8fde1f2687b9ffb93cfa16b4}{\index{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}!udi\-\_\-cdc\-\_\-multi\-\_\-ctrl\-\_\-signal\-\_\-dcd@{udi\-\_\-cdc\-\_\-multi\-\_\-ctrl\-\_\-signal\-\_\-dcd}}
+\index{udi\-\_\-cdc\-\_\-multi\-\_\-ctrl\-\_\-signal\-\_\-dcd@{udi\-\_\-cdc\-\_\-multi\-\_\-ctrl\-\_\-signal\-\_\-dcd}!USB Device Interface (UDI) for Communication Class Device (CDC)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}}
+\subsubsection[{udi\-\_\-cdc\-\_\-multi\-\_\-ctrl\-\_\-signal\-\_\-dcd}]{\setlength{\rightskip}{0pt plus 5cm}void udi\-\_\-cdc\-\_\-multi\-\_\-ctrl\-\_\-signal\-\_\-dcd (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{port, }
+\item[{{\bf bool}}]{b\-\_\-set}
+\end{DoxyParamCaption}
+)}}\label{group__udi__cdc__group_ga15a1ee3d8fde1f2687b9ffb93cfa16b4}
+
+
+Notify a state change of D\-C\-D signal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & Communication port number to manage \\
+\hline
+{\em b\-\_\-set} & D\-C\-D is enabled if true, else disabled \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__udi__cdc__group_ga5b9248dde2e26a04bf1915da8531ed4f}{\index{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}!udi\-\_\-cdc\-\_\-multi\-\_\-ctrl\-\_\-signal\-\_\-dsr@{udi\-\_\-cdc\-\_\-multi\-\_\-ctrl\-\_\-signal\-\_\-dsr}}
+\index{udi\-\_\-cdc\-\_\-multi\-\_\-ctrl\-\_\-signal\-\_\-dsr@{udi\-\_\-cdc\-\_\-multi\-\_\-ctrl\-\_\-signal\-\_\-dsr}!USB Device Interface (UDI) for Communication Class Device (CDC)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}}
+\subsubsection[{udi\-\_\-cdc\-\_\-multi\-\_\-ctrl\-\_\-signal\-\_\-dsr}]{\setlength{\rightskip}{0pt plus 5cm}void udi\-\_\-cdc\-\_\-multi\-\_\-ctrl\-\_\-signal\-\_\-dsr (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{port, }
+\item[{{\bf bool}}]{b\-\_\-set}
+\end{DoxyParamCaption}
+)}}\label{group__udi__cdc__group_ga5b9248dde2e26a04bf1915da8531ed4f}
+
+
+Notify a state change of D\-S\-R signal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & Communication port number to manage \\
+\hline
+{\em b\-\_\-set} & D\-S\-R is enabled if true, else disabled \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__udi__cdc__group_ga729e06f59cf4288e5a64ca291e9fe620}{\index{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}!udi\-\_\-cdc\-\_\-multi\-\_\-get\-\_\-free\-\_\-tx\-\_\-buffer@{udi\-\_\-cdc\-\_\-multi\-\_\-get\-\_\-free\-\_\-tx\-\_\-buffer}}
+\index{udi\-\_\-cdc\-\_\-multi\-\_\-get\-\_\-free\-\_\-tx\-\_\-buffer@{udi\-\_\-cdc\-\_\-multi\-\_\-get\-\_\-free\-\_\-tx\-\_\-buffer}!USB Device Interface (UDI) for Communication Class Device (CDC)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}}
+\subsubsection[{udi\-\_\-cdc\-\_\-multi\-\_\-get\-\_\-free\-\_\-tx\-\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}iram\-\_\-size\-\_\-t udi\-\_\-cdc\-\_\-multi\-\_\-get\-\_\-free\-\_\-tx\-\_\-buffer (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{port}
+\end{DoxyParamCaption}
+)}}\label{group__udi__cdc__group_ga729e06f59cf4288e5a64ca291e9fe620}
+
+
+Gets the number of free byte in T\-X buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & Communication port number to manage\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of free byte in T\-X buffer 
+\end{DoxyReturn}
+\hypertarget{group__udi__cdc__group_ga733e450aa820ee812aac0ba101886afe}{\index{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}!udi\-\_\-cdc\-\_\-multi\-\_\-get\-\_\-nb\-\_\-received\-\_\-data@{udi\-\_\-cdc\-\_\-multi\-\_\-get\-\_\-nb\-\_\-received\-\_\-data}}
+\index{udi\-\_\-cdc\-\_\-multi\-\_\-get\-\_\-nb\-\_\-received\-\_\-data@{udi\-\_\-cdc\-\_\-multi\-\_\-get\-\_\-nb\-\_\-received\-\_\-data}!USB Device Interface (UDI) for Communication Class Device (CDC)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}}
+\subsubsection[{udi\-\_\-cdc\-\_\-multi\-\_\-get\-\_\-nb\-\_\-received\-\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}iram\-\_\-size\-\_\-t udi\-\_\-cdc\-\_\-multi\-\_\-get\-\_\-nb\-\_\-received\-\_\-data (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{port}
+\end{DoxyParamCaption}
+)}}\label{group__udi__cdc__group_ga733e450aa820ee812aac0ba101886afe}
+
+
+Gets the number of byte received. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & Communication port number to manage\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of data available 
+\end{DoxyReturn}
+\hypertarget{group__udi__cdc__group_ga89406b73cd57b6ac589b3663d97abd9e}{\index{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}!udi\-\_\-cdc\-\_\-multi\-\_\-getc@{udi\-\_\-cdc\-\_\-multi\-\_\-getc}}
+\index{udi\-\_\-cdc\-\_\-multi\-\_\-getc@{udi\-\_\-cdc\-\_\-multi\-\_\-getc}!USB Device Interface (UDI) for Communication Class Device (CDC)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}}
+\subsubsection[{udi\-\_\-cdc\-\_\-multi\-\_\-getc}]{\setlength{\rightskip}{0pt plus 5cm}int udi\-\_\-cdc\-\_\-multi\-\_\-getc (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{port}
+\end{DoxyParamCaption}
+)}}\label{group__udi__cdc__group_ga89406b73cd57b6ac589b3663d97abd9e}
+
+
+Waits and gets a value on C\-D\-C line. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & Communication port number to manage\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+value read on C\-D\-C line 
+\end{DoxyReturn}
+\hypertarget{group__udi__cdc__group_ga1eea169426a593cb41125a2d0745bdd3}{\index{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}!udi\-\_\-cdc\-\_\-multi\-\_\-is\-\_\-rx\-\_\-ready@{udi\-\_\-cdc\-\_\-multi\-\_\-is\-\_\-rx\-\_\-ready}}
+\index{udi\-\_\-cdc\-\_\-multi\-\_\-is\-\_\-rx\-\_\-ready@{udi\-\_\-cdc\-\_\-multi\-\_\-is\-\_\-rx\-\_\-ready}!USB Device Interface (UDI) for Communication Class Device (CDC)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}}
+\subsubsection[{udi\-\_\-cdc\-\_\-multi\-\_\-is\-\_\-rx\-\_\-ready}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bool} udi\-\_\-cdc\-\_\-multi\-\_\-is\-\_\-rx\-\_\-ready (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{port}
+\end{DoxyParamCaption}
+)}}\label{group__udi__cdc__group_ga1eea169426a593cb41125a2d0745bdd3}
+
+
+This function checks if a character has been received on the C\-D\-C line. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & Communication port number to manage\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily 1} if a byte is ready to be read. 
+\end{DoxyReturn}
+\hypertarget{group__udi__cdc__group_ga6228a9513a17dbd90d03b0dcba64bd15}{\index{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}!udi\-\_\-cdc\-\_\-multi\-\_\-is\-\_\-tx\-\_\-ready@{udi\-\_\-cdc\-\_\-multi\-\_\-is\-\_\-tx\-\_\-ready}}
+\index{udi\-\_\-cdc\-\_\-multi\-\_\-is\-\_\-tx\-\_\-ready@{udi\-\_\-cdc\-\_\-multi\-\_\-is\-\_\-tx\-\_\-ready}!USB Device Interface (UDI) for Communication Class Device (CDC)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}}
+\subsubsection[{udi\-\_\-cdc\-\_\-multi\-\_\-is\-\_\-tx\-\_\-ready}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bool} udi\-\_\-cdc\-\_\-multi\-\_\-is\-\_\-tx\-\_\-ready (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{port}
+\end{DoxyParamCaption}
+)}}\label{group__udi__cdc__group_ga6228a9513a17dbd90d03b0dcba64bd15}
+
+
+This function checks if a new character sent is possible The type int is used to support scanf redirection from compiler L\-I\-B. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & Communication port number to manage\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily 1} if a new character can be sent 
+\end{DoxyReturn}
+\hypertarget{group__udi__cdc__group_gaf6c7f0d68af6d00d2aa83d4dfc126f59}{\index{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}!udi\-\_\-cdc\-\_\-multi\-\_\-putc@{udi\-\_\-cdc\-\_\-multi\-\_\-putc}}
+\index{udi\-\_\-cdc\-\_\-multi\-\_\-putc@{udi\-\_\-cdc\-\_\-multi\-\_\-putc}!USB Device Interface (UDI) for Communication Class Device (CDC)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}}
+\subsubsection[{udi\-\_\-cdc\-\_\-multi\-\_\-putc}]{\setlength{\rightskip}{0pt plus 5cm}int udi\-\_\-cdc\-\_\-multi\-\_\-putc (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{port, }
+\item[{int}]{value}
+\end{DoxyParamCaption}
+)}}\label{group__udi__cdc__group_gaf6c7f0d68af6d00d2aa83d4dfc126f59}
+
+
+Puts a byte on C\-D\-C line The type int is used to support printf redirection from compiler L\-I\-B. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & Communication port number to manage \\
+\hline
+{\em value} & Value to put\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily 1} if function was successfully done, otherwise {\ttfamily 0}. 
+\end{DoxyReturn}
+\hypertarget{group__udi__cdc__group_gae7f98639f63b0f9413f64235a0dcdbf4}{\index{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}!udi\-\_\-cdc\-\_\-multi\-\_\-read\-\_\-buf@{udi\-\_\-cdc\-\_\-multi\-\_\-read\-\_\-buf}}
+\index{udi\-\_\-cdc\-\_\-multi\-\_\-read\-\_\-buf@{udi\-\_\-cdc\-\_\-multi\-\_\-read\-\_\-buf}!USB Device Interface (UDI) for Communication Class Device (CDC)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}}
+\subsubsection[{udi\-\_\-cdc\-\_\-multi\-\_\-read\-\_\-buf}]{\setlength{\rightskip}{0pt plus 5cm}iram\-\_\-size\-\_\-t udi\-\_\-cdc\-\_\-multi\-\_\-read\-\_\-buf (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{port, }
+\item[{void $\ast$}]{buf, }
+\item[{iram\-\_\-size\-\_\-t}]{size}
+\end{DoxyParamCaption}
+)}}\label{group__udi__cdc__group_gae7f98639f63b0f9413f64235a0dcdbf4}
+
+
+Reads a R\-A\-M buffer on C\-D\-C line. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & Communication port number to manage \\
+\hline
+{\em buf} & Values read \\
+\hline
+{\em size} & Number of values read\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of data remaining 
+\end{DoxyReturn}
+\hypertarget{group__udi__cdc__group_gaeb3ad676fa423d7be61886397c5b5954}{\index{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}!udi\-\_\-cdc\-\_\-multi\-\_\-signal\-\_\-framing\-\_\-error@{udi\-\_\-cdc\-\_\-multi\-\_\-signal\-\_\-framing\-\_\-error}}
+\index{udi\-\_\-cdc\-\_\-multi\-\_\-signal\-\_\-framing\-\_\-error@{udi\-\_\-cdc\-\_\-multi\-\_\-signal\-\_\-framing\-\_\-error}!USB Device Interface (UDI) for Communication Class Device (CDC)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}}
+\subsubsection[{udi\-\_\-cdc\-\_\-multi\-\_\-signal\-\_\-framing\-\_\-error}]{\setlength{\rightskip}{0pt plus 5cm}void udi\-\_\-cdc\-\_\-multi\-\_\-signal\-\_\-framing\-\_\-error (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{port}
+\end{DoxyParamCaption}
+)}}\label{group__udi__cdc__group_gaeb3ad676fa423d7be61886397c5b5954}
+
+
+Notify a framing error. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & Communication port number to manage \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__udi__cdc__group_ga79edbdac74537196ef0afd4263a7e9cc}{\index{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}!udi\-\_\-cdc\-\_\-multi\-\_\-signal\-\_\-overrun@{udi\-\_\-cdc\-\_\-multi\-\_\-signal\-\_\-overrun}}
+\index{udi\-\_\-cdc\-\_\-multi\-\_\-signal\-\_\-overrun@{udi\-\_\-cdc\-\_\-multi\-\_\-signal\-\_\-overrun}!USB Device Interface (UDI) for Communication Class Device (CDC)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}}
+\subsubsection[{udi\-\_\-cdc\-\_\-multi\-\_\-signal\-\_\-overrun}]{\setlength{\rightskip}{0pt plus 5cm}void udi\-\_\-cdc\-\_\-multi\-\_\-signal\-\_\-overrun (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{port}
+\end{DoxyParamCaption}
+)}}\label{group__udi__cdc__group_ga79edbdac74537196ef0afd4263a7e9cc}
+
+
+Notify a overrun. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & Communication port number to manage \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__udi__cdc__group_ga7c6d996cf1697fdcbb0e6dfae3de701d}{\index{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}!udi\-\_\-cdc\-\_\-multi\-\_\-signal\-\_\-parity\-\_\-error@{udi\-\_\-cdc\-\_\-multi\-\_\-signal\-\_\-parity\-\_\-error}}
+\index{udi\-\_\-cdc\-\_\-multi\-\_\-signal\-\_\-parity\-\_\-error@{udi\-\_\-cdc\-\_\-multi\-\_\-signal\-\_\-parity\-\_\-error}!USB Device Interface (UDI) for Communication Class Device (CDC)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}}
+\subsubsection[{udi\-\_\-cdc\-\_\-multi\-\_\-signal\-\_\-parity\-\_\-error}]{\setlength{\rightskip}{0pt plus 5cm}void udi\-\_\-cdc\-\_\-multi\-\_\-signal\-\_\-parity\-\_\-error (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{port}
+\end{DoxyParamCaption}
+)}}\label{group__udi__cdc__group_ga7c6d996cf1697fdcbb0e6dfae3de701d}
+
+
+Notify a parity error. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & Communication port number to manage \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__udi__cdc__group_gae74f9c89ca08f6c1cbb263bc529a3c3c}{\index{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}!udi\-\_\-cdc\-\_\-multi\-\_\-write\-\_\-buf@{udi\-\_\-cdc\-\_\-multi\-\_\-write\-\_\-buf}}
+\index{udi\-\_\-cdc\-\_\-multi\-\_\-write\-\_\-buf@{udi\-\_\-cdc\-\_\-multi\-\_\-write\-\_\-buf}!USB Device Interface (UDI) for Communication Class Device (CDC)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}}
+\subsubsection[{udi\-\_\-cdc\-\_\-multi\-\_\-write\-\_\-buf}]{\setlength{\rightskip}{0pt plus 5cm}iram\-\_\-size\-\_\-t udi\-\_\-cdc\-\_\-multi\-\_\-write\-\_\-buf (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{port, }
+\item[{const void $\ast$}]{buf, }
+\item[{iram\-\_\-size\-\_\-t}]{size}
+\end{DoxyParamCaption}
+)}}\label{group__udi__cdc__group_gae74f9c89ca08f6c1cbb263bc529a3c3c}
+
+
+Writes a R\-A\-M buffer on C\-D\-C line. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & Communication port number to manage \\
+\hline
+{\em buf} & Values to write \\
+\hline
+{\em size} & Number of value to write\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of data remaining 
+\end{DoxyReturn}
+\hypertarget{group__udi__cdc__group_ga8faae3fcf4911017c0fcf0aa127179f6}{\index{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}!udi\-\_\-cdc\-\_\-putc@{udi\-\_\-cdc\-\_\-putc}}
+\index{udi\-\_\-cdc\-\_\-putc@{udi\-\_\-cdc\-\_\-putc}!USB Device Interface (UDI) for Communication Class Device (CDC)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}}
+\subsubsection[{udi\-\_\-cdc\-\_\-putc}]{\setlength{\rightskip}{0pt plus 5cm}int udi\-\_\-cdc\-\_\-putc (
+\begin{DoxyParamCaption}
+\item[{int}]{value}
+\end{DoxyParamCaption}
+)}}\label{group__udi__cdc__group_ga8faae3fcf4911017c0fcf0aa127179f6}
+
+
+Puts a byte on C\-D\-C line The type int is used to support printf redirection from compiler L\-I\-B. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & Value to put\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily 1} if function was successfully done, otherwise {\ttfamily 0}. 
+\end{DoxyReturn}
+\hypertarget{group__udi__cdc__group_gaf100ac6cd39574749c54d203b5d7835b}{\index{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}!udi\-\_\-cdc\-\_\-read\-\_\-buf@{udi\-\_\-cdc\-\_\-read\-\_\-buf}}
+\index{udi\-\_\-cdc\-\_\-read\-\_\-buf@{udi\-\_\-cdc\-\_\-read\-\_\-buf}!USB Device Interface (UDI) for Communication Class Device (CDC)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}}
+\subsubsection[{udi\-\_\-cdc\-\_\-read\-\_\-buf}]{\setlength{\rightskip}{0pt plus 5cm}iram\-\_\-size\-\_\-t udi\-\_\-cdc\-\_\-read\-\_\-buf (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{buf, }
+\item[{iram\-\_\-size\-\_\-t}]{size}
+\end{DoxyParamCaption}
+)}}\label{group__udi__cdc__group_gaf100ac6cd39574749c54d203b5d7835b}
+
+
+Reads a R\-A\-M buffer on C\-D\-C line. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buf} & Values read \\
+\hline
+{\em size} & Number of value read\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of data remaining 
+\end{DoxyReturn}
+\hypertarget{group__udi__cdc__group_ga705496169ff423f3e3d3b5ff882d3f9b}{\index{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}!udi\-\_\-cdc\-\_\-write\-\_\-buf@{udi\-\_\-cdc\-\_\-write\-\_\-buf}}
+\index{udi\-\_\-cdc\-\_\-write\-\_\-buf@{udi\-\_\-cdc\-\_\-write\-\_\-buf}!USB Device Interface (UDI) for Communication Class Device (CDC)@{U\-S\-B Device Interface (\-U\-D\-I) for Communication Class Device (\-C\-D\-C)}}
+\subsubsection[{udi\-\_\-cdc\-\_\-write\-\_\-buf}]{\setlength{\rightskip}{0pt plus 5cm}iram\-\_\-size\-\_\-t udi\-\_\-cdc\-\_\-write\-\_\-buf (
+\begin{DoxyParamCaption}
+\item[{const void $\ast$}]{buf, }
+\item[{iram\-\_\-size\-\_\-t}]{size}
+\end{DoxyParamCaption}
+)}}\label{group__udi__cdc__group_ga705496169ff423f3e3d3b5ff882d3f9b}
+
+
+Writes a R\-A\-M buffer on C\-D\-C line. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buf} & Values to write \\
+\hline
+{\em size} & Number of value to write\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of data remaining 
+\end{DoxyReturn}

@@ -1,0 +1,74 @@
+\hypertarget{deca__spi_8h}{\section{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/include/deca\-\_\-spi.h File Reference}
+\label{deca__spi_8h}\index{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/include/deca\-\_\-spi.\-h@{C\-:/\-Users/\-Nick/\-Desktop/\-One\-Pos\-\_\-programming/\-One\-Pos/\-One\-Pos/src/include/deca\-\_\-spi.\-h}}
+}
+
+
+S\-P\-I access functions.  
+
+
+{\ttfamily \#include \char`\"{}deca\-\_\-types.\-h\char`\"{}}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{deca__spi_8h_a8b4c8339017ca0d53dbb4b80016d287c}{\#define {\bfseries D\-E\-C\-A\-\_\-\-M\-A\-X\-\_\-\-S\-P\-I\-\_\-\-H\-E\-A\-D\-E\-R\-\_\-\-L\-E\-N\-G\-T\-H}~(3)}\label{deca__spi_8h_a8b4c8339017ca0d53dbb4b80016d287c}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{deca__spi_8h_aaa325190dcc97448d86334c024a2c7c1}{openspi} (void)
+\item 
+int \hyperlink{deca__spi_8h_a7e04e65f1d3077bb9f263584d43f78a2}{closespi} (void)
+\item 
+\hypertarget{deca__spi_8h_aad5b72572928b2ccf9499de2169d5c3c}{void {\bfseries fast\-\_\-spi} (void)}\label{deca__spi_8h_aad5b72572928b2ccf9499de2169d5c3c}
+
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{deca__spi_8h_a0260cea556e0a9ef2237a1d3cfd96f4e}{struct \hyperlink{structspi__device}{spi\-\_\-device} {\bfseries spi\-\_\-device\-\_\-conf}}\label{deca__spi_8h_a0260cea556e0a9ef2237a1d3cfd96f4e}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+S\-P\-I access functions. 
+
+
+
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+Copyright 2013 (c) Deca\-Wave Ltd, Dublin, Ireland.
+
+All rights reserved.
+
+\begin{DoxyAuthor}{Author}
+Deca\-Wave 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\hypertarget{deca__spi_8h_a7e04e65f1d3077bb9f263584d43f78a2}{\index{deca\-\_\-spi.\-h@{deca\-\_\-spi.\-h}!closespi@{closespi}}
+\index{closespi@{closespi}!deca_spi.h@{deca\-\_\-spi.\-h}}
+\subsubsection[{closespi}]{\setlength{\rightskip}{0pt plus 5cm}int closespi (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{deca__spi_8h_a7e04e65f1d3077bb9f263584d43f78a2}
+
+
+ Function\-: \hyperlink{deca__spi_8c_a7e04e65f1d3077bb9f263584d43f78a2}{closespi()}
+
+Low level abstract function to close the the S\-P\-I device. returns 0 for success, or -\/1 for error \hypertarget{deca__spi_8h_aaa325190dcc97448d86334c024a2c7c1}{\index{deca\-\_\-spi.\-h@{deca\-\_\-spi.\-h}!openspi@{openspi}}
+\index{openspi@{openspi}!deca_spi.h@{deca\-\_\-spi.\-h}}
+\subsubsection[{openspi}]{\setlength{\rightskip}{0pt plus 5cm}int openspi (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{deca__spi_8h_aaa325190dcc97448d86334c024a2c7c1}
+
+
+ Function\-: \hyperlink{deca__spi_8c_aaa325190dcc97448d86334c024a2c7c1}{openspi()}
+
+Low level abstract function to open and initialise access to the S\-P\-I device. returns 0 for success, or -\/1 for error 

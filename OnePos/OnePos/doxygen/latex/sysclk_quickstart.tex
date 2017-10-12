@@ -1,0 +1,72 @@
+Support and F\-A\-Q\-: visit \href{http://www.atmel.com/design-support/}{\tt Atmel Support}
+
+This is the quick start guide for the \hyperlink{group__sysclk__group}{System Clock Management} service, with step-\/by-\/step instructions on how to configure and use the service for specific use cases.\hypertarget{sysclk_quickstart_sysclk_quickstart_usecases}{}\section{System Clock Management use cases}\label{sysclk_quickstart_sysclk_quickstart_usecases}
+
+\begin{DoxyItemize}
+\item \hyperlink{sysclk_quickstart_sysclk_quickstart_basic}{Basic usage of the System Clock Management service}
+\item \hyperlink{sysclk_quickstart_use_case_2}{Advanced use case -\/ Peripheral Bus Clock Management (X\-M\-E\-G\-A)}
+\item \hyperlink{sysclk_quickstart_use_case_3}{Advanced use case -\/ D\-F\-L\-L auto-\/calibration (X\-M\-E\-G\-A)}
+\end{DoxyItemize}\hypertarget{sysclk_quickstart_sysclk_quickstart_basic}{}\section{Basic usage of the System Clock Management service}\label{sysclk_quickstart_sysclk_quickstart_basic}
+This section will present a basic use case for the System Clock Management service. This use case will configure the main system clock to 32\-M\-Hz, using an internal P\-L\-L module to multiply the frequency of a crystal attached to the microcontroller. The secondary peripheral bus clock and C\-P\-U clock are scaled down from the speed of the main system clock.\hypertarget{sysclk_quickstart_sysclk_quickstart_use_case_1_prereq}{}\subsection{Prerequisites}\label{sysclk_quickstart_sysclk_quickstart_use_case_1_prereq}
+
+\begin{DoxyItemize}
+\item None
+\end{DoxyItemize}\hypertarget{sysclk_quickstart_sysclk_quickstart_use_case_1_setup_steps}{}\subsection{Initialization code}\label{sysclk_quickstart_sysclk_quickstart_use_case_1_setup_steps}
+Add to the application initialization code\-: 
+\begin{DoxyCode}
+        \hyperlink{group__sysclk__group_ga242399e48a97739c88b4d0c00f6101de}{sysclk\_init}();
+\end{DoxyCode}
+\hypertarget{sysclk_quickstart_sysclk_quickstart_use_case_1_setup_steps_workflow}{}\subsection{Workflow}\label{sysclk_quickstart_sysclk_quickstart_use_case_1_setup_steps_workflow}
+
+\begin{DoxyEnumerate}
+\item Configure the system clocks according to the settings in \hyperlink{conf__clock_8h}{conf\-\_\-clock.\-h}\-: 
+\begin{DoxyCode}
+ \hyperlink{group__sysclk__group_ga242399e48a97739c88b4d0c00f6101de}{sysclk\_init}(); 
+\end{DoxyCode}
+
+\end{DoxyEnumerate}\hypertarget{sysclk_quickstart_sysclk_quickstart_use_case_1_example_code}{}\subsection{Example code}\label{sysclk_quickstart_sysclk_quickstart_use_case_1_example_code}
+Add or uncomment the following in your \hyperlink{conf__clock_8h}{conf\-\_\-clock.\-h} header file, commenting out all other definitions of the same symbol(s)\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{           #define CONFIG\_SYSCLK\_SOURCE        SYSCLK\_SRC\_PLL}
+\textcolor{preprocessor}{}
+           \textcolor{comment}{// Fpll0 = (Fclk * PLL\_mul) / PLL\_div}
+\textcolor{preprocessor}{           #define CONFIG\_PLL0\_SOURCE          PLL\_SRC\_XOSC}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{           #define CONFIG\_PLL0\_MUL             (32000000UL / BOARD\_XOSC\_HZ)}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{           #define CONFIG\_PLL0\_DIV             1}
+\textcolor{preprocessor}{}
+           \textcolor{comment}{// Fbus = Fsys / (2 ^ BUS\_div)}
+\textcolor{preprocessor}{           #define CONFIG\_SYSCLK\_PSADIV        SYSCLK\_PSADIV\_1}
+\textcolor{preprocessor}{           #define CONFIG\_SYSCLK\_PSBCDIV       SYSCLK\_PSBCDIV\_1\_2}
+\end{DoxyCode}
+\hypertarget{sysclk_quickstart_sysclk_quickstart_use_case_1_example_workflow}{}\subsection{Workflow}\label{sysclk_quickstart_sysclk_quickstart_use_case_1_example_workflow}
+
+\begin{DoxyEnumerate}
+\item Configure the main system clock to use the output of the P\-L\-L module as its source\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{ #define CONFIG\_SYSCLK\_SOURCE          SYSCLK\_SRC\_PLL }
+\end{DoxyCode}
+
+\item Configure the P\-L\-L0 module to use external crystal oscillator X\-O\-S\-C as its source\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{ #define CONFIG\_PLL0\_SOURCE            PLL\_SRC\_XOSC }
+\end{DoxyCode}
+
+\item Configure the P\-L\-L0 module to multiply the external oscillator X\-O\-S\-C frequency up to 32\-M\-Hz\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{        #define CONFIG\_PLL0\_MUL             (32000000UL / BOARD\_XOSC\_HZ)}
+\textcolor{preprocessor}{        #define CONFIG\_PLL0\_DIV             1}
+\end{DoxyCode}
+ \begin{DoxyNote}{Note}
+For user boards, {\ttfamily B\-O\-A\-R\-D\-\_\-\-X\-O\-S\-C\-\_\-\-H\-Z} should be defined in the board {\ttfamily \hyperlink{conf__board_8h}{conf\-\_\-board.\-h}} configuration file as the frequency of the crystal attached to X\-O\-S\-C.
+\end{DoxyNote}
+
+\item Configure the main C\-P\-U clock and slow peripheral bus to run at 16\-M\-Hz, run the fast peripheral bus at the full 32\-M\-Hz speed\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{        #define CONFIG\_SYSCLK\_PSADIV       SYSCLK\_PSADIV\_1}
+\textcolor{preprocessor}{        #define CONFIG\_SYSCLK\_PSBCDIV      SYSCLK\_PSBCDIV\_1\_2}
+\end{DoxyCode}
+ \begin{DoxyNote}{Note}
+Some dividers are powers of two, while others are integer division factors. Refer to the formulas in the \hyperlink{conf__clock_8h}{conf\-\_\-clock.\-h} template commented above each division define. 
+\end{DoxyNote}
+
+\end{DoxyEnumerate}
