@@ -81,7 +81,7 @@ void test_endian(void)
 int main (void)
 {
 	init_onepos();
-	openspi();
+	
 	
 	static usart_rs232_options_t RS485_SERIAL_OPTIONS = {
 		.baudrate = USART_SERIAL_BAUDRATE,

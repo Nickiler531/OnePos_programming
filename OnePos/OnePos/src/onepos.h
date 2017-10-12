@@ -24,6 +24,7 @@
 
 #include "include/onepos_config.h"
 #include "include/deca_onepos.h"
+#include "include/deca_examples.h"
 #include "include/ble.h"
 #include "stdio.h"
 #include "string.h"
