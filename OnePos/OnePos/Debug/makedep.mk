@@ -40,6 +40,8 @@ src\driver\ble.c
 
 src\driver\deca_device.c
 
+src\driver\deca_examples.c
+
 src\driver\deca_mutex.c
 
 src\driver\deca_onepos.c

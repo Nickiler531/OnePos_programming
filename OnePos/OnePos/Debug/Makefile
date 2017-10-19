@@ -100,6 +100,7 @@ C_SRCS +=  \
 ../src/ASF/xmega/drivers/nvm/nvm.c \
 ../src/driver/ble.c \
 ../src/driver/deca_device.c \
+../src/driver/deca_examples.c \
 ../src/driver/deca_mutex.c \
 ../src/driver/deca_onepos.c \
 ../src/driver/deca_params_init.c \
@@ -142,6 +143,7 @@ src/ASF/xmega/drivers/nvm/nvm_asm.o \
 src/ASF/xmega/drivers/cpu/ccp.o \
 src/driver/ble.o \
 src/driver/deca_device.o \
+src/driver/deca_examples.o \
 src/driver/deca_mutex.o \
 src/driver/deca_onepos.o \
 src/driver/deca_params_init.o \
@@ -175,6 +177,7 @@ src/ASF/xmega/drivers/nvm/nvm_asm.o \
 src/ASF/xmega/drivers/cpu/ccp.o \
 src/driver/ble.o \
 src/driver/deca_device.o \
+src/driver/deca_examples.o \
 src/driver/deca_mutex.o \
 src/driver/deca_onepos.o \
 src/driver/deca_params_init.o \
@@ -208,6 +211,7 @@ src/ASF/xmega/drivers/nvm/nvm_asm.d \
 src/ASF/xmega/drivers/cpu/ccp.d \
 src/driver/ble.d \
 src/driver/deca_device.d \
+src/driver/deca_examples.d \
 src/driver/deca_mutex.d \
 src/driver/deca_onepos.d \
 src/driver/deca_params_init.d \
@@ -241,6 +245,7 @@ src/ASF/xmega/drivers/nvm/nvm_asm.d \
 src/ASF/xmega/drivers/cpu/ccp.d \
 src/driver/ble.d \
 src/driver/deca_device.d \
+src/driver/deca_examples.d \
 src/driver/deca_mutex.d \
 src/driver/deca_onepos.d \
 src/driver/deca_params_init.d \
@@ -268,6 +273,8 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 

@@ -35,6 +35,8 @@ enum onepos_config_return_status
 #define DEFAULT_NAMESPACE "6F234454CF6D4A0FADF2"
 #define DEFAULT_BLE_SCAN_INTERVAL "01E0"
 #define DEFAULT_BLE_WINDOW_INTERVAL "0190"
+#define DEFAULT_UWB_RX_ANTENNA_DELAY 16436
+#define DEFAULT_UWB_TX_ANTENNA_DELAY 16436
 
 typedef struct onepos_cfg_str
 {
@@ -44,6 +46,8 @@ typedef struct onepos_cfg_str
 	char namespaceID[21]; //String with the namespace value represented in ASCII. Letter must be in caps.
 	char ble_scan_interval[5]; //string with the hex16 value of the ble scan interval
 	char ble_scan_window[5]; //string with the hex16 value of the ble window interval
+	uint16_t uwb_rx_antenna_delay; //the delay of the antenna calculated on the calibration process
+	uint16_t uwb_tx_antenna_delay; //the delay of the antenna calculated on the calibration process
 }onepos_cfg_str; 
 
 
@@ -71,7 +75,6 @@ uint8_t onepos_write_default_cfg(void);
 
 uint8_t onepos_configure_interface(void);
 
-
 uint16_t onepos_get_mem_check(void);
 
 uint16_t onepos_get_node_id(void);
@@ -94,6 +97,13 @@ void onepos_set_ble_scan_interval(char * str);
 
 void onepos_set_ble_scan_window(char * str);
 
+uint16_t onepos_get_uwb_rx_antenna_delay(void);
+
+void onepos_set_uwb_rx_antenna_delay(uint16_t delay);
+
+uint16_t onepos_get_uwb_tx_antenna_delay(void);
+
+void onepos_set_uwb_tx_antenna_delay(uint16_t delay);
 
 
 

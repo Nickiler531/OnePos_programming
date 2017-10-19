@@ -20,10 +20,19 @@
 #define DECA_STRING_MSG 0x30 //no standard
 #define DECA_ONEPOS_REPORT_MSG 0x31 //No standard
 
+
+
+/* Length of the common part of the message (up to and including the function code, see NOTE 2 below). */
+#define ALL_MSG_COMMON_LEN 10
+/* Indexes to access some of the fields in the frames defined above. */
+#define ALL_MSG_SN_IDX 2
+#define FINAL_MSG_POLL_TX_TS_IDX 10
+#define FINAL_MSG_RESP_RX_TS_IDX 14
+#define FINAL_MSG_FINAL_TX_TS_IDX 18
+#define FINAL_MSG_TS_LEN 4
+
+
 void dwt_onepos_init(uint8_t led_indicators);
-
-
-
 
 uint8_t dwt_string_counter(char * str);
 

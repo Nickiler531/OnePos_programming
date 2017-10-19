@@ -48,6 +48,8 @@ uint8_t onepos_write_default_cfg(void)
 	strcpy(onepos_config.namespaceID,DEFAULT_NAMESPACE);
 	strcpy(onepos_config.ble_scan_interval,DEFAULT_BLE_SCAN_INTERVAL);
 	strcpy(onepos_config.ble_scan_window,DEFAULT_BLE_WINDOW_INTERVAL);
+	onepos_config.uwb_rx_antenna_delay = DEFAULT_UWB_RX_ANTENNA_DELAY;
+	onepos_config.uwb_tx_antenna_delay = DEFAULT_UWB_TX_ANTENNA_DELAY;
 	
 	onepos_save_cfg();
 }
@@ -70,7 +72,9 @@ static print_menu1(void)
 	printf("3. NAMESPACE ID      : %s\n",namespaceID);
 	printf("4. BLE SCAN INTERVAL : %s\n",ble_scan_interval);
 	printf("5. BLE SCAN WINDOW   : %s\n",ble_scan_window);
-	printf("6. SAVE AND EXIT\n");
+	printf("6. UWB RX ANT DELAY  : %d\n",onepos_get_uwb_rx_antenna_delay());
+	printf("7. UWB TX ANT DELAY  : %d\n",onepos_get_uwb_tx_antenna_delay());
+	printf("0. SAVE AND EXIT\n");
 	printf("Select a number to change the current configuration: ");
 }
 
@@ -83,6 +87,8 @@ uint8_t onepos_configure_interface(void)
 	uint8_t new_node_mode=0;
 	uint8_t end_config = 0;
 	uint8_t selection;
+	uint16_t new_uwb_rx_antenna_delay = 0;
+	uint16_t new_uwb_tx_antenna_delay = 0;
 	
 	while(!end_config)
 	{
@@ -121,6 +127,16 @@ uint8_t onepos_configure_interface(void)
 				onepos_set_ble_scan_window(new_ble_scan_window);
 			break;
 			case 6:
+				printf("\nWrite the new uwb rx antenna delay: ");
+				scanf("%ld",&new_uwb_rx_antenna_delay);
+				onepos_set_uwb_rx_antenna_delay(new_uwb_rx_antenna_delay);
+			break;
+			case 7:
+				printf("\nWrite the new uwb tx antenna delay: ");
+				scanf("%ld",&new_uwb_tx_antenna_delay);
+				onepos_set_uwb_tx_antenna_delay(new_uwb_tx_antenna_delay);
+			break;
+			case 0:
 				onepos_save_cfg();
 				printf("\nConfiguration saved. Please restart the system\n");
 				end_config = 1;
@@ -187,4 +203,24 @@ void onepos_set_ble_scan_interval(char * str)
 void onepos_set_ble_scan_window(char * str)
 {
 	strcpy(onepos_config.ble_scan_window,str);
+}
+
+uint16_t onepos_get_uwb_rx_antenna_delay(void)
+{
+	return onepos_config.uwb_rx_antenna_delay;
+}
+
+void onepos_set_uwb_rx_antenna_delay(uint16_t delay)
+{
+	onepos_config.uwb_rx_antenna_delay = delay;
+}
+
+uint16_t onepos_get_uwb_tx_antenna_delay(void)
+{
+	return onepos_config.uwb_tx_antenna_delay;
+}
+
+void onepos_set_uwb_tx_antenna_delay(uint16_t delay)
+{
+	onepos_config.uwb_tx_antenna_delay = delay;
 }

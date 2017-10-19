@@ -48,10 +48,6 @@ void rs485_send(char a)
 
 
 
-
-
-
-
 void test_endian(void)
 {
 	union e {
@@ -93,20 +89,22 @@ int main (void)
 	
 	init_animation();
 	
-	dwt_show_sys_info();
+	//dwt_show_sys_info();
 	
 
 	delay_ms(200);
 	
-	dwt_run_examples();
-	
 	uint8_t ret;
-	
-	
-	
 	ret = onepos_read_cfg();
 	printf("READ_CFG: %d. MEMCHECK = %x\n",ret,onepos_get_mem_check());
 	onepos_configure_interface();
+	
+	
+	
+	//dwt_run_examples();
+	
+	
+	
 	
 	
 	

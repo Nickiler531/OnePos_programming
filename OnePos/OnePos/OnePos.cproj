@@ -584,6 +584,9 @@
     <Compile Include="src\driver\deca_device.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="src\driver\deca_examples.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\driver\deca_mutex.c">
       <SubType>compile</SubType>
     </Compile>
@@ -618,6 +621,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\include\deca_device_api.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\include\deca_examples.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\include\deca_onepos.h">
