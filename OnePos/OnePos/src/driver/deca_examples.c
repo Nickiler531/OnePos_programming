@@ -18,8 +18,9 @@ void dwt_run_examples(void)
 	#ifdef DWT_DS_TWR_INIT
 	dwt_ds_twr_init();
 	#endif
+	
 	#ifdef DWT_DS_TWR_RESP
-	dwt_ds_twr_resp();
+		dwt_ds_twr_resp();
 	#endif
 	
 	#ifdef DWT_TX_WAIT_RESP_INTERRUPTS
@@ -30,8 +31,6 @@ void dwt_run_examples(void)
 	dwt_rx_send_resp();
 	#endif
 }
-
-
 
 #ifdef DWT_SIMPLE_TX
 
@@ -970,7 +969,7 @@ void dwt_rx_send_resp(void)
 						if (frame_len <= RX_BUF_LEN)
 						{
 							dwt_readrxdata(rx_buffer, frame_len, 0);
-							printf("%s\n",rx_buffer);
+							printf("123132%s\n",rx_buffer);
 						}
 
 						/* Check that the frame is a final message sent by "DS TWR initiator" example.
@@ -1008,6 +1007,10 @@ void dwt_rx_send_resp(void)
 
 							/* Display computed distance on LCD. */
 							printf("DIST: %d mm\n", (uint16_t)(distance*100));
+						}
+						else
+						{
+							printf("Failed memcmp(rx_buffer, rx_final_msg, ALL_MSG_COMMON_LEN) == 0 \n");
 						}
 					}
 					else

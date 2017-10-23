@@ -15,6 +15,8 @@
 #define MEM_CHECK_CONSTANT 0x10C8 //Locate
 #define EEPROM_START_ADDRESS 0x1000
 
+#define NODE_ID_ADDR 0x00
+
 /**
  * @brief      Enum used to choose the start process
  */
@@ -35,8 +37,20 @@ enum onepos_config_return_status
 #define DEFAULT_NAMESPACE "6F234454CF6D4A0FADF2"
 #define DEFAULT_BLE_SCAN_INTERVAL "01E0"
 #define DEFAULT_BLE_WINDOW_INTERVAL "0190"
-#define DEFAULT_UWB_RX_ANTENNA_DELAY 16436
-#define DEFAULT_UWB_TX_ANTENNA_DELAY 16436
+#define DEFAULT_UWB_RX_ANTENNA_DELAY 16438
+#define DEFAULT_UWB_TX_ANTENNA_DELAY 16438
+
+#define UWB_RX_ANT_DLY_N1 16436
+#define UWB_RX_ANT_DLY_N2 16436
+#define UWB_RX_ANT_DLY_N3 16436
+#define UWB_RX_ANT_DLY_N4 16436
+#define UWB_RX_ANT_DLY_N5 16436
+
+#define UWB_TX_ANT_DLY_N1 16436
+#define UWB_TX_ANT_DLY_N2 16436
+#define UWB_TX_ANT_DLY_N3 16436
+#define UWB_TX_ANT_DLY_N4 16436
+#define UWB_TX_ANT_DLY_N5 16436
 
 typedef struct onepos_cfg_str
 {
@@ -87,7 +101,7 @@ void onepos_get_ble_scan_interval(char * str);
 
 void onepos_get_ble_scan_window(char * str);
 
-void onepos_set_node_id(uint16_t node_id);
+//void onepos_set_node_id(uint16_t node_id);
 
 void onepos_set_node_mode(uint8_t node_mode);
 

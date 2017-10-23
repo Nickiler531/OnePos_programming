@@ -11,13 +11,7 @@ void init_onepos(void)
 {
 	sysclk_init();
 	ioport_init();
-	
-	#ifdef ENABLE_RTC
-	// 	rtc_init();
-	#endif
-	#ifdef ENABLE_USB
-		usb_init();
-	#endif
+	delay_ms(200);
 	
 	/************************************************************************/
 	/* Direcion of IOs                                                                     */
@@ -42,6 +36,12 @@ void init_onepos(void)
 	ioport_set_pin_dir(UWB_MISO,IOPORT_DIR_INPUT);
 	ioport_set_pin_mode(UWB_MISO,IOPORT_MODE_PULLDOWN);
 	
+	#ifdef ENABLE_RTC
+	// 	rtc_init();
+	#endif
+	#ifdef ENABLE_USB
+	usb_init();
+	#endif
 }
 
 void init_animation(void)

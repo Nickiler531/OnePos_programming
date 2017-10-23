@@ -37,19 +37,42 @@ uint8_t onepos_read_cfg(void)
 void onepos_save_cfg(void)
 {
 	nvm_eeprom_erase_and_write_buffer(EEPROM_START,&onepos_config,sizeof(onepos_cfg_str));
-	//nvm_write(INT_USERPAGE, 0x10,config,sizeof(onepos_cfg_str));
 }
 
 uint8_t onepos_write_default_cfg(void)
 {
 	onepos_config.mem_check = MEM_CHECK_CONSTANT;
-	onepos_config.node_id = DEFAULT_NODEID;
+	onepos_config.node_id = onepos_get_node_id();
 	onepos_config.node_mode = DEFAULT_NODEMODE;
 	strcpy(onepos_config.namespaceID,DEFAULT_NAMESPACE);
 	strcpy(onepos_config.ble_scan_interval,DEFAULT_BLE_SCAN_INTERVAL);
 	strcpy(onepos_config.ble_scan_window,DEFAULT_BLE_WINDOW_INTERVAL);
-	onepos_config.uwb_rx_antenna_delay = DEFAULT_UWB_RX_ANTENNA_DELAY;
-	onepos_config.uwb_tx_antenna_delay = DEFAULT_UWB_TX_ANTENNA_DELAY;
+	switch(onepos_config.node_id)
+	{
+		case 1:
+			onepos_config.uwb_rx_antenna_delay = UWB_RX_ANT_DLY_N1;
+			onepos_config.uwb_tx_antenna_delay = UWB_TX_ANT_DLY_N1;
+		break;
+		case 2:
+			onepos_config.uwb_rx_antenna_delay = UWB_RX_ANT_DLY_N2;
+			onepos_config.uwb_tx_antenna_delay = UWB_TX_ANT_DLY_N2;
+		break;
+		case 3:
+			onepos_config.uwb_rx_antenna_delay = UWB_RX_ANT_DLY_N3;
+			onepos_config.uwb_tx_antenna_delay = UWB_TX_ANT_DLY_N3;
+		break;
+		case 4:
+			onepos_config.uwb_rx_antenna_delay = UWB_RX_ANT_DLY_N4;
+			onepos_config.uwb_tx_antenna_delay = UWB_TX_ANT_DLY_N4;
+		break;
+		case 5:
+			onepos_config.uwb_rx_antenna_delay = UWB_RX_ANT_DLY_N5;
+			onepos_config.uwb_tx_antenna_delay = UWB_TX_ANT_DLY_N5;
+		break;
+		default:
+			onepos_config.uwb_rx_antenna_delay = DEFAULT_UWB_RX_ANTENNA_DELAY;
+			onepos_config.uwb_tx_antenna_delay = DEFAULT_UWB_TX_ANTENNA_DELAY;
+	}
 	
 	onepos_save_cfg();
 }
@@ -98,9 +121,8 @@ uint8_t onepos_configure_interface(void)
 		switch(selection)
 		{
 			case 1:
-				printf("\nWrite new node ID: ");
-				scanf("%d",&new_node_id);
-				onepos_set_node_id(new_node_id);
+				printf("\nTo change node ID program the user signature memory at address 0x00\n");
+				delay_ms(2000);
 			break;
 			case 2:
 				printf("\nWrite 0 to start as Beacon and 1 to start as OnePos: ");
@@ -147,7 +169,6 @@ uint8_t onepos_configure_interface(void)
 	
 }
 
-
 uint16_t onepos_get_mem_check(void)
 {
 	return onepos_config.mem_check;
@@ -155,7 +176,7 @@ uint16_t onepos_get_mem_check(void)
 
 uint16_t onepos_get_node_id(void)
 {
-	return onepos_config.node_id;
+	return nvm_read_user_signature_row(NODE_ID_ADDR);
 }
 
 uint8_t onepos_get_node_mode(void)
@@ -178,12 +199,10 @@ void onepos_get_ble_scan_window(char * str)
 	strcpy(str,onepos_config.ble_scan_window);
 }
 
-
-
-void onepos_set_node_id(uint16_t node_id)
-{
-	onepos_config.node_id = node_id;
-}
+//void onepos_set_node_id(uint16_t node_id)
+//{
+	//onepos_config.node_id = node_id;
+//}
 
 void onepos_set_node_mode(uint8_t node_mode)
 {

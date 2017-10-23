@@ -22,9 +22,9 @@
 #include "include/deca_spi.h"
 #include "include/deca_param_types.h"
 
+#include "include/deca_examples.h"
 #include "include/onepos_config.h"
 #include "include/deca_onepos.h"
-#include "include/deca_examples.h"
 #include "include/ble.h"
 #include "stdio.h"
 #include "string.h"
@@ -83,6 +83,9 @@
 #define led2_toogle() ioport_toggle_pin_level(LED2)
 #define led3_toogle() ioport_toggle_pin_level(LED3)
 #define led4_toogle() ioport_toggle_pin_level(LED4)
+
+#define sw1_status() !ioport_get_pin_level(SW1) //1 for pressed, 0 for released
+#define sw2_status() !ioport_get_pin_level(SW2) //1 for pressed, 0 for released
 
 /************************************************************************/
 /* Configuration in initiation. To disable one of the following options, comment it.*/

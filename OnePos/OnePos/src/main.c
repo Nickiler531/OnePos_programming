@@ -78,7 +78,6 @@ int main (void)
 {
 	init_onepos();
 	
-	
 	static usart_rs232_options_t RS485_SERIAL_OPTIONS = {
 		.baudrate = USART_SERIAL_BAUDRATE,
 		.charlength = USART_SERIAL_CHAR_LENGTH,
@@ -89,25 +88,20 @@ int main (void)
 	
 	init_animation();
 	
+	uint8_t ret;
+	printf("READ_CFG: %d. MEMCHECK = %x\n",ret,onepos_get_mem_check());
+	ret = onepos_read_cfg();
+	
+	if (sw2_status())
+	{
+		onepos_configure_interface();
+	}
+	
 	//dwt_show_sys_info();
 	
+	openspi();
+	dwt_run_examples();
 
-	delay_ms(200);
-	
-	uint8_t ret;
-	ret = onepos_read_cfg();
-	printf("READ_CFG: %d. MEMCHECK = %x\n",ret,onepos_get_mem_check());
-	onepos_configure_interface();
-	
-	
-	
-	//dwt_run_examples();
-	
-	
-	
-	
-	
-	
 	
 	for (;;)
 	{

@@ -10,20 +10,20 @@
 #define DECA_ONEPOS_H_
 
 #include "../onepos.h"
-#include "deca_device_api.h"
 
 //#define DWT_SIMPLE_RX
 //#define DWT_SIMPLE_TX
 //#define DWT_DS_TWR_INIT
-//#define DWT_DS_TWR_RESP
-#define DWT_TX_WAIT_RESP_INTERRUPTS
+#define DWT_DS_TWR_RESP
+//#define DWT_TX_WAIT_RESP_INTERRUPTS
 //#define DWT_RX_SEND_RESPOND
 
-void dwt_run_examples(void);
 
 uint8_t dwt_string_counter(char * str);
 
 void dwt_show_sys_info(void);
+
+void dwt_run_examples(void);
 
 #ifdef DWT_SIMPLE_TX
 
