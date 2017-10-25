@@ -16,18 +16,22 @@
 
 
 #include <asf.h>
+
+#include "include/ble.h"
+#include "stdio.h"
+#include "string.h"
+
 #include "include/usb_serial.h"
 #include "include/deca_device_api.h"
 #include "include/deca_regs.h"
 #include "include/deca_spi.h"
 #include "include/deca_param_types.h"
-
-#include "include/deca_examples.h"
 #include "include/onepos_config.h"
 #include "include/deca_onepos.h"
-#include "include/ble.h"
-#include "stdio.h"
-#include "string.h"
+#include "include/deca_examples.h"
+
+
+
 
 //Header 1
 #define PR0 IOPORT_CREATE_PIN(PORTR, 0)
@@ -40,7 +44,7 @@
 #define PB3 IOPORT_CREATE_PIN(PORTB, 3)
 
 //Header 2
-#define PE0 IOPORT_CREATE_PIN(PORTE, 0)
+#define PE0 IOPORT_CREATE_PIN(PORTE, 0) //UWB interrupt
 #define PD5 IOPORT_CREATE_PIN(PORTD, 5)
 #define PD4 IOPORT_CREATE_PIN(PORTE, 4)
 #define PD1 IOPORT_CREATE_PIN(PORTD, 1)
@@ -69,7 +73,7 @@
 #define UWB_MOSI IOPORT_CREATE_PIN(PORTC, 5)
 #define UWB_MISO IOPORT_CREATE_PIN(PORTC, 6)
 #define UWB_CLK IOPORT_CREATE_PIN(PORTC, 7)
-
+#define UWB_INTERRUPT PE0
 /************************************************************************/
 /* Functions MACROs                                                                     */
 /************************************************************************/

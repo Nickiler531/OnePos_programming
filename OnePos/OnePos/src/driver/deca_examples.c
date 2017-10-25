@@ -9,6 +9,8 @@
 
 void dwt_run_examples(void)
 {
+	openspi();
+	
 	#ifdef DWT_SIMPLE_TX
 	dwt_send_example();
 	#endif
@@ -269,7 +271,12 @@ void dwt_tx_wait_resp_interrupts(void)
 		/* Wait for any RX event. */
 		while (tx_delay_ms == -1)
 		{
-			dwt_isr();	
+			if (ioport_get_pin_level(UWB_INTERRUPT))
+			{
+				printf("I was interrupted\n");
+				dwt_isr();
+			}
+			
 		}
 
 		/* Execute the defined delay before next transmission. */
@@ -297,6 +304,7 @@ void dwt_tx_wait_resp_interrupts(void)
  */
 static void rx_ok_cb(const dwt_cb_data_t *cb_data)
 {
+	printf("rx_ok_cb\n");
     int i;
 
     /* Clear local RX buffer to avoid having leftovers from previous receptions. This is not necessary but is included here to aid reading the RX
@@ -330,6 +338,7 @@ static void rx_ok_cb(const dwt_cb_data_t *cb_data)
  */
 static void rx_to_cb(const dwt_cb_data_t *cb_data)
 {
+	printf("rx_to_cb\n");
     /* Set corresponding inter-frame delay. */
     tx_delay_ms = RX_TO_TX_DELAY_MS;
 
@@ -348,6 +357,7 @@ static void rx_to_cb(const dwt_cb_data_t *cb_data)
  */
 static void rx_err_cb(const dwt_cb_data_t *cb_data)
 {
+	printf("rx_err_cb\n");
     /* Set corresponding inter-frame delay. */
     tx_delay_ms = RX_ERR_TX_DELAY_MS;
 
@@ -373,6 +383,7 @@ static void tx_conf_cb(const dwt_cb_data_t *cb_data)
      * dwt_setcallbacks(). The ISR will not call it which will allow to save some interrupt processing time. */
 
     /* TESTING BREAKPOINT LOCATION #4 */
+	printf("tx_conf_cb\n");
 	led4_toogle();
 }
 
@@ -409,17 +420,9 @@ static dwt_config_t config = {
  *     - byte 19/20: frame check-sum, automatically set by DW1000.  */
 static uint8 tx_msg[] = {0x41, 0x8C, 0, 0x9A, 0x60, 0, 0, 0, 0, 0, 0, 0, 0, 'D', 'W', 0x10, 0x00, 0, 0, 0, 0};
 /* Indexes to access to sequence number and destination address of the data frame in the tx_msg array. */
-#define DATA_FRAME_SN_IDX 2
-#define DATA_FRAME_DEST_IDX 5
 
-/* Inter-frame delay period, in milliseconds. */
-#define TX_DELAY_MS 1000
-
-/* Buffer to store received frame. See NOTE 1 below. */
-#define FRAME_LEN_MAX 127
 static uint8 rx_buffer[FRAME_LEN_MAX];
-/* Index to access to source address of the blink frame in the rx_buffer array. */
-#define BLINK_FRAME_SRC_IDX 2
+
 
 /* Hold copy of status register state here for reference so that it can be examined at a debug breakpoint. */
 static uint32 status_reg = 0;
@@ -741,7 +744,7 @@ void dwt_rx_send_resp(void)
 	}
 #endif //end #ifdef DWT_DS_TWR_INIT
 
-#ifdef DWT_DS_TWR_RESP
+#ifdef DWT_DS_TWR_RESP2
 	/* Default communication configuration. We use here EVK1000's default mode (mode 3). */
 	static dwt_config_t config = {
 		2,               /* Channel number. */
@@ -969,7 +972,7 @@ void dwt_rx_send_resp(void)
 						if (frame_len <= RX_BUF_LEN)
 						{
 							dwt_readrxdata(rx_buffer, frame_len, 0);
-							printf("123132%s\n",rx_buffer);
+							printf("%s\n",rx_buffer);
 						}
 
 						/* Check that the frame is a final message sent by "DS TWR initiator" example.
@@ -1007,10 +1010,6 @@ void dwt_rx_send_resp(void)
 
 							/* Display computed distance on LCD. */
 							printf("DIST: %d mm\n", (uint16_t)(distance*100));
-						}
-						else
-						{
-							printf("Failed memcmp(rx_buffer, rx_final_msg, ALL_MSG_COMMON_LEN) == 0 \n");
 						}
 					}
 					else

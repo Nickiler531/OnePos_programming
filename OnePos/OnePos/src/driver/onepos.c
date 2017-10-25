@@ -35,6 +35,12 @@ void init_onepos(void)
 	ioport_set_pin_dir(UWB_CLK,IOPORT_DIR_OUTPUT);
 	ioport_set_pin_dir(UWB_MISO,IOPORT_DIR_INPUT);
 	ioport_set_pin_mode(UWB_MISO,IOPORT_MODE_PULLDOWN);
+	ioport_set_pin_dir(UWB_INTERRUPT,IOPORT_DIR_INPUT);
+	
+	
+	//PORTE.PIN0CTRL = PORT_ISC_LEVEL_gc;
+	//PORTE.INT0MASK = PIN0_bm;
+	//PORTE.INTCTRL = PORT_INT0LVL_LO_gc;
 	
 	#ifdef ENABLE_RTC
 	// 	rtc_init();
@@ -42,6 +48,12 @@ void init_onepos(void)
 	#ifdef ENABLE_USB
 	usb_init();
 	#endif
+	
+	
+	//pmic_init();
+	//pmic_set_scheduling(PMIC_SCH_ROUND_ROBIN);
+	//cpu_irq_enable();
+	
 }
 
 void init_animation(void)

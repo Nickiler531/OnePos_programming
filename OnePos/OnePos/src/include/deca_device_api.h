@@ -173,7 +173,7 @@ typedef signed long int32;
 #define DWT_CB_DATA_RX_FLAG_RNG 0x1 // Ranging bit
 
 // TX/RX call-back data
-typedef struct
+typedef struct 
 {
     uint32 status;      //initial value of register as ISR is entered
     uint16 datalength;  //length of frame

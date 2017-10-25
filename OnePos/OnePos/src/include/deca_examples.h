@@ -14,7 +14,7 @@
 //#define DWT_SIMPLE_RX
 //#define DWT_SIMPLE_TX
 //#define DWT_DS_TWR_INIT
-#define DWT_DS_TWR_RESP
+//#define DWT_DS_TWR_RESP
 //#define DWT_TX_WAIT_RESP_INTERRUPTS
 //#define DWT_RX_SEND_RESPOND
 
@@ -77,33 +77,7 @@ void dwt_tx_wait_resp_interrupts(void);
 
 #ifdef DWT_RX_SEND_RESPOND
 
-/* Default communication configuration. We use here EVK1000's default mode (mode 3). */
-static dwt_config_t config = {
-    2,               /* Channel number. */
-    DWT_PRF_64M,     /* Pulse repetition frequency. */
-    DWT_PLEN_1024,   /* Preamble length. Used in TX only. */
-    DWT_PAC32,       /* Preamble acquisition chunk size. Used in RX only. */
-    9,               /* TX preamble code. Used in TX only. */
-    9,               /* RX preamble code. Used in RX only. */
-    1,               /* 0 to use standard SFD, 1 to use non-standard SFD. */
-    DWT_BR_110K,     /* Data rate. */
-    DWT_PHRMODE_STD, /* PHY header mode. */
-    (1025 + 64 - 32) /* SFD timeout (preamble length + 1 + SFD length - PAC size). Used in RX only. */
-};
 
-/* As "TX then wait for a response" example sends a blink message encoded as per the ISO/IEC 24730-62:2013 standard which includes a bit signalling
- * that a response is listened for, this example will respond with a valid frame (that will be ignored anyway) following the same standard. The
- * response is a 21-byte frame composed of the following fields:
- *     - byte 0/1: frame control (0x8C41 to indicate a data frame using 16-bit source addressing and 64-bit destination addressing).
- *     - byte 2: sequence number, incremented for each new frame.
- *     - byte 3/4: application ID (0x609A for data frames in this standard).
- *     - byte 5 -> 12: 64-bit destination address.
- *     - byte 13/14: 16-bit source address, hard coded in this example to keep it simple.
- *     - byte 15: function code (0x10 to indicate this is an activity control message).
- *     - byte 16: activity code (0x00 to indicate activity is finished).
- *     - byte 17/18: new tag blink rate.
- *     - byte 19/20: frame check-sum, automatically set by DW1000.  */
-static uint8 tx_msg[] = {0x41, 0x8C, 0, 0x9A, 0x60, 0, 0, 0, 0, 0, 0, 0, 0, 'D', 'W', 0x10, 0x00, 0, 0, 0, 0};
 /* Indexes to access to sequence number and destination address of the data frame in the tx_msg array. */
 #define DATA_FRAME_SN_IDX 2
 #define DATA_FRAME_DEST_IDX 5
@@ -113,15 +87,8 @@ static uint8 tx_msg[] = {0x41, 0x8C, 0, 0x9A, 0x60, 0, 0, 0, 0, 0, 0, 0, 0, 'D',
 
 /* Buffer to store received frame. See NOTE 1 below. */
 #define FRAME_LEN_MAX 127
-static uint8 rx_buffer[FRAME_LEN_MAX];
 /* Index to access to source address of the blink frame in the rx_buffer array. */
 #define BLINK_FRAME_SRC_IDX 2
-
-/* Hold copy of status register state here for reference so that it can be examined at a debug breakpoint. */
-static uint32 status_reg = 0;
-
-/* Hold copy of frame length of frame received (if good) so that it can be examined at a debug breakpoint. */
-static uint16 frame_len = 0;
 
 void dwt_rx_send_resp(void);
 
