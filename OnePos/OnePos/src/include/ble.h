@@ -31,7 +31,7 @@
 typedef struct beacon_struct
 {
 	char mac[13];
-	char namespace[21];
+	char namespaceID[21];
 	char instanceID[13];
 	int rssi;
 	int tx_power;	
@@ -39,6 +39,7 @@ typedef struct beacon_struct
 
 void ble_init(void);
 void usart_read_string(char * str);
+void ble_init_read_beacons_isr(void);
 void usart_write_string(char * str);
 void ble_conf_readables(void); // ToDo
 uint8_t ble_information(char * ble_str, beacon_struct * beacon);
@@ -46,6 +47,6 @@ uint8_t ble_information(char * ble_str, beacon_struct * beacon);
 void ble_init_read_beacons(void);
 uint8_t ble_read_beacons(beacon_struct * beacon);
 
-
+uint8_t ble_read_beacons_isr(beacon_struct * beacon);
 
 #endif /* BLE_H_ */

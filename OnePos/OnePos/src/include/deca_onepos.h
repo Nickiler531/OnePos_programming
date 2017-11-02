@@ -40,6 +40,14 @@
 static int32 tx_delay_ms = -1;
 
 
+/* UWB microsecond (uus) to device time unit (dtu, around 15.65 ps) conversion factor.
+* 1 uus = 512 / 499.2 탎 and 1 탎 = 499.2 * 128 dtu. */
+#define UUS_TO_DWT_TIME 65536
+
+/* Buffer to store received response message.
+	* Its size is adjusted to longest frame that this example code is supposed to handle. */
+#define RX_BUF_LEN 20
+
 int8 rx_flag;
 
 enum rx_flag_status
@@ -49,7 +57,10 @@ enum rx_flag_status
 	UWB_RX_FAILED,
 	UWB_RX_OK_BRDCST,
 	UWB_RX_OK_NOTFORME,
-	UWB_RX_ACK
+	UWB_RX_ACK,
+	UWB_RX_POLL,
+	UWB_RX_RESP,
+	UWB_RX_FINAL
 };
 
 /* Buffer to store received frame. See NOTE 4 below. */
@@ -100,6 +111,43 @@ uwb_rx_msg_str uwb_rx_message;
 
 
 
+/* Length of the common part of the message (up to and including the function code, see NOTE 2 below). */
+#define ALL_MSG_COMMON_LEN 10
+/* Index to access some of the fields in the frames involved in the process. */
+#define ALL_MSG_SN_IDX 2
+#define FINAL_MSG_POLL_TX_TS_IDX 10
+#define FINAL_MSG_RESP_RX_TS_IDX 14
+#define FINAL_MSG_FINAL_TX_TS_IDX 18
+#define FINAL_MSG_TS_LEN 4
+	
+
+/* Buffer to store received messages.
+	* Its size is adjusted to longest frame that this example code is supposed to handle. */
+#define RX_BUF_LEN 20
+
+/* UWB microsecond (uus) to device time unit (dtu, around 15.65 ps) conversion factor.
+	* 1 uus = 512 / 499.2 탎 and 1 탎 = 499.2 * 128 dtu. */
+#define UUS_TO_DWT_TIME 65536
+
+/* Delay between frames, in UWB microseconds. See NOTE 4 below. */
+/* This is the delay from Frame RX timestamp to TX reply timestamp used for calculating/setting the DW1000's delayed TX function. This includes the
+	* frame length of approximately 2.46 ms with above configuration. */
+#define POLL_RX_TO_RESP_TX_DLY_UUS 3900
+/* This is the delay from the end of the frame transmission to the enable of the receiver, as programmed for the DW1000's wait for response feature. */
+#define RESP_TX_TO_FINAL_RX_DLY_UUS 500
+/* Receive final timeout. See NOTE 5 below. */
+#define FINAL_RX_TIMEOUT_UUS 3300
+/* Preamble timeout, in multiple of PAC size. See NOTE 6 below. */
+#define PRE_TIMEOUT 8
+
+/* Speed of light in air, in metres per second. */
+#define SPEED_OF_LIGHT 299702547
+
+
+//Number of times that the calibration will measure the distance (to take the mean value)
+#define CALIBRATION_ITERATIONS 200
+
+
 void dwt_onepos_init(uint8_t led_indicators);
 
 uint8_t dwt_string_counter(char * str);
@@ -108,48 +156,16 @@ void dwt_show_sys_info(void);
 
 uint8_t dwt_send_msg_w_ack(char * msg, uint16_t dest_address);
 
-uint8_t dwt_receive_msg_w_ack(void);
+uint8_t dwt_receive_msg_w_ack(char * msg);
 
-/*! ------------------------------------------------------------------------------------------------------------------
-	* @fn get_tx_timestamp_u64()
-	*
-	* @brief Get the TX time-stamp in a 64-bit variable.
-	*        /!\ This function assumes that length of time-stamps is 40 bits, for both TX and RX!
-	*
-	* @param  none
-	*
-	* @return  64-bit value of the read time-stamp.
-	*/
-static uint64_t get_tx_timestamp_u64(void);
+uint8_t dwt_init_twr(uint16_t dest_address);
 
-/*! ------------------------------------------------------------------------------------------------------------------
-	* @fn get_rx_timestamp_u64()
-	*
-	* @brief Get the RX time-stamp in a 64-bit variable.
-	*        /!\ This function assumes that length of time-stamps is 40 bits, for both TX and RX!
-	*
-	* @param  none
-	*
-	* @return  64-bit value of the read time-stamp.
-	*/
-static uint64_t get_rx_timestamp_u64(void);
+uint8_t dwt_resp_twr(uint16_t * final_distance);
 
-/*! ------------------------------------------------------------------------------------------------------------------
-	* @fn final_msg_set_ts()
-	*
-	* @brief Fill a given timestamp field in the final message with the given value. In the timestamp fields of the final
-	*        message, the least significant byte is at the lower address.
-	*
-	* @param  ts_field  pointer on the first byte of the timestamp field to fill
-	*         ts  timestamp value
-	*
-	* @return none
-	*/
-static void final_msg_set_ts(uint8 *ts_field, uint64_t ts);
+void dwt_node1_calibration(uint16_t node2_address, uint16_t node3_address);
 
+void dwt_node2_calibration(uint16_t node1_address, uint16_t node3_address);
 
-
-
-
+void dwt_node3_calibration(uint16_t node1_address, uint16_t node2_address);
 
 #endif /* DECA_ONEPOS_H_ */

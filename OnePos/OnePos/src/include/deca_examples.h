@@ -13,7 +13,7 @@
 
 //#define DWT_SIMPLE_RX
 //#define DWT_SIMPLE_TX
-//#define DWT_DS_TWR_INIT
+#define DWT_DS_TWR_INIT
 //#define DWT_DS_TWR_RESP
 //#define DWT_TX_WAIT_RESP_INTERRUPTS
 //#define DWT_RX_SEND_RESPOND
@@ -94,7 +94,7 @@ void dwt_rx_send_resp(void);
 
 #endif //End of #ifdef DWT_RX_SEND_RESPOND
 
-#ifdef DWT_DS_TWR_INIT
+#ifdef DWT_DS_TWR_INIT2
 		/* Inter-ranging delay period, in milliseconds. */
 	#define RNG_DELAY_MS 1000
 
@@ -178,7 +178,7 @@ void dwt_rx_send_resp(void);
 	
 #endif //end #ifdef DWT_DS_TWR_INIT
 
-#ifdef DWT_DS_TWR_RESP
+#ifdef DWT_DS_TWR_RESP2
 	
 	/* Default antenna delay values for 64 MHz PRF. See NOTE 1 below. */
 	#define TX_ANT_DLY 16436

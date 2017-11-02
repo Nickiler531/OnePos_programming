@@ -17,11 +17,11 @@ void dwt_run_examples(void)
 	#ifdef DWT_SIMPLE_RX
 	dwt_receive_example();
 	#endif
-	#ifdef DWT_DS_TWR_INIT
+	#ifdef DWT_DS_TWR_INIT2
 	dwt_ds_twr_init();
 	#endif
 	
-	#ifdef DWT_DS_TWR_RESP
+	#ifdef DWT_DS_TWR_RESP2
 		dwt_ds_twr_resp();
 	#endif
 	
@@ -512,7 +512,7 @@ void dwt_rx_send_resp(void)
 
 #endif //End of #ifdef DWT_RX_SEND_RESPOND
 
-#ifdef DWT_DS_TWR_INIT
+#ifdef DWT_DS_TWR_INIT2
 	
 	/* Default communication configuration. We use here EVK1000's default mode (mode 3). */
 	static dwt_config_t config = {
@@ -626,8 +626,6 @@ void dwt_rx_send_resp(void)
 	
 	void dwt_ds_twr_init(void)
 	{
-		
-
 		if (dwt_initialise(DWT_LOADUCODE) == DWT_ERROR)
 		{
 			printf("INIT FAILED");

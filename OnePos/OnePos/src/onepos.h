@@ -9,8 +9,9 @@
 #ifndef ONEPOS_H_
 #define ONEPOS_H_
 
+// Comment to hide the debug messages
+//#define DBG
 
-#define DBG
 #define ON 1
 #define OFF 0
 
@@ -28,10 +29,7 @@
 #include "include/deca_param_types.h"
 #include "include/onepos_config.h"
 #include "include/deca_onepos.h"
-#include "include/deca_examples.h"
-
-
-
+//#include "include/deca_examples.h"
 
 //Header 1
 #define PR0 IOPORT_CREATE_PIN(PORTR, 0)

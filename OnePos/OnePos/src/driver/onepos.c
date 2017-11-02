@@ -24,7 +24,8 @@ void init_onepos(void)
 	ioport_set_pin_dir(LED4,IOPORT_DIR_OUTPUT);
 	
 	ioport_set_pin_dir(RS485_TX_EN,IOPORT_DIR_OUTPUT);
-	ioport_set_pin_dir(RS485_TX,IOPORT_DIR_INPUT);
+	
+
 	ioport_set_pin_dir(RS485_RX,IOPORT_DIR_OUTPUT);
 	
 	ioport_set_pin_dir(BLE_TX,IOPORT_DIR_INPUT);
