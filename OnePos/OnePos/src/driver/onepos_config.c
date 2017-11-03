@@ -16,22 +16,6 @@ uint8_t onepos_read_cfg(void)
 	}
 	onepos_write_default_cfg();
 	return OP_CFG_NEWNODE;
-	
-	//uint8_t values[sizeof(onepos_cfg_str)];
-	//uint8_t i;
-	//for (i = 0; i < sizeof(onepos_cfg_str); i++) {
-		//values[i] = nvm_read_user_signature_row(i);
-	//}
-	//
-	//memcpy(config,values,sizeof(onepos_cfg_str));
-	//
-	//nvm_read(INT_USERPAGE,0x10,config,sizeof(onepos_cfg_str));
-	//
-	//if (config->mem_check == MEM_CHECK_CONSTANT)
-	//{
-		//return OP_CFG_OK;
-	//}
-	//return OP_CFG_NEWNODE;
 }
 
 void onepos_save_cfg(void)
@@ -75,6 +59,47 @@ uint8_t onepos_write_default_cfg(void)
 	}
 	
 	onepos_save_cfg();
+}
+
+void onepos_print_current_configuration(void)
+{
+	char namespaceID[21];
+	char ble_scan_interval[5];
+	char ble_scan_window[5];
+	
+	onepos_get_namespaceID(namespaceID);
+	onepos_get_ble_scan_interval(ble_scan_interval);
+	onepos_get_ble_scan_window(ble_scan_window);
+	
+	printf("    ,o888888o.     b.             8 8 8888888888   8 888888888o   \n");
+	printf(" . 8888     `88.   888o.          8 8 8888         8 8888    `88. \n");
+	printf(",8 8888       `8b  Y88888o.       8 8 8888         8 8888     `88 \n");
+	printf("88 8888        `8b .`Y888888o.    8 8 8888         8 8888     ,88 \n");
+	printf("88 8888         88 8o. `Y888888o. 8 8 888888888888 8 8888.   ,88' \n");
+	printf("88 8888         88 8`Y8o. `Y88888o8 8 8888         8 888888888P'  \n");
+	printf("88 8888        ,8P 8   `Y8o. `Y8888 8 8888         8 8888         \n");
+	printf("`8 8888       ,8P  8      `Y8o. `Y8 8 8888         8 8888         \n");
+	printf(" ` 8888     ,88'   8         `Y8o.` 8 8888         8 8888         \n");
+	printf("    `8888888P'     8            `Yo 8 888888888888 8 8888         \n");
+	//printf("    ,o888888o.     b.             8 8 8888888888   8 888888888o       ,o888888o.       d888888o.   \n");
+	//printf(" . 8888     `88.   888o.          8 8 8888         8 8888    `88.  . 8888     `88.   .`8888:' `88. \n");
+	//printf(",8 8888       `8b  Y88888o.       8 8 8888         8 8888     `88 ,8 8888       `8b  8.`8888.   Y8 \n");
+	//printf("88 8888        `8b .`Y888888o.    8 8 8888         8 8888     ,88 88 8888        `8b `8.`8888.     \n");
+	//printf("88 8888         88 8o. `Y888888o. 8 8 888888888888 8 8888.   ,88' 88 8888         88  `8.`8888.    \n");
+	//printf("88 8888         88 8`Y8o. `Y88888o8 8 8888         8 888888888P'  88 8888         88   `8.`8888.   \n");
+	//printf("88 8888        ,8P 8   `Y8o. `Y8888 8 8888         8 8888         88 8888        ,8P    `8.`8888.  \n");
+	//printf("`8 8888       ,8P  8      `Y8o. `Y8 8 8888         8 8888         `8 8888       ,8P 8b   `8.`8888. \n");
+	//printf(" ` 8888     ,88'   8         `Y8o.` 8 8888         8 8888          ` 8888     ,88'  `8b.  ;8.`8888 \n");
+	//printf("    `8888888P'     8            `Yo 8 888888888888 8 8888             `8888888P'     `Y8888P ,88P' \n");
+	printf("\nCurrent Configuration: \n");
+	printf("MEM CHECK         : %#x\n",onepos_get_mem_check());
+	printf("NODE ID           : %d\n",onepos_get_node_id());
+	printf("NODE MODE         : %s\n",onepos_get_node_mode() ? "Start as OnePos" : "Start as Beacon" );
+	printf("NAMESPACE ID      : %s\n",namespaceID);
+	printf("BLE SCAN INTERVAL : %s\n",ble_scan_interval);
+	printf("BLE SCAN WINDOW   : %s\n",ble_scan_window);
+	printf("UWB RX ANT DELAY  : %d\n",onepos_get_uwb_rx_antenna_delay());
+	printf("UWB TX ANT DELAY  : %d\n",onepos_get_uwb_tx_antenna_delay());
 }
 
 static print_menu1(void)
