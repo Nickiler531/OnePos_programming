@@ -144,6 +144,9 @@ ISR(USARTD0_RXC_vect)
 	#ifdef DBG
 	usb_putchar(aux);
 	#endif
+	usb_putchar(aux);
+	
+	
 	ble_buff_index++;
 	if (aux == '\n')
 	{
@@ -167,7 +170,7 @@ void base_node(void)
 	uint16_t dist;
 	uint8_t status = -1;
 	uint16_t distances[4] = {0,0,0,0};
-	int16_t rssis[4] = {0,0,0,0};
+	int rssis[4] = {0,0,0,0};
 	char msg[20];
 	
 	printf("\nNode configured as Base Node\n");
@@ -205,7 +208,8 @@ void base_node(void)
 			{
 				led2_toogle();
 				printf("2................\n");
-				sscanf(msg,"%d,%d",&distances[1],&rssis[1]);
+				printf("%s",msg);
+				sscanf(msg,"%d,%d.",&distances[1],&rssis[1]);
 				status = -1;
 			}
 			
@@ -280,7 +284,8 @@ void support_node(void)
 			{
 				led2_toogle();
 				cli();
-				sprintf(msg,"%d,%d",dist,ble_beacon.rssi);
+				printf("%d",ble_beacon.rssi);
+				sprintf(msg,"%d,%d.",dist,ble_beacon.rssi);
 				sei();
 				dwt_send_msg_w_ack(msg,1);
 				status = -1;
@@ -316,8 +321,8 @@ int main (void)
 	
 	dwt_onepos_init(1);
 	
-	//support_node();
-	base_node();
+	support_node();
+	//base_node();
 	//location_node();
 	
 	
@@ -350,6 +355,15 @@ int main (void)
 		//}
 	//}
 
+	for(;;) //USB-USART_BLE bridge with ISR
+	{
+		if (usb_is_rx_ready())
+		{
+			usart_putchar(USART_BLE, usb_getchar());
+			led1_toogle();
+		}
+	}
+	
 	//for(;;) //USB-USART_BLE bridge
 	//{
 		//if (usb_is_rx_ready())
