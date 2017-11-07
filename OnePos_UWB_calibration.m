@@ -1,15 +1,22 @@
 %% Initial Values needed for the calibration of the system
 
-distance = 7.914; %Distance between the 3 nodes in meters (all distances should be the same)
+distance = 1.5; %Distance between the 3 nodes in meters (all distances should be the same)
 %The following are the measured distance between the nodes with RX and TX
 %delays set to 0. Those distances are the mean of many samples (200 for
 %example)
-d12 = 162.1613; %Distance between node 1 and 2 measured by node 1
-d13 = 162.2531;
-d21 = 162.172;
-d23 = 162.2449;
-d31 = 162.2155;
-d32 = 162.2582;
+%d12 = 155.7879; %Used to calibrate nodes 1, 2 and 4
+%d13 = 155.7727;
+%d21 = 155.8048;
+%d23 = 155.7577;
+%d31 = 155.8022;
+%d32 = 155.7618;
+
+d12 = 156.0097; %used to calibrate nodes 1, 3 and 5
+d13 = 155.8801;
+d21 = 156.02525;
+d23 = 155.82635;
+d31 = 155.90515;
+d32 = 155.8319;
 
 n_iteration= 100; %number of iterations
 n_candidates = 1000; %number of candidates to test in each iteration
