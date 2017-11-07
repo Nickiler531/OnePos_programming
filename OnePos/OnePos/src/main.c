@@ -144,6 +144,9 @@ ISR(USARTD0_RXC_vect)
 	#ifdef DBG
 	usb_putchar(aux);
 	#endif
+	usb_putchar(aux);
+	
+	
 	ble_buff_index++;
 	if (aux == '\n')
 	{
@@ -167,8 +170,10 @@ void base_node(void)
 	uint16_t dist;
 	uint8_t status = -1;
 	uint16_t distances[4] = {0,0,0,0};
-	int16_t rssis[4] = {0,0,0,0};
+	int rssis[4] = {0,0,0,0};
 	char msg[20];
+	
+	printf("\nNode configured as Base Node\n");
 	
 	ble_init_read_beacons_isr();
 	
@@ -178,10 +183,12 @@ void base_node(void)
 		rssis[0] = ble_beacon.rssi;
 		if (status == UWB_RX_OK)
 		{
+			led1_toogle();
 			dwt_send_msg_w_ack("msg",4);
 			status = dwt_receive_msg_w_ack(msg);
 			if (status == UWB_RX_OK)
 			{
+				led4_toogle();
 				printf("4.............\n");
 				sscanf(msg,"%d,%d",&distances[3],&rssis[3]);
 				status = -1;
@@ -190,6 +197,7 @@ void base_node(void)
 			status = dwt_receive_msg_w_ack(msg);
 			if (status == UWB_RX_OK)
 			{
+				led3_toogle();
 				printf("3..................\n");
 				sscanf(msg,"%d,%d",&distances[2],&rssis[2]);
 				status = -1;
@@ -198,8 +206,10 @@ void base_node(void)
 			status = dwt_receive_msg_w_ack(msg);
 			if (status == UWB_RX_OK)
 			{
+				led2_toogle();
 				printf("2................\n");
-				sscanf(msg,"%d,%d",&distances[1],&rssis[1]);
+				printf("%s",msg);
+				sscanf(msg,"%d,%d.",&distances[1],&rssis[1]);
 				status = -1;
 			}
 			
@@ -221,20 +231,31 @@ void base_node(void)
 
 void location_node(void)
 {
+	
+	printf("\nNode configured as Location Node\n");
+	uint8_t status;
 	for (;;)
 	{
-		dwt_init_twr(4);
-		led4(ON);
-		led3(ON);
-		dwt_init_twr(3);
-		led4(ON);
-		led3(OFF);
-		dwt_init_twr(2);
-		led4(OFF);
-		led3(ON);
-		dwt_init_twr(1);
-		led4(OFF);
-		led3(OFF);
+		status = dwt_init_twr(4);
+		if (status == UWB_RX_OK)
+		{
+			led4_toogle();
+		}
+		status = dwt_init_twr(3);
+		if (status == UWB_RX_OK)
+		{
+			led3_toogle();
+		}
+		status = dwt_init_twr(2);
+		if (status == UWB_RX_OK)
+		{
+			led2_toogle();
+		}
+		status = dwt_init_twr(1);
+		if (status == UWB_RX_OK)
+		{
+			led1_toogle();
+		}
 		delay_ms(1000);
 	}
 }
@@ -247,18 +268,24 @@ void support_node(void)
 	uint16_t dist;
 	char msg[15];
 	
+	printf("\nNode configured as Support Node\n");
 	ble_init_read_beacons_isr();
 	
 	for(;;)
 	{
+		led1(OFF);
+		led2(OFF);
 		status = dwt_resp_twr(&dist);
 		while(status == UWB_RX_OK)
 		{
+			led1(ON);
 			status2 = dwt_receive_msg_w_ack(msg);
 			if (status2 == UWB_RX_OK)
 			{
+				led2_toogle();
 				cli();
-				sprintf(msg,"%d,%d",dist,ble_beacon.rssi);
+				printf("%d",ble_beacon.rssi);
+				sprintf(msg,"%d,%d.",dist,ble_beacon.rssi);
 				sei();
 				dwt_send_msg_w_ack(msg,1);
 				status = -1;
@@ -279,9 +306,7 @@ int main (void)
 	
 	init_animation();
 	
-	
 	uint8_t ret;
-	printf("READ_CFG: %d. MEMCHECK = %x\n",ret,onepos_get_mem_check());
 	ret = onepos_read_cfg();
 	printf("READ_CFG: %d. MEMCHECK = %x\n",ret,onepos_get_mem_check());
 	
@@ -289,21 +314,27 @@ int main (void)
 	{
 		onepos_configure_interface();
 	}
+	else
+	{
+		onepos_print_current_configuration();
+	}
 	
 	dwt_onepos_init(1);
 	
-	
-	uint16_t node1 = 1;
-	uint16_t node2 = 2;
-	uint16_t node3 = 4;
-	
-	//dwt_node1_calibration(node2,node3);
-	dwt_node2_calibration(node1,node3);
-	//dwt_node3_calibration(node1,node2);
-
-	//support_node();
+	support_node();
 	//base_node();
 	//location_node();
+	
+	
+	uint16_t node1 = 1;
+	uint16_t node2 = 3;
+	uint16_t node3 = 5;
+	
+	//dwt_node1_calibration(node2,node3);
+	//dwt_node2_calibration(node1,node3);
+	//dwt_node3_calibration(node1,node2);
+
+	
 	
 	//for(;;)
 	//{
@@ -324,86 +355,95 @@ int main (void)
 		//}
 	//}
 
-	for(;;) //USB-USART_BLE bridge
+	for(;;) //USB-USART_BLE bridge with ISR
 	{
 		if (usb_is_rx_ready())
 		{
 			usart_putchar(USART_BLE, usb_getchar());
 			led1_toogle();
 		}
-		if (usart_rx_is_complete(USART_BLE))
-		{
-			usb_putchar(usart_getchar(USART_BLE));
-			led2_toogle();
-		}
-		
 	}
 	
-	
-	//Test of sending messages with library D:
-	dwt_onepos_init(1);
-	char income_msg[125];
-	uint16_t distance;
-	for (;;) //INIT TWR
-	{
-			
-		while (dwt_init_twr(1) != UWB_RX_OK)
-		{
-			delay_ms(1000);
-		}
-		
-		while(dwt_receive_msg_w_ack(income_msg) != UWB_RX_OK);
-		
-		printf("SUCCESS!!!\n");
-		printf("%s\n",income_msg);
-		delay_ms(500);
-		
-	}
-	
-	for (;;) //RESP TWR
-	{
-		while(dwt_resp_twr(&distance) != UWB_RX_OK);
-		sprintf(income_msg,"distance = %d\n",distance);
-		delay_ms(200);
-		if(dwt_send_msg_w_ack(income_msg,uwb_rx_message.source_address) == UWB_RX_OK)
-		{
-			printf("%s\n",income_msg);
-			printf("SUCCESS!!!\n");
-		}
-		else
-		{
-			printf("FAILURE\n");
-		}
-		
-	}
-	
-	
-	
-	
-	for (;;)
-	{
-		led1_toogle();
-		delay_ms(500);
-	}
-	
-	
-	
-	uint32_t dev_id;
-	
-	for (;;) //spi test
-	{
-		dev_id = dwt_readdevid();
-		printf("%#04X %#04X\n", (uint16_t)(dev_id>>16),(uint16_t)dev_id);
-		led1_toogle();
-		delay_ms(1000);
-	}
-	
-	
-	
-	
-	for (;;) //Basic USB printf example
-	{
-		printf("hello!\n");
-		delay_ms(500);
-	}
+	//for(;;) //USB-USART_BLE bridge
+	//{
+		//if (usb_is_rx_ready())
+		//{
+			//usart_putchar(USART_BLE, usb_getchar());
+			//led1_toogle();
+		//}
+		//if (usart_rx_is_complete(USART_BLE))
+		//{
+			//usb_putchar(usart_getchar(USART_BLE));
+			//led2_toogle();
+		//}
+		//
+	//}
+	//
+	//
+	////Test of sending messages with library D:
+	//dwt_onepos_init(1);
+	//char income_msg[125];
+	//uint16_t distance;
+	//for (;;) //INIT TWR
+	//{
+			//
+		//while (dwt_init_twr(1) != UWB_RX_OK)
+		//{
+			//delay_ms(1000);
+		//}
+		//
+		//while(dwt_receive_msg_w_ack(income_msg) != UWB_RX_OK);
+		//
+		//printf("SUCCESS!!!\n");
+		//printf("%s\n",income_msg);
+		//delay_ms(500);
+		//
+	//}
+	//
+	//for (;;) //RESP TWR
+	//{
+		//while(dwt_resp_twr(&distance) != UWB_RX_OK);
+		//sprintf(income_msg,"distance = %d\n",distance);
+		//delay_ms(200);
+		//if(dwt_send_msg_w_ack(income_msg,uwb_rx_message.source_address) == UWB_RX_OK)
+		//{
+			//printf("%s\n",income_msg);
+			//printf("SUCCESS!!!\n");
+		//}
+		//else
+		//{
+			//printf("FAILURE\n");
+		//}
+		//
+	//}
+	//
+	//
+	//
+	//
+	//for (;;)
+	//{
+		//led1_toogle();
+		//delay_ms(500);
+	//}
+	//
+	//
+	//
+	//uint32_t dev_id;
+	//
+	//for (;;) //spi test
+	//{
+		//dev_id = dwt_readdevid();
+		//printf("%#04X %#04X\n", (uint16_t)(dev_id>>16),(uint16_t)dev_id);
+		//led1_toogle();
+		//delay_ms(1000);
+	//}
+	//
+	//
+	//
+	//
+	//for (;;) //Basic USB printf example
+	//{
+		//printf("hello!\n");
+		//delay_ms(500);
+	//}
 }
