@@ -48,14 +48,14 @@ y20 = y20(windowSize:end);
 plot(x_calculated(InitOfCorrectData:end), y_calculated(InitOfCorrectData:end))
 hold on
 %plot room
-line([-70,350],[1,1],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
-line([-70,-70],[1,250],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
-line([-70,100],[250,250],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
-line([100,100],[250,281],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
-line([100,432],[281,281],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
-line([432,432],[281,110],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
-line([432,495],[110,110],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
-line([495,495],[110,0],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
+line([-70,350],[1,1], 'LineWidth',3, 'Color', 'k')
+line([-70,-70],[1,250], 'LineWidth',3, 'Color', 'k')
+line([-70,100],[250,250], 'LineWidth',3, 'Color', 'k')
+line([100,100],[250,281], 'LineWidth',3, 'Color', 'k')
+line([100,432],[281,281], 'LineWidth',3, 'Color', 'k')
+line([432,432],[281,110], 'LineWidth',3, 'Color', 'k')
+line([432,495],[110,110], 'LineWidth',3, 'Color', 'k')
+line([495,495],[110,0], 'LineWidth',3, 'Color', 'k')
 viscircles([432,200],5) %node 1
 viscircles([0,0],5) %node 2
 viscircles([495,5],5) %node 3
@@ -65,14 +65,14 @@ figure
 plot(x5,y5)
 hold on
 %plot room
-line([-70,350],[1,1],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
-line([-70,-70],[1,250],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
-line([-70,100],[250,250],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
-line([100,100],[250,281],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
-line([100,432],[281,281],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
-line([432,432],[281,110],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
-line([432,495],[110,110],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
-line([495,495],[110,0],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
+line([-70,350],[1,1], 'LineWidth',3, 'Color', 'k')
+line([-70,-70],[1,250], 'LineWidth',3, 'Color', 'k')
+line([-70,100],[250,250], 'LineWidth',3, 'Color', 'k')
+line([100,100],[250,281], 'LineWidth',3, 'Color', 'k')
+line([100,432],[281,281], 'LineWidth',3, 'Color', 'k')
+line([432,432],[281,110], 'LineWidth',3, 'Color', 'k')
+line([432,495],[110,110], 'LineWidth',3, 'Color', 'k')
+line([495,495],[110,0], 'LineWidth',3, 'Color', 'k')
 viscircles([432,200],5) %node 1
 viscircles([0,0],5) %node 2
 viscircles([495,5],5) %node 3
@@ -82,14 +82,14 @@ figure
 plot(x10,y10)
 hold on
 %plot room
-line([-70,350],[1,1],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
-line([-70,-70],[1,250],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
-line([-70,100],[250,250],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
-line([100,100],[250,281],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
-line([100,432],[281,281],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
-line([432,432],[281,110],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
-line([432,495],[110,110],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
-line([495,495],[110,0],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
+line([-70,350],[1,1], 'LineWidth',3, 'Color', 'k')
+line([-70,-70],[1,250], 'LineWidth',3, 'Color', 'k')
+line([-70,100],[250,250], 'LineWidth',3, 'Color', 'k')
+line([100,100],[250,281], 'LineWidth',3, 'Color', 'k')
+line([100,432],[281,281], 'LineWidth',3, 'Color', 'k')
+line([432,432],[281,110], 'LineWidth',3, 'Color', 'k')
+line([432,495],[110,110], 'LineWidth',3, 'Color', 'k')
+line([495,495],[110,0], 'LineWidth',3, 'Color', 'k')
 viscircles([432,200],5) %node 1
 viscircles([0,0],5) %node 2
 viscircles([495,5],5) %node 3
@@ -99,14 +99,14 @@ figure
 plot(x20,y20)
 hold on
 %plot room
-line([-70,350],[1,1],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
-line([-70,-70],[1,250],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
-line([-70,100],[250,250],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
-line([100,100],[250,281],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
-line([100,432],[281,281],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
-line([432,432],[281,110],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
-line([432,495],[110,110],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
-line([495,495],[110,0],[z_max,z_max], 'LineWidth',3, 'Color', 'k')
+line([-70,350],[1,1], 'LineWidth',3, 'Color', 'k')
+line([-70,-70],[1,250], 'LineWidth',3, 'Color', 'k')
+line([-70,100],[250,250], 'LineWidth',3, 'Color', 'k')
+line([100,100],[250,281], 'LineWidth',3, 'Color', 'k')
+line([100,432],[281,281], 'LineWidth',3, 'Color', 'k')
+line([432,432],[281,110], 'LineWidth',3, 'Color', 'k')
+line([432,495],[110,110], 'LineWidth',3, 'Color', 'k')
+line([495,495],[110,0], 'LineWidth',3, 'Color', 'k')
 viscircles([432,200],5) %node 1
 viscircles([0,0],5) %node 2
 viscircles([495,5],5) %node 3
@@ -160,7 +160,7 @@ model_rssi4 = fitrgp(t4,'rssi4_filt');
 %% HeatMap
 clear heat_rssi1
 
-cell_dimention = 5;
+cell_dimention = 20;
 room_x = linspace(0,500, round(500/cell_dimention));
 room_y = linspace(0,250, round(250/cell_dimention)); 
 
@@ -178,11 +178,9 @@ for i=1:size(heat_rssi1,1)
     end
 end
 
-%%
-
 [X,Y] = meshgrid(room_x',room_y');
 
-h = surf(X,Y,heat_rssi1')
+h = surf(X,Y,heat_rssi1');
 view(0,90)
 shading interp
 hold on
@@ -279,8 +277,110 @@ y_current = b*cell_dimention
 
 %Prepare the data to be entered on the algorithm
 
-ml_cell_dimention = 50; %cm
+ml_cell_dimention = 80; %cm
 class = zeros(size(x10));
 
 x_ml = ceil(x10/ml_cell_dimention);
 y_ml = ceil(y10/ml_cell_dimention);
+max_col = ceil(495/ml_cell_dimention);
+
+%x and y corresponding each class
+ml_class_x = (ml_cell_dimention/2) + 
+ml_class_y = (ml_cell_dimention/2) + floor(class/max_col)*ml_cell_dimention;
+
+class = (y_ml -1)*max_col + x_ml;
+
+table_ML = table(rssi1_filt,rssi2_filt,rssi3_filt,rssi4_filt,class);
+
+
+
+
+%% Save all Variables from calibration
+
+save('RecognitionRoute1_results','cell_dimention','heat_rssi1','heat_rssi2','heat_rssi3','heat_rssi4','ml_cell_dimention','model_rssi1','model_rssi2','model_rssi3','model_rssi4','table_ML','room_x','room_y','X','Y','ML_classifier')
+
+
+%% SECOND WALK PHASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+clear all
+load('RecognitionRoute1_results.mat')
+load('TestingRoute2')
+
+%% Plot route
+
+InitOfCorrectData = 15;
+
+windowSize = 10;
+b = (1/windowSize)*ones(1,windowSize);
+a = 1;
+
+y10 = filter(b,a,y_calculated(InitOfCorrectData:end));
+x10 = filter(b,a,x_calculated(InitOfCorrectData:end));
+x10 = x10(windowSize:end); 
+y10 = y10(windowSize:end); 
+
+rssi1_filt = filter(b,a,rssi1(InitOfCorrectData:end));
+rssi2_filt = filter(b,a,rssi2(InitOfCorrectData:end));
+rssi3_filt = filter(b,a,rssi3(InitOfCorrectData:end));
+rssi4_filt = filter(b,a,rssi4(InitOfCorrectData:end));
+
+rssi1_filt = rssi1_filt(windowSize:end);
+rssi2_filt = rssi2_filt(windowSize:end);
+rssi3_filt = rssi3_filt(windowSize:end);
+rssi4_filt = rssi4_filt(windowSize:end);
+
+plot(x10,y10)
+hold on
+%plot room
+line([-70,350],[1,1], 'LineWidth',3, 'Color', 'k')
+line([-70,-70],[1,250], 'LineWidth',3, 'Color', 'k')
+line([-70,100],[250,250], 'LineWidth',3, 'Color', 'k')
+line([100,100],[250,281], 'LineWidth',3, 'Color', 'k')
+line([100,432],[281,281], 'LineWidth',3, 'Color', 'k')
+line([432,432],[281,110], 'LineWidth',3, 'Color', 'k')
+line([432,495],[110,110], 'LineWidth',3, 'Color', 'k')
+line([495,495],[110,0], 'LineWidth',3, 'Color', 'k')
+viscircles([432,200],5) %node 1
+viscircles([0,0],5) %node 2
+viscircles([495,5],5) %node 3
+viscircles([0,250],5) %node 4
+
+%% Calculate Fingerprinting
+
+%x_fingerprint = zeros(size(x10,1),1);
+%y_fingerprint = zeros(size(y10,1),1);
+
+x_fingerprint = zeros(100,1);
+y_fingerprint = zeros(100,1);
+
+distance = zeros(size(heat_rssi1));
+
+for i=1:size(x_fingerprint)
+    distance= sqrt( ( (heat_rssi1 - rssi1_filt(i)).^2 + (heat_rssi2 - rssi2_filt(i)).^2 + (heat_rssi3 - rssi3_filt(i)).^2 + (heat_rssi4 - rssi4_filt(i)).^2 )/4  );
+    [a,b] = find(distance == min(distance(:)));
+    x_fingerprint(i) = a*cell_dimention;
+    y_fingerprint(i) = b*cell_dimention;
+    %figure
+    surf(X,Y,distance')
+    view(0,90)
+    shading interp
+
+end
+
+windowSize = 20;
+b = (1/windowSize)*ones(1,windowSize);
+a = 1;
+x_fing__filt = filter(b,a,x_fingerprint);
+y_fing__filt = filter(b,a,y_fingerprint);
+x_fing__filt = x_fing__filt(windowSize:end);
+y_fing__filt = y_fing__filt(windowSize:end);
+plot(x_fing__filt,y_fing__filt)
+
+%% MAchine Learning!!!
+
+class = zeros(size(x10));
+table_to_test = table(rssi1_filt,rssi2_filt,rssi3_filt,rssi4_filt,class);
+
+yfit = ML_classifier.predictFcn(table_to_test)
+
+x_ml = 
