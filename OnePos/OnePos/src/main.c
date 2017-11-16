@@ -128,7 +128,8 @@ void test_endian(void)
 	{
 		printf("Middle-endian or unknown storage type. Variable= %x", e.var);
 	}
-}
+}
+
 #include "include/deca_examples.h"
 
 #define BLE_RX_BUFFER 90
@@ -215,7 +216,7 @@ void base_node(void)
 			
 			printf("\t->d1: %d\n\t->d2: %d\n\t->d3: %d\n\t->d4: %d\n",distances[0],distances[1],distances[2],distances[3]);
 			printf("\t->rssi1:%d\n\t->rssi2:%d\n\t->rssi3:%d\n\t->rssi4:%d\n",rssis[0],rssis[1],rssis[2],rssis[3]);
-			send_pos_info(rssis[0],distances[0],rssis[1],distances[1],rssis[2],distances[2],rssis[3],distances[0]);
+			send_pos_info(rssis[0],distances[0],rssis[1],distances[1],rssis[2],distances[2],rssis[3],distances[3]);
 			
 			distances[0] = 0;
 			distances[1] = 0;
@@ -256,7 +257,7 @@ void location_node(void)
 		{
 			led1_toogle();
 		}
-		delay_ms(1000);
+		delay_ms(350);
 	}
 }
 
@@ -329,12 +330,16 @@ int main (void)
 	uint16_t node1 = 1;
 	uint16_t node2 = 3;
 	uint16_t node3 = 5;
+
 	
 	//dwt_node1_calibration(node2,node3);
 	//dwt_node2_calibration(node1,node3);
 	//dwt_node3_calibration(node1,node2);
 
-	
+
+	//support_node();
+	//base_node();
+	location_node();
 	
 	//for(;;)
 	//{
