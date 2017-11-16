@@ -40,6 +40,7 @@ enum onepos_config_return_status
 #define DEFAULT_UWB_RX_ANTENNA_DELAY 16438
 #define DEFAULT_UWB_TX_ANTENNA_DELAY 16438
 
+
 #define UWB_RX_ANT_DLY_N1 18405
 #define UWB_RX_ANT_DLY_N2 18420
 #define UWB_RX_ANT_DLY_N3 18440
@@ -100,6 +101,8 @@ void onepos_get_namespaceID(char * str);
 void onepos_get_ble_scan_interval(char * str);
 
 void onepos_get_ble_scan_window(char * str);
+
+void onepos_print_current_configuration(void);
 
 //void onepos_set_node_id(uint16_t node_id);
 
