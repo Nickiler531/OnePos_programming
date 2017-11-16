@@ -279,17 +279,8 @@ y_current = b*cell_dimention
 
 %Prepare the data to be entered on the algorithm
 
-ml_cell_dimention = 80; %cm
+ml_cell_dimention = 50; %cm
 class = zeros(size(x10));
 
 x_ml = ceil(x10/ml_cell_dimention);
 y_ml = ceil(y10/ml_cell_dimention);
-max_col = ceil(495/ml_cell_dimention);
-
-class = (y_ml -1)*max_col + x_ml;
-
-table_ML = table(rssi1_filt,rssi2_filt,rssi3_filt,rssi4_filt,class);
-
-
-%% SECOND WALK PHASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
