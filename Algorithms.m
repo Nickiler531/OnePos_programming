@@ -2,6 +2,7 @@
 
 clear all
 load('RecognitionRoute1.mat');
+%load('RecognitionRoute1_replay.mat')
 
 %% Plot route with different average windows
 
@@ -44,6 +45,8 @@ y20 = filter(b,a,y_calculated(InitOfCorrectData:end));
 x20 = filter(b,a,x_calculated(InitOfCorrectData:end));
 x20 = x20(windowSize:end); 
 y20 = y20(windowSize:end);
+
+figure
 
 plot(x_calculated(InitOfCorrectData:end), y_calculated(InitOfCorrectData:end))
 hold on
@@ -309,6 +312,7 @@ save('RecognitionRoute1_results','cell_dimention','heat_rssi1','heat_rssi2','hea
 clear all
 load('RecognitionRoute1_results.mat')
 load('TestingRoute2')
+%load('TestingRoute2_replay')
 
 %% Plot route
 
@@ -351,11 +355,11 @@ viscircles([0,250],5) %node 4
 
 %% Calculate Fingerprinting
 
-%x_fingerprint = zeros(size(x10,1),1);
-%y_fingerprint = zeros(size(y10,1),1);
+x_fingerprint = zeros(size(x10,1),1);
+y_fingerprint = zeros(size(y10,1),1);
 
-x_fingerprint = zeros(100,1);
-y_fingerprint = zeros(100,1);
+%x_fingerprint = zeros(100,1);
+%y_fingerprint = zeros(100,1);
 
 distance = zeros(size(heat_rssi1));
 
@@ -378,7 +382,25 @@ x_fing__filt = filter(b,a,x_fingerprint);
 y_fing__filt = filter(b,a,y_fingerprint);
 x_fing__filt = x_fing__filt(windowSize:end);
 y_fing__filt = y_fing__filt(windowSize:end);
+figure 
 plot(x_fing__filt,y_fing__filt)
+hold on
+%plot room
+line([-70,350],[1,1], 'LineWidth',3, 'Color', 'k')
+line([-70,-70],[1,250], 'LineWidth',3, 'Color', 'k')
+line([-70,100],[250,250], 'LineWidth',3, 'Color', 'k')
+line([100,100],[250,281], 'LineWidth',3, 'Color', 'k')
+line([100,432],[281,281], 'LineWidth',3, 'Color', 'k')
+line([432,432],[281,110], 'LineWidth',3, 'Color', 'k')
+line([432,495],[110,110], 'LineWidth',3, 'Color', 'k')
+line([495,495],[110,0], 'LineWidth',3, 'Color', 'k')
+viscircles([432,200],5) %node 1
+viscircles([0,0],5) %node 2
+viscircles([495,5],5) %node 3
+viscircles([0,250],5) %node 4
+
+figure
+
 
 %% MAchine Learning!!!
 
@@ -397,7 +419,35 @@ table_to_test = table(rssi1_filt,rssi2_filt,rssi3_filt,rssi4_filt,class);
 
 yfit = ML_classifier.predictFcn(table_to_test);
 
-plot(yfit-True_class);
-
-ml_class_x = rem(yfit,max_col) -(ml_cell_dimention/2); 
+ml_class_x = rem(yfit,max_col)*ml_cell_dimention -(ml_cell_dimention/2); 
 ml_class_y = (ml_cell_dimention/2) + floor(yfit/max_col)*ml_cell_dimention;
+
+
+windowSize = 20;
+b = (1/windowSize)*ones(1,windowSize);
+a = 1;
+ml_class_x_filt = filter(b,a,ml_class_x);
+ml_class_y_filt = filter(b,a,ml_class_y);
+ml_class_x_filt = ml_class_x_filt(windowSize:end);
+ml_class_y_filt = ml_class_y_filt(windowSize:end);
+figure 
+plot(ml_class_x_filt,ml_class_y_filt)
+hold on
+%plot room
+line([-70,350],[1,1], 'LineWidth',3, 'Color', 'k')
+line([-70,-70],[1,250], 'LineWidth',3, 'Color', 'k')
+line([-70,100],[250,250], 'LineWidth',3, 'Color', 'k')
+line([100,100],[250,281], 'LineWidth',3, 'Color', 'k')
+line([100,432],[281,281], 'LineWidth',3, 'Color', 'k')
+line([432,432],[281,110], 'LineWidth',3, 'Color', 'k')
+line([432,495],[110,110], 'LineWidth',3, 'Color', 'k')
+line([495,495],[110,0], 'LineWidth',3, 'Color', 'k')
+viscircles([432,200],5) %node 1
+viscircles([0,0],5) %node 2
+viscircles([495,5],5) %node 3
+viscircles([0,250],5) %node 4
+
+% Classification results
+
+results = yfit-True_class;
+(sum(results(:) == 0)/size(results,1))*100
